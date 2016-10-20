@@ -286,7 +286,7 @@ You must replace <code>token</code> with your personal authorization token.
 --url https://api.fantasticservices.com/v2/addresses <span class="se">\</span>
 --header <span class="s1">'x-client-token: YOUR_API_TOKEN'</span> <span class="se">\</span>
 --header <span class="s1">'authorization: YOUR_AUTH_TOKEN'</span> <span class="se">\</span>
---data <span class="s1">'{"requests":[{"method":"POST","name":"addresses","object":{"address_line_1":"7 Apt.","address_line_2":"27 Red Lion Street","postal":"SW14 8PT","lat":51.604903,"lng":-0.457022}},{"method":"POST","name":"addresses/27","object":{"address_line_1":"7 Apt.","address_line_2":"27 Red Lion Street"}}]}'</span>
+--data <span class="s1">'{"requests":[{"method":"POST","path":"addresses","object":{"address_line_1":"7 Apt.","address_line_2":"27 Red Lion Street","postal":"SW14 8PT","lat":51.604903,"lng":-0.457022}},{"method":"POST","path":"addresses/27","object":{"address_line_1":"7 Apt.","address_line_2":"27 Red Lion Street"}}]}'</span>
 </code></pre>
 
 <blockquote>
@@ -296,7 +296,7 @@ You must replace <code>token</code> with your personal authorization token.
   </span><span class="nt">"requests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"addresses"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"addresses"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7 Apt."</span><span class="p">,</span><span class="w">
         </span><span class="nt">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27 Red Lion Street"</span><span class="p">,</span><span class="w">
@@ -307,7 +307,7 @@ You must replace <code>token</code> with your personal authorization token.
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"addresses/27"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"addresses/27"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7 Apt."</span><span class="p">,</span><span class="w">
         </span><span class="nt">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27 Red Lion Street"</span><span class="w">
@@ -349,7 +349,7 @@ You must replace <code>token</code> with your personal authorization token.
 <td>HTTP method of combined request</td>
 </tr>
 <tr>
-<td><code class="prettyprint">name</code></td>
+<td><code class="prettyprint">path</code></td>
 <td><em>string</em></td>
 <td>Resource path of combined request</td>
 </tr>
