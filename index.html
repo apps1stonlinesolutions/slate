@@ -167,6 +167,16 @@
 You must replace <code>token</code> with your personal API token.
 </aside>
 
+<h2 id="profile-identifying-tokens">Profile identifying tokens</h2>
+
+<p>To access profile specific data request must include identifying token header field</p>
+
+<p><code class="prettyprint">X-Client-Profile: id</code></p>
+
+<aside class="notice">
+You must replace <code>id</code> with your personal profile id.
+</aside>
+
 <h2 id="authentication">Authentication</h2>
 
 <p>To access user specific data request should include header field</p>
@@ -179,180 +189,30 @@ You must replace <code>token</code> with your personal authorization token.
 
 <h1 id="communication-protocol">Communication Protocol</h1>
 
-<h2 id="read">Read</h2>
-<pre class="highlight shell"><code>curl --request GET <span class="se">\</span>
---url https://api.fantasticservices.com/v2/client/services/1 <span class="se">\</span>
---header <span class="s1">'x-client-token: YOUR_API_TOKEN'</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Free up more time for you and your family. The skilled cleaning experts will take care of your home."</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"short_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One-off cleaning"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"clean"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"one-off"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fantastic"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"list_image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02034044444"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"choice_views"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="mi">338</span><span class="p">,</span><span class="w">
-    </span><span class="mi">339</span><span class="p">,</span><span class="w">
-    </span><span class="mi">340</span><span class="p">,</span><span class="w">
-    </span><span class="mi">341</span><span class="p">,</span><span class="w">
-    </span><span class="mi">342</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459492785</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Get data by requesting it by resource name. Add id for specific object.</p>
-
-<p><code class="prettyprint">GET https://{base URL}/{version}/client/services/1</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">expand</code></td>
-<td><em>none</em></td>
-<td>Attributes to return as full objects. Names can be listed separated by a comma.<br><br> Keywords:<br><br>all - <em>expands all first level attributes</em><br>all.all - <em>expands all second level attributes</em><br>attribute.all - <em>expands all attributes child elements</em></td>
-</tr>
-<tr>
-<td><code class="prettyprint">fields</code></td>
-<td><em>all</em></td>
-<td>Attributes to receive in response</td>
-</tr>
-<tr>
-<td><code class="prettyprint">exclude_fields</code></td>
-<td><em>none</em></td>
-<td>Attributes to exclude from response</td>
-</tr>
-</tbody></table>
-
-<h2 id="create-update">Create/Update</h2>
+<h2 id="request">Request</h2>
 <pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
---url https://api.fantasticservices.com/v2/client/addresses <span class="se">\</span>
---header <span class="s1">'x-client-token: YOUR_API_TOKEN'</span> <span class="se">\</span>
---header <span class="s1">'authorization: YOUR_AUTH_TOKEN'</span> <span class="se">\</span>
-  --data <span class="s1">'{"address_line_1":"9 Apt.","address_line_2":"24 Red Lion Street","postcode":"SW12 2TN","lat":51.604903,"lng":-0.457022}'</span>
+  --url https://api.fantasticservices.com/v2/client/resources <span class="se">\</span>
+  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'Authorization: YOUR_AUTH_TOKEN_HERE'</span> <span class="se">\</span>
+  --header <span class="s1">'X-Profile: YOUR_PROFILE_ID_HERE'</span> <span class="se">\</span>
+  --header <span class="s1">'X-Application: YOUR_APP_TOKEN_HERE'</span> <span class="se">\</span>
+  --data <span class="s1">'
+{
+  "requests": [
+    {
+      "method": "GET",
+      "path": "addresses",
+      "params": null,
+      "data": null
+    }
+  ]
+}
+'</span>
 </code></pre>
 
-<blockquote>
-<p>The above command posts JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9 Apt."</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 Red Lion Street"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SW12 2TN"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.604903</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.457022</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+<p>All requests to the API are POST <code class="prettyprint">https://{base URL}/{version}/{namespace}/resources</code> endpoint and contain field <code class="prettyprint">requests</code> holding array of request objects.</p>
 
-<blockquote>
-<p>The above request success response is:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Create objects by posting data to the resource name. Add id to update existing objects</p>
-
-<p><code class="prettyprint">POST https://{base URL}/{version}/client/addresses</code></p>
-
-<p>If operation is successful created/updated object id is returned.</p>
-
-<h2 id="delete">Delete</h2>
-<pre class="highlight shell"><code>curl --request DELETE <span class="se">\</span>
---url https://api.fantasticservices.com/v2/client/addresses/2 <span class="se">\</span>
---header <span class="s1">'x-client-token: YOUR_API_TOKEN'</span> <span class="se">\</span>
---header <span class="s1">'authorization: YOUR_AUTH_TOKEN'</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Delete objects by sending delete request with the resource name and object id</p>
-
-<p><code class="prettyprint">DELETE https://{base URL}/{version}/client/addresses/2</code></p>
-
-<p>If object is deleted successfully it&rsquo;s id is returned.</p>
-
-<h2 id="batching-requests">Batching requests</h2>
-<pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
---url https://api.fantasticservices.com/v2/client/addresses <span class="se">\</span>
---header <span class="s1">'x-client-token: YOUR_API_TOKEN'</span> <span class="se">\</span>
---header <span class="s1">'authorization: YOUR_AUTH_TOKEN'</span> <span class="se">\</span>
---data <span class="s1">'{"requests":[{"method":"POST","path":"addresses","object":{"address_line_1":"7 Apt.","address_line_2":"27 Red Lion Street","postal":"SW14 8PT","lat":51.604903,"lng":-0.457022}},{"method":"POST","path":"addresses/27","object":{"address_line_1":"7 Apt.","address_line_2":"27 Red Lion Street"}}]}'</span>
-</code></pre>
-
-<blockquote>
-<p>The above command posts JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"requests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"addresses?expand=all"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"expand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7 Apt."</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27 Red Lion Street"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"postal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SW14 8PT"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.604903</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.457022</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"addresses/27"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"expand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7 Apt."</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27 Red Lion Street"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>The above request success response is:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<p>Requests can be combined by sending array of request objects.</p>
-
-<p><code class="prettyprint">POST https://{base URL}/{version}/shared/resources</code></p>
-
-<h3 id="post-parameters">Post Parameters</h3>
+<h3 id="request-object-parameters">Request object parameters</h3>
 
 <table><thead>
 <tr>
@@ -364,57 +224,83 @@ You must replace <code>token</code> with your personal authorization token.
 <tr>
 <td><code class="prettyprint">method</code></td>
 <td><em>string</em></td>
-<td>HTTP method of combined request</td>
+<td>Request type.<br><br><em><b>POST</b> - write data to server (create/update)</em><br><em><b>GET</b> - read data from server</em><br><em><b>DELETE</b> - delete data on server</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">path</code></td>
 <td><em>string</em></td>
-<td>Resource path of combined request. It countains all query parameters as well.</td>
+<td>Path to resource to access</td>
 </tr>
 <tr>
-<td><code class="prettyprint">object</code></td>
+<td><code class="prettyprint">params</code></td>
 <td><em>object</em></td>
-<td>Body of combined request</td>
+<td>Paramaters for the request</td>
+</tr>
+<tr>
+<td><code class="prettyprint">data</code></td>
+<td><em>object</em></td>
+<td>Data to post to server</td>
 </tr>
 </tbody></table>
 
-<aside class="notice">
-Query parameters are the same as for individual requests
-</aside>
+<h3 id="params"><code class="prettyprint">params</code></h3>
 
-<h2 id="response-structure">Response structure</h2>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">expand</code></td>
+<td><em>string</em></td>
+<td><em>none</em></td>
+<td>Attributes to return as full objects. Names can be listed separated by a comma.<br><br> Keywords:<br><br>all - <em>expands all first level attributes</em><br>all.all - <em>expands all second level attributes</em><br>attribute.all - <em>expands all attributes child elements</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">fields</code></td>
+<td><em>array</em></td>
+<td><em>all</em></td>
+<td>Attributes to receive in response</td>
+</tr>
+<tr>
+<td><code class="prettyprint">exclude_fields</code></td>
+<td><em>array</em></td>
+<td><em>none</em></td>
+<td>Attributes to exclude from response</td>
+</tr>
+</tbody></table>
+
+<h2 id="response">Response</h2>
 
 <blockquote>
 <p>JSON response structured</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1020</span><span class="p">,</span><span class="w">
           </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address created."</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postal_code missing."</span><span class="w">
+          </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postal_code missing."</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"DBVersion"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
+    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Requests can be combined by sending array of request objects.</p>
+<p>Contains field <code class="prettyprint">responses</code> holding array of response objects.</p>
 
-<p><code class="prettyprint">POST https://{base URL}/{version}/shared/resources</code></p>
-
-<h3 id="response-attributes">Response attributes</h3>
+<h3 id="response-object-parameters">Response object parameters</h3>
 
 <table><thead>
 <tr>
@@ -426,28 +312,368 @@ Query parameters are the same as for individual requests
 <tr>
 <td><code class="prettyprint">data</code></td>
 <td><em>array</em></td>
-<td>Array of responses of requests (one or more if batched).</td>
-</tr>
-<tr>
-<td><code class="prettyprint">meta</code></td>
-<td><em>object</em></td>
-<td>Attributes containing information for the system.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">objects</code></td>
-<td><em>array</em></td>
-<td>Response data for the request</td>
+<td>Array of data objects returned in the result of the request</td>
 </tr>
 <tr>
 <td><code class="prettyprint">success</code>, <code class="prettyprint">warning</code>, <code class="prettyprint">error</code></td>
 <td><em>array</em></td>
 <td>Messages with information for the request</td>
 </tr>
+<tr>
+<td><code class="prettyprint">meta</code></td>
+<td><em>object</em></td>
+<td>Parametercontaining information for the system.</td>
+</tr>
 </tbody></table>
 
-<aside class="notice">
-Single and batched requests return the same response format.
-</aside>
+<p>Also has field <code class="prettyprint">meta</code> containing system information</p>
+
+<h3 id="meta"><code class="prettyprint">meta</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">db_version</code></td>
+<td><em>integer</em></td>
+<td>Version of database model</td>
+</tr>
+<tr>
+<td><code class="prettyprint">latest_build</code></td>
+<td><em>integer</em></td>
+<td>Latest application build release</td>
+</tr>
+</tbody></table>
+
+<h2 id="read">Read</h2>
+<pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
+  --url https://api.fantasticservices.com/v2/client/resources <span class="se">\</span>
+  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'X-Profile: YOUR_PROFILE_ID_HERE'</span> <span class="se">\</span>
+  --header <span class="s1">'X-Application: YOUR_APP_TOKEN_HERE'</span> <span class="se">\</span>
+  --data <span class="s1">'
+{
+  "requests": [
+    {
+      "method": "GET",
+      "path": "services/1"
+    }
+  ]
+}
+'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Free up more time for you and your family. The skilled cleaning experts will take care of your home."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"short_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One-off cleaning"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"clean"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"one-off"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fantastic"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nt">"list_image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02034044444"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"choice_views"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">338</span><span class="p">,</span><span class="w">
+            </span><span class="mi">339</span><span class="p">,</span><span class="w">
+            </span><span class="mi">340</span><span class="p">,</span><span class="w">
+            </span><span class="mi">341</span><span class="p">,</span><span class="w">
+            </span><span class="mi">342</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459492785</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Read data by using <code class="prettyprint">metohd: GET</code> and specifying <code class="prettyprint">path</code> to resource you want to access. Get object by id with suffix <code class="prettyprint">/{id}</code></p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;services&quot;</code></p>
+
+<h2 id="create-update">Create/Update</h2>
+<pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
+  --url https://api.fantasticservices.com/v2/client/resources <span class="se">\</span>
+  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'Authorization: YOUR_AUTH_TOKEN_HERE'</span> <span class="se">\</span>
+  --header <span class="s1">'X-Profile: YOUR_PROFILE_ID_HERE'</span> <span class="se">\</span>
+  --header <span class="s1">'X-Application: YOUR_APP_TOKEN_HERE'</span> <span class="se">\</span>
+  --data <span class="s1">'
+{
+  "requests": [
+    {
+      "method": "POST",
+      "path": "addresses",
+      "data": {
+        "address_line_1": "9 Apt.",
+        "address_line_2": "24 Red Lion Street",
+        "postcode": "SW12 2TN",
+        "lat": 51.604903,
+        "lng": -0.457022
+      }
+    }
+  ]
+}
+'</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9 Apt."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 Red Lion Street"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SW12 2TN"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.604903</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.457022</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Create objects by using <code class="prettyprint">metohd: POST</code> and specifying <code class="prettyprint">path</code> to resource you want to create. Add suffix <code class="prettyprint">/{id}</code> to update existing objects.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;addresses&quot;</code></p>
+
+<p>If operation is successful created/updated object is returned.</p>
+
+<h2 id="delete">Delete</h2>
+<pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
+  --url https://api.fantasticservices.com/v2/client/resources <span class="se">\</span>
+  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'Authorization: YOUR_AUTH_TOKEN_HERE'</span> <span class="se">\</span>
+  --header <span class="s1">'X-Profile: YOUR_PROFILE_ID_HERE'</span> <span class="se">\</span>
+  --header <span class="s1">'X-Application: YOUR_APP_TOKEN_HERE'</span> <span class="se">\</span>
+  --data <span class="s1">'
+{
+  "requests": [
+    {
+      "method": "DELETE",
+      "path": "addresses/255"
+    }
+  ]
+}
+'</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"sucess"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1021</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address deleted."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Delete objects by using <code class="prettyprint">metohd: DELETE</code> and specifying <code class="prettyprint">path</code> and <code class="prettyprint">/{id}</code> suffix for object to delete.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;addresses&quot;</code></p>
+
+<p>If object is deleted successfully <code class="prettyprint">&quot;succuess&quot;</code> is returned.</p>
+
+<h1 id="account">Account</h1>
+
+<h2 id="register">Register</h2>
+<pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
+  --url https://api.fantasticservices.com/v2/client/resources <span class="se">\</span>
+  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'X-Profile: YOUR_PROFILE_ID_HERE'</span> <span class="se">\</span>
+  --header <span class="s1">'X-Application: YOUR_APP_TOKEN_HERE'</span> <span class="se">\</span>
+  --data <span class="s1">'
+{
+  "requests": [
+    {
+      "method": "POST",
+      "path": "register",
+      "data": {
+        "title_id": 1,
+        "first_name": "Nikolay",
+        "last_name": "Georgiev",
+        "phone_number": "072313123123",
+        "email": "test@test.com",
+        "password": "1234",
+        "referal_code": "JOHND1234B",
+        "oauth_id": "EAAEo0IpvAQcBAK1gy3VjCJPZCp6vidasdvEvEtxmO0gjFFjtz3jd8omEuhVhg3Y3ZAzIjSLQVMMZBaWwIZBRY9U8B7XZCFvGpledf38DPUTfeHNA2PCZALtPFTjXYFD1aPeB6IK4oo8dJWAIMAcpKPmFATTtXABljEA02jIDExTAp5brMUuNLMQlQr48ISRhbNy4hbKyI6plbO6ZCd1iHJ9kxd09PfpiwcZD",
+        "profile_id": 911980962150668,
+        "social_login_provider_id": 1,
+        "type_id": 1
+      }
+    }
+  ]
+}
+'</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cjkidhfqoihoufu18j0ncoy0jl7eu0d4ge1kslggp4outkh"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"create_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1429863734</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"expire_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1429906934</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Succesful register"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no errors"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>To create account all required fields must be sent (except anymous accounts which need only the right <code class="prettyprint">type_id</code>). For social sign in set the correct <code class="prettyprint">type_id</code> and <code class="prettyprint">social_login_provider_id</code>, pass the needed additional parameters for the social provider as <code class="prettyprint">oauth_id</code>, <code class="prettyprint">profile_id</code> etc. Missing details from social sign in must be collected from user to satisfy required fields.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;register&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">title_id</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td>Selected title <code class="prettyprint">id</code> from <code class="prettyprint">user_titles</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">first_name</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>User&rsquo;s first name (no special characters allowed)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">last_name</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>User&rsquo;s last name (no special characters allowed)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phone_number</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td>User&rsquo;s phone number validated for the region (UK/AUS/USA etc.)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">email</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>User&rsquo;s email with validated structure (e.g. xxxx@xxx.xxx)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">referal_code</code><br><em>optional</em></td>
+<td><em>string</em></td>
+<td>Referal code from another user</td>
+</tr>
+<tr>
+<td><code class="prettyprint">oauth_id</code><br><em>optional</em></td>
+<td><em>string</em></td>
+<td>Facebook oauth string for sign in</td>
+</tr>
+<tr>
+<td><code class="prettyprint">profile_id</code><br><em>optional</em></td>
+<td><em>string</em></td>
+<td>Facebook profile id</td>
+</tr>
+<tr>
+<td><code class="prettyprint">social_login_provider</code><br><em>optional</em></td>
+<td><em>integer</em></td>
+<td>Social login provider <code class="prettyprint">id</code>.<br><br><em><b>1</b> - Facebook</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">type_id</code><br><em>optional</em></td>
+<td><em>integer</em></td>
+<td>Type of registration<code class="prettyprint">id</code>.<br><br><em><b>1</b> - Generic (register form)</em><br><em><b>2</b> - Social (Facebook)</em><br><em><b>3</b> - Anonymous</em></td>
+</tr>
+</tbody></table>
+
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">return_user</code><br><em>optional, default <b>false</b></em></td>
+<td><em>boolean</em></td>
+<td>Request type.<br><br><code class="prettyprint">POST</code> - <em>write data to server (create/update)</em><br><code class="prettyprint">GET</code> - <em>read data from server</em><br><code class="prettyprint">DELETE</code> - <em>delete data on server</em></td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">token</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td>Your session id. Use for <code class="prettyprint">Authorization</code> header.</td>
+</tr>
+</tbody></table>
 
 <h1 id="checklists">Checklists</h1>
 <pre class="highlight shell"><code>curl --request GET <span class="se">\</span>
