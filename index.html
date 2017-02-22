@@ -324,7 +324,7 @@ You must replace <code>token</code> with your personal authorization token.
 <tr>
 <td><code class="prettyprint">success</code>, <code class="prettyprint">warning</code>, <code class="prettyprint">error</code></td>
 <td><em>array</em></td>
-<td>Messages with information for the request</td>
+<td>Messages with information for the request. More than one type of message can be returned in a response. <code class="prettyprint">success</code> and <code class="prettyprint">error</code> can&rsquo;t come in the same response. <code class="prettyprint">warning</code> can be combined with <code class="prettyprint">success</code> or <code class="prettyprint">error</code>.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">meta</code></td>
