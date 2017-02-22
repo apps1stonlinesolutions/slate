@@ -124,9 +124,9 @@
 <h2 id="environments">Environments</h2>
 
 <ul>
-<li><strong>LIVE</strong> <code class="prettyprint">api.fantasticservices.com</code><br></li>
-<li><strong>STAGE</strong> <code class="prettyprint">middlepoint-dev.1dxr.com</code></li>
-<li><strong>DEV</strong> <code class="prettyprint">middlepoint-dev.1dxr.com</code></li>
+<li><em>LIVE - <b>api.fantasticservices.com</em></b></li>
+<li><em>STAGE - <b>middlepoint-dev.1dxr.com</em></b></li>
+<li><em>DEV - <b>middlepoint-dev.1dxr.com</em></b></li>
 </ul>
 
 <p>In this document <code class="prettyprint">{base URL}</code> is used as a palceholder for current environment.</p>
@@ -146,14 +146,14 @@
 <p>Namespace is added after <code class="prettyprint">{version}</code> (latest version 2).</p>
 
 <ul>
-<li><strong>CLIENT USER</strong> <code class="prettyprint">/client</code><br></li>
-<li><strong>PRO USER</strong> <code class="prettyprint">/unit</code></li>
-<li><strong>GLOBAL FOR SYSTEM</strong> <code class="prettyprint">/shared</code></li>
+<li><em>CLIENT USER - <b>/client</b></em></li>
+<li><em>PRO USER - <b>/unit</b></em></li>
+<li><em>GLOBAL FOR SYSTEM - <b>/shared</b></em></li>
 </ul>
 
 <p>Example</p>
 
-<p><code class="prettyprint">api.fantasticservices.com/v2/client/</code></p>
+<p><b><em>api.fantasticservices.com/v2/client/</em></b></p>
 
 <p>In this document namespace is included in examples.</p>
 
@@ -222,22 +222,22 @@ You must replace <code>token</code> with your personal authorization token.
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">method</code></td>
+<td><code class="prettyprint">method</code><br><em>required</em></td>
 <td><em>string</em></td>
 <td>Request type.<br><br><em><b>POST</b> - write data to server (create/update)</em><br><em><b>GET</b> - read data from server</em><br><em><b>DELETE</b> - delete data on server</em></td>
 </tr>
 <tr>
-<td><code class="prettyprint">path</code></td>
+<td><code class="prettyprint">path</code><br><em>required</em></td>
 <td><em>string</em></td>
 <td>Path to resource to access</td>
 </tr>
 <tr>
-<td><code class="prettyprint">params</code></td>
+<td><code class="prettyprint">params</code><br><em>optional</em></td>
 <td><em>object</em></td>
 <td>Paramaters for the request</td>
 </tr>
 <tr>
-<td><code class="prettyprint">data</code></td>
+<td><code class="prettyprint">data</code><br><em>optional</em></td>
 <td><em>object</em></td>
 <td>Data to post to server</td>
 </tr>
@@ -286,7 +286,8 @@ You must replace <code>token</code> with your personal authorization token.
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1020</span><span class="p">,</span><span class="w">
           </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address created."</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postal_code missing."</span><span class="w">
+          </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postal_code missing."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">213124</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -496,7 +497,8 @@ You must replace <code>token</code> with your personal authorization token.
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1021</span><span class="p">,</span><span class="w">
           </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address deleted."</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">213124</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -566,7 +568,8 @@ You must replace <code>token</code> with your personal authorization token.
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w">
           </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Succesful register"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no errors"</span><span class="w">
+          </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -655,7 +658,7 @@ You must replace <code>token</code> with your personal authorization token.
 <tr>
 <td><code class="prettyprint">return_user</code><br><em>optional, default <b>false</b></em></td>
 <td><em>boolean</em></td>
-<td>Request type.<br><br><code class="prettyprint">POST</code> - <em>write data to server (create/update)</em><br><code class="prettyprint">GET</code> - <em>read data from server</em><br><code class="prettyprint">DELETE</code> - <em>delete data on server</em></td>
+<td>Return user object with phone object.</td>
 </tr>
 </tbody></table>
 
@@ -674,6 +677,14 @@ You must replace <code>token</code> with your personal authorization token.
 <td>Your session id. Use for <code class="prettyprint">Authorization</code> header.</td>
 </tr>
 </tbody></table>
+
+<aside class="success">
+Code for successful registration: 2010.
+</aside>
+
+<aside class="warning">
+Error codes for registration: 4010 - 4020.
+</aside>
 
 <h1 id="checklists">Checklists</h1>
 <pre class="highlight shell"><code>curl --request GET <span class="se">\</span>
