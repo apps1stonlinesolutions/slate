@@ -125,7 +125,7 @@
 
 <ul>
 <li><em>LIVE - <b>api.fantasticservices.com</em></b></li>
-<li><em>STAGE - <b>middlepoint-dev.1dxr.com</em></b></li>
+<li><em>STAGE - <b>middlepoint-stg.1dxr.com</em></b></li>
 <li><em>DEV - <b>middlepoint-dev.1dxr.com</em></b></li>
 </ul>
 
@@ -135,15 +135,15 @@
 
 <p>Version is added after <code class="prettyprint">{base URL}</code> (latest version 2).</p>
 
-<p>Example</p>
+<p>Example:</p>
 
-<p><code class="prettyprint">api.fantasticservices.com/v2</code>  </p>
+<p><b><em>api.fantasticservices.com/v2</em></b></p>
 
 <p>In this document <code class="prettyprint">{version}</code> is used as a palceholder for selected version.</p>
 
 <h2 id="namespaces">Namespaces</h2>
 
-<p>Namespace is added after <code class="prettyprint">{version}</code> (latest version 2).</p>
+<p>Namespace is added after <code class="prettyprint">{version}</code>.</p>
 
 <ul>
 <li><em>CLIENT USER - <b>/client</b></em></li>
@@ -151,27 +151,27 @@
 <li><em>GLOBAL FOR SYSTEM - <b>/shared</b></em></li>
 </ul>
 
-<p>Example</p>
+<p>Example:</p>
 
-<p><b><em>api.fantasticservices.com/v2/client/</em></b></p>
+<p><b><em>api.fantasticservices.com/v2/client</em></b></p>
 
 <p>In this document namespace is included in examples.</p>
 
 <h2 id="applications-identifying-tokens">Applications identifying tokens</h2>
 
-<p>To access API all request must include identifying token header field</p>
+<p>To access API all request must include identifying token header field.</p>
 
-<p><code class="prettyprint">X-Client-Token: token</code></p>
+<p><code class="prettyprint">X-Application: token</code></p>
 
 <aside class="notice">
-You must replace <code>token</code> with your personal API token.
+You must replace <code>token</code> with your personal APP token.
 </aside>
 
 <h2 id="profile-identifying-tokens">Profile identifying tokens</h2>
 
-<p>To access profile specific data request must include identifying token header field</p>
+<p>To access profile specific data request should include identifying profile header field.</p>
 
-<p><code class="prettyprint">X-Client-Profile: id</code></p>
+<p><code class="prettyprint">X-Profile: id</code></p>
 
 <aside class="notice">
 You must replace <code>id</code> with your personal profile id.
@@ -179,9 +179,9 @@ You must replace <code>id</code> with your personal profile id.
 
 <h2 id="authentication">Authentication</h2>
 
-<p>To access user specific data request should include header field</p>
+<p>To access user specific data request should include authorization header field.</p>
 
-<p><code class="prettyprint">Authorization: Bearer token</code></p>
+<p><code class="prettyprint">Authorization: token</code></p>
 
 <aside class="notice">
 You must replace <code>token</code> with your personal authorization token.
@@ -270,6 +270,12 @@ You must replace <code>token</code> with your personal authorization token.
 <td><em>array</em></td>
 <td><em>none</em></td>
 <td>Attributes to exclude from response</td>
+</tr>
+<tr>
+<td><code class="prettyprint">include_fields</code></td>
+<td><em>array</em></td>
+<td><em>none</em></td>
+<td>Attributes to add to response which are not returned by default</td>
 </tr>
 </tbody></table>
 
@@ -534,13 +540,15 @@ You must replace <code>token</code> with your personal authorization token.
         "title_id": 1,
         "first_name": "Nikolay",
         "last_name": "Georgiev",
-        "phone_number": "072313123123",
+        "phone": "072313123123",
         "email": "test@test.com",
         "password": "1234",
         "referal_code": "JOHND1234B",
-        "oauth_id": "EAAEo0IpvAQcBAK1gy3VjCJPZCp6vidasdvEvEtxmO0gjFFjtz3jd8omEuhVhg3Y3ZAzIjSLQVMMZBaWwIZBRY9U8B7XZCFvGpledf38DPUTfeHNA2PCZALtPFTjXYFD1aPeB6IK4oo8dJWAIMAcpKPmFATTtXABljEA02jIDExTAp5brMUuNLMQlQr48ISRhbNy4hbKyI6plbO6ZCd1iHJ9kxd09PfpiwcZD",
-        "profile_id": 911980962150668,
-        "social_login_provider_id": 1,
+        "social": {
+          "oauth_id": "EAAEo0IpvAQcBAK1gy3VjCJPZCp6vidasdvEvEtxmO0gjFFjtz3jd8omEuhVhg3Y3ZAzIjSLQVMMZBaWwIZBRY9U8B7XZCFvGpledf38DPUTfeHNA2PCZALtPFTjXYFD1aPeB6IK4oo8dJWAIMAcpKPmFATTtXABljEA02jIDExTAp5brMUuNLMQlQr48ISRhbNy4hbKyI6plbO6ZCd1iHJ9kxd09PfpiwcZD",
+          "profile_id": 911980962150668,
+          "social_provider_id": 1
+        },
         "type_id": 1
       }
     }
@@ -558,7 +566,7 @@ You must replace <code>token</code> with your personal authorization token.
       </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cjkidhfqoihoufu18j0ncoy0jl7eu0d4ge1kslggp4outkh"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cjkidhfqoihoufu18j0ncoy0jl7eu0d4ge1kslggp4outkh"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"create_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1429863734</span><span class="p">,</span><span class="w">
             </span><span class="nt">"expire_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1429906934</span><span class="w">
           </span><span class="p">}</span><span class="w">
@@ -581,7 +589,7 @@ You must replace <code>token</code> with your personal authorization token.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>To create account all required fields must be sent (except anymous accounts which need only the right <code class="prettyprint">type_id</code>). For social sign in set the correct <code class="prettyprint">type_id</code> and <code class="prettyprint">social_login_provider_id</code>, pass the needed additional parameters for the social provider as <code class="prettyprint">oauth_id</code>, <code class="prettyprint">profile_id</code> etc. Missing details from social sign in must be collected from user to satisfy required fields.</p>
+<p>To create account all required fields must be sent (except anonymous accounts which need only the right <code class="prettyprint">type_id</code>). For social sign in set the correct <code class="prettyprint">type_id</code> and fields in <code class="prettyprint">social</code> object (they vary for different social medias). Missing details from social sign in must be collected from user to satisfy required fields.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;register&quot;</code></p>
 
@@ -610,7 +618,7 @@ You must replace <code>token</code> with your personal authorization token.
 <td>User&rsquo;s last name (no special characters allowed)</td>
 </tr>
 <tr>
-<td><code class="prettyprint">phone_number</code><br><em>required</em></td>
+<td><code class="prettyprint">phone</code><br><em>required</em></td>
 <td><em>integer</em></td>
 <td>User&rsquo;s phone number validated for the region (UK/AUS/USA etc.)</td>
 </tr>
@@ -625,17 +633,17 @@ You must replace <code>token</code> with your personal authorization token.
 <td>Referal code from another user</td>
 </tr>
 <tr>
-<td><code class="prettyprint">oauth_id</code><br><em>optional</em></td>
+<td><code class="prettyprint">social.oauth_id</code><br><em>optional</em></td>
 <td><em>string</em></td>
 <td>Facebook oauth string for sign in</td>
 </tr>
 <tr>
-<td><code class="prettyprint">profile_id</code><br><em>optional</em></td>
+<td><code class="prettyprint">social.profile_id</code><br><em>optional</em></td>
 <td><em>string</em></td>
 <td>Facebook profile id</td>
 </tr>
 <tr>
-<td><code class="prettyprint">social_login_provider</code><br><em>optional</em></td>
+<td><code class="prettyprint">social.social_provider_id</code><br><em>optional</em></td>
 <td><em>integer</em></td>
 <td>Social login provider <code class="prettyprint">id</code>.<br><br><em><b>1</b> - Facebook</em></td>
 </tr>
@@ -672,7 +680,7 @@ You must replace <code>token</code> with your personal authorization token.
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">token</code><br><em>required</em></td>
+<td><code class="prettyprint">login.sid</code><br><em>required</em></td>
 <td><em>integer</em></td>
 <td>Your session id. Use for <code class="prettyprint">Authorization</code> header.</td>
 </tr>
@@ -686,451 +694,9 @@ Code for successful registration: 2010.
 Error codes for registration: 4010 - 4020.
 </aside>
 
-<h1 id="checklists">Checklists</h1>
-<pre class="highlight shell"><code>curl --request GET <span class="se">\</span>
---url https://api.fantasticservices.com/v2/checklists/1?expand<span class="o">=</span>all <span class="se">\</span>
---header <span class="s1">'x-client-token: YOUR_API_TOKEN'</span> <span class="se">\</span>
---header <span class="s1">'authorization: YOUR_AUTH_TOKEN'</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"display_location"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"checklist_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client specific requirements"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"group"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clean your car"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"answers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"checklist_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"answer"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves full checklist object.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://{base URL}/{version}/checklists/{checklist_id}?expand=all</code></p>
-
-<h3 id="object-attributes">Object attributes</h3>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">id</code></td>
-<td><em>integer</em></td>
-<td>Object identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">display_location</code></td>
-<td><em>integer</em></td>
-<td>Points where checklist will be used<br><br>1 - <em>start of the day</em><br>2 - <em>before checkin</em><br>3 - <em>after checkout</em></td>
-</tr>
-<tr>
-<td><code class="prettyprint">required</code></td>
-<td><em>boolean</em></td>
-<td>Is the item required to be answered</td>
-</tr>
-<tr>
-<td><code class="prettyprint">categories</code></td>
-<td>[<em><a href="#checklists-categories">object</a></em>]</td>
-<td>Groups checklist questions into sections</td>
-</tr>
-<tr>
-<td><code class="prettyprint">categories.id</code></td>
-<td><em>integer</em></td>
-<td>Object identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">categories.checklist_id</code></td>
-<td><em>integer</em></td>
-<td>Parent object identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">categories.sort</code></td>
-<td><em>integer</em></td>
-<td>Determines sort position</td>
-</tr>
-<tr>
-<td><code class="prettyprint">categories.title</code></td>
-<td><em>string</em></td>
-<td>Display title of section for the category</td>
-</tr>
-<tr>
-<td><code class="prettyprint">categories.items</code></td>
-<td>[<em><a href="#checklists-categories-items">object</a></em>]</td>
-<td>The questions for the category</td>
-</tr>
-<tr>
-<td><code class="prettyprint">categories.item.id</code></td>
-<td><em>integer</em></td>
-<td>Object identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">categories.item.category_id</code></td>
-<td><em>integer</em></td>
-<td>Parent object identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">categories.item.sort</code></td>
-<td><em>integer</em></td>
-<td>Determines sort position</td>
-</tr>
-<tr>
-<td><code class="prettyprint">categories.item.group</code></td>
-<td><em>integer</em></td>
-<td>Items can be part of a group. Answers apply to the whole group.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">categories.item.title</code></td>
-<td><em>string</em></td>
-<td>Display title of question item.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">categories.item.required</code></td>
-<td><em>boolean</em></td>
-<td>Is user required to anaswer this question.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">answers</code></td>
-<td>[<em><a href="#checklists-answers">object</a></em>]</td>
-<td>Checklist answer</td>
-</tr>
-<tr>
-<td><code class="prettyprint">answers.id</code></td>
-<td><em>integer</em></td>
-<td>Object identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">answers.checklist_id</code></td>
-<td><em>integer</em></td>
-<td>Parent object identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">answers.item_id</code></td>
-<td><em>integer</em></td>
-<td>Checklist question item for this answer.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">answers.answer</code></td>
-<td><em>integer</em></td>
-<td>User answer to the question<br><br>0 - <em>no answer</em><br>1 - <em>confirmed</em><br>2 - <em>declined</em></td>
-</tr>
-<tr>
-<td><code class="prettyprint">answers.note</code></td>
-<td><em>string</em></td>
-<td>Note for decline.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Checklists may be global or related to a job.
-</aside>
-
-<h2 id="checklists">/checklists</h2>
-<pre class="highlight shell"><code>curl --request GET <span class="se">\</span>
---url https://api.fantasticservices.com/v2/checklists/1 <span class="se">\</span>
---header <span class="s1">'x-client-token: YOUR_API_TOKEN'</span> <span class="se">\</span>
---header <span class="s1">'authorization: YOUR_AUTH_TOKEN'</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"display_location"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="mi">28</span><span class="p">,</span><span class="w">
-    </span><span class="mi">29</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"answers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="mi">6</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves checklist object.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://{base URL}/{version}/checklists/{checklist_id}</code></p>
-
-<h3 id="object-attributes">Object attributes</h3>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">id</code></td>
-<td><em>integer</em></td>
-<td>Object identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">checklist_id</code></td>
-<td><em>integer</em></td>
-<td>Parent object identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">display_location</code></td>
-<td><em>integer</em></td>
-<td>Points where checklist will be used<br><br>1 - <em>start of the day</em><br>2 - <em>before checkin</em><br>3 - <em>after checkout</em></td>
-</tr>
-<tr>
-<td><code class="prettyprint">required</code></td>
-<td><em>boolean</em></td>
-<td>Is the item required to be answered</td>
-</tr>
-<tr>
-<td><code class="prettyprint">categories</code></td>
-<td>[<em><a href="#checklists-categories">object</a></em>]</td>
-<td>Groups checklist questions into sections</td>
-</tr>
-<tr>
-<td><code class="prettyprint">answers</code></td>
-<td>[<em><a href="#checklists-answers">object</a></em>]</td>
-<td>Checklist answer</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Checklists may be global or related to a job.
-</aside>
-
-<h2 id="checklists-categories">/checklists/categories</h2>
-<pre class="highlight shell"><code>curl --request GET <span class="se">\</span>
---url https://api.fantasticservices.com/v2/checklists/1/categories/25 <span class="se">\</span>
---header <span class="s1">'x-client-token: YOUR_API_TOKEN'</span> <span class="se">\</span>
---header <span class="s1">'authorization: YOUR_AUTH_TOKEN'</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"checklist_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client specific requirements"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="mi">9</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves checklist category object.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://{base URL}/{version}/checklists/{checklist_id}/categories/{category_id}</code></p>
-
-<h3 id="object-attributes">Object attributes</h3>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">id</code></td>
-<td><em>integer</em></td>
-<td>Object identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">checklist_id</code></td>
-<td><em>integer</em></td>
-<td>Parent object identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">sort</code></td>
-<td><em>integer</em></td>
-<td>Determines sort position</td>
-</tr>
-<tr>
-<td><code class="prettyprint">title</code></td>
-<td><em>string</em></td>
-<td>Display title of section for the category</td>
-</tr>
-<tr>
-<td><code class="prettyprint">items</code></td>
-<td>[<em><a href="#checklists-categories-items">object</a></em>]</td>
-<td>The questions for the category</td>
-</tr>
-</tbody></table>
-
-<h2 id="checklists-categories-items">/checklists/categories/items</h2>
-<pre class="highlight shell"><code>curl --request GET <span class="se">\</span>
---url https://api.fantasticservices.com/v2/checklists/1/categories/25/items/15 <span class="se">\</span>
---header <span class="s1">'x-client-token: YOUR_API_TOKEN'</span> <span class="se">\</span>
---header <span class="s1">'authorization: YOUR_AUTH_TOKEN'</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"group"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clean your car"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves checklist category item object.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://{base URL}/{version}/checklists/{checklist_id}/categories/{category_id}/items/{item_id}</code></p>
-
-<h3 id="object-attributes">Object attributes</h3>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">id</code></td>
-<td><em>integer</em></td>
-<td>Object identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">category_id</code></td>
-<td><em>integer</em></td>
-<td>Parent object identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">sort</code></td>
-<td><em>integer</em></td>
-<td>Determines sort position</td>
-</tr>
-<tr>
-<td><code class="prettyprint">group</code></td>
-<td><em>integer</em></td>
-<td>Items can be part of a group. Answers apply to the whole group.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">title</code></td>
-<td><em>string</em></td>
-<td>Display title of question item.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">required</code></td>
-<td><em>boolean</em></td>
-<td>Is user required to anaswer this question.</td>
-</tr>
-</tbody></table>
-
-<h2 id="checklists-answers">/checklists/answers</h2>
-<pre class="highlight shell"><code>curl --request GET <span class="se">\</span>
---url https://api.fantasticservices.com/v2/checklists/1/answers/3 <span class="se">\</span>
---header <span class="s1">'x-client-token: YOUR_API_TOKEN'</span> <span class="se">\</span>
---header <span class="s1">'authorization: YOUR_AUTH_TOKEN'</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"checklist_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"answer"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves checklist answer object.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://{base URL}/{version}/checklists/{checklist_id}/answers/{answer_id}</code></p>
-
-<h3 id="object-attributes">Object attributes</h3>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">id</code></td>
-<td><em>integer</em></td>
-<td>Object identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">checklist_id</code></td>
-<td><em>integer</em></td>
-<td>Parent object identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">item_id</code></td>
-<td><em>integer</em></td>
-<td>Checklist question item for this answer.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">answer</code></td>
-<td><em>integer</em></td>
-<td>User answer to the question<br><br>0 - <em>no answer</em><br>1 - <em>confirmed</em><br>2 - <em>declined</em></td>
-</tr>
-<tr>
-<td><code class="prettyprint">note</code></td>
-<td><em>string</em></td>
-<td>Note for decline.</td>
-</tr>
-</tbody></table>
-
           <h1 id="errors">Errors</h1>
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
-
-<p>The Kittn API uses the following error codes:</p>
+<p>The API uses the following success codes:</p>
 
 <table><thead>
 <tr>
@@ -1139,48 +705,40 @@ Checklists may be global or related to a job.
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td>4010</td>
+<td>Can&rsquo;t register &ndash; Missing parameters</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
+<td>4020</td>
+<td>Can&rsquo;t register &ndash; Account already exists</td>
 </tr>
+</tbody></table>
+
+          <h1 id="warnings">Warnings</h1>
+
+<p>The API uses the following success codes:</p>
+
+<table><thead>
 <tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<th>Warning Code</th>
+<th>Meaning</th>
 </tr>
+</thead><tbody>
+</tbody></table>
+
+          <h1 id="successes">Successes</h1>
+
+<p>The API uses the following success codes:</p>
+
+<table><thead>
 <tr>
-<td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<th>Success Code</th>
+<th>Meaning</th>
 </tr>
+</thead><tbody>
 <tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+<td>2010</td>
+<td>Account created &ndash; You can start using it with the session provided</td>
 </tr>
 </tbody></table>
 
