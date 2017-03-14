@@ -191,7 +191,7 @@ You must replace <code>token</code> with your personal authorization token.
 
 <h2 id="request">Request</h2>
 <pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
-  --url https://api.fantasticservices.com/v2/client/resources <span class="se">\</span>
+  --url https://api.fantasticservices.com/v2/client <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'Authorization: YOUR_AUTH_TOKEN_HERE'</span> <span class="se">\</span>
   --header <span class="s1">'X-Profile: YOUR_PROFILE_ID_HERE'</span> <span class="se">\</span>
@@ -210,7 +210,7 @@ You must replace <code>token</code> with your personal authorization token.
 '</span>
 </code></pre>
 
-<p>All requests to the API are POST <code class="prettyprint">https://{base URL}/{version}/{namespace}/resources</code> endpoint and contain field <code class="prettyprint">requests</code> holding array of request objects.</p>
+<p>All requests to the API are POST <code class="prettyprint">https://{base URL}/{version}/{namespace}</code> endpoint and contain field <code class="prettyprint">requests</code> holding array of request objects.</p>
 
 <h3 id="request-object-parameters">Request object parameters</h3>
 
@@ -358,7 +358,7 @@ You must replace <code>token</code> with your personal authorization token.
 
 <h2 id="read">Read</h2>
 <pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
-  --url https://api.fantasticservices.com/v2/client/resources <span class="se">\</span>
+  --url https://api.fantasticservices.com/v2/client <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'X-Profile: YOUR_PROFILE_ID_HERE'</span> <span class="se">\</span>
   --header <span class="s1">'X-Application: YOUR_APP_TOKEN_HERE'</span> <span class="se">\</span>
@@ -419,7 +419,7 @@ You must replace <code>token</code> with your personal authorization token.
 
 <h2 id="create-update">Create/Update</h2>
 <pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
-  --url https://api.fantasticservices.com/v2/client/resources <span class="se">\</span>
+  --url https://api.fantasticservices.com/v2/client <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'Authorization: YOUR_AUTH_TOKEN_HERE'</span> <span class="se">\</span>
   --header <span class="s1">'X-Profile: YOUR_PROFILE_ID_HERE'</span> <span class="se">\</span>
@@ -476,7 +476,7 @@ You must replace <code>token</code> with your personal authorization token.
 
 <h2 id="delete">Delete</h2>
 <pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
-  --url https://api.fantasticservices.com/v2/client/resources <span class="se">\</span>
+  --url https://api.fantasticservices.com/v2/client <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'Authorization: YOUR_AUTH_TOKEN_HERE'</span> <span class="se">\</span>
   --header <span class="s1">'X-Profile: YOUR_PROFILE_ID_HERE'</span> <span class="se">\</span>
@@ -526,7 +526,7 @@ You must replace <code>token</code> with your personal authorization token.
 
 <h2 id="register">Register</h2>
 <pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
-  --url https://api.fantasticservices.com/v2/client/resources <span class="se">\</span>
+  --url https://api.fantasticservices.com/v2/client <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'X-Profile: YOUR_PROFILE_ID_HERE'</span> <span class="se">\</span>
   --header <span class="s1">'X-Application: YOUR_APP_TOKEN_HERE'</span> <span class="se">\</span>
