@@ -129,21 +129,11 @@
 <li><em>DEV - <b>middlepoint-dev.1dxr.com</em></b></li>
 </ul>
 
-<p>In this document <code class="prettyprint">{base URL}</code> is used as a palceholder for current environment.</p>
-
-<h2 id="versioning">Versioning</h2>
-
-<p>Version is added after <code class="prettyprint">{base URL}</code> (latest version 2).</p>
-
-<p>Example:</p>
-
-<p><b><em>api.fantasticservices.com/v2</em></b></p>
-
-<p>In this document <code class="prettyprint">{version}</code> is used as a palceholder for selected version.</p>
+<p>In this document <code class="prettyprint">{{BASE_URL}}</code> is used as a palceholder for current environment.</p>
 
 <h2 id="namespaces">Namespaces</h2>
 
-<p>Namespace is added after <code class="prettyprint">{version}</code>.</p>
+<p>Namespace is added after version.</p>
 
 <ul>
 <li><em>CLIENT USER - <b>/client</b></em></li>
@@ -161,87 +151,47 @@
 
 <p>To access API all request must include identifying token header field.</p>
 
-<p><code class="prettyprint">X-Application: token</code></p>
+<p><code class="prettyprint">X-Application: {{APPLICATION_TOKEN}}</code></p>
 
 <aside class="notice">
-You must replace <code>token</code> with your personal APP token.
+You must replace <code>{{APPLICATION_TOKEN}}</code> with your personal APP token.
 </aside>
 
 <h2 id="profile-identifying-tokens">Profile identifying tokens</h2>
 
 <p>To access profile specific data request should include identifying profile header field.</p>
 
-<p><code class="prettyprint">X-Profile: id</code></p>
+<p><code class="prettyprint">X-Profile: {{PROFILE_KEYWORD}}</code></p>
 
 <aside class="notice">
-You must replace <code>id</code> with your personal profile id.
+You must replace <code>{{PROFILE_KEYWORD}}</code> with your personal profile id.
 </aside>
 
 <h2 id="authentication">Authentication</h2>
 
 <p>To access user specific data request should include authorization header field.</p>
 
-<p><code class="prettyprint">Authorization: token</code></p>
+<p><code class="prettyprint">Authorization: {{AUTHORIZATION_TOKEN}}</code></p>
 
 <aside class="notice">
-You must replace <code>token</code> with your personal authorization token.
+You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authorization token.
 </aside>
 
 <h1 id="communication-protocol">Communication Protocol</h1>
 
 <h2 id="request">Request</h2>
-<pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
-  --url https://api.fantasticservices.com/v2/client <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'Authorization: YOUR_AUTH_TOKEN_HERE'</span> <span class="se">\</span>
-  --header <span class="s1">'X-Profile: YOUR_PROFILE_ID_HERE'</span> <span class="se">\</span>
-  --header <span class="s1">'X-Application: YOUR_APP_TOKEN_HERE'</span> <span class="se">\</span>
-  --data <span class="s1">'
-{
-  "requests": [
-    {
-      "method": "GET",
-      "path": "addresses",
-      "params": null,
-      "data": null
-    }
-  ]
-}
-'</span>
-</code></pre>
 
-<p>All requests to the API are POST <code class="prettyprint">https://{base URL}/{version}/{namespace}</code> endpoint and contain field <code class="prettyprint">requests</code> holding array of request objects.</p>
+<p>All requests to the API have <code class="prettyprint">path</code> component. It&rsquo;s used to access resources and actions. For resources it can be followed by an id to get it by id. At the end query parameters can be added to further modify the response.</p>
 
-<h3 id="request-object-parameters">Request object parameters</h3>
+<p><code class="prettyprint">https://api.fantasticservices.com/v2/client/{{path}}/{{{id}}}?{{params}}</code></p>
 
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">method</code><br><em>required</em></td>
-<td><em>string</em></td>
-<td>Request type.<br><br><em><b>POST</b> - write data to server (create/update)</em><br><em><b>GET</b> - read data from server</em><br><em><b>DELETE</b> - delete data on server</em></td>
-</tr>
-<tr>
-<td><code class="prettyprint">path</code><br><em>required</em></td>
-<td><em>string</em></td>
-<td>Path to resource to access</td>
-</tr>
-<tr>
-<td><code class="prettyprint">params</code><br><em>optional</em></td>
-<td><em>object</em></td>
-<td>Paramaters for the request</td>
-</tr>
-<tr>
-<td><code class="prettyprint">data</code><br><em>optional</em></td>
-<td><em>object</em></td>
-<td>Data to post to server</td>
-</tr>
-</tbody></table>
+<p>Accepted request <code class="prettyprint">method</code>s are:</p>
+
+<ul>
+<li><code class="prettyprint">GET</code> - read data</li>
+<li><code class="prettyprint">POST</code> - create and update data</li>
+<li><code class="prettyprint">DELETE</code> - delete data</li>
+</ul>
 
 <h3 id="params"><code class="prettyprint">params</code></h3>
 
@@ -285,17 +235,13 @@ You must replace <code>token</code> with your personal authorization token.
 <p>JSON response structured</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1020</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address created."</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postal_code missing."</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">213124</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1020</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address created."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postal_code missing."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">213124</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -305,7 +251,7 @@ You must replace <code>token</code> with your personal authorization token.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Contains field <code class="prettyprint">responses</code> holding array of response objects.</p>
+<p>All responses are with HTTP status 200 and contain <code class="prettyprint">data</code> and <code class="prettyprint">meta</code> parameters. Optionally there can be <code class="prettyprint">success</code>, <code class="prettyprint">error</code> and <code class="prettyprint">warning</code> parameters.</p>
 
 <h3 id="response-object-parameters">Response object parameters</h3>
 
@@ -333,8 +279,6 @@ You must replace <code>token</code> with your personal authorization token.
 </tr>
 </tbody></table>
 
-<p>Also has field <code class="prettyprint">meta</code> containing system information</p>
-
 <h3 id="meta"><code class="prettyprint">meta</code></h3>
 
 <table><thead>
@@ -357,53 +301,40 @@ You must replace <code>token</code> with your personal authorization token.
 </tbody></table>
 
 <h2 id="read">Read</h2>
-<pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
-  --url https://api.fantasticservices.com/v2/client <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'X-Profile: YOUR_PROFILE_ID_HERE'</span> <span class="se">\</span>
-  --header <span class="s1">'X-Application: YOUR_APP_TOKEN_HERE'</span> <span class="se">\</span>
-  --data <span class="s1">'
-{
-  "requests": [
-    {
-      "method": "GET",
-      "path": "services/1"
-    }
-  ]
-}
-'</span>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_KEYWORD}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/services/1"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Free up more time for you and your family. The skilled cleaning experts will take care of your home."</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"short_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One-off cleaning"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"clean"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"one-off"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"fantastic"</span><span class="w">
-          </span><span class="p">],</span><span class="w">
-          </span><span class="nt">"list_image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02034044444"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"choice_views"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="mi">338</span><span class="p">,</span><span class="w">
-            </span><span class="mi">339</span><span class="p">,</span><span class="w">
-            </span><span class="mi">340</span><span class="p">,</span><span class="w">
-            </span><span class="mi">341</span><span class="p">,</span><span class="w">
-            </span><span class="mi">342</span><span class="w">
-          </span><span class="p">],</span><span class="w">
-          </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459492785</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Free up more time for you and your family. The skilled cleaning experts will take care of your home."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"short_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One-off cleaning"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"clean"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"one-off"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fantastic"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"list_image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02034044444"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"choice_views"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">338</span><span class="p">,</span><span class="w">
+        </span><span class="mi">339</span><span class="p">,</span><span class="w">
+        </span><span class="mi">340</span><span class="p">,</span><span class="w">
+        </span><span class="mi">341</span><span class="p">,</span><span class="w">
+        </span><span class="mi">342</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459492785</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -413,52 +344,39 @@ You must replace <code>token</code> with your personal authorization token.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Read data by using <code class="prettyprint">metohd: GET</code> and specifying <code class="prettyprint">path</code> to resource you want to access. Get object by id with suffix <code class="prettyprint">/{id}</code></p>
+<p>Read data by using <code class="prettyprint">metohd: GET</code> and specifying <code class="prettyprint">path</code> to resource you want to access. Get object by id with suffix <code class="prettyprint">/{{id}}</code></p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;services&quot;</code></p>
 
 <h2 id="create-update">Create/Update</h2>
-<pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
-  --url https://api.fantasticservices.com/v2/client <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'Authorization: YOUR_AUTH_TOKEN_HERE'</span> <span class="se">\</span>
-  --header <span class="s1">'X-Profile: YOUR_PROFILE_ID_HERE'</span> <span class="se">\</span>
-  --header <span class="s1">'X-Application: YOUR_APP_TOKEN_HERE'</span> <span class="se">\</span>
-  --data <span class="s1">'
-{
-  "requests": [
-    {
-      "method": "POST",
-      "path": "addresses",
-      "data": {
-        "address_line_1": "9 Apt.",
-        "address_line_2": "24 Red Lion Street",
-        "postcode": "SW12 2TN",
-        "lat": 51.604903,
-        "lng": -0.457022
-      }
-    }
-  ]
-}
-'</span>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_KEYWORD}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+  "address_line_1": "9 Apt.",
+  "address_line_2": "24 Red Lion Street",
+  "postcode": "SW12 2TN",
+  "lat": 51.604903,
+  "lng": -0.457022
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/addresses"</span>
 </code></pre>
 
 <blockquote>
 <p>The above request success response is:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9 Apt."</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 Red Lion Street"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SW12 2TN"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.604903</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.457022</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9 Apt."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 Red Lion Street"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SW12 2TN"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.604903</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.457022</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -468,42 +386,116 @@ You must replace <code>token</code> with your personal authorization token.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Create objects by using <code class="prettyprint">metohd: POST</code> and specifying <code class="prettyprint">path</code> to resource you want to create. Add suffix <code class="prettyprint">/{id}</code> to update existing objects.</p>
+<p>Create objects by using <code class="prettyprint">metohd: POST</code> and specifying <code class="prettyprint">path</code> to resource you want to create. Add suffix <code class="prettyprint">/{{id}}</code> to update existing objects.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;addresses&quot;</code></p>
 
 <p>If operation is successful created/updated object is returned.</p>
 
 <h2 id="delete">Delete</h2>
-<pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
-  --url https://api.fantasticservices.com/v2/client <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'Authorization: YOUR_AUTH_TOKEN_HERE'</span> <span class="se">\</span>
-  --header <span class="s1">'X-Profile: YOUR_PROFILE_ID_HERE'</span> <span class="se">\</span>
-  --header <span class="s1">'X-Application: YOUR_APP_TOKEN_HERE'</span> <span class="se">\</span>
-  --data <span class="s1">'
-{
-  "requests": [
-    {
-      "method": "DELETE",
-      "path": "addresses/255"
-    }
-  ]
-}
-'</span>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X DELETE<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_KEYWORD}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">''</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/addresses/255"</span>
 </code></pre>
 
 <blockquote>
 <p>The above request success response is:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"sucess"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1021</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address deleted."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">213124</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Delete objects by using <code class="prettyprint">metohd: DELETE</code> and specifying <code class="prettyprint">path</code> and <code class="prettyprint">/{{id}}</code> suffix for object to delete.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;addresses&quot;</code></p>
+
+<p>If object is deleted successfully <code class="prettyprint">&quot;succuess&quot;</code> is returned.</p>
+
+<h2 id="batched-requests">Batched requests</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_KEYWORD}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+  "requests": [
+    {
+      "method": "GET",
+      "path": "addresses",
+      "params": null,
+      "data": null
+    }
+  ]
+}'</span> <span class="s2">"https://{{BASE_URL}}/v2/client"</span>
+</code></pre>
+
+<p>Requests can be combined in batches. Server processes them in the order they are received and returns <a href="#batched-responses">batched responses</a> in the same order.</p>
+
+<p>To send batched requests you should POST at <code class="prettyprint">https://{base URL}/{version}/{namespace}</code> endpoint parameter <code class="prettyprint">requests</code> holding array of request objects.</p>
+
+<h3 id="request-object-parameters">Request object parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">method</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Request type.<br><br><em><b>POST</b> - write data to server (create/update)</em><br><em><b>GET</b> - read data from server</em><br><em><b>DELETE</b> - delete data on server</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">path</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Path to resource to access</td>
+</tr>
+<tr>
+<td><code class="prettyprint">params</code><br><em>optional</em></td>
+<td><em>object</em></td>
+<td>Paramaters for the request</td>
+</tr>
+<tr>
+<td><code class="prettyprint">data</code><br><em>optional</em></td>
+<td><em>object</em></td>
+<td>Data to post to server</td>
+</tr>
+</tbody></table>
+
+<h2 id="batched-responses">Batched responses</h2>
+
+<blockquote>
+<p>JSON response structured</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"sucess"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1021</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address deleted."</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1020</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address created."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postal_code missing."</span><span class="p">,</span><span class="w">
           </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">213124</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
@@ -516,59 +508,70 @@ You must replace <code>token</code> with your personal authorization token.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Delete objects by using <code class="prettyprint">metohd: DELETE</code> and specifying <code class="prettyprint">path</code> and <code class="prettyprint">/{id}</code> suffix for object to delete.</p>
+<p>The response from batched requests is returned as batched response. It contains parameter <code class="prettyprint">responses</code> that is array holding response objects.</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;addresses&quot;</code></p>
+<h3 id="response-object-parameters">Response object parameters</h3>
 
-<p>If object is deleted successfully <code class="prettyprint">&quot;succuess&quot;</code> is returned.</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">data</code></td>
+<td><em>array</em></td>
+<td>Array of data objects returned in the result of the request</td>
+</tr>
+<tr>
+<td><code class="prettyprint">success</code>, <code class="prettyprint">warning</code>, <code class="prettyprint">error</code></td>
+<td><em>array</em></td>
+<td>Messages with information for the request. More than one type of message can be returned in a response. <code class="prettyprint">success</code> and <code class="prettyprint">error</code> can&rsquo;t come in the same response. <code class="prettyprint">warning</code> can be combined with <code class="prettyprint">success</code> or <code class="prettyprint">error</code>.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">meta</code></td>
+<td><em>object</em></td>
+<td>Parametercontaining information for the system.</td>
+</tr>
+</tbody></table>
+
+<p>In batched responses <code class="prettyprint">meta</code> is returned once at the end.</p>
 
 <h1 id="account">Account</h1>
 
 <h2 id="login">Login</h2>
-<pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
-  --url https://api.fantasticservices.com/v2/client <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'X-Profile: YOUR_PROFILE_ID_HERE'</span> <span class="se">\</span>
-  --header <span class="s1">'X-Application: YOUR_APP_TOKEN_HERE'</span> <span class="se">\</span>
-  --data <span class="s1">'
-{
-  "requests": [
-    {
-      "method": "POST",
-      "path": "login",
-      "data": {
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_KEYWORD}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
         "username": "test@test.com",
         "password": "1234"
-      }
-    }
-  ]
-}
-'</span>
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/login"</span>
 </code></pre>
 
 <blockquote>
 <p>The above request success response is:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cjkidhfqoihoufu18j0ncoy0jl7eu0d4ge1kslggp4outkh"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"create_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1429863734</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"expire_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1429906934</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Succes"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cjkidhfqoihoufu18j0ncoy0jl7eu0d4ge1kslggp4outkh"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"create_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1429863734</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"expire_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1429906934</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Succes"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -667,18 +670,12 @@ You must replace <code>token</code> with your personal authorization token.
 </tbody></table>
 
 <h2 id="register">Register</h2>
-<pre class="highlight shell"><code>curl --request POST <span class="se">\</span>
-  --url https://api.fantasticservices.com/v2/client <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'X-Profile: YOUR_PROFILE_ID_HERE'</span> <span class="se">\</span>
-  --header <span class="s1">'X-Application: YOUR_APP_TOKEN_HERE'</span> <span class="se">\</span>
-  --data <span class="s1">'
-{
-  "requests": [
-    {
-      "method": "POST",
-      "path": "register",
-      "data": {
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_KEYWORD}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
         "title_id": 1,
         "first_name": "Nikolay",
         "last_name": "Georgiev",
@@ -693,35 +690,29 @@ You must replace <code>token</code> with your personal authorization token.
         },
         "type_id": 1
       }
-    }
-  ]
-}
-'</span>
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/register"</span>
 </code></pre>
 
 <blockquote>
 <p>The above request success response is:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cjkidhfqoihoufu18j0ncoy0jl7eu0d4ge1kslggp4outkh"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"create_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1429863734</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"expire_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1429906934</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Succesful register"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cjkidhfqoihoufu18j0ncoy0jl7eu0d4ge1kslggp4outkh"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"create_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1429863734</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"expire_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1429906934</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Succesful register"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
