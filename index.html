@@ -129,7 +129,7 @@
 <li><em>DEV - <b>middlepoint-dev.1dxr.com</em></b></li>
 </ul>
 
-<p>In this document <code class="prettyprint">{{BASE_URL}}</code> is used as a palceholder for current environment.</p>
+<p>In this document <code class="prettyprint">{{BASE_URL}}</code> is used as a placeholder for current environment.</p>
 
 <h2 id="namespaces">Namespaces</h2>
 
@@ -161,10 +161,10 @@ You must replace <code>{{APPLICATION_TOKEN}}</code> with your personal APP token
 
 <p>To access profile specific data request should include identifying profile header field.</p>
 
-<p><code class="prettyprint">X-Profile: {{PROFILE_KEYWORD}}</code></p>
+<p><code class="prettyprint">X-Profile: {{PROFILE_ID}}</code></p>
 
 <aside class="notice">
-You must replace <code>{{PROFILE_KEYWORD}}</code> with your personal profile id.
+You must replace <code>{{PROFILE_ID}}</code> with your personal profile id.
 </aside>
 
 <h2 id="authentication">Authentication</h2>
@@ -275,7 +275,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">meta</code></td>
 <td><em>object</em></td>
-<td>Parametercontaining information for the system.</td>
+<td>Parameter containing information for the system.</td>
 </tr>
 </tbody></table>
 
@@ -304,7 +304,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
- -H <span class="s2">"X-Profile: {{PROFILE_KEYWORD}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
 <span class="s2">"https://{{BASE_URL}}/v2/client/services/1"</span>
 </code></pre>
@@ -344,7 +344,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Read data by using <code class="prettyprint">metohd: GET</code> and specifying <code class="prettyprint">path</code> to resource you want to access. Get object by id with suffix <code class="prettyprint">/{{id}}</code></p>
+<p>Read data by using <code class="prettyprint">method: GET</code> and specifying <code class="prettyprint">path</code> to resource you want to access. Get object by id with suffix <code class="prettyprint">/{{id}}</code></p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;services&quot;</code></p>
 
@@ -352,7 +352,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X POST<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
- -H <span class="s2">"X-Profile: {{PROFILE_KEYWORD}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
  -d <span class="s1">'{
@@ -386,7 +386,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Create objects by using <code class="prettyprint">metohd: POST</code> and specifying <code class="prettyprint">path</code> to resource you want to create. Add suffix <code class="prettyprint">/{{id}}</code> to update existing objects.</p>
+<p>Create objects by using <code class="prettyprint">method: POST</code> and specifying <code class="prettyprint">path</code> to resource you want to create. Add suffix <code class="prettyprint">/{{id}}</code> to update existing objects.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;addresses&quot;</code></p>
 
@@ -396,7 +396,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X DELETE<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
- -H <span class="s2">"X-Profile: {{PROFILE_KEYWORD}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
  -d <span class="s1">''</span><span class="se">\</span>
@@ -407,7 +407,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <p>The above request success response is:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"sucess"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1021</span><span class="p">,</span><span class="w">
       </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address deleted."</span><span class="p">,</span><span class="w">
@@ -422,17 +422,17 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Delete objects by using <code class="prettyprint">metohd: DELETE</code> and specifying <code class="prettyprint">path</code> and <code class="prettyprint">/{{id}}</code> suffix for object to delete.</p>
+<p>Delete objects by using <code class="prettyprint">method: DELETE</code> and specifying <code class="prettyprint">path</code> and <code class="prettyprint">/{{id}}</code> suffix for object to delete.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;addresses&quot;</code></p>
 
-<p>If object is deleted successfully <code class="prettyprint">&quot;succuess&quot;</code> is returned.</p>
+<p>If object is deleted successfully <code class="prettyprint">&quot;success&quot;</code> is returned.</p>
 
 <h2 id="batched-requests">Batched requests</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X POST<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
- -H <span class="s2">"X-Profile: {{PROFILE_KEYWORD}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
  -d <span class="s1">'{
@@ -473,7 +473,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">params</code><br><em>optional</em></td>
 <td><em>object</em></td>
-<td>Paramaters for the request</td>
+<td>Parameters for the request</td>
 </tr>
 <tr>
 <td><code class="prettyprint">data</code><br><em>optional</em></td>
@@ -532,7 +532,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">meta</code></td>
 <td><em>object</em></td>
-<td>Parametercontaining information for the system.</td>
+<td>Parameter containing information for the system.</td>
 </tr>
 </tbody></table>
 
@@ -544,7 +544,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X POST<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
- -H <span class="s2">"X-Profile: {{PROFILE_KEYWORD}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -d <span class="s1">'{
         "username": "test@test.com",
@@ -569,7 +569,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
   </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Succes"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -673,7 +673,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X POST<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
- -H <span class="s2">"X-Profile: {{PROFILE_KEYWORD}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -d <span class="s1">'{
         "title_id": 1,
@@ -710,7 +710,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
   </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Succesful register"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful register"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
