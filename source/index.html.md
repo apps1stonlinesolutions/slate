@@ -19,7 +19,7 @@ search: true
 
 
 
-# Introductionn
+# Introduction
 
 Welcome to XRM/MP API.
 
@@ -379,7 +379,7 @@ curl\
  "https://{{BASE_URL}}/v2/client/login"
 ```
 
-> The above request success response is :
+> The above request success response is:
 
 ```json
 {
@@ -524,10 +524,6 @@ Parameter | Type | Description
 -------- | ----- | -------
 `login` | *[object](#login)* | Object containing session information. Same is returned on login.
 `user` | *object* | Created user after registration
-
-This endpoint retrieves the following errors:
-
-<aside class="warning">4010 <code>&lt;missing phone&gt;</code> this phone is missing.</aside>
 
 # Service data
 
