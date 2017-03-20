@@ -664,6 +664,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+<li><a href="#login-errors">Login errors</a></li>
+</ul>
+
 <h2 id="register">Register</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X POST<span class="se">\</span>
@@ -813,8 +818,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <p>This endpoint returns:</p>
 
 <ul>
-<li><a href="#errors">Common errors</a></li>
-<li><a href="#errors">Registration errors</a></li>
+<li><a href="#common-errors">Common errors</a></li>
+<li><a href="#register-errors">Registration errors</a></li>
 </ul>
 
 <h1 id="service-data">Service data</h1>
@@ -905,6 +910,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <p>The API uses the following success codes:</p>
 
+<h2 id="common-errors">Common errors</h2>
+
 <table><thead>
 <tr>
 <th>Error Code</th>
@@ -912,12 +919,112 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
-<td>4010</td>
-<td>Can&rsquo;t register &ndash; Missing parameters</td>
+<td>5105</td>
+<td>Server error (Possible missconfiguration)</td>
 </tr>
 <tr>
-<td>4020</td>
-<td>Can&rsquo;t register &ndash; Account already exists</td>
+<td>5110</td>
+<td>Invalid namespace</td>
+</tr>
+<tr>
+<td>5115</td>
+<td>Invalid JSON format</td>
+</tr>
+<tr>
+<td>5116</td>
+<td>Missing requests wrapper or invalid request</td>
+</tr>
+<tr>
+<td>5117</td>
+<td>Invalid request method</td>
+</tr>
+<tr>
+<td>5118</td>
+<td>Invalid request path</td>
+</tr>
+<tr>
+<td>5140</td>
+<td>Invalid application</td>
+</tr>
+<tr>
+<td>5141</td>
+<td>Invalid profile</td>
+</tr>
+</tbody></table>
+
+<h2 id="login-errors">Login errors</h2>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>5507</td>
+<td>Invalid login request: social data or username and password required</td>
+</tr>
+<tr>
+<td>5508</td>
+<td>Password required</td>
+</tr>
+<tr>
+<td>5509</td>
+<td>Invalid social_provider_id</td>
+</tr>
+<tr>
+<td>5510</td>
+<td>Invalid client credentials</td>
+</tr>
+<tr>
+<td>5511</td>
+<td>Social account not verified</td>
+</tr>
+</tbody></table>
+
+<h2 id="register-errors">Register errors</h2>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>5501</td>
+<td>Registration type_id is required</td>
+</tr>
+<tr>
+<td>5502</td>
+<td>Invalid email</td>
+</tr>
+<tr>
+<td>5503</td>
+<td>Invalid brand_id</td>
+</tr>
+<tr>
+<td>5504</td>
+<td>Invalid phone</td>
+</tr>
+<tr>
+<td>5505</td>
+<td>Email already taken</td>
+</tr>
+<tr>
+<td>5506</td>
+<td>Invalid social data</td>
+</tr>
+<tr>
+<td>5509</td>
+<td>Invalid social_provider_id</td>
+</tr>
+<tr>
+<td>5511</td>
+<td>Social account not verified</td>
+</tr>
+<tr>
+<td>5512</td>
+<td>Social account already registered</td>
 </tr>
 </tbody></table>
 
