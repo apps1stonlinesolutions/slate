@@ -688,7 +688,6 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
           "social_provider_id": 1
         },
         "type_id": 1
-      }
 }'</span><span class="se">\</span>
  <span class="s2">"https://{{BASE_URL}}/v2/client/register"</span>
 </code></pre>
@@ -822,6 +821,38 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <li><a href="#register-errors">Registration errors</a></li>
 </ul>
 
+<h2 id="forgot-password">Forgot password</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "email": "test@test.com"
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/forgot_password"</span>
+</code></pre>
+
+<p>Initiate sending an email with link for resetting password</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;forgot_password&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">email</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Email address to which a link for reset password will be sent</td>
+</tr>
+</tbody></table>
+
 <h1 id="service-data">Service data</h1>
 
 <h2 id="treats">Treats</h2>
@@ -903,6 +934,154 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">sort</code></td>
 <td><em>integer</em></td>
 <td>Order of treat.</td>
+</tr>
+</tbody></table>
+
+<h2 id="categories">Categories</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/categories"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"application_profile_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cleaning _services"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"short_description_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"afterbuilders is very nice"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"build"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"waste"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fantastic"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"thumbnail_image_url"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">6000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"infos"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nt">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">79</span><span class="p">,</span><span class="w">
+        </span><span class="mi">81</span><span class="p">,</span><span class="w">
+        </span><span class="mi">83</span><span class="p">,</span><span class="w">
+        </span><span class="mi">84</span><span class="p">,</span><span class="w">
+        </span><span class="mi">71</span><span class="p">,</span><span class="w">
+        </span><span class="mi">86</span><span class="p">,</span><span class="w">
+        </span><span class="mi">72</span><span class="p">,</span><span class="w">
+        </span><span class="mi">87</span><span class="p">,</span><span class="w">
+        </span><span class="mi">73</span><span class="p">,</span><span class="w">
+        </span><span class="mi">85</span><span class="p">,</span><span class="w">
+        </span><span class="mi">74</span><span class="p">,</span><span class="w">
+        </span><span class="mi">78</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459492785</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>[Categories &hellip;]</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;categories&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Identifier</td>
+</tr>
+</tbody></table>
+
+<h2 id="services">Services</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/services"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">79</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"application_profile_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">6060</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"afterbuilders"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"afterbuilders is very nice."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"short_description_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"afterbuilders is very nice"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"build"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"waste"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fantastic"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"list_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"inactive_list_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"choice_views_image_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nt">"thumbnail_image_url"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"is_not_available_for_current_profile"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nt">"logo_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"infos"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nt">"choice_views"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">338</span><span class="p">,</span><span class="w">
+        </span><span class="mi">339</span><span class="p">,</span><span class="w">
+        </span><span class="mi">340</span><span class="p">,</span><span class="w">
+        </span><span class="mi">341</span><span class="p">,</span><span class="w">
+        </span><span class="mi">342</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459492785</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>[Services &hellip;]</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;services&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Identifier</td>
 </tr>
 </tbody></table>
 
@@ -1025,6 +1204,22 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td>5512</td>
 <td>Social account already registered</td>
+</tr>
+<tr>
+<td>5513</td>
+<td>Invalid referral code</td>
+</tr>
+<tr>
+<td>5514</td>
+<td>First name is required</td>
+</tr>
+<tr>
+<td>5515</td>
+<td>Last name is required</td>
+</tr>
+<tr>
+<td>5516</td>
+<td>At least 5-character password is required</td>
 </tr>
 </tbody></table>
 
