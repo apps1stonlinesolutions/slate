@@ -812,8 +812,6 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
-<p>the following errors:</p>
-
 <p>This endpoint returns:</p>
 
 <ul>
@@ -821,7 +819,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <li><a href="#register-errors">Registration errors</a></li>
 </ul>
 
-<h2 id="forgot-password">Forgot password</h2>
+<h2 id="request-reset-password">Request reset password</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X POST<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
@@ -830,12 +828,12 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
  -d <span class="s1">'{
         "email": "test@test.com"
 }'</span><span class="se">\</span>
- <span class="s2">"https://{{BASE_URL}}/v2/client/forgot_password"</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/request_reset_password"</span>
 </code></pre>
 
 <p>Initiate sending an email with link for resetting password</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;forgot_password&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;request_reset_password&quot;</code></p>
 
 <h3 id="request-parameters">Request parameters</h3>
 
@@ -850,6 +848,106 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">email</code><br><em>required</em></td>
 <td><em>string</em></td>
 <td>Email address to which a link for reset password will be sent</td>
+</tr>
+</tbody></table>
+
+<h2 id="read-user-details-on-password-reset">Read user details on password reset</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/reset_password_user_details?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Get user name to greet him upon changing password.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;reset_password_user_details&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">token</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Token received via email for resetting password</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">first_name</code></td>
+<td><em>string</em></td>
+<td>First name for user with reset password token</td>
+</tr>
+<tr>
+<td><code class="prettyprint">last_name</code></td>
+<td><em>string</em></td>
+<td>Last name for user with reset password token</td>
+</tr>
+</tbody></table>
+
+<h2 id="reset-password">Reset password</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+        "password": "jamie",
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/reset_password"</span>
+</code></pre>
+
+<p>Reset password of user.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;reset_password&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">token</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Token for resetting password received via email</td>
 </tr>
 </tbody></table>
 
