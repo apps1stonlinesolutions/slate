@@ -973,6 +973,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
  -d <span class="s1">'{
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
         "password": "jamie",
+        "confirm_password": "jamie",
 }'</span><span class="se">\</span>
  <span class="s2">"https://{{BASE_URL}}/v2/client/reset_password"</span>
 </code></pre>
@@ -1020,9 +1021,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Client new password</td>
 </tr>
 <tr>
-<td><code class="prettyprint">password_confirm</code><br><em>optional</em></td>
+<td><code class="prettyprint">confirm_password</code><br><em>optional</em></td>
 <td><em>string</em></td>
-<td>Password confirmation for server check - opional</td>
+<td>Password confirmation for server check</td>
 </tr>
 </tbody></table>
 
