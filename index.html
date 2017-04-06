@@ -263,12 +263,12 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">data</code></td>
+<td><code class="prettyprint">data</code><br><em>optional</em></td>
 <td><em>array</em></td>
 <td>Array of data objects returned in the result of the request</td>
 </tr>
 <tr>
-<td><code class="prettyprint">success</code>, <code class="prettyprint">warning</code>, <code class="prettyprint">error</code></td>
+<td><code class="prettyprint">success</code>, <code class="prettyprint">warning</code>, <code class="prettyprint">error</code><br><em>optional</em></td>
 <td><em>array</em></td>
 <td>Messages with information for the request. More than one type of message can be returned in a response. <code class="prettyprint">success</code> and <code class="prettyprint">error</code> can&rsquo;t come in the same response. <code class="prettyprint">warning</code> can be combined with <code class="prettyprint">success</code> or <code class="prettyprint">error</code>.</td>
 </tr>
@@ -520,12 +520,12 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">data</code></td>
+<td><code class="prettyprint">data</code><br><em>optional</em></td>
 <td><em>array</em></td>
 <td>Array of data objects returned in the result of the request</td>
 </tr>
 <tr>
-<td><code class="prettyprint">success</code>, <code class="prettyprint">warning</code>, <code class="prettyprint">error</code></td>
+<td><code class="prettyprint">success</code>, <code class="prettyprint">warning</code>, <code class="prettyprint">error</code><br><em>optional</em></td>
 <td><em>array</em></td>
 <td>Messages with information for the request. More than one type of message can be returned in a response. <code class="prettyprint">success</code> and <code class="prettyprint">error</code> can&rsquo;t come in the same response. <code class="prettyprint">warning</code> can be combined with <code class="prettyprint">success</code> or <code class="prettyprint">error</code>.</td>
 </tr>
@@ -831,6 +831,30 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
  <span class="s2">"https://{{BASE_URL}}/v2/client/request_reset_password"</span>
 </code></pre>
 
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"expire_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1491478823</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
 <p>Initiate sending an email with link for resetting password</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;request_reset_password&quot;</code></p>
@@ -851,6 +875,22 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">expire_time</code></td>
+<td><em>int</em></td>
+<td>Unix timestamp of token expiration time</td>
+</tr>
+</tbody></table>
+
 <h2 id="read-user-details-on-password-reset">Read user details on password reset</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
@@ -867,7 +907,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"expire_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1491478823</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -916,6 +957,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><em>string</em></td>
 <td>Last name for user with reset password token</td>
 </tr>
+<tr>
+<td><code class="prettyprint">expire_time</code></td>
+<td><em>int</em></td>
+<td>Unix timestamp of token expiration time</td>
+</tr>
 </tbody></table>
 
 <h2 id="reset-password">Reset password</h2>
@@ -930,6 +976,25 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 }'</span><span class="se">\</span>
  <span class="s2">"https://{{BASE_URL}}/v2/client/reset_password"</span>
 </code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <p>Reset password of user.</p>
 
@@ -949,9 +1014,603 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><em>string</em></td>
 <td>Token for resetting password received via email</td>
 </tr>
+<tr>
+<td><code class="prettyprint">password</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Client new password</td>
+</tr>
+<tr>
+<td><code class="prettyprint">password_confirm</code><br><em>optional</em></td>
+<td><em>string</em></td>
+<td>Password confirmation for server check - opional</td>
+</tr>
 </tbody></table>
 
 <h1 id="service-data">Service data</h1>
+
+<h2 id="categories">Categories</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/categories"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+442221123123"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"short_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This service is very nice"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"clean"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uk"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domestic"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"regular"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"list_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.image.com/1jsklfas.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"thumbnail_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.image.com/1jsklfas.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"infos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="mi">5</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">21</span><span class="p">,</span><span class="w">
+        </span><span class="mi">36</span><span class="p">,</span><span class="w">
+        </span><span class="mi">89</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Categories group services.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;categories&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Object id</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sort</code></td>
+<td><em>integer</em></td>
+<td>Order of item in list</td>
+</tr>
+<tr>
+<td><code class="prettyprint">title</code></td>
+<td><em>string</em></td>
+<td>Category title text</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phone</code></td>
+<td><em>string</em></td>
+<td>Category phone number</td>
+</tr>
+<tr>
+<td><code class="prettyprint">description</code></td>
+<td><em>string</em></td>
+<td>Category detailed description text</td>
+</tr>
+<tr>
+<td><code class="prettyprint">short_description</code></td>
+<td><em>string</em></td>
+<td>Category short description text</td>
+</tr>
+<tr>
+<td><code class="prettyprint">keywords</code></td>
+<td><em>array&lt;string&gt;</em></td>
+<td>List of keywords for category</td>
+</tr>
+<tr>
+<td><code class="prettyprint">list_image_url</code></td>
+<td><em>string</em></td>
+<td>Link to list image</td>
+</tr>
+<tr>
+<td><code class="prettyprint">thumbnail_image_url</code></td>
+<td><em>string</em></td>
+<td>Link to thumbnail image</td>
+</tr>
+<tr>
+<td><code class="prettyprint">infos</code></td>
+<td><em>array&lt;info&gt;</em></td>
+<td>List of infos for the category</td>
+</tr>
+<tr>
+<td><code class="prettyprint">services</code></td>
+<td><em>array&lt;service&gt;</em></td>
+<td>List of services for the category</td>
+</tr>
+</tbody></table>
+
+<h2 id="services">Services</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/services"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">79</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Domestic Cleaning"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+44222233333"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Domestic Cleaning is very nice."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"short_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Domestic Cleaning service"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"domestic"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fantastic"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"list_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.image.com/1jsklfas.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"inactive_list_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.image.com/1jsklfas.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"choices_images_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"http://www.image.com/1jsklfas.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"http://www.image.com/1jsklfas.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"http://www.image.com/1jsklfas.jpg"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"thumbnail_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.image.com/1jsklfas.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"logo_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.image.com/1jsklfas.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"infos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="mi">6</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">78</span><span class="p">,</span><span class="w">
+        </span><span class="mi">90</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"payment_methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="mi">5</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"tooltip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Click here"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Services</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;services&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Object id</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sort</code></td>
+<td><em>integer</em></td>
+<td>Order of item in list</td>
+</tr>
+<tr>
+<td><code class="prettyprint">type</code></td>
+<td><em>integer</em></td>
+<td><em><b>1</b> - Service</em><br><em><b>2</b> - Deal</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">title</code></td>
+<td><em>string</em></td>
+<td>Service title text</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phone</code></td>
+<td><em>string</em></td>
+<td>Service phone number</td>
+</tr>
+<tr>
+<td><code class="prettyprint">description</code></td>
+<td><em>string</em></td>
+<td>Service detailed description text</td>
+</tr>
+<tr>
+<td><code class="prettyprint">short_description</code></td>
+<td><em>string</em></td>
+<td>Service short description text</td>
+</tr>
+<tr>
+<td><code class="prettyprint">keywords</code></td>
+<td><em>array&lt;string&gt;</em></td>
+<td>List of keywords for service</td>
+</tr>
+<tr>
+<td><code class="prettyprint">list_image_url</code></td>
+<td><em>string</em></td>
+<td>Link to list image</td>
+</tr>
+<tr>
+<td><code class="prettyprint">thumbnail_image_url</code></td>
+<td><em>string</em></td>
+<td>Link to thumbnail image</td>
+</tr>
+<tr>
+<td><code class="prettyprint">inactive_list_image_url</code></td>
+<td><em>string</em></td>
+<td>Link to inactive image for displaying past and cancelled bookings</td>
+</tr>
+<tr>
+<td><code class="prettyprint">choices_images_urls</code></td>
+<td><em>string</em></td>
+<td>Link to choices images rotating in booking process</td>
+</tr>
+<tr>
+<td><code class="prettyprint">logo_image_url</code></td>
+<td><em>string</em></td>
+<td>Link to logo image</td>
+</tr>
+<tr>
+<td><code class="prettyprint">infos</code></td>
+<td><em>array&lt;info&gt;</em></td>
+<td>List of infos for the services</td>
+</tr>
+<tr>
+<td><code class="prettyprint">choices</code></td>
+<td><em>array&lt;choice&gt;</em></td>
+<td>List of questions to book the service</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payment_methods</code></td>
+<td><em>array&lt;payment_methods&gt;</em></td>
+<td>List of available payment methods for the service</td>
+</tr>
+<tr>
+<td><code class="prettyprint">customize</code></td>
+<td><em>customize</em></td>
+<td>Key-value pairs of custom attributes</td>
+</tr>
+</tbody></table>
+
+<h2 id="choices">Choices</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/choices"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">338</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"have the tradesmen left the property?"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"summary_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tradesman _left"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"infos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="mi">7</span><span class="p">,</span><span class="w">
+        </span><span class="mi">9</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">24</span><span class="p">,</span><span class="w">
+        </span><span class="mi">54</span><span class="p">,</span><span class="w">
+        </span><span class="mi">94</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Questions the user needs to answer to book a service.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;choices&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Object id</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sort</code></td>
+<td><em>integer</em></td>
+<td>Order of item in list</td>
+</tr>
+<tr>
+<td><code class="prettyprint">title</code></td>
+<td><em>string</em></td>
+<td>Question text</td>
+</tr>
+<tr>
+<td><code class="prettyprint">summary_title</code></td>
+<td><em>string</em></td>
+<td>Question short title text in summary</td>
+</tr>
+<tr>
+<td><code class="prettyprint">required</code></td>
+<td><em>boolean</em></td>
+<td>Should the question be answered to book</td>
+</tr>
+<tr>
+<td><code class="prettyprint">choice_items</code></td>
+<td><em>array&lt;choice_item&gt;</em></td>
+<td>List of answers for the question</td>
+</tr>
+</tbody></table>
+
+<h2 id="choice-items">Choice items</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/choice_items"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1110</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"max_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"min_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"summary_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"is_in_summary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 _bedroom"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Answers to the questions the user needs to answer to book a service.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;choice_items&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Object id</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sort</code></td>
+<td><em>integer</em></td>
+<td>Order of item in list</td>
+</tr>
+<tr>
+<td><code class="prettyprint">parent_id</code></td>
+<td><em>integer</em></td>
+<td>Parent answer (if answer is sub-answer)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">type</code></td>
+<td><em>integer</em></td>
+<td><em><b>1</b> - Check</em><br><em><b>2</b> - Radio</em><br><em><b>3</b> - Stepper (incremental value)</em><br><em><b>4</b> - Text field</em><br><em><b>5</b> - Hours (total hours for current booking configuration)</em><br><em><b>6</b> - Drop down</em><br><em><b>7</b> - Multi select (autocomplete with quantity)</em><br><em><b>8</b> - Distance</em><br><em><b>9</b> - Always Apply</em><br><em><b>10</b> - Price per hour</em><br><em><b>11</b> - Decimal Text</em><br></td>
+</tr>
+<tr>
+<td><code class="prettyprint">max_value</code></td>
+<td><em>integer</em></td>
+<td>Maximum value of answer</td>
+</tr>
+<tr>
+<td><code class="prettyprint">min_value</code></td>
+<td><em>integer</em></td>
+<td>Minimum value of answer</td>
+</tr>
+<tr>
+<td><code class="prettyprint">value</code></td>
+<td><em>integer</em></td>
+<td>Default value of answer</td>
+</tr>
+<tr>
+<td><code class="prettyprint">duration</code></td>
+<td><em>integer</em></td>
+<td>Minutes added to booking estimated time from the answer</td>
+</tr>
+<tr>
+<td><code class="prettyprint">summary_title</code></td>
+<td><em>string</em></td>
+<td>Answer short title text in summary</td>
+</tr>
+<tr>
+<td><code class="prettyprint">is_in_summary</code></td>
+<td><em>boolean</em></td>
+<td>Should the answer be included in the summary of booking</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td><em>string</em></td>
+<td>Title of answer</td>
+</tr>
+<tr>
+<td><code class="prettyprint">choice_items</code></td>
+<td><em>array&lt;choice_item&gt;</em></td>
+<td>List of sub-answers for the answers</td>
+</tr>
+</tbody></table>
+
+<h2 id="choice-items">Choice items</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/choice_items"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1110</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"max_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"min_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"summary_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"is_in_summary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 _bedroom"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Answers to the questions the user needs to answer to book a service.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;choice_items&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Object id</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sort</code></td>
+<td><em>integer</em></td>
+<td>Order of item in list</td>
+</tr>
+<tr>
+<td><code class="prettyprint">parent_id</code></td>
+<td><em>integer</em></td>
+<td>Parent answer (if answer is sub-answer)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">type</code></td>
+<td><em>integer</em></td>
+<td><em><b>1</b> - Check</em><br><em><b>2</b> - Radio</em><br><em><b>3</b> - Stepper (incremental value)</em><br><em><b>4</b> - Text field</em><br><em><b>5</b> - Hours (total hours for current booking configuration)</em><br><em><b>6</b> - Drop down</em><br><em><b>7</b> - Multi select (autocomplete with quantity)</em><br><em><b>8</b> - Distance</em><br><em><b>9</b> - Always Apply</em><br><em><b>10</b> - Price per hour</em><br><em><b>11</b> - Decimal Text</em><br></td>
+</tr>
+<tr>
+<td><code class="prettyprint">max_value</code></td>
+<td><em>integer</em></td>
+<td>Maximum value of answer</td>
+</tr>
+<tr>
+<td><code class="prettyprint">min_value</code></td>
+<td><em>integer</em></td>
+<td>Minimum value of answer</td>
+</tr>
+<tr>
+<td><code class="prettyprint">value</code></td>
+<td><em>integer</em></td>
+<td>Default value of answer</td>
+</tr>
+<tr>
+<td><code class="prettyprint">duration</code></td>
+<td><em>integer</em></td>
+<td>Minutes added to booking estimated time from the answer</td>
+</tr>
+<tr>
+<td><code class="prettyprint">summary_title</code></td>
+<td><em>string</em></td>
+<td>Answer short title text in summary</td>
+</tr>
+<tr>
+<td><code class="prettyprint">is_in_summary</code></td>
+<td><em>boolean</em></td>
+<td>Should the answer be included in the summary of booking</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td><em>string</em></td>
+<td>Title of answer</td>
+</tr>
+<tr>
+<td><code class="prettyprint">choice_items</code></td>
+<td><em>array&lt;choice_item&gt;</em></td>
+<td>List of sub-answers for the answers</td>
+</tr>
+</tbody></table>
 
 <h2 id="treats">Treats</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
@@ -999,6 +1658,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Identifier</td>
+</tr>
+<tr>
 <td><code class="prettyprint">title</code></td>
 <td><em>string</em></td>
 <td>Treat title text.</td>
@@ -1032,154 +1696,6 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">sort</code></td>
 <td><em>integer</em></td>
 <td>Order of treat.</td>
-</tr>
-</tbody></table>
-
-<h2 id="categories">Categories</h2>
-<pre class="highlight shell"><code>curl<span class="se">\</span>
- -X GET<span class="se">\</span>
- -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
- -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
- -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
-<span class="s2">"https://{{BASE_URL}}/v2/client/categories"</span>
-</code></pre>
-
-<blockquote>
-<p>The above request success response is:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"application_profile_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cleaning _services"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"short_description_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"afterbuilders is very nice"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"build"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"waste"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"fantastic"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"thumbnail_image_url"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">6000</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"infos"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nt">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="mi">79</span><span class="p">,</span><span class="w">
-        </span><span class="mi">81</span><span class="p">,</span><span class="w">
-        </span><span class="mi">83</span><span class="p">,</span><span class="w">
-        </span><span class="mi">84</span><span class="p">,</span><span class="w">
-        </span><span class="mi">71</span><span class="p">,</span><span class="w">
-        </span><span class="mi">86</span><span class="p">,</span><span class="w">
-        </span><span class="mi">72</span><span class="p">,</span><span class="w">
-        </span><span class="mi">87</span><span class="p">,</span><span class="w">
-        </span><span class="mi">73</span><span class="p">,</span><span class="w">
-        </span><span class="mi">85</span><span class="p">,</span><span class="w">
-        </span><span class="mi">74</span><span class="p">,</span><span class="w">
-        </span><span class="mi">78</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459492785</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>[Categories &hellip;]</p>
-
-<p><code class="prettyprint">&quot;path&quot;: &quot;categories&quot;</code></p>
-
-<h3 id="response-parameters">Response parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">id</code></td>
-<td><em>integer</em></td>
-<td>Identifier</td>
-</tr>
-</tbody></table>
-
-<h2 id="services">Services</h2>
-<pre class="highlight shell"><code>curl<span class="se">\</span>
- -X GET<span class="se">\</span>
- -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
- -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
- -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
-<span class="s2">"https://{{BASE_URL}}/v2/client/services"</span>
-</code></pre>
-
-<blockquote>
-<p>The above request success response is:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">79</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"application_profile_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">6060</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"afterbuilders"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"description_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"afterbuilders is very nice."</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"short_description_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"afterbuilders is very nice"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"build"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"waste"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"fantastic"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"list_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"inactive_list_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"choice_views_image_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nt">"thumbnail_image_url"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"is_not_available_for_current_profile"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nt">"logo_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"infos"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nt">"choice_views"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="mi">338</span><span class="p">,</span><span class="w">
-        </span><span class="mi">339</span><span class="p">,</span><span class="w">
-        </span><span class="mi">340</span><span class="p">,</span><span class="w">
-        </span><span class="mi">341</span><span class="p">,</span><span class="w">
-        </span><span class="mi">342</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459492785</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>[Services &hellip;]</p>
-
-<p><code class="prettyprint">&quot;path&quot;: &quot;services&quot;</code></p>
-
-<h3 id="response-parameters">Response parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">id</code></td>
-<td><em>integer</em></td>
-<td>Identifier</td>
 </tr>
 </tbody></table>
 
@@ -1318,6 +1834,60 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td>5516</td>
 <td>At least 5-character password is required</td>
+</tr>
+</tbody></table>
+
+<h2 id="request-reset-password">Request reset password</h2>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>5502</td>
+<td>Invalid email</td>
+</tr>
+<tr>
+<td>5530</td>
+<td>Email not found</td>
+</tr>
+</tbody></table>
+
+<h2 id="reset-password-user-details">Reset password user details</h2>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>5531</td>
+<td>Invalid reset password token</td>
+</tr>
+</tbody></table>
+
+<h2 id="reset-password">Reset password</h2>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>5531</td>
+<td>Invalid reset password token</td>
+</tr>
+<tr>
+<td>5516</td>
+<td>At least 5-character password is required</td>
+</tr>
+<tr>
+<td>5532</td>
+<td>Password and password confirmation do not match - # optional if password_confirm passsed</td>
 </tr>
 </tbody></table>
 
