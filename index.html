@@ -236,6 +236,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nt">"paging"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">224</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1020</span><span class="p">,</span><span class="w">
@@ -266,6 +271,26 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">data</code><br><em>optional</em></td>
 <td><em>array</em></td>
 <td>Array of data objects returned in the result of the request</td>
+</tr>
+<tr>
+<td><code class="prettyprint">paging</code><br><em>optional</em></td>
+<td><em>object</em></td>
+<td>Information about paged results</td>
+</tr>
+<tr>
+<td><code class="prettyprint">paging.start</code></td>
+<td><em>integer</em></td>
+<td>Page starting element</td>
+</tr>
+<tr>
+<td><code class="prettyprint">paging.offset</code></td>
+<td><em>integer</em></td>
+<td>Page size</td>
+</tr>
+<tr>
+<td><code class="prettyprint">paging.total</code></td>
+<td><em>integer</em></td>
+<td>Total elements count</td>
 </tr>
 <tr>
 <td><code class="prettyprint">success</code>, <code class="prettyprint">warning</code>, <code class="prettyprint">error</code><br><em>optional</em></td>
