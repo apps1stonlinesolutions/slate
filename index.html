@@ -1742,16 +1742,19 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07904678431"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"can_message_client"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"can_call_client"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"can_not_cancel_jobs"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"can_receive_on_demand_jobs"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"should_send_report_on_checkout"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vesi_peikova@abv.bg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07904678431"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+44"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_AUS"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
+      </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"profile_permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"can_message_client"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"can_call_client"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"can_not_cancel_jobs"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"can_receive_on_demand_jobs"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"should_send_report_on_checkout"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1775,39 +1778,19 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">phone_number</code></td>
-<td><em>string</em></td>
-<td>Phone number of unit</td>
-</tr>
-<tr>
-<td><code class="prettyprint">can_message_client</code></td>
-<td><em>boolean</em></td>
-<td>Can unit send SMS messages to clients</td>
-</tr>
-<tr>
-<td><code class="prettyprint">can_call_client</code></td>
-<td><em>boolean</em></td>
-<td>Can unit call clients</td>
-</tr>
-<tr>
-<td><code class="prettyprint">can_not_cancel_jobs</code></td>
-<td><em>boolean</em></td>
-<td>Can unit decline jobs</td>
-</tr>
-<tr>
-<td><code class="prettyprint">can_receive_on_demand_jobs</code></td>
-<td><em>boolean</em></td>
-<td>Can unit receive jobs on-demand via notifications that require response</td>
-</tr>
-<tr>
-<td><code class="prettyprint">should_send_report_on_checkout</code></td>
-<td><em>boolean</em></td>
-<td>Should unit sent report on checkout</td>
-</tr>
-<tr>
 <td><code class="prettyprint">email</code></td>
 <td><em>string</em></td>
 <td>Unit email for login</td>
+</tr>
+<tr>
+<td><code class="prettyprint">full_name</code></td>
+<td><em>string</em></td>
+<td>First name and last name</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phone_number</code></td>
+<td><em>string</em></td>
+<td>Phone number of unit</td>
 </tr>
 <tr>
 <td><code class="prettyprint">country_code</code></td>
@@ -1823,6 +1806,31 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">rating</code></td>
 <td><em>double</em></td>
 <td>Performance score of Unit (1-5)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">permissions.can_message_client</code></td>
+<td><em>boolean</em></td>
+<td>Can unit send SMS messages to clients</td>
+</tr>
+<tr>
+<td><code class="prettyprint">permissions.can_call_client</code></td>
+<td><em>boolean</em></td>
+<td>Can unit call clients</td>
+</tr>
+<tr>
+<td><code class="prettyprint">permissions.can_not_cancel_jobs</code></td>
+<td><em>boolean</em></td>
+<td>Can unit decline jobs</td>
+</tr>
+<tr>
+<td><code class="prettyprint">permissions.can_receive_on_demand_jobs</code></td>
+<td><em>boolean</em></td>
+<td>Can unit receive jobs on-demand via notifications that require response</td>
+</tr>
+<tr>
+<td><code class="prettyprint">permissions.should_send_report_on_checkout</code></td>
+<td><em>boolean</em></td>
+<td>Should unit sent report on checkout</td>
 </tr>
 </tbody></table>
 
