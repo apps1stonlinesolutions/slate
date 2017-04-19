@@ -227,6 +227,12 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><em>none</em></td>
 <td>Attributes to add to response which are not returned by default</td>
 </tr>
+<tr>
+<td><code class="prettyprint">return_meta</code></td>
+<td><em>boolean</em></td>
+<td><em>false</em></td>
+<td>Weather response includes <code class="prettyprint">meta</code></td>
+</tr>
 </tbody></table>
 
 <h2 id="response">Response</h2>
@@ -235,7 +241,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <p>JSON response structured</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"paging"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
@@ -256,7 +262,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>All responses are with HTTP status 200 and contain <code class="prettyprint">data</code> and <code class="prettyprint">meta</code> parameters. Optionally there can be <code class="prettyprint">success</code>, <code class="prettyprint">error</code> and <code class="prettyprint">warning</code> parameters.</p>
+<p>All responses are with HTTP status 200 and contain <code class="prettyprint">data</code> parameter. Optionally there can be <code class="prettyprint">success</code>, <code class="prettyprint">error</code> and <code class="prettyprint">warning</code> message elements, <code class="prettyprint">meta</code> element and <code class="prettyprint">paging</code>.</p>
 
 <h3 id="response-object-parameters">Response object parameters</h3>
 
@@ -269,8 +275,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">data</code><br><em>optional</em></td>
-<td><em>array</em></td>
-<td>Array of data objects returned in the result of the request</td>
+<td><em>array or object</em></td>
+<td>Content of response. <code class="prettyprint">data</code> holds array of objects when requesting resources with plural names (e.g. addresses).<code class="prettyprint">data</code> holds object when requesting resources with singular names  (e.g. profile).</td>
 </tr>
 <tr>
 <td><code class="prettyprint">paging</code><br><em>optional</em></td>
@@ -298,7 +304,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Messages with information for the request. More than one type of message can be returned in a response. <code class="prettyprint">success</code> and <code class="prettyprint">error</code> can&rsquo;t come in the same response. <code class="prettyprint">warning</code> can be combined with <code class="prettyprint">success</code> or <code class="prettyprint">error</code>.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">meta</code></td>
+<td><code class="prettyprint">meta</code><br><em>optional</em></td>
 <td><em>object</em></td>
 <td>Parameter containing information for the system.</td>
 </tr>
@@ -361,11 +367,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="p">],</span><span class="w">
       </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459492785</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -394,19 +396,13 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <p>The above request success response is:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9 Apt."</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 Red Lion Street"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SW12 2TN"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.604903</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.457022</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9 Apt."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 Red Lion Street"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SW12 2TN"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.604903</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.457022</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -439,11 +435,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">213124</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -515,7 +507,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1020</span><span class="p">,</span><span class="w">
@@ -525,11 +517,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -555,7 +543,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Messages with information for the request. More than one type of message can be returned in a response. <code class="prettyprint">success</code> and <code class="prettyprint">error</code> can&rsquo;t come in the same response. <code class="prettyprint">warning</code> can be combined with <code class="prettyprint">success</code> or <code class="prettyprint">error</code>.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">meta</code></td>
+<td><code class="prettyprint">meta</code><br><em>optional</em></td>
 <td><em>object</em></td>
 <td>Parameter containing information for the system.</td>
 </tr>
@@ -598,11 +586,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -737,11 +721,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -872,11 +852,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -935,11 +911,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"expire_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1491478823</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1014,11 +986,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1093,11 +1061,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
         </span><span class="mi">89</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1224,11 +1188,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
         </span><span class="nt">"tooltip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Click here"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1363,11 +1323,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
         </span><span class="mi">94</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1444,11 +1400,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 _bedroom"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1555,11 +1507,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 _bedroom"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1662,11 +1610,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.google.com"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1760,10 +1704,6 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"can_receive_on_demand_jobs"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"should_send_report_on_checkout"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
