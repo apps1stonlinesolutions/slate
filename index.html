@@ -1740,23 +1740,27 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <p>The above request success response is:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vesi_peikova@abv.bg"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07904678431"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+44"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_AUS"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"profile_permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"can_message_client"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"can_call_client"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"can_not_cancel_jobs"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"can_receive_on_demand_jobs"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"should_send_report_on_checkout"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vesi_peikova@abv.bg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phone_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07904678431"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
       </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+44"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_AUS"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"can_message_client"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"can_call_client"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"can_not_cancel_jobs"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"can_receive_on_demand_jobs"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"should_send_report_on_checkout"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
     </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
@@ -1767,6 +1771,113 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <p>Profile contains unit details and permissions</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;profile&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">email</code></td>
+<td><em>string</em></td>
+<td>Unit email for login</td>
+</tr>
+<tr>
+<td><code class="prettyprint">full_name</code></td>
+<td><em>string</em></td>
+<td>First name and last name</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phone_numbers</code></td>
+<td><em>array</em></td>
+<td>List of phone numbers of unit</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phone_numbers.id</code></td>
+<td><em>int</em></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phone_numbers.number</code></td>
+<td><em>string</em></td>
+<td>Phone number</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phone_numbers.default</code></td>
+<td><em>boolean</em></td>
+<td>Is the phone the default used by the system for receiving calls and SMS</td>
+</tr>
+<tr>
+<td><code class="prettyprint">country_code</code></td>
+<td><em>string</em></td>
+<td>Country code of area the Unit operates in</td>
+</tr>
+<tr>
+<td><code class="prettyprint">locale</code></td>
+<td><em>string</em></td>
+<td>Locale of area the Unit operates in</td>
+</tr>
+<tr>
+<td><code class="prettyprint">rating</code></td>
+<td><em>double</em></td>
+<td>Performance score of Unit (1-5)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">permissions.can_message_client</code></td>
+<td><em>boolean</em></td>
+<td>Can unit send SMS messages to clients</td>
+</tr>
+<tr>
+<td><code class="prettyprint">permissions.can_call_client</code></td>
+<td><em>boolean</em></td>
+<td>Can unit call clients</td>
+</tr>
+<tr>
+<td><code class="prettyprint">permissions.can_not_cancel_jobs</code></td>
+<td><em>boolean</em></td>
+<td>Can unit decline jobs</td>
+</tr>
+<tr>
+<td><code class="prettyprint">permissions.can_receive_on_demand_jobs</code></td>
+<td><em>boolean</em></td>
+<td>Can unit receive jobs on-demand via notifications that require response</td>
+</tr>
+<tr>
+<td><code class="prettyprint">permissions.should_send_report_on_checkout</code></td>
+<td><em>boolean</em></td>
+<td>Should unit sent report on checkout</td>
+</tr>
+</tbody></table>
+
+<h2 id="request-vouchers">Request vouchers</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/request_vouchers"</span>
+</code></pre>
+
+<p>With the following request Unit claims it needs vouchers in the form of flyers</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;request_vouchers&quot;</code></p>
+
+<h2 id="register-voucher">Register voucher</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/register_voucher"</span>
+</code></pre>
+
+<p>Units can register voouchers. Bookings with registered voucher will bring them bonuses.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;register_voucher&quot;</code></p>
 
 <h3 id="response-parameters">Response parameters</h3>
 
