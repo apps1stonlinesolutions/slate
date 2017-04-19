@@ -1743,7 +1743,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vesi_peikova@abv.bg"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"phone_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nt">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="nt">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07904678431"</span><span class="p">,</span><span class="w">
@@ -1792,22 +1792,22 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>First name and last name</td>
 </tr>
 <tr>
-<td><code class="prettyprint">phone_numbers</code></td>
+<td><code class="prettyprint">phones</code></td>
 <td><em>array</em></td>
 <td>List of phone numbers of unit</td>
 </tr>
 <tr>
-<td><code class="prettyprint">phone_numbers.id</code></td>
+<td><code class="prettyprint">phones.id</code></td>
 <td><em>int</em></td>
 <td>Unique identifier</td>
 </tr>
 <tr>
-<td><code class="prettyprint">phone_numbers.number</code></td>
+<td><code class="prettyprint">phones.number</code></td>
 <td><em>string</em></td>
 <td>Phone number</td>
 </tr>
 <tr>
-<td><code class="prettyprint">phone_numbers.default</code></td>
+<td><code class="prettyprint">phones.default</code></td>
 <td><em>boolean</em></td>
 <td>Is the phone the default used by the system for receiving calls and SMS</td>
 </tr>
