@@ -1669,6 +1669,94 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<h2 id="validations">Validations</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/validations"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"register"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"regex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"regex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"addresses"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"address1"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"regex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"address2"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"regex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Validation object should be used for client side validation of fields before posting to server.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;validations&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">path</code></td>
+<td><em>string</em></td>
+<td>Path at which fields to validated will be posted</td>
+</tr>
+<tr>
+<td><code class="prettyprint">fields</code></td>
+<td><em>array</em></td>
+<td>Array of field validation objects</td>
+</tr>
+<tr>
+<td><code class="prettyprint">fields.name</code></td>
+<td><em>string</em></td>
+<td>Field key name in json</td>
+</tr>
+<tr>
+<td><code class="prettyprint">fields.regex</code></td>
+<td><em>string</em></td>
+<td>Regex used to validate the field</td>
+</tr>
+<tr>
+<td><code class="prettyprint">fields.required</code></td>
+<td><em>boolean</em></td>
+<td>Is field required for the path</td>
+</tr>
+</tbody></table>
+
 <h1 id="units">Units</h1>
 
 <h2 id="profile">Profile</h2>
@@ -1792,26 +1880,22 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
-<h2 id="request-vouchers">Request vouchers</h2>
-<pre class="highlight shell"><code>curl<span class="se">\</span>
- -X GET<span class="se">\</span>
- -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
- -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
- -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
-<span class="s2">"https://{{BASE_URL}}/v2/unit/request_vouchers"</span>
-</code></pre>
-
-<p>With the following request Unit claims it needs vouchers in the form of flyers</p>
-
-<p><code class="prettyprint">&quot;path&quot;: &quot;request_vouchers&quot;</code></p>
-
 <h2 id="register-voucher">Register voucher</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
- -X GET<span class="se">\</span>
+ -X POST<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
- -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
-<span class="s2">"https://{{BASE_URL}}/v2/unit/register_voucher"</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+  "requests": [
+    {
+      "method": "GET",
+      "path": "addresses",
+      "params": null,
+      "data": null
+    }
+  ]
+}'</span> <span class="s2">"https://{{BASE_URL}}/v2/unit/register_voucher"</span>
 </code></pre>
 
 <p>Units can register voouchers. Bookings with registered voucher will bring them bonuses.</p>
