@@ -673,6 +673,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<p>This endpoint returns:</p>
+
 <ul>
 <li><a href="#common-errors">Common errors</a></li>
 <li><a href="#login-errors">Login errors</a></li>
@@ -1887,20 +1889,50 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
  -d <span class="s1">'{
-  "requests": [
-    {
-      "method": "GET",
-      "path": "addresses",
-      "params": null,
-      "data": null
-    }
-  ]
-}'</span> <span class="s2">"https://{{BASE_URL}}/v2/unit/register_voucher"</span>
+        "voucher_code": "23DSAD54"
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/unit/register_voucher"</span>
 </code></pre>
 
-<p>Units can register voouchers. Bookings with registered voucher will bring them bonuses.</p>
+<p>Units can register vouchers. Bookings with registered voucher will bring them bonuses.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;register_voucher&quot;</code></p>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
+<h2 id="registered-vouchers">Registered vouchers</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/registered_vouchers"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"voucher_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GO10OFF"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1492511551</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"voucher_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GO20OFF"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1492522551</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Units can review their registered vouchers.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;registered_vouchers&quot;</code></p>
 
 <h3 id="response-parameters">Response parameters</h3>
 
@@ -1912,61 +1944,22 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">email</code></td>
+<td><code class="prettyprint">voucher_code</code></td>
 <td><em>string</em></td>
-<td>Unit email for login</td>
+<td>Voucher code</td>
 </tr>
 <tr>
-<td><code class="prettyprint">full_name</code></td>
-<td><em>string</em></td>
-<td>First name and last name</td>
-</tr>
-<tr>
-<td><code class="prettyprint">phone_number</code></td>
-<td><em>string</em></td>
-<td>Phone number of unit</td>
-</tr>
-<tr>
-<td><code class="prettyprint">country_code</code></td>
-<td><em>string</em></td>
-<td>Country code of area the Unit operates in</td>
-</tr>
-<tr>
-<td><code class="prettyprint">locale</code></td>
-<td><em>string</em></td>
-<td>Locale of area the Unit operates in</td>
-</tr>
-<tr>
-<td><code class="prettyprint">rating</code></td>
-<td><em>double</em></td>
-<td>Performance score of Unit (1-5)</td>
-</tr>
-<tr>
-<td><code class="prettyprint">permissions.can_message_client</code></td>
-<td><em>boolean</em></td>
-<td>Can unit send SMS messages to clients</td>
-</tr>
-<tr>
-<td><code class="prettyprint">permissions.can_call_client</code></td>
-<td><em>boolean</em></td>
-<td>Can unit call clients</td>
-</tr>
-<tr>
-<td><code class="prettyprint">permissions.can_not_cancel_jobs</code></td>
-<td><em>boolean</em></td>
-<td>Can unit decline jobs</td>
-</tr>
-<tr>
-<td><code class="prettyprint">permissions.can_receive_on_demand_jobs</code></td>
-<td><em>boolean</em></td>
-<td>Can unit receive jobs on-demand via notifications that require response</td>
-</tr>
-<tr>
-<td><code class="prettyprint">permissions.should_send_report_on_checkout</code></td>
-<td><em>boolean</em></td>
-<td>Should unit sent report on checkout</td>
+<td><code class="prettyprint">created_at</code></td>
+<td><em>integer</em></td>
+<td>Timestamp when the voucher was registered</td>
 </tr>
 </tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
 
           <h1 id="errors">Errors</h1>
 
