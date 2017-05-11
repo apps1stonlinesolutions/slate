@@ -233,6 +233,30 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><em>false</em></td>
 <td>Weather response includes <code class="prettyprint">meta</code></td>
 </tr>
+<tr>
+<td><code class="prettyprint">paging</code><br><em>optional</em></td>
+<td><em>object</em></td>
+<td>Information about paged results</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">paging.offset</code></td>
+<td><em>integer</em></td>
+<td>Page starting element</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">paging.limit</code></td>
+<td><em>integer</em></td>
+<td>Page size</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">paging.total</code></td>
+<td><em>integer</em></td>
+<td>Total elements count</td>
+<td></td>
+</tr>
 </tbody></table>
 
 <h2 id="response">Response</h2>
@@ -281,22 +305,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">paging</code><br><em>optional</em></td>
 <td><em>object</em></td>
-<td>Information about paged results</td>
-</tr>
-<tr>
-<td><code class="prettyprint">paging.offset</code></td>
-<td><em>integer</em></td>
-<td>Page starting element</td>
-</tr>
-<tr>
-<td><code class="prettyprint">paging.limit</code></td>
-<td><em>integer</em></td>
-<td>Page size</td>
-</tr>
-<tr>
-<td><code class="prettyprint">paging.total</code></td>
-<td><em>integer</em></td>
-<td>Total elements count</td>
+<td>Information about paged result as requested</td>
 </tr>
 <tr>
 <td><code class="prettyprint">success</code>, <code class="prettyprint">warning</code>, <code class="prettyprint">error</code><br><em>optional</em></td>
