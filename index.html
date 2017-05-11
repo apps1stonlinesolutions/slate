@@ -1808,7 +1808,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <p>This endpoint returns:</p>
 
 <ul>
-<li><a href="#common-errors">Common errors</a></li>
+<li><a href="#register-voucher">Register voucher errors</a></li>
 </ul>
 
 <h2 id="registered-vouchers">Registered vouchers</h2>
@@ -2232,6 +2232,28 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td>5532</td>
 <td>Password and password confirmation do not match - # optional if password_confirm passsed</td>
+</tr>
+</tbody></table>
+
+<h2 id="register-voucher">Register voucher</h2>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>6018</td>
+<td>This voucher is already registered to another user</td>
+</tr>
+<tr>
+<td>6019</td>
+<td>This voucher is not available to be registered to a user</td>
+</tr>
+<tr>
+<td>6026</td>
+<td>Missing voucher code</td>
 </tr>
 </tbody></table>
 
