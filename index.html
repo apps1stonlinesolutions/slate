@@ -1689,7 +1689,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+44"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"language_preference_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"language_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"can_message_client"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"can_call_client"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -1761,7 +1761,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">language_preference_code</code></td>
 <td><em>string</em></td>
-<td>Language code user chose from Settings in XRM or app. List of languages received at <a href="#available-languages">available_languages</a></td>
+<td>Language code user chose from Settings in XRM or app. List of languages received at <a href="#system-languages">system_languages</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">permissions</code></td>
@@ -1795,13 +1795,13 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
-<h2 id="available-languages">Available languages</h2>
+<h2 id="system-languages">System languages</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
-<span class="s2">"https://{{BASE_URL}}/v2/unit/available_languages"</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/system_languages"</span>
 </code></pre>
 
 <blockquote>
@@ -1821,9 +1821,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Available languages for visualising the interface in XRM or BFantastic</p>
+<p>Available system languages for visualising the interface in XRM or BFantastic</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;available_languages&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;system_languages&quot;</code></p>
 
 <h3 id="response-parameters">Response parameters</h3>
 
