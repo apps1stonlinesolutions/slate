@@ -1198,7 +1198,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"tooltip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Click here"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"logic_js"</span><span class="p">:</span><span class="w"> </span><span class="s2">"function getRequiredActionForState(items) {return null;}"</span><span class="w">
+      </span><span class="nt">"logic_js"</span><span class="p">:</span><span class="w"> </span><span class="s2">"function getRequiredActionForState(items) { if (items[0].choice_item_id == \"1092\" &amp;&amp; items[0].choice_item_value == 2) { return { \"action\": \"service_redirect\", \"redirect_message_title\": \"This is more like EOT. Wanna go?\", \"redirect_message\": \"This is more like EOT. Wanna go?\", \"OK_title\": \"Go there\", \"cancel_title\": \"Not really\", \"service_id\": 23 }; } else { return null; } }"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
