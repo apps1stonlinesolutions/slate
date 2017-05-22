@@ -1197,7 +1197,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="p">],</span><span class="w">
       </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"tooltip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Click here"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"logic_js"</span><span class="p">:</span><span class="w"> </span><span class="s2">"function getRequiredActionForState(items) {return null;}"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1298,8 +1299,13 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">customize</code></td>
-<td><em>customize</em></td>
+<td><em>object</em></td>
 <td>Key-value pairs of custom attributes</td>
+</tr>
+<tr>
+<td><code class="prettyprint">logic_js</code></td>
+<td><em>string</em></td>
+<td>JavaScript containing functions for modification of booking process</td>
 </tr>
 </tbody></table>
 
