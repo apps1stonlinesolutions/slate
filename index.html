@@ -2049,29 +2049,31 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </code></pre>
 
 <blockquote>
-<p>The above request success response is:</p>
+<p>The above request success response is:
+choice_items
+<code class="prettyprint">json
+{
+  &quot;data&quot;: [
+    {
+      &quot;type&quot;: 1,
+      &quot;event_time&quot;: 1495702059,
+      &quot;choice_items&quot;: [
+        {
+          &quot;id&quot;: 2,
+          &quot;value&quot;: &quot;1&quot;
+        },
+        {
+          &quot;id&quot;: 2,
+          &quot;value&quot;: [
+            &quot;23hjfkajsdhfe198237019&quot;
+          ]
+        }
+      ]
+    }
+  ]
+}
+</code></p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"event_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1495702059</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"23hjfkajsdhfe198237019"</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <p>Checklist answers after filling checklist.</p>
 
@@ -2097,17 +2099,17 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Timestamp when the event ocurred and was saved.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">choices_items</code></td>
+<td><code class="prettyprint">choice_items</code></td>
 <td><em>array</em></td>
 <td>Checklist answers</td>
 </tr>
 <tr>
-<td><code class="prettyprint">choices_items.id</code></td>
+<td><code class="prettyprint">choice_items.id</code></td>
 <td><em>integer</em></td>
 <td>Unique identifier</td>
 </tr>
 <tr>
-<td><code class="prettyprint">choices_items.value</code></td>
+<td><code class="prettyprint">choice_items.value</code></td>
 <td><em>string/array</em></td>
 <td>Answer user entered</td>
 </tr>
