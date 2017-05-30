@@ -421,6 +421,22 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <p>If operation is successful created/updated object is returned.</p>
 
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">return</code><br><em>optional, default <b>status</b></em></td>
+<td><em>string</em></td>
+<td>When object is created/updated different responses can be returned.<br><code class="prettyprint">status</code> - returns success status if object created/updated succesfully<br><code class="prettyprint">id</code> - returns the id of the created/updated<br><code class="prettyprint">object</code> - returns the full created/updated object</td>
+</tr>
+</tbody></table>
+
 <h2 id="delete">Delete</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X DELETE<span class="se">\</span>
