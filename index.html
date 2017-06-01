@@ -1108,7 +1108,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">id</code></td>
 <td><em>integer</em></td>
-<td>Object id</td>
+<td>Unique identifier</td>
 </tr>
 <tr>
 <td><code class="prettyprint">sort</code></td>
@@ -1207,9 +1207,24 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
         </span><span class="mi">90</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nt">"payment_methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="mi">3</span><span class="p">,</span><span class="w">
-        </span><span class="mi">4</span><span class="p">,</span><span class="w">
-        </span><span class="mi">5</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cash"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cash"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"icon_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Card"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stripe"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"stripe_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kdj9DSA923131safdfd89a7fklj`cxzc"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"icon_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"tooltip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Click here"</span><span class="w">
@@ -1236,7 +1251,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">id</code></td>
 <td><em>integer</em></td>
-<td>Object id</td>
+<td>Unique identifier</td>
 </tr>
 <tr>
 <td><code class="prettyprint">sort</code></td>
@@ -1314,6 +1329,41 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>List of available payment methods for the service</td>
 </tr>
 <tr>
+<td><code class="prettyprint">payment_methods.id</code></td>
+<td><em>integer</em></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payment_methods.sort</code></td>
+<td><em>integer</em></td>
+<td>Order of item in list</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payment_methods.title</code></td>
+<td><em>string</em></td>
+<td>Display name of payment method</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payment_methods.type</code></td>
+<td><em>string</em></td>
+<td><em><b>Cash</b> - Cash payment</em><br><em><b>Stripe</b> - Card payment via Stripe</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">payment_methods.data</code><br><em>optional</em></td>
+<td><em>object</em></td>
+<td>Based on the payment provider different data may be provided (such as keys, tokens etc.)<em><b>3</b> - Stripe UK Apple Pay</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">payment_methods.data.stripe_key</code></td>
+<td><em>string</em></td>
+<td>Token for connecting to Stripe API</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payment_methods.icon_image_url</code></td>
+<td><em>string</em></td>
+<td>Icon image for payment method</td>
+</tr>
+<tr>
 <td><code class="prettyprint">customize</code></td>
 <td><em>object</em></td>
 <td>Key-value pairs of custom attributes</td>
@@ -1376,7 +1426,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">id</code></td>
 <td><em>integer</em></td>
-<td>Object id</td>
+<td>Unique identifier</td>
 </tr>
 <tr>
 <td><code class="prettyprint">sort</code></td>
@@ -1556,7 +1606,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">id</code></td>
 <td><em>integer</em></td>
-<td>Identifier</td>
+<td>Unique identifier</td>
 </tr>
 <tr>
 <td><code class="prettyprint">title</code></td>
@@ -1591,7 +1641,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">sort</code></td>
 <td><em>integer</em></td>
-<td>Order of treat.</td>
+<td>Order of item in list</td>
 </tr>
 </tbody></table>
 
@@ -2016,7 +2066,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">choices.sort</code></td>
 <td><em>integer</em></td>
-<td>Order of item</td>
+<td>Order of item in list</td>
 </tr>
 <tr>
 <td><code class="prettyprint">choices.required</code></td>
@@ -2041,7 +2091,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">choices.choice_items.sort</code></td>
 <td><em>integer</em></td>
-<td>Order of item</td>
+<td>Order of item in list</td>
 </tr>
 <tr>
 <td><code class="prettyprint">choices.choice_items.type</code></td>
