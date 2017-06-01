@@ -1399,7 +1399,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">choice_items</code></td>
-<td><em>array&lt;choice_item&gt;</em></td>
+<td><em>array&lt;<a href="#choice-items">choice_item</a>&gt;</em></td>
 <td>List of answers for the question</td>
 </tr>
 </tbody></table>
@@ -1506,7 +1506,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">choice_items</code></td>
-<td><em>array&lt;choice_item&gt;</em></td>
+<td><em>array&lt;<a href="#choice-items">choice_item</a>&gt;</em></td>
 <td>List of sub-answers for the answers</td>
 </tr>
 </tbody></table>
@@ -1530,6 +1530,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cash"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cash"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payment_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
       </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"icon_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -1579,6 +1580,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">type</code></td>
 <td><em>string</em></td>
 <td><em><b>Cash</b> - Cash payment</em><br><em><b>Stripe</b> - Card payment via Stripe</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">payment_provider_id</code></td>
+<td><em>integer</em></td>
+<td>Identifier for the the account used for the payment method (e.g. Stripe UK, Stripe AUS etc.)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">attributes</code><br><em>optional</em></td>
