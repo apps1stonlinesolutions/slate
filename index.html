@@ -1632,7 +1632,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"is_in_summary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 bedroom"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="w">
+      </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1715,6 +1716,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">image_url</code></td>
 <td><em>string</em></td>
 <td>List image for choice item</td>
+</tr>
+<tr>
+<td><code class="prettyprint">customize</code></td>
+<td><em>object</em></td>
+<td>Key-value pairs of custom attributes</td>
 </tr>
 </tbody></table>
 
@@ -2477,13 +2483,13 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <li><a href="#tracked-locations-errors">Tracked locations errors</a></li>
 </ul>
 
-<h2 id="notifications-history">Notifications history</h2>
+<h2 id="push-notifications-history">Push notifications history</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
-<span class="s2">"https://{{BASE_URL}}/v2/unit/notifications_history"</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/push_notifications_history"</span>
 </code></pre>
 
 <blockquote>
@@ -2493,24 +2499,19 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Didn't clean the kitchen well"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"client_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1496233156</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Didn't clean the kitchen well"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1496233156</span><span class="w">
+      </span><span class="nt">"umid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LKJHKEWB324123jkljL"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Text from push notification"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Client ratings for the unit.</p>
+<p>History of all pushes sent to unit.</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;notifications_history&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;push_notifications_history&quot;</code></p>
 
 <h3 id="response-parameters">Response parameters</h3>
 
@@ -2527,24 +2528,132 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Unique identifier</td>
 </tr>
 <tr>
-<td><code class="prettyprint">rate</code></td>
-<td><em>integer</em></td>
-<td>Rating client gave for the job</td>
-</tr>
-<tr>
-<td><code class="prettyprint">comment</code></td>
+<td><code class="prettyprint">umid</code></td>
 <td><em>string</em></td>
-<td>Client comment upon rating the job</td>
+<td>Unique identifier to update push status</td>
 </tr>
 <tr>
-<td><code class="prettyprint">client_name</code></td>
-<td><em>string</em></td>
-<td>Name of client who rated the job</td>
-</tr>
-<tr>
-<td><code class="prettyprint">created_at</code></td>
+<td><code class="prettyprint">status</code></td>
 <td><em>integer</em></td>
-<td>Timestamp when the rating was made</td>
+<td>100, 200</td>
+</tr>
+<tr>
+<td><code class="prettyprint">action</code></td>
+<td><em>integer</em></td>
+<td>Describes what action should be triggered on the unit</td>
+</tr>
+<tr>
+<td><code class="prettyprint">message</code></td>
+<td><em>string</em></td>
+<td>Push notification text</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload</code></td>
+<td><em>object</em></td>
+<td>Custom data based on action</td>
+</tr>
+</tbody></table>
+
+<h3 id="popup-push-response-parameters">Popup push response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">payload.popup.image_url</code></td>
+<td><em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.popup.title</code></td>
+<td><em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.popup.description</code></td>
+<td><em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.popup.cta_button.title</code></td>
+<td><em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.popup.cta_button.target.screen_id</code></td>
+<td><em>integer</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.popup.cta_button.target.screen_id.item_id</code></td>
+<td><em>integer</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.popup.voucher.voucher_code</code></td>
+<td><em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.popup.voucher.title</code></td>
+<td><em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.popup.voucher.valid_to</code></td>
+<td><em>integer</em></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="job-offer-push-response-parameters">Job offer push response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">payload.job_offer.id</code></td>
+<td><em>integer</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.job_offer.booking_id</code></td>
+<td><em>integer</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.job_offer.available</code></td>
+<td><em>boolean</em></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="open-content-push-response-parameters">Open content push response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">payload.target.screen_id</code></td>
+<td><em>integer</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.target.item_id</code></td>
+<td><em>integer</em></td>
+<td></td>
 </tr>
 </tbody></table>
 
