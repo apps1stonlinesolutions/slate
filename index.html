@@ -2263,7 +2263,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">choices.choice_items.type</code></td>
 <td><em>integer</em></td>
-<td><em><b>2</b> - Radio</em><br><em><b>3</b> - Stepper (incremental value)</em><br><em><b>4</b> - Text</em><br><em><b>11</b> - Decimal text<br><b>12</b> - Photo attachment</em></td>
+<td><em><b>1</b> - Check</em><br><em><b>2</b> - Radio</em><br><em><b>3</b> - Stepper (incremental value)</em><br><em><b>4</b> - Text</em><br><em><b>11</b> - Decimal text<br><b>12</b> - Photo attachment</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">choices.choice_items.title</code></td>
@@ -2417,6 +2417,22 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">created_at_gt</code><br><em>optional, default <b>0</b></em></td>
+<td><em>integer</em></td>
+<td>Filters response with created_at greater than the passed</td>
+</tr>
+</tbody></table>
+
 <p>This endpoint returns:</p>
 
 <ul>
@@ -2509,6 +2525,86 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
+<blockquote>
+<p>The above request success response for popup is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"umid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HJKHAD324123jkljL"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Checkout our fresh deal!"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"popup"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://images.com/photo.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello there"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is awesome, you should try!"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"cta_button"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Got it!"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"screen_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"voucher"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"voucher_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FREE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"banner_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Use voucher code FREE for a free service"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"valid_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">1497429186</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above request success response for job offer is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"umid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HJKHAD324123jkljL"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Checkout our fresh deal!"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"job_offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"booking_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"available"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above request success response for target is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"umid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HJKHAD324123jkljL"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Checkout our fresh deal!"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"screen_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
 <p>History of all pushes sent to unit.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;push_notifications&quot;</code></p>
@@ -2540,7 +2636,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">action</code></td>
 <td><em>integer</em></td>
-<td>Describes what action should be triggered on the unit</td>
+<td>Describes what action should be triggered on the unit<br><br><br><em><b>1</b> - Update jobs (silent)</em><br><em><b>2</b> - Popup message (regular)</em><br><em><b>3</b> -  Inbox message (regular)</em><br><em><b>5</b> -  Update location (silent)</em><br><em><b>6</b> -  New job (silent)</em><br><em><b>7</b> -  New job (regular)</em><br><em><b>8</b> -  Open service (regular)</em><br><em><b>9</b> -  Open chat (regular)</em><br><em><b>10</b> -  Inbox message (regular)</em><br><em><b>11</b> -  Inbox message (regular)</em><br><em><b>12</b> -  Inbox message (regular)</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">message</code></td>
@@ -2654,6 +2750,22 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">payload.target.item_id</code></td>
 <td><em>integer</em></td>
 <td></td>
+</tr>
+</tbody></table>
+
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">created_at_gt</code><br><em>optional, default <b>0</b></em></td>
+<td><em>integer</em></td>
+<td>Filters response with created_at greater than the passed</td>
 </tr>
 </tbody></table>
 
