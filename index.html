@@ -2478,13 +2478,15 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <li><a href="#tracked-locations-errors">Tracked locations errors</a></li>
 </ul>
 
+<h1 id="shared">Shared</h1>
+
 <h2 id="push-notifications">Push notifications</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
-<span class="s2">"https://{{BASE_URL}}/v2/unit/push_notifications"</span>
+<span class="s2">"https://{{BASE_URL}}/v2/shared/push_notifications"</span>
 </code></pre>
 
 <blockquote>
