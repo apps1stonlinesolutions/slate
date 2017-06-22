@@ -2507,25 +2507,6 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </span></code></pre>
 
 <blockquote>
-<p>The above request success response for rating is:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You just got rated! Check out your score."</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"rating_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1497859985</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<blockquote>
 <p>The above request success response for popup is:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -2598,6 +2579,50 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
           </span><span class="nt">"screen_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
         </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1497859985</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above request success response for rating is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You just got rated! Check out your score."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Didn't clean the kitchen well"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"client_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="err">}</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1497859985</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above request success response for bonus is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Checkout our fresh deal!"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"bonus"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"bonus_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£5"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"total_bonus"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"total_bonus_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£20"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carpet Cleaning"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1497859985</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -2753,7 +2778,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
-<h3 id="popup-push-response-parameters">Popup push response parameters</h3>
+<h3 id="rate-push-response-parameters">Rate push response parameters</h3>
 
 <table><thead>
 <tr>
@@ -2763,9 +2788,55 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">payload.popup.rating_id</code></td>
+<td><code class="prettyprint">payload.rate</code></td>
 <td><em>integer</em></td>
-<td>Rating unique identifier</td>
+<td>Rating client gave for the job</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.comment</code></td>
+<td><em>string</em></td>
+<td>Client comment upon rating the job</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.client_name</code></td>
+<td><em>string</em></td>
+<td>Name of client who rated the job</td>
+</tr>
+</tbody></table>
+
+<h3 id="bonus-push-response-parameters">Bonus push response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">payload.bonus</code></td>
+<td><em>double</em></td>
+<td>Bonus for cross-sell on sight or with flyer</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.bonus_formatted</code></td>
+<td><em>string</em></td>
+<td>Formatted bonus for cross-sell on sight or with flyer</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.total_bonus</code></td>
+<td><em>double</em></td>
+<td>Total bonus to collect before current bonus</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.total_bonus_formatted</code></td>
+<td><em>string</em></td>
+<td>Formatted total bonus to collect before current bonus</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.service</code></td>
+<td><em>string</em></td>
+<td>Cross-selled service name</td>
 </tr>
 </tbody></table>
 
