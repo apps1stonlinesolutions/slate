@@ -1614,6 +1614,7 @@ curl\
       "status": 3000,
       "action": 1,
       "message": "Text from push notification",
+      "sound": "default.mp3",
       "payload": null,
       "created_at": 1497859985
     }
@@ -1631,6 +1632,7 @@ curl\
       "status": 3000,
       "action": 2,
       "message": "Checkout our fresh deal!",
+      "sound": "default.mp3",
       "payload": {
         "popup": {
           "image_url": "http://images.com/photo.jpg",
@@ -1664,8 +1666,9 @@ curl\
     {
       "id": 26,
       "status": 3000,
-      "action": 2,
+      "action": 7,
       "message": "Checkout our fresh deal!",
+      "sound": "default.mp3",
       "payload": {
         "job_offer": {
           "id": 123,
@@ -1687,8 +1690,9 @@ curl\
     {
       "id": 26,
       "status": 3000,
-      "action": 2,
+      "action": 8,
       "message": "Checkout our fresh deal!",
+      "sound": "default.mp3",
       "payload": {
         "target": {
           "screen_id": 1,
@@ -1711,6 +1715,7 @@ curl\
       "status": 3000,
       "action": 10,
       "message": "You just got rated! Check out your score.",
+      "sound": "rate.mp3",
       "payload": {
         "rate": 4,
         "comment": "Didn't clean the kitchen well",
@@ -1730,8 +1735,9 @@ curl\
     {
       "id": 26,
       "status": 3000,
-      "action": 2,
+      "action": 13,
       "message": "Checkout our fresh deal!",
+      "sound": "bonus.mp3",
       "payload": {
         "bonus": 5,
         "bonus_formatted": "£5",
@@ -1757,7 +1763,8 @@ Parameter | Type | Description
 `status` | *integer* | *<b>1000</b> - Sent*<br>*<b>2000</b> - Delivered*<br>*<b>3000</b> - Seen*
 `action` | *integer* | Describes what action should be triggered on the unit<br><br>*<b>1</b> - Update jobs (silent)*<br>*<b>2</b> - Popup message (regular)*<br>*<b>3</b> - Inbox message (regular)*<br>*<b>5</b> - Update location (silent)*<br>*<b>6</b> - New job (silent)*<br>*<b>7</b> - New job (regular)*<br>*<b>8</b> - Open service (regular)*<br>*<b>9</b> - Open chat (regular)*<br>*<b>10</b> - New rating (regular)*<br>*<b>11</b> - Offer with promo code (regular)*<br>*<b>12</b> - Custom*<br>*<b>13</b> - New bonus(regular)*
 `message` | *string* | Push notification text
-`payload` | *object* | Custom data based on action
+`sound` | *string* | Push notification sound file name
+`payload` <br>*dynamic* | *object* | Custom data based on action
 `created_at` | *integer* | Timestamp of creation
 
 ### Popup push response parameters
