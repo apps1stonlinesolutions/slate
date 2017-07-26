@@ -893,6 +893,7 @@ curl\
     {
       "id": 79,
       "sort": 300,
+      "active": true,
       "type": 1,
       "title": "Domestic Cleaning",
       "phone": "+44222233333",
@@ -945,6 +946,7 @@ Parameter | Type | Description
 `id` | *integer* | Unique identifier
 `sort` | *integer* | Order of item in list
 `type` | *integer* | *<b>1</b> - Service*<br>*<b>2</b> - Deal*
+`active` | *boolean* | Is the service activated and has to be shown
 `title` | *string* | Service title text
 `phone` | *string* | Service phone number
 `description` | *string* | Service detailed description text
