@@ -1825,3 +1825,37 @@ Parameter | Type | Description
 This endpoint returns:
 
 * [Common errors](#common-errors)
+
+
+## Server time
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/shared/server_time"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "utc_time": 1497859985
+    }
+  ]
+}
+```
+
+The current time on the server.
+
+`"path": "server_time"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`utc_time` | *integer* | UTC timestamp
