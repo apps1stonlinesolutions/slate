@@ -1827,7 +1827,7 @@ curl\
 ```
 
 
-> The above request success response for changed payment method is:
+> The above request success response for payment method change is:
 
 ```json
 {
@@ -1845,7 +1845,7 @@ curl\
 }
 ```
 
-> The above request success response for changed payment status is:
+> The above request success response for payment status change is:
 
 ```json
 {
@@ -1891,7 +1891,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `status` | *integer* | *<b>1000</b> - Sent*<br>*<b>2000</b> - Delivered*<br>*<b>3000</b> - Seen*
-`action` | *integer* | Describes what action should be triggered on the unit<br><br>*<b>1</b> - Update jobs (silent)*<br>*<b>2</b> - Popup message (regular)*<br>*<b>3</b> - Inbox message (regular)*<br>*<b>5</b> - Update location (silent)*<br>*<b>6</b> - New job (silent)*<br>*<b>7</b> - New job (regular)*<br>*<b>8</b> - Open service (regular)*<br>*<b>9</b> - Open chat (regular)*<br>*<b>10</b> - New rating (regular)*<br>*<b>11</b> - Offer with promo code (regular)*<br>*<b>12</b> - Custom*<br>*<b>13</b> - New bonus (regular)*<br>*<b>14</b> - Added new job to schedule (regular)*<br>*<b>15</b> - Removed job from schedule (regular)*<br>*<b>16</b> - Job changed appointment time (regular)*<br>*<b>17</b> - Job changed price (regular)*<br>*<b>18</b> - Job changed payment method (regular)*<br>*<b>19</b> - Job changed payment status (regular)*<br>*<b>20</b> - Job new comment (regular)*
+`action` | *integer* | Describes what action should be triggered on the unit. Pushes can be regular (with sound and message) or silent (waking up the app, no sound or message)<br><br>*<b>1</b> - Update jobs (silent)*<br>*<b>2</b> - Popup message (regular)*<br>*<b>3</b> - Inbox message (regular)*<br>*<b>5</b> - Update location (silent)*<br>*<b>6</b> - New job (silent)*<br>*<b>7</b> - New job (regular)*<br>*<b>8</b> - Open service (regular)*<br>*<b>9</b> - Open chat (regular)*<br>*<b>10</b> - New rating (regular)*<br>*<b>11</b> - Offer with promo code (regular)*<br>*<b>12</b> - Custom*<br>*<b>13</b> - New bonus (regular)*<br>*<b>14</b> - Added new job to schedule (regular)*<br>*<b>15</b> - Removed job from schedule (regular)*<br>*<b>16</b> - Job appointment time changed (regular)*<br>*<b>17</b> - Job price changed (regular)*<br>*<b>18</b> - Job payment method changed (regular)*<br>*<b>19</b> - Job payment status changed (regular)*<br>*<b>20</b> - Job new comment (regular)*
 `message` | *string* | Push notification text
 `sound` | *string* | Push notification sound file name
 `payload` <br>*dynamic* | *object* | Custom data based on action
