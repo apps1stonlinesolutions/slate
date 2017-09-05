@@ -2715,7 +2715,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </span></code></pre>
 
 <blockquote>
-<p>The above request success response for changed payment method is:</p>
+<p>The above request success response for payment method change is:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2733,7 +2733,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </span></code></pre>
 
 <blockquote>
-<p>The above request success response for changed payment status is:</p>
+<p>The above request success response for payment status change is:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2794,7 +2794,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">action</code></td>
 <td><em>integer</em></td>
-<td>Describes what action should be triggered on the unit<br><br><em><b>1</b> - Update jobs (silent)</em><br><em><b>2</b> - Popup message (regular)</em><br><em><b>3</b> - Inbox message (regular)</em><br><em><b>5</b> - Update location (silent)</em><br><em><b>6</b> - New job (silent)</em><br><em><b>7</b> - New job (regular)</em><br><em><b>8</b> - Open service (regular)</em><br><em><b>9</b> - Open chat (regular)</em><br><em><b>10</b> - New rating (regular)</em><br><em><b>11</b> - Offer with promo code (regular)</em><br><em><b>12</b> - Custom</em><br><em><b>13</b> - New bonus (regular)</em><br><em><b>14</b> - Added new job to schedule (regular)</em><br><em><b>15</b> - Removed job from schedule (regular)</em><br><em><b>16</b> - Job changed appointment time (regular)</em><br><em><b>17</b> - Job changed price (regular)</em><br><em><b>18</b> - Job changed payment method (regular)</em><br><em><b>19</b> - Job changed payment status (regular)</em><br><em><b>20</b> - Job new comment (regular)</em></td>
+<td>Describes what action should be triggered on the unit. Pushes can be regular (with sound and message) or silent (waking up the app, no sound or message)<br><br><em><b>1</b> - Update jobs (silent)</em><br><em><b>2</b> - Popup message (regular)</em><br><em><b>3</b> - Inbox message (regular)</em><br><em><b>5</b> - Update location (silent)</em><br><em><b>6</b> - New job (silent)</em><br><em><b>7</b> - New job (regular)</em><br><em><b>8</b> - Open service (regular)</em><br><em><b>9</b> - Open chat (regular)</em><br><em><b>10</b> - New rating (regular)</em><br><em><b>11</b> - Offer with promo code (regular)</em><br><em><b>12</b> - Custom</em><br><em><b>13</b> - New bonus (regular)</em><br><em><b>14</b> - Added new job to schedule (regular)</em><br><em><b>15</b> - Removed job from schedule (regular)</em><br><em><b>16</b> - Job appointment time changed (regular)</em><br><em><b>17</b> - Job price changed (regular)</em><br><em><b>18</b> - Job payment method changed (regular)</em><br><em><b>19</b> - Job payment status changed (regular)</em><br><em><b>20</b> - Job new comment (regular)</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">message</code></td>
