@@ -1221,6 +1221,14 @@ curl\
     "id": 12,
     "username": "john_doe@example.com",
     "name": "John Doe",
+    "address": "SW12 2TH Tooley Street",
+    "postcode": "SW12 2TH",
+    "rating": 4.5,
+    "birthdate": 1504857514,
+    "gender": "Male",
+    "team": "Rusat",
+    "country_code": "+44",
+    "language_code": "en",
     "phones": [
       {
         "id": 1,
@@ -1228,16 +1236,19 @@ curl\
         "default": false
       }
     ],
-    "country_code": "+44",
-    "rating": 4.5,
-    "language_code": "en",
+    "avatar": {
+      "token": "2331xfasf23423rt43fsdfasDAS",
+      "url": "https://files.dxr.cloud/PVk0poyRIuRG2"
+    },
     "permissions": {
       "can_message_client": true,
       "can_call_client": true,
       "cannot_decline_jobs": true,
       "can_take_ondemand_jobs": true,
       "has_to_send_summary_on_checkout": true
-    }
+    },
+    "created_at": 1504857514
+  }
 }
 ```
 
@@ -1253,20 +1264,27 @@ Parameter | Type | Description
 `id` | *integer* | Unique identifier
 `username` | *string* | Unit email for login
 `name` | *string* | First name and last name of unit
+`address` | *string* | Full address of unit (e.g. street name, building number etc.)
+`postcode` | *string* | Postcode of the unit
+`rating` | *double* | Performance score of Unit (1-5)
+`birthdate` | *integer* | Timestamp of unit date of birth
+`gender` | *string* | Gender of the unit
+`team` | *string* | Name of team the unit is assigned to
+`country_code` | *string* | Country code of area the Unit operates in
+`language_code`<br>*editable* | *string* | Language code user chose from Settings in XRM or app. List of languages received at [system_languages](#system-languages)
 `phones` | *array* | List of phone numbers of unit
 `phones.id` | *int* | Unique identifier
 `phones.number` | *string* | Phone number
 `phones.default` | *boolean* | Is the phone the default used by the system for receiving calls and SMS
-`country_code` | *string* | Country code of area the Unit operates in
-`rating` | *double* | Performance score of Unit (1-5)
-`language_code`<br>*editable* | *string* | Language code user chose from Settings in XRM or app. List of languages received at [system_languages](#system-languages)
+`avatar.token` | *string* | File server token
+`avatar.url` | *string* | URL to avatar image
 `permissions` | *array* | List of permissions of unit
 `permissions.can_message_client` | *boolean* | Can unit send SMS messages to clients
 `permissions.can_call_client` | *boolean* | Can unit call clients
 `permissions.cannot_decline_jobs` | *boolean* | Can unit decline jobs
 `permissions.can_take_ondemand_jobs` | *boolean* | Can unit receive jobs on-demand via notifications that require response
 `permissions.has_to_send_summary_on_checkout` | *boolean* | Should unit sent report on checkout
-
+`created_at` | *integer* | Timestamp of unit registration
 
 ## System languages
 
