@@ -1782,7 +1782,9 @@ curl\
       "action": 14,
       "message": "1 new job added to your schedule.",
       "sound": "default.mp3",
-      "payload": null,
+      "payload": {
+          "booking_id": 123
+      },
       "created_at": 1497859985
     }
   ]
@@ -1800,7 +1802,9 @@ curl\
       "action": 15,
       "message": "1 job removed from your schedule.",
       "sound": "default.mp3",
-      "payload": null,
+      "payload": {
+          "booking_id": 123
+      },
       "created_at": 1497859985
     }
   ]
@@ -1819,7 +1823,9 @@ curl\
       "action": 16,
       "message": "Appointment time for SW12 2TH changed to 10:00",
       "sound": "default.mp3",
-      "payload": null,
+      "payload": {
+          "booking_id": 123
+      },
       "created_at": 1497859985
     }
   ]
@@ -1837,7 +1843,9 @@ curl\
       "action": 17,
       "message": "Price changed to £120 for SW12 2TH at 10:00.",
       "sound": "default.mp3",
-      "payload": null,
+      "payload": {
+          "booking_id": 123
+      },
       "created_at": 1497859985
     }
   ]
@@ -1856,7 +1864,9 @@ curl\
       "action": 18,
       "message": "Payment method changed to Cash for SW12 2TH at 10:00.",
       "sound": "default.mp3",
-      "payload": null,
+      "payload": {
+          "booking_id": 123
+      },
       "created_at": 1497859985
     }
   ]
@@ -1874,7 +1884,9 @@ curl\
       "action": 19,
       "message": "Payment status changed for SW12 2TH at 10:00.",
       "sound": "default.mp3",
-      "payload": null,
+      "payload": {
+          "booking_id": 123
+      },
       "created_at": 1497859985
     }
   ]
@@ -1892,7 +1904,9 @@ curl\
       "action": 20,
       "message": "New comment added to SW12 2TH at 10:00.",
       "sound": "default.mp3",
-      "payload": null,
+      "payload": {
+          "booking_id": 123
+      },
       "created_at": 1497859985
     }
   ]
