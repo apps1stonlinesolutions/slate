@@ -1780,8 +1780,8 @@ curl\
       "id": 26,
       "status": 3000,
       "action": 14,
-      "message": "1 new job added to your schedule.",
-      "sound": "default.mp3",
+      "message": "New job received - Gardening at SW12 2TH starting 10:00.",
+      "sound": "new_job.mp3",
       "payload": {
           "booking_id": 123
       },
@@ -1800,8 +1800,8 @@ curl\
       "id": 26,
       "status": 3000,
       "action": 15,
-      "message": "1 job removed from your schedule.",
-      "sound": "default.mp3",
+      "message": "Removed job - Gardening at SW12 2TH starting 10:00.",
+      "sound": "removed_job.mp3",
       "payload": {
           "booking_id": 123
       },
@@ -1821,7 +1821,7 @@ curl\
       "id": 27,
       "status": 3000,
       "action": 16,
-      "message": "Appointment time for SW12 2TH changed to 10:00",
+      "message": "Hey, SW12 2TH 10:00 has been changed to 12:00.",
       "sound": "default.mp3",
       "payload": {
           "booking_id": 123
@@ -1841,7 +1841,7 @@ curl\
       "id": 28,
       "status": 3000,
       "action": 17,
-      "message": "Price changed to £120 for SW12 2TH at 10:00.",
+      "message": "Hey, SW12 2TH at 10:00 total has been changed from £120 to £180.",
       "sound": "default.mp3",
       "payload": {
           "booking_id": 123
@@ -1862,7 +1862,7 @@ curl\
       "id": 29,
       "status": 3000,
       "action": 18,
-      "message": "Payment method changed to Cash for SW12 2TH at 10:00.",
+      "message": "Hey, SW12 2TH at 10:00 has been changed from Cash to Card.",
       "sound": "default.mp3",
       "payload": {
           "booking_id": 123
@@ -1882,7 +1882,7 @@ curl\
       "id": 30,
       "status": 3000,
       "action": 19,
-      "message": "Payment status changed for SW12 2TH at 10:00.",
+      "message": "Hey, SW12 2TH at 10:00 has been changed from Unpaid to Paid.",
       "sound": "default.mp3",
       "payload": {
           "booking_id": 123
@@ -1902,7 +1902,7 @@ curl\
       "id": 31,
       "status": 3000,
       "action": 20,
-      "message": "New comment added to SW12 2TH at 10:00.",
+      "message": "Hey, you have %d new comment for SW12 2TH at 10:00.",
       "sound": "default.mp3",
       "payload": {
           "booking_id": 123
