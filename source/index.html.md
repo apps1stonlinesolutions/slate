@@ -1610,6 +1610,48 @@ This endpoint returns:
 * [Common errors](#common-errors)
 * [Tracked locations errors](#tracked-locations-errors)
 
+
+## Feedback
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -d '{
+        "text": "I really like this app!"
+}'\
+ "https://{{BASE_URL}}/v2/unit/feedback"
+```
+
+> The above request success response is :
+
+```json
+{
+  "data": null,
+  "success": [
+    {
+      "code": 2000,
+      "message": "Success",
+      "debug_message": null,
+      "debug_id": null
+    }
+  ]
+}
+```
+
+Units can share feedback on their experience with the system.
+
+`"path": "feedback"`
+
+### Feedback request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`text`<br>*required* | *string* | Unit feedback input text
+
+* [Common errors](#common-errors)
+
 # Shared
 
 ## Push notifications
