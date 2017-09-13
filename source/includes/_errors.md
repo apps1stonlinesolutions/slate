@@ -13,7 +13,7 @@ Error Code | Meaning
 5118 | Invalid request path
 5140 | Invalid application
 5141 | Invalid profile
-5141 | Unauthorized
+5142 | Unauthorized
 
 ## Login errors
 Error Code | Meaning
