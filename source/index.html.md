@@ -1245,7 +1245,9 @@ curl\
       "can_call_client": true,
       "cannot_decline_jobs": true,
       "can_take_ondemand_jobs": true,
-      "has_to_send_summary_on_checkout": true
+      "has_to_send_summary_on_checkout": true,
+      "should_not_track_location": false,
+      "should_not_track_geofence": false
     },
     "created_at": 1504857514
   }
@@ -1284,6 +1286,8 @@ Parameter | Type | Description
 `permissions.cannot_decline_jobs` | *boolean* | Can unit decline jobs
 `permissions.can_take_ondemand_jobs` | *boolean* | Can unit receive jobs on-demand via notifications that require response
 `permissions.has_to_send_summary_on_checkout` | *boolean* | Should unit sent report on checkout
+`permissions.should_not_track_location` | *boolean* | Should unit send updates for current location
+`permissions.should_not_track_geofence` | *boolean* | Should unit send updates for entering and leaving areas around bookings
 `created_at` | *integer* | Timestamp of unit registration
 
 ## System languages
