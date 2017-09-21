@@ -1246,8 +1246,8 @@ curl\
       "cannot_decline_jobs": true,
       "can_take_ondemand_jobs": true,
       "has_to_send_summary_on_checkout": true,
-      "should_not_track_location": false,
-      "should_not_track_geofence": false
+      "do_not_track_location": false,
+      "do_not_track_geofence": false
     },
     "created_at": 1504857514
   }
@@ -1286,8 +1286,8 @@ Parameter | Type | Description
 `permissions.cannot_decline_jobs` | *boolean* | Can unit decline jobs
 `permissions.can_take_ondemand_jobs` | *boolean* | Can unit receive jobs on-demand via notifications that require response
 `permissions.has_to_send_summary_on_checkout` | *boolean* | Should unit sent report on checkout
-`permissions.should_not_track_location` | *boolean* | Should unit send updates for current location
-`permissions.should_not_track_geofence` | *boolean* | Should unit send updates for entering and leaving areas around bookings
+`permissions.do_not_track_location` | *boolean* | Stops unit from sending updates for current location
+`permissions.do_not_track_geofence` | *boolean* | Stops unit from sending updates for entering and leaving areas around bookings
 `created_at` | *integer* | Timestamp of unit registration
 
 ## System languages
@@ -2065,3 +2065,45 @@ The current time on the server.
 Parameter | Type | Description
 -------- | ----- | -------
 `utc_time` | *integer* | UTC timestamp
+
+## Exceptions
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/tracked_locations"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "latitude": 21.197216,
+      "longitude": 21.621094,
+      "event_time": 1496922768
+    }
+  ]
+}
+```
+
+Locations tracked over time for the unit.
+
+`"path": "tracked_locations"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`latitude` | *double* | Latitude tracked
+`longitude` | *double* | Longitude tracked
+`event_time` | *integer* | Timestamp when the event occurred and was saved (may be sent later)
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+* [Tracked locations errors](#tracked-locations-errors)
