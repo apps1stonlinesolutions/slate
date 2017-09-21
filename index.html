@@ -1945,8 +1945,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"cannot_decline_jobs"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"can_take_ondemand_jobs"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"has_to_send_summary_on_checkout"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"should_not_track_location"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"should_not_track_geofence"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="nt">"do_not_track_location"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"do_not_track_geofence"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1504857514</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -2082,14 +2082,14 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Should unit sent report on checkout</td>
 </tr>
 <tr>
-<td><code class="prettyprint">permissions.should_not_track_location</code></td>
+<td><code class="prettyprint">permissions.do_not_track_location</code></td>
 <td><em>boolean</em></td>
-<td>Should unit send updates for current location</td>
+<td>Stops unit from sending updates for current location</td>
 </tr>
 <tr>
-<td><code class="prettyprint">permissions.should_not_track_geofence</code></td>
+<td><code class="prettyprint">permissions.do_not_track_geofence</code></td>
 <td><em>boolean</em></td>
-<td>Should unit send updates for entering and leaving areas around bookings</td>
+<td>Stops unit from sending updates for entering and leaving areas around bookings</td>
 </tr>
 <tr>
 <td><code class="prettyprint">created_at</code></td>
@@ -3172,6 +3172,66 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>UTC timestamp</td>
 </tr>
 </tbody></table>
+
+<h2 id="exceptions">Exceptions</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/tracked_locations"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">21.197216</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">21.621094</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"event_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1496922768</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Locations tracked over time for the unit.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;tracked_locations&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">latitude</code></td>
+<td><em>double</em></td>
+<td>Latitude tracked</td>
+</tr>
+<tr>
+<td><code class="prettyprint">longitude</code></td>
+<td><em>double</em></td>
+<td>Longitude tracked</td>
+</tr>
+<tr>
+<td><code class="prettyprint">event_time</code></td>
+<td><em>integer</em></td>
+<td>Timestamp when the event occurred and was saved (may be sent later)</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+<li><a href="#tracked-locations-errors">Tracked locations errors</a></li>
+</ul>
 
           <h1 id="errors">Errors</h1>
 
