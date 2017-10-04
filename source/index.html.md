@@ -798,6 +798,57 @@ This endpoint returns:
 * [Common errors](#common-errors)
 * [Reset password](#reset-password-errors)
 
+
+## Change password
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "old_password": "jamie",
+        "new_password": "jamie1",
+        "confirm_new_password": "jamie1",
+}'\
+ "https://{{BASE_URL}}/v2/client/change_password"
+```
+
+> The above request success response is:
+
+```json
+{
+  "success": [
+    {
+      "code": 2000,
+      "message": "Success",
+      "debug_message": null,
+      "debug_id": null
+    }
+  ]
+}
+```
+
+Change password of user.
+
+`"path": "change_password"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`old_password `<br>*required* | *string* | Client current password of account
+`new_password`<br>*required* | *string* | Client new password
+`confirm_new_password`<br>*required* | *string* | Confirmation of client new password
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
 # Service data
 
 
