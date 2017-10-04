@@ -1248,6 +1248,72 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <li><a href="#reset-password-errors">Reset password</a></li>
 </ul>
 
+<h2 id="change-password">Change password</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "old_password": "jamie",
+        "new_password": "jamie1",
+        "confirm_new_password": "jamie1",
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/change_password"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Change password of user.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;change_password&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">old_password</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Client current password of account</td>
+</tr>
+<tr>
+<td><code class="prettyprint">new_password</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Client new password</td>
+</tr>
+<tr>
+<td><code class="prettyprint">confirm_new_password</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Confirmation of client new password</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h1 id="service-data">Service data</h1>
 
 <h2 id="categories">Categories</h2>
@@ -1931,8 +1997,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     </span><span class="nt">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07123456789"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07123456789"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1972,22 +2039,22 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Unique identifier</td>
 </tr>
 <tr>
-<td><code class="prettyprint">username</code></td>
+<td><code class="prettyprint">username</code><br><em>editable</em></td>
 <td><em>string</em></td>
 <td>Unit email for login</td>
 </tr>
 <tr>
-<td><code class="prettyprint">name</code></td>
+<td><code class="prettyprint">name</code><br><em>editable</em></td>
 <td><em>string</em></td>
 <td>First name and last name of unit</td>
 </tr>
 <tr>
-<td><code class="prettyprint">address</code></td>
+<td><code class="prettyprint">address</code><br><em>editable</em></td>
 <td><em>string</em></td>
 <td>Full address of unit (e.g. street name, building number etc.)</td>
 </tr>
 <tr>
-<td><code class="prettyprint">postcode</code></td>
+<td><code class="prettyprint">postcode</code><br><em>editable</em></td>
 <td><em>string</em></td>
 <td>Postcode of the unit</td>
 </tr>
@@ -1997,12 +2064,12 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Performance score of Unit (1-5)</td>
 </tr>
 <tr>
-<td><code class="prettyprint">birthdate</code></td>
+<td><code class="prettyprint">birthdate</code><br><em>editable</em></td>
 <td><em>integer</em></td>
 <td>Timestamp of unit date of birth</td>
 </tr>
 <tr>
-<td><code class="prettyprint">gender</code></td>
+<td><code class="prettyprint">gender</code><br><em>editable</em></td>
 <td><em>string</em></td>
 <td>Gender of the unit</td>
 </tr>
@@ -2022,7 +2089,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Language code user chose from Settings in XRM or app. List of languages received at <a href="#system-languages">system_languages</a></td>
 </tr>
 <tr>
-<td><code class="prettyprint">phones</code></td>
+<td><code class="prettyprint">phones</code><br><em>editable</em></td>
 <td><em>array</em></td>
 <td>List of phone numbers of unit</td>
 </tr>
@@ -2032,17 +2099,22 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Unique identifier</td>
 </tr>
 <tr>
-<td><code class="prettyprint">phones.number</code></td>
+<td><code class="prettyprint">phones.value</code><br><em>editable</em></td>
 <td><em>string</em></td>
 <td>Phone number</td>
 </tr>
 <tr>
-<td><code class="prettyprint">phones.default</code></td>
+<td><code class="prettyprint">phones.default</code><br><em>editable</em></td>
 <td><em>boolean</em></td>
 <td>Is the phone the default used by the system for receiving calls and SMS</td>
 </tr>
 <tr>
-<td><code class="prettyprint">avatar.token</code></td>
+<td><code class="prettyprint">phones.sort</code><br><em>editable</em></td>
+<td><em>string</em></td>
+<td>Order in list</td>
+</tr>
+<tr>
+<td><code class="prettyprint">avatar.token</code><br><em>editable</em></td>
 <td><em>string</em></td>
 <td>File server token</td>
 </tr>
