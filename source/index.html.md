@@ -812,7 +812,7 @@ curl\
  -d '{
         "old_password": "jamie",
         "new_password": "jamie1",
-        "confirm_new_password": "jamie1",
+        "confirm_new_password": "jamie1"
 }'\
  "https://{{BASE_URL}}/v2/client/change_password"
 ```
@@ -1342,6 +1342,191 @@ Parameter | Type | Description
 `permissions.do_not_track_location` | *boolean* | Stops unit from sending updates for current location
 `permissions.do_not_track_geofence` | *boolean* | Stops unit from sending updates for entering and leaving areas around bookings
 `created_at` | *integer* | Timestamp of unit registration
+
+
+
+
+## Jobs
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/jobs"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "id": 2584075,
+      "app_time": 1504620000,
+      "flexible_from": 1504620000,
+      "flexible_to": 1504620000,
+      "client_name": "Leigh Turner",
+      "client_contacts": [
+        1
+      ],
+      "total_formatted": "£97",
+      "payment_method": 1,
+      "currency_code": "GBP",
+      "paid": false,
+      "work_time": 120,
+      "require_report": 4,
+      "performed": 0,
+      "status": "Booked",
+      "company_name": "Fantastic Services",
+      "company_phone": "02034045188",
+      "brand": "Fantastic Services",
+      "insufficient_travel_time_warning_time": 1504616400,
+      "cant_reach_client_by_phone": null,
+      "cant_reach_client_by_sms": null,
+      "canChangePaymentMethod": true,
+      "canChangePrice": true,
+      "canCrossSell": true,
+      "service_names": [
+        "Gardening"
+      ],
+      "icons": [
+        {
+          "title": "Key:",
+          "value": "Yes"
+        }
+      ],
+      "properties": [
+        {
+          "title": "Gardening",
+          "options": [
+            {
+              "title": "Additional charges such as team compensation,parking,congestion",
+              "attributes": [
+                {
+                  "title": "Charges",
+                  "values": [
+                    "Administration fee",
+                    "Transaction fee - 0"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "addresses": [
+        {
+          "postcode": "UB7 7LQ",
+          "contact_person": "",
+          "address": "75 Drayton Gardens, WEST DRAYTON, Middlesex, UB7 7LQ",
+          "address_note": "",
+          "flat": "",
+          "parking": "Irrelevant",
+          "station": "",
+          "lat": 51.50565968,
+          "lng": -0.4719201
+        }
+      ],
+      "comments": [
+        {
+          "note": "This is a comment",
+          "created_at": 1431936812,
+          "tags": [
+            {
+              "title": "Pro",
+              "color": "#232323"
+            }
+          ]
+        }
+      ],
+      "report": {
+        "id": 20,
+        "payment_method": 1,
+        "work_time": 360,
+        "comment": null,
+        "money_collected": 0
+      },
+      "events": [
+        1
+      ],
+      "attachments": [
+        1
+      ],
+      "contacts": [
+        1
+      ],
+      "message_templates": [
+        1
+      ],
+      "cancel_reasons": [
+        1
+      ],
+      "check_lists": [
+        1
+      ],
+      "price_modifiers": [
+        1
+      ],
+      "geofence_radius": [
+        1
+      ]
+    }
+  ]
+}
+```
+
+
+Schedule with jobs for the unit
+
+`"path": "jobs"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`app_time` | *integer* | Appointment time for the job in UTC timestamp
+`flexible_from` | *integer* | Start of timeframe to execute the job in UTC timestamp
+`flexible_to` | *integer* | End of timeframe to execute the job in UTC timestamp
+`client_name` | *string* | Client name
+`client_contacts` | *array client_contacts* | Phone numbers client provided for contact
+`total_formatted` | *string* | Price of the service
+`payment_method` | *array payment_methods* | Payment method client will use to pay
+`currency_code` | *string* | Currency code
+`paid` | *boolean* | Flag indicating if client is charged
+`work_time` | *integer* | Job duration in minutes
+`require_report` | *integer* | *<b>0</b> - No report required*<br>*<b>1</b> - Should send report at the end of the day*<br>*<b>2</b> - Should send report now*<br>*<b>3</b> - Can't proceed until report sent*
+`performed` | *integer* | *<b>0</b> - No checkout or auto performed*<br>*<b>1</b> - Checked out*<br>*<b>2</b> - Auto performed (24h passed)*
+`rating` | *double* | Performance score of Unit (1-5)
+`birthdate` | *integer* | Timestamp of unit date of birth
+`gender` | *string* | Gender of the unit
+`team` | *string* | Name of team the unit is assigned to
+`country_code` | *string* | Country code of area the Unit operates in
+`language_code` | *string* | Language code user chose from Settings in XRM or app. List of languages received at [system_languages](#system-languages)
+`phones` | *array* | List of phone numbers of unit
+`phones.id` | *int* | Unique identifier
+`phones.value` | *string* | Phone number
+`phones.default` | *boolean* | Is the phone the default used by the system for receiving calls and SMS
+`phones.sort` | *string* | Order in list
+`avatar.token` | *string* | File server token
+`avatar.url` | *string* | URL to avatar image
+`permissions` | *array* | List of permissions of unit
+`permissions.can_message_client` | *boolean* | Can unit send SMS messages to clients
+`permissions.can_call_client` | *boolean* | Can unit call clients
+`permissions.cannot_decline_jobs` | *boolean* | Can unit decline jobs
+`permissions.can_take_ondemand_jobs` | *boolean* | Can unit receive jobs on-demand via notifications that require response
+`permissions.has_to_send_summary_on_checkout` | *boolean* | Should unit sent report on checkout
+`permissions.do_not_track_location` | *boolean* | Stops unit from sending updates for current location
+`permissions.do_not_track_geofence` | *boolean* | Stops unit from sending updates for entering and leaving areas around bookings
+`created_at` | *integer* | Timestamp of unit registration
+
+
+
+
+
 
 ## System languages
 
