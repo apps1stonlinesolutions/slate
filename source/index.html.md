@@ -1630,6 +1630,7 @@ Parameter | Type | Description
 `team` | *string* | Name of team the unit is assigned to
 `country_code` | *string* | Country code of area the Unit operates in
 `language_code` | *string* | Language code user chose from Settings in XRM or app. List of languages received at [system_languages](#system-languages)
+`events.type` | *integer* | *<b>1</b> - Checkin*<br>*<b>2</b> - Checkout*<br>*<b>7</b> - View*<br>*<b>8</b> - Confirm*<br>*<b>12</b> - Arrive*<br>*<b>13</b> - Depart*<br>
 `phones` | *array* | List of phone numbers of unit
 `phones.id` | *int* | Unique identifier
 `phones.value` | *string* | Phone number
