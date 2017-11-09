@@ -1372,14 +1372,14 @@ curl\
       "service_names": [
         "Gardening"
       ],
-      "app_time": 1504620000,
-      "flexible_from": null,
-      "flexible_to": null,
+      "app_time_utc_raw": 1504620000,
+      "flexible_from_utc_raw": null,
+      "flexible_to_utc_raw": null,
       "insufficient_travel_time_warning_time": 1504616400,
       "total_formatted": "£97",
       "require_report": 4,
       "work_time": 120,
-      "contacts": [
+      "client_contacts": [
         {
           "id": 203,
           "value": "02034042956",
@@ -1581,11 +1581,11 @@ curl\
           "event_time": 1431936812,
           "tags": [
             {
-              "title": "Pro",
+              "name": "Pro",
               "color": "#232323"
             },
             {
-              "title": "System",
+              "name": "System",
               "color": "#343434"
             }
           ]
@@ -1612,9 +1612,9 @@ Schedule with jobs for the unit
 Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
-`app_time` | *integer* | Appointment time for the job in UTC timestamp
-`flexible_from` | *integer* | Start of timeframe to execute the job in UTC timestamp
-`flexible_to` | *integer* | End of timeframe to execute the job in UTC timestamp
+`app_time_utc_raw` | *integer* | Appointment time for the job in UTC timestamp
+`flexible_from_utc_raw` | *integer* | Start of timeframe to execute the job in UTC timestamp
+`flexible_to_utc_raw` | *integer* | End of timeframe to execute the job in UTC timestamp
 `client_name` | *string* | Client name
 `client_contacts` | *array client_contacts* | Phone numbers client provided for contact
 `total_formatted` | *string* | Price of the service
