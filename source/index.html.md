@@ -1036,11 +1036,6 @@ curl\
       "sort": 100,
       "title": "have the tradesmen left the property?",
       "summary_title": "tradesman _left",
-      "infos": [
-        5,
-        7,
-        9
-      ],
       "required": true,
       "choice_items": [
         24,
@@ -1446,7 +1441,7 @@ curl\
           ]
         }
       ],
-      "check_lists": [
+      "checklists": [
         {
           "type": 1,
           "choices": [
