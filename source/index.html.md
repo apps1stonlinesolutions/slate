@@ -1242,6 +1242,47 @@ Parameter | Type | Description
 `link` | *string* | Link to treat website.
 `sort` | *integer* | Order of item in list
 
+# Clients
+
+## Purchase membership
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+       "client_paymethod_id": 12345,
+       "client_paymethod": {
+          "payment_provider_id": 12,
+          "token": "hzkchvkuhzgxcvkjhsbdfnaljJGKJbdasnbdLJHDs"
+       },
+       "source_id": 11426,
+       "domain_url": "fantasticcleaners.com",
+       "source_phone": "02037460906"
+}'\
+ "https://{{BASE_URL}}/v2/client/purchase_membership"
+```
+
+Clients can purchase membership by providing card details. Card can be created upon purchase or existin card id can be provided upon purchase.
+
+`"path": "purchase_membership"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`client_paymethod_id`<br>*required (if no `client_paymethod`)* | *integer* | Object id of paymethod (card saved as user payment detail)
+`client_paymethod`<br>*required (if no `client_paymethod_id`)* | *object* | Details for creating new paymethod
+`client_paymethod.payment_provider_id`<br>*required* | *integer* | Stripe account id
+`client_paymethod.token`<br>*required* | *string* | Card token from Stripe
+`source_id`<br>*optional* | *integer* | Object id of source
+`domain_url`<br>*optional* | *string* | Source domain url
+`source_phone`<br>*optional* | *string* | Source phone number
+
+* [Common errors](#common-errors)
 
 
 # Units
