@@ -382,18 +382,22 @@ curl\
 {
   "data": {
     "template_name": "default",
-    "website_name": "website name",
+    "brand_name": "Local Cleaners",
     "phone": "+442221123123",
-    "show_phone": true,
     "default_category_id": 1,
     "default_service_id": 3,
-    "cta_color": "#6c391c",
     "currency_code": "GBP",
     "locale": "en_GB",
     "website_url": "http://domainname.com/",
-    "logo_url": "http://domainname.com/images/logo.jpg",
     "terms_and_conditions_url": "https://gofantastic.com/terms-and-conditions.html",
-    "privacy_policy_url": "https://gofantastic.com/privacy-policy.html"
+    "privacy_policy_url": "https://gofantastic.com/privacy-policy.html",
+    "show_manage_membership_section": true,
+    "default_payment_method": 1,
+    "customize": {
+      "show_phone": true,
+      "cta_color": "#6c391c",
+      "logo_url": "http://domainname.com/images/logo.jpg"
+    }
   }
 }
 ```
@@ -407,18 +411,21 @@ Configuration object parameters for initial settings in the client side based on
 Parameter | Type | Description
 -------- | ----- | -------
 `template_name` | *string* | If you want to customize an existing template it will help you decide which template needs to be loaded.
-`website_name` | *string* | If you need website title to display
+`brand_name` | *string* | If you need website title to display
 `phone` | *string* | Default website phone number
-`show_phone` | *boolean* | Configuration for hiding or showing website phone number in the interface
 `default_category_id` | *integer* | Configuration for default selected category in the interface
 `default_service_id` | *integer* | Configuration for default selected service in the interface
-`cta_color` | *string* | Configuration if you want to customize Call to Action colors in the template
 `currency_code` | *string* | Configuration for the currency code
 `locale` | *string* | Configuration for the locale
 `website_url` | *string* | Configuration for the full website url with protocol Ex.: https://domainname.com/
-`logo_url` | *string* | Configuration full path of the website logo Ex.: https://domainname.com/images/logo.png
 `terms_and_conditions_url` | *string* | Configuration of full url in website for terms and conditions
-`privacy_policy_url` | *string* | Configuration of full url in website for privacy and policy
+`privacy_policy_url` | *string* | Configuration of full url in website for privacy and policy]
+`show_manage_membership_section` | *boolean* | Configuration for hiding or showing managing membership section in account
+`default_payment_method` | *object\<[payment_methods](#payment-methods)\>* | Default payment method for profile
+`customize` | *object* | Dynamic section with custom values for each profile
+`customize.show_phone` | *boolean* | Configuration for hiding or showing website phone number in the interface
+`customize.cta_color` | *string* | Configuration if you want to customize Call to Action colors in the template
+`customiez.logo_url` | *string* | Configuration full path of the website logo Ex.: https://domainname.com/images/logo.png
 
 ## Validations
 
