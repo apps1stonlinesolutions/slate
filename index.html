@@ -1961,6 +1961,81 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<h1 id="clients">Clients</h1>
+
+<h2 id="purchase-membership">Purchase membership</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+       "client_paymethod_id": 12345,
+       "client_paymethod": {
+          "payment_provider_id": 12,
+          "token": "hzkchvkuhzgxcvkjhsbdfnaljJGKJbdasnbdLJHDs"
+       },
+       "source_id": 11426,
+       "domain_url": "fantasticcleaners.com",
+       "source_phone": "02037460906"
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/purchase_membership"</span>
+</code></pre>
+
+<p>Clients can purchase membership by providing card details. Card can be created upon purchase or existin card id can be provided upon purchase.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;purchase_membership&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">client_paymethod_id</code><br><em>required (if no <code class="prettyprint">client_paymethod</code>)</em></td>
+<td><em>integer</em></td>
+<td>Object id of paymethod (card saved as user payment detail)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">client_paymethod</code><br><em>required (if no <code class="prettyprint">client_paymethod_id</code>)</em></td>
+<td><em>object</em></td>
+<td>Details for creating new paymethod</td>
+</tr>
+<tr>
+<td><code class="prettyprint">client_paymethod.payment_provider_id</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td>Stripe account id</td>
+</tr>
+<tr>
+<td><code class="prettyprint">client_paymethod.token</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Card token from Stripe</td>
+</tr>
+<tr>
+<td><code class="prettyprint">source_id</code><br><em>optional</em></td>
+<td><em>integer</em></td>
+<td>Object id of source</td>
+</tr>
+<tr>
+<td><code class="prettyprint">domain_url</code><br><em>optional</em></td>
+<td><em>string</em></td>
+<td>Source domain url</td>
+</tr>
+<tr>
+<td><code class="prettyprint">source_phone</code><br><em>optional</em></td>
+<td><em>string</em></td>
+<td>Source phone number</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h1 id="units">Units</h1>
 
 <h2 id="profile">Profile</h2>
