@@ -1418,7 +1418,7 @@ curl\
       "currency_code": "GBP",
       "payment_method": {
         "id": 1,
-        "title": "Cash"
+        "name": "Cash"
       },
       "service_names": [
         "Gardening"
@@ -1448,7 +1448,7 @@ curl\
       "message_templates": [
         {
           "id": 15,
-          "short_text": "In front of the property",
+          "title": "In front of the property",
           "message": "Dear [CLIENT_NAME], I am in front of your property. Please let me in or call our office on 02034041930. Your Fantastic Professional",
           "vars": [
             {
