@@ -234,7 +234,15 @@ curl\
     "postcode": "SW12 2TN",
     "lat": 51.604903,
     "lng": -0.457022
-  }
+  },
+  "success": [
+    {
+      "code": 1020,
+      "message": "Address created.",
+      "debug_message": "postal_code missing.",
+      "debug_id": 213124
+    }
+  ]
 }
 ```
 
@@ -249,7 +257,7 @@ If operation is successful created/updated object is returned.
 
 Parameter | Type | Description
 -------- | ----- | -------
-`return`<br>*optional, default <b>status</b>* | *string* | Determines response content for successfully created/updated object:<br><br>`status` - returns only status of the operation<br>`id` - returns the id of the created/updated object<br>`object` - returns the full created/updated object
+`return`<br>*optional, default <b>object</b>* | *string* | Determines response content for successfully created/updated object:<br><br>`id` - returns the id of the created/updated object<br>`object` - returns the full created/updated object
 
 
 ## Delete
@@ -1380,7 +1388,7 @@ Parameter | Type | Description
 `permissions.can_call_client` | *boolean* | Can unit call clients
 `permissions.cannot_decline_jobs` | *boolean* | Can unit decline jobs
 `permissions.can_take_ondemand_jobs` | *boolean* | Can unit receive jobs on-demand via notifications that require response
-`permissions.has_to_send_summary_on_checkout` | *boolean* | Should unit sent report on checkout
+`permissions.has_to_send_summary_on_checkout` | *boolean* | Should unit send summary on checkout
 `permissions.do_not_track_location` | *boolean* | Stops unit from sending updates for current location
 `permissions.do_not_track_geofence` | *boolean* | Stops unit from sending updates for entering and leaving areas around bookings
 `created_at` | *integer* | Timestamp of unit registration
@@ -1420,7 +1428,7 @@ curl\
       "flexible_to_utc_raw": null,
       "insufficient_travel_time_warning_time": 1504616400,
       "total_formatted": "£97",
-      "require_report": 4,
+      "require_summary": 4,
       "work_time": 120,
       "client_contacts": [
         {
@@ -1522,7 +1530,7 @@ curl\
           "event_time": 1431936812
         }
       ],
-      "report": {
+      "summary": {
         "id": 20,
         "payment_method": 1,
         "work_time": 360,
@@ -1665,7 +1673,7 @@ Parameter | Type | Description
 `currency_code` | *string* | Currency code
 `paid` | *boolean* | Flag indicating if client is charged
 `work_time` | *integer* | Job duration in minutes
-`require_report` | *integer* | *<b>0</b> - No report required*<br>*<b>1</b> - Should send report at the end of the day*<br>*<b>2</b> - Should send report now*<br>*<b>3</b> - Can't proceed until report sent*
+`require_summary` | *integer* | *<b>0</b> - No summary required*<br>*<b>1</b> - Should send summary at the end of the day*<br>*<b>2</b> - Should send summary now*<br>*<b>3</b> - Can't proceed until summary sent*
 `performed` | *integer* | *<b>0</b> - No checkout or auto performed*<br>*<b>1</b> - Checked out*<br>*<b>2</b> - Auto performed (24h passed)*
 `rating` | *double* | Performance score of Unit (1-5)
 `birthdate` | *integer* | Timestamp of unit date of birth
@@ -1686,7 +1694,7 @@ Parameter | Type | Description
 `permissions.can_call_client` | *boolean* | Can unit call clients
 `permissions.cannot_decline_jobs` | *boolean* | Can unit decline jobs
 `permissions.can_take_ondemand_jobs` | *boolean* | Can unit receive jobs on-demand via notifications that require response
-`permissions.has_to_send_summary_on_checkout` | *boolean* | Should unit sent report on checkout
+`permissions.has_to_send_summary_on_checkout` | *boolean* | Should unit sent summary on checkout
 `permissions.do_not_track_location` | *boolean* | Stops unit from sending updates for current location
 `permissions.do_not_track_geofence` | *boolean* | Stops unit from sending updates for entering and leaving areas around bookings
 `created_at` | *integer* | Timestamp of unit registration
