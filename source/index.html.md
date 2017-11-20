@@ -1300,6 +1300,23 @@ Parameter | Type | Description
 * [Common errors](#common-errors)
 
 
+## Purchase membership payment methods
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/purchase_membership_payment_methods"
+```
+
+
+[Payment methods](#payment-methods) for puchasing membership.
+
+`"path": "purchase_membership_payment_methods"`
+
 # Units
 
 ## Profile
