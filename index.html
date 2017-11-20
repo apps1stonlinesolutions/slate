@@ -2063,6 +2063,19 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
+<h2 id="purchase-membership-payment-methods">Purchase membership payment methods</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/purchase_membership_payment_methods"</span>
+</code></pre>
+
+<p><a href="#payment-methods">Payment methods</a> for puchasing membership.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;purchase_membership_payment_methods&quot;</code></p>
+
 <h1 id="units">Units</h1>
 
 <h2 id="profile">Profile</h2>
