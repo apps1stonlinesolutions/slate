@@ -609,12 +609,38 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     </span><span class="nt">"terms_and_conditions_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://gofantastic.com/terms-and-conditions.html"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"privacy_policy_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://gofantastic.com/privacy-policy.html"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"show_manage_membership_section"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"default_payment_method"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"show_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"cta_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#6c391c"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://domainname.com/images/logo.jpg"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="nt">"payment_methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="mi">5</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above request web profile success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"template_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"brand_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Local Cleaners"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+442221123123"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"default_category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"default_service_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GBP"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_GB"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"website_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://domainname.com/"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"terms_and_conditions_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://gofantastic.com/terms-and-conditions.html"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"privacy_policy_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://gofantastic.com/privacy-policy.html"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"show_manage_membership_section"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"payment_methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="mi">5</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"show_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cta_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#6c391c"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://domainname.com/images/logo.jpg"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -688,27 +714,33 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Configuration for hiding or showing managing membership section in account</td>
 </tr>
 <tr>
-<td><code class="prettyprint">default_payment_method</code></td>
-<td><em>object&lt;<a href="#payment-methods">payment_methods</a>&gt;</em></td>
-<td>Default payment method for profile</td>
+<td><code class="prettyprint">payment_methods</code></td>
+<td><em>array&lt;<a href="#payment-methods">payment_methods</a>&gt;</em></td>
+<td>Payment methods for profile</td>
 </tr>
+</tbody></table>
+
+<h3 id="web-profiles-additional-response-parameters">Web profiles additional response parameters</h3>
+
+<table><thead>
 <tr>
-<td><code class="prettyprint">customize</code></td>
-<td><em>object</em></td>
-<td>Dynamic section with custom values for each profile</td>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
 </tr>
+</thead><tbody>
 <tr>
-<td><code class="prettyprint">customize.show_phone</code></td>
+<td><code class="prettyprint">show_phone</code></td>
 <td><em>boolean</em></td>
 <td>Configuration for hiding or showing website phone number in the interface</td>
 </tr>
 <tr>
-<td><code class="prettyprint">customize.cta_color</code></td>
+<td><code class="prettyprint">cta_color</code></td>
 <td><em>string</em></td>
 <td>Configuration if you want to customize Call to Action colors in the template</td>
 </tr>
 <tr>
-<td><code class="prettyprint">customiez.logo_url</code></td>
+<td><code class="prettyprint">logo_url</code></td>
 <td><em>string</em></td>
 <td>Configuration full path of the website logo Ex.: https://domainname.com/images/logo.png</td>
 </tr>
@@ -1829,6 +1861,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cash"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -1838,6 +1871,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Card"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stripe"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"payment_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
@@ -1872,6 +1906,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">sort</code></td>
 <td><em>integer</em></td>
 <td>Order of item in list</td>
+</tr>
+<tr>
+<td><code class="prettyprint">default</code></td>
+<td><em>boolean</em></td>
+<td>Is this payment method the default</td>
 </tr>
 <tr>
 <td><code class="prettyprint">title</code></td>
