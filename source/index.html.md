@@ -400,12 +400,38 @@ curl\
     "terms_and_conditions_url": "https://gofantastic.com/terms-and-conditions.html",
     "privacy_policy_url": "https://gofantastic.com/privacy-policy.html",
     "show_manage_membership_section": true,
-    "default_payment_method": 1,
-    "customize": {
-      "show_phone": true,
-      "cta_color": "#6c391c",
-      "logo_url": "http://domainname.com/images/logo.jpg"
-    }
+    "payment_methods": [
+      1,
+      3,
+      5
+    ]
+}
+```
+
+> The above request web profile success response is:
+
+```json
+{
+  "data": {
+    "template_name": "default",
+    "brand_name": "Local Cleaners",
+    "phone": "+442221123123",
+    "default_category_id": 1,
+    "default_service_id": 3,
+    "currency_code": "GBP",
+    "locale": "en_GB",
+    "website_url": "http://domainname.com/",
+    "terms_and_conditions_url": "https://gofantastic.com/terms-and-conditions.html",
+    "privacy_policy_url": "https://gofantastic.com/privacy-policy.html",
+    "show_manage_membership_section": true,
+    "payment_methods": [
+      1,
+      3,
+      5
+    ],
+    "show_phone": true,
+    "cta_color": "#6c391c",
+    "logo_url": "http://domainname.com/images/logo.jpg"
   }
 }
 ```
@@ -429,11 +455,15 @@ Parameter | Type | Description
 `terms_and_conditions_url` | *string* | Configuration of full url in website for terms and conditions
 `privacy_policy_url` | *string* | Configuration of full url in website for privacy and policy]
 `show_manage_membership_section` | *boolean* | Configuration for hiding or showing managing membership section in account
-`default_payment_method` | *object\<[payment_methods](#payment-methods)\>* | Default payment method for profile
-`customize` | *object* | Dynamic section with custom values for each profile
-`customize.show_phone` | *boolean* | Configuration for hiding or showing website phone number in the interface
-`customize.cta_color` | *string* | Configuration if you want to customize Call to Action colors in the template
-`customiez.logo_url` | *string* | Configuration full path of the website logo Ex.: https://domainname.com/images/logo.png
+`payment_methods` | *array\<[payment_methods](#payment-methods)\>* | Payment methods for profile
+
+### Web profiles additional response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`show_phone` | *boolean* | Configuration for hiding or showing website phone number in the interface
+`cta_color` | *string* | Configuration if you want to customize Call to Action colors in the template
+`logo_url` | *string* | Configuration full path of the website logo Ex.: https://domainname.com/images/logo.png
 
 ## Validations
 
@@ -1168,6 +1198,7 @@ curl\
     {
       "id": 1,
       "sort": 1,
+      "default": true,
       "title": "Cash",
       "type": "None",
       "attributes": null,
@@ -1177,6 +1208,7 @@ curl\
     {
       "id": 2,
       "sort": 1,
+      "default": false,
       "title": "Card",
       "type": "Stripe",
       "payment_provider_id": 3,
@@ -1200,6 +1232,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `sort` | *integer* | Order of item in list
+`default` | *boolean* | Is this payment method the default
 `title` | *string* | Display name of payment method
 `type` | *string* | *<b>None</b> - No processing needed (e.g. Cash payment)*<br>*<b>Stripe</b> - Card payment via Stripe*
 `payment_provider_id` | *integer* | Identifier for the the account used for the payment method (e.g. Stripe UK, Stripe AUS etc.)
