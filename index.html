@@ -2548,7 +2548,10 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a comment"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.4324324</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.4324324</span><span class="p">,</span><span class="w">
           </span><span class="nt">"event_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1431936812</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1431936812</span><span class="p">,</span><span class="w">
           </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pro"</span><span class="p">,</span><span class="w">
@@ -2759,6 +2762,21 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">permissions.do_not_track_geofence</code></td>
 <td><em>boolean</em></td>
 <td>Stops unit from sending updates for entering and leaving areas around bookings</td>
+</tr>
+<tr>
+<td><code class="prettyprint">comments</code></td>
+<td><em>array</em></td>
+<td>List of comments for the job</td>
+</tr>
+<tr>
+<td><code class="prettyprint">comments.event_time</code></td>
+<td><em>integer</em></td>
+<td>UTC timestamp of when the comment was created on the device</td>
+</tr>
+<tr>
+<td><code class="prettyprint">comments.created_at</code></td>
+<td><em>integer</em></td>
+<td>UTC timestamp of when the comment was created on the server</td>
 </tr>
 <tr>
 <td><code class="prettyprint">created_at</code></td>
