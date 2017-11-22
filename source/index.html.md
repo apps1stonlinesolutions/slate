@@ -1679,7 +1679,10 @@ curl\
         {
           "id": 1,
           "comment": "This is a comment",
+          "lat": 23.4324324,
+          "lng": 23.4324324,
           "event_time": 1431936812,
+          "created_at": 1431936812,
           "tags": [
             {
               "name": "Pro",
@@ -1747,6 +1750,9 @@ Parameter | Type | Description
 `permissions.has_to_send_summary_on_checkout` | *boolean* | Should unit sent summary on checkout
 `permissions.do_not_track_location` | *boolean* | Stops unit from sending updates for current location
 `permissions.do_not_track_geofence` | *boolean* | Stops unit from sending updates for entering and leaving areas around bookings
+`comments` | *array* | List of comments for the job
+`comments.event_time` | *integer* | UTC timestamp of when the comment was created on the device
+`comments.created_at` | *integer* | UTC timestamp of when the comment was created on the server
 `created_at` | *integer* | Timestamp of unit registration
 
 
