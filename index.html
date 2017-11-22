@@ -3322,6 +3322,68 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
+<h2 id="send-message">Send message</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "booking_id": 123,
+        "message_template_id": 12,
+        "vars": [
+         {
+           "variable": "DELAY_MINUTES",
+           "value": "25"
+    }
+  ]
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/unit/send_message"</span>
+</code></pre>
+
+<p>Units can send messages to clients using <a href="#jobs">message templates</a></p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;send_message&quot;</code></p>
+
+<h3 id="send-message-request-parameters">Send message request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">booking_id</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td>Identifier for job to whose client message will be sent</td>
+</tr>
+<tr>
+<td><code class="prettyprint">message_template_id</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td>Message template used for the message</td>
+</tr>
+<tr>
+<td><code class="prettyprint">vars</code></td>
+<td><em>array</em></td>
+<td>List of variables for the message template</td>
+</tr>
+<tr>
+<td><code class="prettyprint">vars.variable</code></td>
+<td><em>string</em></td>
+<td>Variable name</td>
+</tr>
+<tr>
+<td><code class="prettyprint">vars.value</code></td>
+<td><em>string</em></td>
+<td>Unit input for variable</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h1 id="shared">Shared</h1>
 
 <h2 id="push-notifications">Push notifications</h2>
