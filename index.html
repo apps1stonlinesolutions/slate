@@ -2767,6 +2767,43 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<h2 id="jobs-history">Jobs history</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/jobs_history"</span>
+</code></pre>
+
+<p>History of schedule with <a href="#jobs">jobs</a> for the unit</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;jobs_history&quot;</code></p>
+
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">from_date</code></td>
+<td><em>integer</em></td>
+<td><em>one month ago</em></td>
+<td>UTC time stamp to filter results from a date</td>
+</tr>
+<tr>
+<td><code class="prettyprint">to_date</code></td>
+<td><em>integer</em></td>
+<td><em>now</em></td>
+<td>UTC time stamp to filter results to a date</td>
+</tr>
+</tbody></table>
+
 <h2 id="system-languages">System languages</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
