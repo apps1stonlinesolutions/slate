@@ -2146,6 +2146,42 @@ Parameter | Type | Description
 
 * [Common errors](#common-errors)
 
+## Send message
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -d '{
+        "booking_id": 123,
+        "message_template_id": 12,
+        "vars": [
+         {
+           "variable": "DELAY_MINUTES",
+           "value": "25"
+    }
+  ]
+}'\
+ "https://{{BASE_URL}}/v2/unit/send_message"
+```
+
+Units can send messages to clients using [message templates](#jobs)
+
+`"path": "send_message"`
+
+### Send message request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`booking_id`<br>*required* | *integer* | Identifier for job to whose client message will be sent
+`message_template_id`<br>*required* | *integer* | Message template used for the message
+`vars` | *array* | List of variables for the message template
+`vars.variable` | *string* | Variable name
+`vars.value` | *string* | Unit input for variable
+
+* [Common errors](#common-errors)
+
 # Shared
 
 ## Push notifications
