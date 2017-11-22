@@ -1750,8 +1750,28 @@ Parameter | Type | Description
 `created_at` | *integer* | Timestamp of unit registration
 
 
+## Jobs history
 
 
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/jobs_history"
+```
+
+History of schedule with [jobs](#jobs) for the unit
+
+`"path": "jobs_history"`
+
+### `params`
+
+Parameter | Type   | Default | Description
+-------- | ---------- | ---- | -------
+`from_date` | *integer* | *one month ago* | UTC time stamp to filter results from a date
+`to_date` | *integer* | *now* | UTC time stamp to filter results to a date
 
 
 ## System languages
