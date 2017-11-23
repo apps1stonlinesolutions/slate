@@ -1582,10 +1582,10 @@ curl\
       ],
       "summary": {
         "id": 20,
-        "payment_method": 1,
         "work_time": 360,
         "comment": null,
-        "money_collected": 0
+        "money_collected": 0,
+        "event_time": 1431936812
       },
       "services_price_modifiers": [
         {
