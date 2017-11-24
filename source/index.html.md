@@ -2160,7 +2160,9 @@ curl\
          {
            "variable": "DELAY_MINUTES",
            "value": "25"
-    }
+         },
+       "lat": 51.604903,
+       "lng": -0.457022
   ]
 }'\
  "https://{{BASE_URL}}/v2/unit/send_message"
@@ -2179,6 +2181,8 @@ Parameter | Type | Description
 `vars` | *array* | List of variables for the message template
 `vars.variable` | *string* | Variable name
 `vars.value` | *string* | Unit input for variable
+`lat` | *double* | Latitude where event occured
+`lng` | *double* | Longitude where event occured
 
 * [Common errors](#common-errors)
 
