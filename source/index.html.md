@@ -1571,7 +1571,7 @@ curl\
       "attachments": [
         {
           "mime_type": "image/jpeg",
-          "token": "231312rfjsa;dkfjsldkjf",
+          "app_token": "231312rfjsa;dkfjsldkjf",
           "thumbnail_url": "http://file.com/31231298301289",
           "url": "http://file.com/31231298301289",
           "note": "This is a comment",
