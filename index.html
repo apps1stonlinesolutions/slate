@@ -3334,7 +3334,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
          {
            "variable": "DELAY_MINUTES",
            "value": "25"
-    }
+         },
+       "lat": 51.604903,
+       "lng": -0.457022
   ]
 }'</span><span class="se">\</span>
  <span class="s2">"https://{{BASE_URL}}/v2/unit/send_message"</span>
@@ -3377,6 +3379,16 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">vars.value</code></td>
 <td><em>string</em></td>
 <td>Unit input for variable</td>
+</tr>
+<tr>
+<td><code class="prettyprint">lat</code></td>
+<td><em>double</em></td>
+<td>Latitude where event occured</td>
+</tr>
+<tr>
+<td><code class="prettyprint">lng</code></td>
+<td><em>double</em></td>
+<td>Longitude where event occured</td>
 </tr>
 </tbody></table>
 
