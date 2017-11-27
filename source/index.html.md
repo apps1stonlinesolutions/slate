@@ -1726,7 +1726,7 @@ Parameter | Type | Description
 `currency_code` | *string* | Currency code
 `paid` | *boolean* | Flag indicating if client is charged
 `work_time` | *integer* | Job duration in minutes
-`require_summary` | *integer* | *<b>0</b> - No summary required*<br>*<b>1</b> - Should send summary at the end of the day*<br>*<b>2</b> - Should send summary now*<br>*<b>3</b> - Can't proceed until summary sent*
+`require_summary` | *integer* | *<b>0</b> - No summary required*<br>*<b>1</b> - Should send summary at the end of the day*<br>*<b>2</b> - Should send summary now*<br>*<b>3</b> - Can't proceed until summary sent*<br>*<b>4</b> - Summary sent*
 `performed` | *integer* | *<b>0</b> - No checkout or auto performed*<br>*<b>1</b> - Checked out*<br>*<b>2</b> - Auto performed (24h passed)*
 `rating` | *double* | Performance score of Unit (1-5)
 `birthdate` | *integer* | Timestamp of unit date of birth
