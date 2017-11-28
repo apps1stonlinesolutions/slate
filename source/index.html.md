@@ -1620,7 +1620,7 @@ curl\
       "cant_reach_client_by_phone": null,
       "cant_reach_client_by_sms": null,
       "can_change_payment_method": true,
-      "can_change_price": true,
+      "can_edit_booking_price": true,
       "can_cross_sell": true,
       "client_contacts": [
         {
