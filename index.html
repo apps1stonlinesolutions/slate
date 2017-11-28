@@ -1534,6 +1534,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"tooltip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Click here"</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"profile_config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.fantasticservices.com/cleaning/one-off"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="nt">"logic_js"</span><span class="p">:</span><span class="w"> </span><span class="s2">"function getRequiredActionForState(items) { if (items[0].choice_item_id == \"1092\" &amp;&amp; items[0].choice_item_value == 2) { return { \"action\": \"service_redirect\", \"redirect_message_title\": \"This is more like EOT. Wanna go?\", \"redirect_message\": \"This is more like EOT. Wanna go?\", \"OK_title\": \"Go there\", \"cancel_title\": \"Not really\", \"service_id\": 23 }; } else { return null; } }"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -1642,6 +1645,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">customize</code></td>
 <td><em>object</em></td>
 <td>Key-value pairs of custom attributes</td>
+</tr>
+<tr>
+<td><code class="prettyprint">profile_config</code></td>
+<td><em>object</em></td>
+<td>Key-value pairs of custom attributes with different values for each Profile</td>
 </tr>
 <tr>
 <td><code class="prettyprint">logic_js</code></td>
