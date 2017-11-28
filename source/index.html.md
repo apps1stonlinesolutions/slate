@@ -1023,6 +1023,9 @@ curl\
       "customize": {
         "tooltip": "Click here"
       },
+      "profile_config": {
+        "url": "https://www.fantasticservices.com/cleaning/one-off"
+      },
       "logic_js": "function getRequiredActionForState(items) { if (items[0].choice_item_id == \"1092\" && items[0].choice_item_value == 2) { return { \"action\": \"service_redirect\", \"redirect_message_title\": \"This is more like EOT. Wanna go?\", \"redirect_message\": \"This is more like EOT. Wanna go?\", \"OK_title\": \"Go there\", \"cancel_title\": \"Not really\", \"service_id\": 23 }; } else { return null; } }"
     }
   ]
@@ -1056,6 +1059,7 @@ Parameter | Type | Description
 `choices` | *array\<[choice](#choices)\>* | List of questions to book the service
 `payment_methods` | *array\<[payment_methods](#payment-methods)\>* | List of available payment methods for the service
 `customize` | *object* | Key-value pairs of custom attributes
+`profile_config` | *object* | Key-value pairs of custom attributes with different values for each Profile
 `logic_js` | *string* | JavaScript containing functions for modification of booking process
 
 
