@@ -1532,7 +1532,7 @@ curl\
           "value": "2351"
         }
       ],
-      "properties": [
+      "service_details": [
         {
           "title": "Gardening",
           "options": [
