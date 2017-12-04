@@ -938,7 +938,10 @@ curl\
         21,
         36,
         89
-      ]
+      ],
+      "profile_config": {
+        "url": "https://www.fantasticservices.com/cleaning/one-off"
+      },
     }
   ]
 }
@@ -963,6 +966,7 @@ Parameter | Type | Description
 `thumbnail_image_url` | *string* | Link to thumbnail image
 `infos` | *array\<info\>* | List of infos for the category
 `services` | *array\<[service](#services)\>* | List of services for the category
+`profile_config` | *object* | Key-value pairs of custom attributes with different values for each Profile
 
 
 
