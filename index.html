@@ -1411,8 +1411,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
         </span><span class="mi">21</span><span class="p">,</span><span class="w">
         </span><span class="mi">36</span><span class="p">,</span><span class="w">
         </span><span class="mi">89</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"profile_config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.fantasticservices.com/cleaning/one-off"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="err">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1479,6 +1482,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">services</code></td>
 <td><em>array&lt;<a href="#services">service</a>&gt;</em></td>
 <td>List of services for the category</td>
+</tr>
+<tr>
+<td><code class="prettyprint">profile_config</code></td>
+<td><em>object</em></td>
+<td>Key-value pairs of custom attributes with different values for each Profile</td>
 </tr>
 </tbody></table>
 
