@@ -1488,7 +1488,7 @@ curl\
       "total_formatted": "£97",
       "require_summary": 4,
       "work_time": 120,
-      "client_contacts": [
+      "contacts": [
         {
           "id": 203,
           "value": "02034042956",
@@ -1556,25 +1556,12 @@ curl\
         }
       ],
       "checklists": [
-        {
-          "type": 1,
-          "choices": [
-            {
-              "id": 1,
-              "sort": 100,
-              "required": true,
-              "title": "How many bedrooms are there?",
-              "choice_items": [
-                {
-                  "id": 2,
-                  "sort": 100,
-                  "type": 1,
-                  "title": "1 Bedroom"
-                }
-              ]
-            }
-          ]
-        }
+        123,
+        345
+      ],
+      "checklist_reports": [
+        1,
+        2
       ],
       "attachments": [
         {
@@ -1964,7 +1951,7 @@ Parameter | Type | Description
 
 
 
-## Checklist answers
+## Checklist reports
 
 
 ```shell
@@ -1973,7 +1960,7 @@ curl\
  -H "Content-Type: application/json"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
-"https://{{BASE_URL}}/v2/unit/jobs/12/checklist_answers"
+"https://{{BASE_URL}}/v2/unit/jobs/12/checklist_reports"
 ```
 
 > The above request success response is:
@@ -2003,7 +1990,7 @@ curl\
 
 Checklist answers after filling checklist.
 
-`"path": "jobs/{{id}}/checklist_answers"`
+`"path": "jobs/{{id}}/checklist_reports"`
 
 ### Response parameters
 
