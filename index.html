@@ -1372,6 +1372,73 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
+<h2 id="register-token-infos">Register token infos</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/register_token_infos/id:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@test.test"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07123456789"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Get registration details for a token.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;register_token_infos&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">first_name</code></td>
+<td><em>string</em></td>
+<td>First name for registrationuser with reset password token</td>
+</tr>
+<tr>
+<td><code class="prettyprint">last_name</code></td>
+<td><em>string</em></td>
+<td>Last name for registration</td>
+</tr>
+<tr>
+<td><code class="prettyprint">email</code></td>
+<td><em>string</em></td>
+<td>Email for registration</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phone</code></td>
+<td><em>string</em></td>
+<td>Phone number for registration</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+<li><a href="#register-token-infos-errors">Register token info errors</a></li>
+</ul>
+
 <h1 id="service-data">Service data</h1>
 
 <h2 id="categories">Categories</h2>
@@ -4205,6 +4272,20 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td>5531</td>
 <td>Invalid reset password token</td>
+</tr>
+</tbody></table>
+
+<h2 id="register-token-infos-errors">Register token infos errors</h2>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>5610</td>
+<td>Invalid registration token</td>
 </tr>
 </tbody></table>
 
