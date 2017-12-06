@@ -52,6 +52,11 @@ Error Code | Meaning
 ---------- | -------
 5531 | Invalid reset password token
 
+## Register token infos errors
+Error Code | Meaning
+---------- | -------
+5610 | Invalid registration token
+
 ## Reset password errors
 Error Code | Meaning
 ---------- | -------

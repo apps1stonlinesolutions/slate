@@ -893,6 +893,56 @@ This endpoint returns:
 * [Common errors](#common-errors)
 
 
+
+## Register token infos
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ "https://{{BASE_URL}}/v2/client/register_token_infos/id:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "johndoe@test.test",
+      "phone": "07123456789"
+    }
+
+  ]
+}
+```
+
+
+Get registration details for a token.
+
+`"path": "register_token_infos"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`first_name` | *string* | First name for registrationuser with reset password token
+`last_name` | *string* | Last name for registration
+`email` | *string* | Email for registration
+`phone` | *string* | Phone number for registration
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+* [Register token info errors](#register-token-infos-errors)
+
+
+
 # Service data
 
 
