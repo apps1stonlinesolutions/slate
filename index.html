@@ -250,6 +250,18 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><em>10</em></td>
 <td>Page size</td>
 </tr>
+<tr>
+<td><code class="prettyprint">{{attribute}}</code></td>
+<td><em>any</em></td>
+<td><em>any</em></td>
+<td>Filters results list by attribute value e.g. <code class="prettyprint">default=true</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">{{attribute.attribute}}</code></td>
+<td><em>any</em></td>
+<td><em>any</em></td>
+<td>Filters results list by child object attribute value e.g. if user requested and result should contain only deafult phone <code class="prettyprint">phones.default=true</code></td>
+</tr>
 </tbody></table>
 
 <h2 id="response">Response</h2>
@@ -1730,6 +1742,24 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">logic_js</code></td>
 <td><em>string</em></td>
 <td>JavaScript containing functions for modification of booking process</td>
+</tr>
+</tbody></table>
+
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">visible</code></td>
+<td><em>boolean</em></td>
+<td><em>true</em></td>
+<td>Filters services by visible flag. If <code class="prettyprint">any</code> passed both <code class="prettyprint">true</code> and <code class="prettyprint">false</code> are returned.</td>
 </tr>
 </tbody></table>
 
