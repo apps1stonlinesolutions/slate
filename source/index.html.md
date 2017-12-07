@@ -106,6 +106,8 @@ Parameter | Type   | Default | Description
 `paging`<br>*optional* | *object* | *none* | Information about paged results
 `paging.offset` | *integer* | *0* | Page starting element
 `paging.limit` | *integer* | *10* | Page size
+`{{attribute}}` | *any* | *any* | Filters results list by attribute value e.g. `default=true`
+`{{attribute.attribute}}` | *any* | *any* | Filters results list by child object attribute value e.g. if user requested and result should contain only deafult phone `phones.default=true`
 
 ## Response
 
@@ -1115,6 +1117,12 @@ Parameter | Type | Description
 `customize` | *object* | Key-value pairs of custom attributes
 `profile_config` | *object* | Key-value pairs of custom attributes with different values for each Profile
 `logic_js` | *string* | JavaScript containing functions for modification of booking process
+
+### `params`
+
+Parameter | Type   | Default | Description
+-------- | ---------- | ---- | -------
+`visible` | *boolean* | *true* | Filters services by visible flag. If `any` passed both `true` and `false` are returned.
 
 
 ## Choices
