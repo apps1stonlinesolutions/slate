@@ -1259,7 +1259,7 @@ curl\
       "default": true,
       "title": "Cash",
       "type": "None",
-      "attributes": null,
+      "data": null,
       "payment_provider_id": null,
       "icon_image_url": "http://image.url/here.jpg"
     },
@@ -1270,7 +1270,7 @@ curl\
       "title": "Card",
       "type": "Stripe",
       "payment_provider_id": 3,
-      "attributes": {
+      "data": {
         "stripe_key": "kdj9DSA923131safdfd89a7fklj`cxzc"
       },
       "icon_image_url": "http://image.url/here.jpg"
@@ -1294,8 +1294,8 @@ Parameter | Type | Description
 `title` | *string* | Display name of payment method
 `type` | *string* | *<b>None</b> - No processing needed (e.g. Cash payment)*<br>*<b>Stripe</b> - Card payment via Stripe*
 `payment_provider_id` | *integer* | Identifier for the the account used for the payment method (e.g. Stripe UK, Stripe AUS etc.)
-`attributes`<br>*optional* | *object* | Based on the payment provider different data may be provided (such as keys, tokens etc.)
-`attributes.stripe_key`<br>*optional* | *string* | Stripe API authorization key
+`data`<br>*optional* | *object* | Based on the payment provider different data may be provided (such as keys, tokens etc.)
+`data.stripe_key`<br>*optional* | *string* | Stripe API authorization key
 `icon_image_url` | *string* | Icon image for payment method
 
 
