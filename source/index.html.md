@@ -1573,7 +1573,7 @@ curl\
               "field": "clientName"
             }
           ],
-          "destination": "to office"
+          "destination_option_title": "to office"
         }
       ],
       "cancel_reasons": [
