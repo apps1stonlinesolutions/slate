@@ -1579,7 +1579,7 @@ curl\
       "decline_reasons": [
         {
           "id": 1,
-          "reason_title": "Car is broken",
+          "title": "Car is broken",
           "response": "Please contact Stanimir Tomov on 07472761402 - he can find you another.",
           "sort": 100
         }
