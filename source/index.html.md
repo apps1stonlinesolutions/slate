@@ -1576,7 +1576,7 @@ curl\
           "destination_option_title": "to office"
         }
       ],
-      "cancel_reasons": [
+      "decline_reasons": [
         {
           "id": 1,
           "reason_title": "Car is broken",
