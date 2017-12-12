@@ -3496,6 +3496,59 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
+<h2 id="decline-job">Decline job</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "reason_id": 123,
+        "comment": "Can not get on time",
+        "lat": 51.604903,
+        "lng": -0.457022
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/unit/jobs/123/decline"</span>
+</code></pre>
+
+<p>Units can send messages to clients using <a href="#jobs">message templates</a></p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{job id}/decline&quot;</code></p>
+
+<h3 id="decline-job-request-parameters">Decline job request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">reason_id</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td>Identifier for decline_reason unit chose</td>
+</tr>
+<tr>
+<td><code class="prettyprint">comment</code></td>
+<td><em>string</em></td>
+<td>Message template used for the message</td>
+</tr>
+<tr>
+<td><code class="prettyprint">lat</code></td>
+<td><em>double</em></td>
+<td>Latitude where event occured</td>
+</tr>
+<tr>
+<td><code class="prettyprint">lng</code></td>
+<td><em>double</em></td>
+<td>Longitude where event occured</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h1 id="shared">Shared</h1>
 
 <h2 id="push-notifications">Push notifications</h2>
