@@ -2239,6 +2239,40 @@ Parameter | Type | Description
 
 * [Common errors](#common-errors)
 
+
+
+## Decline job
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -d '{
+        "reason_id": 123,
+        "comment": "Can not get on time",
+        "lat": 51.604903,
+        "lng": -0.457022
+}'\
+ "https://{{BASE_URL}}/v2/unit/jobs/123/decline"
+```
+
+Units can send messages to clients using [message templates](#jobs)
+
+`"path": "jobs/{job id}/decline"`
+
+### Decline job request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`reason_id`<br>*required* | *integer* | Identifier for decline_reason unit chose
+`comment` | *string* | Message template used for the message
+`lat` | *double* | Latitude where event occured
+`lng` | *double* | Longitude where event occured
+
+* [Common errors](#common-errors)
+
+
 # Shared
 
 ## Push notifications
