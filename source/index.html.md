@@ -2257,7 +2257,7 @@ curl\
  "https://{{BASE_URL}}/v2/unit/jobs/123/decline"
 ```
 
-Units can send messages to clients using [message templates](#jobs)
+Units can decline jobs by passing decline_reason
 
 `"path": "jobs/{job id}/decline"`
 
