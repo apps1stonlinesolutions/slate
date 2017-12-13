@@ -1356,6 +1356,57 @@ Parameter | Type | Description
 `link` | *string* | Link to treat website.
 `sort` | *integer* | Order of item in list
 
+
+
+## Reschedule reasons
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/reschedule_reasons"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+      {
+          "id": 1,
+          "name": "Pro delay",
+          "requires_comment": true,
+          "sort": 100
+      },
+      {
+          "id": 2,
+          "name": "Client personal reasons",
+          "requires_comment": false,
+          "sort": 200
+      }
+
+  ]
+}
+```
+
+Client chooses the reasons to reschedule from a list of reschedule reasons
+
+`"path": "reschedule_reasons"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`name` | *string* | Reschedule reason title text
+`requires_comment` | *boolean* | Determines weather comment is required to reschedule with this reason
+`sort` | *integer* | Order of item in list
+
+
+
 # Clients
 
 ## Purchase membership
