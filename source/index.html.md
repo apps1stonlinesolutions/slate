@@ -106,8 +106,7 @@ Parameter | Type   | Default | Description
 `paging`<br>*optional* | *object* | *none* | Information about paged results
 `paging.offset` | *integer* | *0* | Page starting element
 `paging.limit` | *integer* | *10* | Page size
-`{{attribute}}` | *any* | *any* | Filters results list by attribute value e.g. `default=true`
-`{{attribute.attribute}}` | *any* | *any* | Filters results list by child object attribute value e.g. if user requested and result should contain only deafult phone `phones.default=true`
+`filter` | *array* | *none* | Paramters for filtering results. It can contain attributes and values. Examples:<br/><br/><i>`default=true` will return only objects that have attribute `default` equal to `true`.<br/><br/>`phones.default=true` will return only objects that have attribute `phones` containing objects with attribute `default` equal to `true`.<i>
 
 ## Response
 
