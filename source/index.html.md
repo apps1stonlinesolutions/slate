@@ -1121,7 +1121,7 @@ Parameter | Type | Description
 
 Parameter | Type   | Default | Description
 -------- | ---------- | ---- | -------
-`visible` | *boolean* | *true* | Filters services by visible flag. If `any` passed both `true` and `false` are returned.
+`visible` | *string* | *true* | Filters services by visible flag. If `any` passed both `true` and `false` are returned.
 
 
 ## Choices
