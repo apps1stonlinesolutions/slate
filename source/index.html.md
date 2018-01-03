@@ -106,7 +106,7 @@ Parameter | Type   | Default | Description
 `paging`<br>*optional* | *object* | *none* | Information about paged results
 `paging.offset` | *integer* | *0* | Page starting element
 `paging.limit` | *integer* | *10* | Page size
-`filter` | *array<string>* | *none* | Paramters for filtering results. It can contain attributes and values. Examples:<br/><br/><i>`default=true` will return only objects that have attribute `default` equal to `true`.<br/><br/>`phones.default=true` will return only objects that have attribute `phones` containing objects with attribute `default` equal to `true`.<i>
+`filter` | *array\<string\>* | *none* | Paramters for filtering results. It can contain attributes and values. Examples:<br/><br/><i>`default=true` will return only objects that have attribute `default` equal to `true`.<br/><br/>`phones.default=true` will return only objects that have attribute `phones` containing objects with attribute `default` equal to `true`.<i>
 
 ## Response
 
