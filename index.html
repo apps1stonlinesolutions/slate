@@ -3609,6 +3609,112 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
+<h2 id="register-voucher">Register voucher</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "voucher_code": "23DSAD54"
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/unit/register_voucher"</span>
+</code></pre>
+
+<p>Units can register vouchers. Bookings with registered voucher will bring them bonuses.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;register_voucher&quot;</code></p>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+<li><a href="#register-voucher-errors">Register voucher errors</a></li>
+</ul>
+
+<h2 id="job-offers">Job offers</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/job_offers"</span>
+</code></pre>
+
+<p>List of available <a href="#jobs">job</a> offers for the unit</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;job_offers&quot;</code></p>
+
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">job_offer_id</code></td>
+<td><em>integer</em></td>
+<td>Unique identifier of the job offer</td>
+</tr>
+</tbody></table>
+
+<h2 id="reply-job-offers">Reply job offers</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/reply_job_offer"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"job_offer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23kljhkl34hl1k23"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"accept"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>When job offers are received unit can accept or decline them.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;reply_job_offer&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">job_offer_id</code></td>
+<td><em>integer</em></td>
+<td>Uniquie identifier of the offer</td>
+</tr>
+<tr>
+<td><code class="prettyprint">reply</code></td>
+<td><em>integer</em></td>
+<td><em><b>1</b> - Accept</em><br><em><b>2</b> - Decline</em></td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+<li><a href="#reply-job-offer-errors">Reply job offer errors</a></li>
+</ul>
+
 <h1 id="shared">Shared</h1>
 
 <h2 id="push-notifications">Push notifications</h2>
@@ -4499,6 +4605,20 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td>5723</td>
 <td>Event time is required</td>
+</tr>
+</tbody></table>
+
+<h2 id="reply-job-offer-errors">Reply job offer errors</h2>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>xxxx</td>
+<td>Job already taken</td>
 </tr>
 </tbody></table>
 
