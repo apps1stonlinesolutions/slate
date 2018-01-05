@@ -2377,24 +2377,15 @@ Parameter | Type | Description
 
 ```shell
 curl\
- -X GET\
+ -X POST\
  -H "Content-Type: application/json"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "job_offer_id": "23kljhkl34hl1k23",
+        "accept": true
+}'\
 "https://{{BASE_URL}}/v2/unit/reply_job_offer"
-```
-
-> The above request success response is:
-
-```json
-{
-  "data": [
-    {
-      "job_offer_id": "23kljhkl34hl1k23",
-      "accept": true
-    }
-  ]
-}
 ```
 
 When job offers are received unit can accept or decline them.
