@@ -78,3 +78,8 @@ Error Code | Meaning
 5721 | Latitude is required
 5722 | Longitude is required
 5723 | Event time is required
+
+## Reply job offer errors
+Error Code | Meaning
+---------- | -------
+xxxx | Job already taken

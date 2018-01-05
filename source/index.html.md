@@ -2323,6 +2323,97 @@ Parameter | Type | Description
 * [Common errors](#common-errors)
 
 
+
+
+## Register voucher
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "voucher_code": "23DSAD54"
+}'\
+ "https://{{BASE_URL}}/v2/unit/register_voucher"
+```
+
+Units can register vouchers. Bookings with registered voucher will bring them bonuses.
+
+`"path": "register_voucher"`
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+* [Register voucher errors](#register-voucher-errors)
+
+
+## Job offers
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/job_offers"
+```
+
+List of available [job](#jobs) offers for the unit
+
+`"path": "job_offers"`
+
+### `params`
+
+Parameter | Type | Description
+-------- | ---------- | -------
+`job_offer_id` | *integer* | Unique identifier of the job offer
+
+
+## Reply job offers
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/reply_job_offer"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "job_offer_id": "23kljhkl34hl1k23",
+      "accept": true
+    }
+  ]
+}
+```
+
+When job offers are received unit can accept or decline them.
+
+`"path": "reply_job_offer"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`job_offer_id` | *integer* | Uniquie identifier of the offer
+`reply` | *integer* | *<b>1</b> - Accept*<br>*<b>2</b> - Decline*
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+* [Reply job offer errors](#reply-job-offer-errors)
+
+
 # Shared
 
 ## Push notifications
