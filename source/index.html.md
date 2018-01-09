@@ -1646,16 +1646,17 @@ curl\
       ],
       "service_details": [
         {
-          "title": "Gardening",
-          "options": [
+          "name": "Gardening",
+          "prop": [
             {
-              "title": "Additional charges such as team compensation,parking,congestion",
-              "attributes": [
+              "name": "Additional charges such as team compensation,parking,congestion",
+              "opt": [
                 {
-                  "title": "Charges",
-                  "values": [
-                    "Administration fee",
-                    "Transaction fee - 0"
+                  "name": "Charges",
+                  "attr": [
+                    {
+                      "name": "Administration fee"
+                    }
                   ]
                 }
               ]
@@ -1724,7 +1725,7 @@ curl\
       "client_contacts": [
         {
           "id": 2197447,
-          "title": "07568***919",
+          "info": "07568***919",
           "type": 1,
           "sort": 1
         }
