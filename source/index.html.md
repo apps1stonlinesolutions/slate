@@ -2366,13 +2366,6 @@ List of available [job](#jobs) offers for the unit
 
 `"path": "job_offers"`
 
-### `params`
-
-Parameter | Type | Description
--------- | ---------- | -------
-`job_offer_id` | *integer* | Unique identifier of the job offer
-
-
 ## Reply job offers
 
 ```shell
