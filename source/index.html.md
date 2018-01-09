@@ -1650,6 +1650,7 @@ curl\
           "prop": [
             {
               "name": "Additional charges such as team compensation,parking,congestion",
+              "sort": 1,
               "opt": [
                 {
                   "name": "Charges",
