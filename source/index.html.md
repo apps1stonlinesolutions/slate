@@ -2488,7 +2488,7 @@ curl\
       "payload": {
         "job_offer": {
           "id": 123,
-          "booking_id": 123,
+          "expire_time":1497859985,
           "available": true
         }
       },
@@ -2744,7 +2744,7 @@ Parameter | Type | Description
 Parameter | Type | Description
 -------- | ----- | -------
 `payload.job_offer.id` | *integer* | 
-`payload.job_offer.booking_id` | *integer* | 
+`payload.job_offer.expire_time` | *integer* | 
 `payload.job_offer.available` | *boolean* | 
 
 ### Open content push response parameters
