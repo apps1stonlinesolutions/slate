@@ -2368,6 +2368,12 @@ List of available [job](#jobs) offers for the unit
 
 `"path": "job_offers"`
 
+### Response parameters (additional to job)
+
+Parameter | Type | Description
+-------- | ----- | -------
+`offer_expire_time` | *integer* | Time when offer expires UTC timestamp
+
 ## Reply job offers
 
 ```shell
