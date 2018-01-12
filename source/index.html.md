@@ -1654,9 +1654,11 @@ curl\
               "opt": [
                 {
                   "name": "Charges",
+                  "sort": 1,
                   "attr": [
                     {
-                      "name": "Administration fee"
+                      "name": "Administration fee",
+                      "sort": 1,
                     }
                   ]
                 }
