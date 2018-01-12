@@ -2198,12 +2198,12 @@ Locations tracked over time for the unit.
 
 `"path": "tracked_locations"`
 
-### Response parameters
+### Request parameters
 
 Parameter | Type | Description
 -------- | ----- | -------
-`latitude` | *double* | Latitude tracked
-`longitude` | *double* | Longitude tracked
+`lat` | *double* | Latitude tracked
+`lat` | *double* | Longitude tracked
 `event_time` | *integer* | Timestamp when the event occurred and was saved (may be sent later)
 
 This endpoint returns:
