@@ -2386,7 +2386,7 @@ curl\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
  -d '{
         "job_offer_id": "23kljhkl34hl1k23",
-        "accept": true
+        "reply": 1
 }'\
 "https://{{BASE_URL}}/v2/unit/reply_job_offer"
 ```
@@ -2779,6 +2779,7 @@ Parameter | Type | Description
 Parameter | Type | Description
 -------- | ----- | -------
 `created_at_gt`<br>*optional, default <b>0</b>* | *integer* | Filters response with created_at greater than the passed
+`action`<br>*optional* | *integer* | Filters response with action equal to the passed
 
 This endpoint returns:
 
