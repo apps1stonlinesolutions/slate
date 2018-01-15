@@ -3673,7 +3673,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
  -d <span class="s1">'{
         "job_offer_id": "23kljhkl34hl1k23",
-        "accept": true
+        "reply": 1
 }'</span><span class="se">\</span>
 <span class="s2">"https://{{BASE_URL}}/v2/unit/reply_job_offer"</span>
 </code></pre>
@@ -4236,6 +4236,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">created_at_gt</code><br><em>optional, default <b>0</b></em></td>
 <td><em>integer</em></td>
 <td>Filters response with created_at greater than the passed</td>
+</tr>
+<tr>
+<td><code class="prettyprint">action</code><br><em>optional</em></td>
+<td><em>integer</em></td>
+<td>Filters response with action equal to the passed</td>
 </tr>
 </tbody></table>
 
