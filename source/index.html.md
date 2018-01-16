@@ -1887,6 +1887,149 @@ Parameter | Type   | Default | Description
 `to_date` | *integer* | *now* | UTC time stamp to filter results to a date
 
 
+## Payment methods
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/payment_methods"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "id": 25,
+      "sort": 100,
+      "Title": "Cash"
+    }
+  ]
+}
+```
+
+Client ratings for the unit.
+
+`"path": "payment_methods"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`sort` | *integer* | Order of item in list
+`title` | *string* | Title of payment method
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+## Call client reasons
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/call_client_reasons"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "id": 25,
+      "sort": 100,
+      "title": "I am in front of your property"
+    }
+  ]
+}
+```
+
+Client ratings for the unit.
+
+`"path": "call_client_reasons"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`sort` | *integer* | Order of item in list
+`title` | *string* | Title of reason
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+
+## System contacts
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/system_contacts"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "id": 25,
+      "value": "I am in front of your property",
+      "type": 1,
+      "description": "Customer Service",
+      "display_positions": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9
+      ]
+    }
+  ]
+}
+```
+
+Client ratings for the unit.
+
+`"path": "system_contacts"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`value` | *string* | Phone number, skype name or other identifier for contact
+`type` | *integer* | *<b>1</b> - Phone*<br>*<b>2</b> - Skype*<br>*<b>3</b> - Chat*
+`description` | *string* | Display text of contact
+`display_positions` | *array<integer>* | Position slot in the UI
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+
 ## System languages
 
 
