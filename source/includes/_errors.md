@@ -82,4 +82,10 @@ Error Code | Meaning
 ## Reply job offer errors
 Error Code | Meaning
 ---------- | -------
-xxxx | Job already taken
+9029 | job_offer_id is required
+9031 | reply is required
+9030 | Job not found
+9014 | Job is already taken
+9017 | Job offer expired
+9013 | Job unit offer not found or already responded
+9015 | Something went wrong pro not set to booking

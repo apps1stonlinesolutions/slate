@@ -2553,6 +2553,46 @@ This endpoint returns:
 
 # Shared
 
+
+
+## User application data
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/shared/user_application_data"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": {
+      "id": 25
+  }
+}
+```
+
+Details for the environment on which the user uses the application.
+
+`"path": "user_application_data"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+
 ## Push notifications
 
 
