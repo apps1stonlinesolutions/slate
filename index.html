@@ -3862,6 +3862,13 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+<li><a href="#job-offers-errors">Job offers errors</a></li>
+</ul>
+
 <h2 id="reply-job-offers">Reply job offers</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X POST<span class="se">\</span>
@@ -3908,6 +3915,51 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </ul>
 
 <h1 id="shared">Shared</h1>
+
+<h2 id="user-application-data">User application data</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/shared/user_application_data"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Details for the environment on which the user uses the application.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;user_application_data&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Unique identifier</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
 
 <h2 id="push-notifications">Push notifications</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
@@ -4805,6 +4857,10 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<h2 id="job-offers-errors">Job offers errors</h2>
+
+<p>9019 | Offer for the booking not found</p>
+
 <h2 id="reply-job-offer-errors">Reply job offer errors</h2>
 
 <table><thead>
@@ -4814,8 +4870,32 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
-<td>xxxx</td>
-<td>Job already taken</td>
+<td>9029</td>
+<td>job_offer_id is required</td>
+</tr>
+<tr>
+<td>9031</td>
+<td>reply is required</td>
+</tr>
+<tr>
+<td>9030</td>
+<td>Job not found</td>
+</tr>
+<tr>
+<td>9014</td>
+<td>Job is already taken</td>
+</tr>
+<tr>
+<td>9017</td>
+<td>Job offer expired</td>
+</tr>
+<tr>
+<td>9013</td>
+<td>Job unit offer not found or already responded</td>
+</tr>
+<tr>
+<td>9015</td>
+<td>Something went wrong pro not set to booking</td>
 </tr>
 </tbody></table>
 
@@ -4847,7 +4927,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td>2210</td>
-<td>Feedback sent &ndash; Feedback sent successfully</td>
+<td>The job is yours!</td>
+</tr>
+<tr>
+<td>2101</td>
+<td>You successfully declined this job</td>
 </tr>
 </tbody></table>
 
