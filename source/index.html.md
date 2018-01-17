@@ -2519,6 +2519,12 @@ Parameter | Type | Description
 -------- | ----- | -------
 `offer_expire_time` | *integer* | Time when offer expires UTC timestamp
 
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+* [Job offers errors](#job-offers-errors)
+
 ## Reply job offers
 
 ```shell
