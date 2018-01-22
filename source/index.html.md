@@ -1720,8 +1720,8 @@ curl\
           "distance": 150
         }
       ],
-      "cant_reach_client_by_phone": null,
-      "cant_reach_client_by_sms": null,
+      "can_message_client": true,
+      "can_call_client": true,
       "can_change_payment_method": true,
       "can_edit_booking_price": true,
       "can_cross_sell": true,
