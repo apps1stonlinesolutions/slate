@@ -1432,7 +1432,7 @@ curl\
   "social_login_provider": 1,
   "type": 2,
   "social_id": "@johndoe",
-  "last_application_profile": 26,
+  "last_profile": "UnitedKingdom",
   "created_at": 1433489660,
   "membership": 1,
   "credit_formatted": "£55.5",
@@ -1513,8 +1513,8 @@ Parameter | Type | Description
 `addresses.country` | *string* | Country of the address
 `addresses.default` | *boolean* | Client preference for default address
 `addresses.sort` | *integer* | Order in list
-`paymethods` | *array<[paymenthod](#paymenthods)>* | Client payment methods
-`user_applications` | *array<[user_application](#user_applications)>* | Platforms the client used the system on
+`paymethods` | *array<[paymethod](#paymethods)>* | Client payment methods
+`user_applications` | *array<[user_application](#user-applications)>* | Platforms the client used the system on
 `bookings` | *array<[booking](#bookings)>* | Client bookings
 
 
@@ -2726,7 +2726,7 @@ This endpoint returns:
 
 
 
-## User application data
+## User applications
 
 
 ```shell
@@ -2735,34 +2735,66 @@ curl\
  -H "Content-Type: application/json"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
-"https://{{BASE_URL}}/v2/shared/user_application_data"
+"https://{{BASE_URL}}/v2/shared/user_applications"
 ```
 
 > The above request success response is:
 
 ```json
 {
-  "data": {
-      "id": 25
-  }
+  "id": 1,
+  "guid": "98z07v980vbn98790zx7v9c8vx7890xzc8v7",
+  "push_token": "98z07v980vbn98790zx7v9c8vx7890xzc8v7",
+  "build": 231,
+  "version": "1.15.2",
+  "device": "iPhone 6S",
+  "device_resolution": "1915x949",
+  "os": "iOS",
+  "os_version": "8.1.1",
+  "db_size": 25.4,
+  "client_application_size": 25.4,
+  "battery_usage": 25.4,
+  "data_usage": 25.4,
+  "profile": "UnitedKingdom",
+  "browser": "Chrome",
+  "browser_version": "63.0.3239.132",
+  "browser_language": "en-US",
+  "browser_resolution": "1915x949",
+  "application": 1
 }
 ```
 
 Details for the environment on which the user uses the application.
 
-`"path": "user_application_data"`
+`"path": "user_applications"`
 
 ### Response parameters
 
 Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
+`guid` | *string* | Unique device identifier
+`push_token` | *string* | Unique identifier for sending push notifications
+`build` | *integer* | Application build number
+`version` | *string* | Application version
+`device` | *string* | Device model
+`device_resolution` | *string* | Device screen resolution
+`os` | *string* | Device operating system
+`os_version` | *string* | Device operating system version
+`db_size` | *double* | Database size on device
+`client_application_size` | *double* | Application size on device
+`battery_usage` | *double* | Percentage used from the application
+`data_usage`<br>*read only* | *double* | KB the application used in communication with the server
+`profile`<br>*read only* | *string* | Currently selected profile (keyword)
+`browser` | *stringinteger* | Browser used to access the application
+`browser_version` | *string* | Version of the browser used to access the application
+`browser_language` | *string* | Language of the browser used to access the application
+`browser_resolution` | *string* | Resolution of the window of the browser used to access the application
+`application`<br>*read only* | *integer* | External App application (based on X-Application)
 
 This endpoint returns:
 
 * [Common errors](#common-errors)
-
-
 
 ## Push notifications
 
