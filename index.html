@@ -921,7 +921,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">social.social_provider_id</code><br><em>optional</em></td>
 <td><em>integer</em></td>
-<td>Social login provider <code class="prettyprint">id</code>.<br><br><em><b>1</b> - Facebook</em></td>
+<td>Social login provider id. Check <a href="#user">user</a>.<code class="prettyprint">social_login_provider</code>.</td>
 </tr>
 </tbody></table>
 
@@ -1067,7 +1067,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">type_id</code><br><em>optional</em></td>
 <td><em>integer</em></td>
-<td>Type of registration<code class="prettyprint">id</code>.<br><br><em><b>1</b> - Anonymous</em><br><em><b>2</b> - Generic (register form)</em><br><em><b>3</b> - Social (Facebook)</em></td>
+<td>Type of registration id. Check <a href="#user">user</a>.<code class="prettyprint">type</code>.</td>
 </tr>
 </tbody></table>
 
@@ -2201,6 +2201,342 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tbody></table>
 
 <h1 id="clients">Clients</h1>
+
+<h2 id="user">User</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/user"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@mail.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"social_login_provider"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"social_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@johndoe"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last_application_profile"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1433489660</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"membership"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"credit_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£55.5"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"credit"</span><span class="p">:</span><span class="w"> </span><span class="mf">55.5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"referral_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johnd1234b"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+4423213213"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"euaoisd1273892173dsahjd"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server.com/image.jpg"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24_red_lion_street"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_brooklands"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_s_w11"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_london"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"paymethods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">1</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"user_applications"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">1</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"bookings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">1</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>User contains client details</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;user&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code class="prettyprint">first_name</code><br><em>editable</em></td>
+<td><em>string</em></td>
+<td>Client first name</td>
+</tr>
+<tr>
+<td><code class="prettyprint">last_name</code><br><em>editable</em></td>
+<td><em>string</em></td>
+<td>Client first name</td>
+</tr>
+<tr>
+<td><code class="prettyprint">email</code></td>
+<td><em>string</em></td>
+<td>Client email</td>
+</tr>
+<tr>
+<td><code class="prettyprint">social_login_provider</code></td>
+<td><em>integer</em></td>
+<td>Social provider client used to register:<br/><em><b>1</b> - Facebook</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">type</code></td>
+<td><em>integer</em></td>
+<td><em><b>1</b> - Anonymous</em><br><em><b>2</b> - Generic (register form)</em><br><em><b>3</b> - Social (Facebook)</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">social_id</code></td>
+<td><em>string</em></td>
+<td>Social identifier used on registration (e.g. @joe for Twitter or 23253414234 for Facebook)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">last_profile</code></td>
+<td><em>string</em></td>
+<td>Last profile the client used with our system</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td><em>integer</em></td>
+<td>Client regisgration UTC timestamp.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">membership</code></td>
+<td><em>object&lt;<a href="#membership">membership</a>&gt;</em></td>
+<td>Current purchased membership</td>
+</tr>
+<tr>
+<td><code class="prettyprint">credit_formatted</code></td>
+<td><em>string</em></td>
+<td>Client credit amount formatted in the region currency</td>
+</tr>
+<tr>
+<td><code class="prettyprint">credit</code></td>
+<td><em>double</em></td>
+<td>Client credit amount in the region</td>
+</tr>
+<tr>
+<td><code class="prettyprint">referral_code</code></td>
+<td><em>string</em></td>
+<td>Referral code to send to other clients</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phones</code></td>
+<td><em>array</em></td>
+<td>Client phones</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phones.id</code></td>
+<td><em>integer</em></td>
+<td>Unique identifier of the phone</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phones.value</code></td>
+<td><em>string</em></td>
+<td>Phone number</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phones.default</code></td>
+<td><em>boolean</em></td>
+<td>Client preference for default contact phone</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phones.sort</code></td>
+<td><em>integer</em></td>
+<td>Order in list</td>
+</tr>
+<tr>
+<td><code class="prettyprint">avatar</code></td>
+<td><em>object</em></td>
+<td>Client avatar image</td>
+</tr>
+<tr>
+<td><code class="prettyprint">avatar.token</code></td>
+<td><em>string</em></td>
+<td>Token for image file on file server</td>
+</tr>
+<tr>
+<td><code class="prettyprint">avatar.url</code></td>
+<td><em>string</em></td>
+<td>URL address of image file</td>
+</tr>
+<tr>
+<td><code class="prettyprint">addresses</code></td>
+<td><em>array</em></td>
+<td>Client addresses</td>
+</tr>
+<tr>
+<td><code class="prettyprint">addresses.id</code></td>
+<td><em>integer</em></td>
+<td>Unique identifier of the address</td>
+</tr>
+<tr>
+<td><code class="prettyprint">addresses.address1</code></td>
+<td><em>string</em></td>
+<td>Street name and number</td>
+</tr>
+<tr>
+<td><code class="prettyprint">addresses.address2</code></td>
+<td><em>string</em></td>
+<td>Flat, House number etc.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">addresses.postcode</code></td>
+<td><em>string</em></td>
+<td>Post code of the address</td>
+</tr>
+<tr>
+<td><code class="prettyprint">addresses.city</code></td>
+<td><em>string</em></td>
+<td>City of the address</td>
+</tr>
+<tr>
+<td><code class="prettyprint">addresses.country</code></td>
+<td><em>string</em></td>
+<td>Country of the address</td>
+</tr>
+<tr>
+<td><code class="prettyprint">addresses.default</code></td>
+<td><em>boolean</em></td>
+<td>Client preference for default address</td>
+</tr>
+<tr>
+<td><code class="prettyprint">addresses.sort</code></td>
+<td><em>integer</em></td>
+<td>Order in list</td>
+</tr>
+<tr>
+<td><code class="prettyprint">paymethods</code></td>
+<td><em>array&lt;<a href="#paymenthods">paymenthod</a>&gt;</em></td>
+<td>Client payment methods</td>
+</tr>
+<tr>
+<td><code class="prettyprint">user_applications</code></td>
+<td><em>array&lt;<a href="#user_applications">user_application</a>&gt;</em></td>
+<td>Platforms the client used the system on</td>
+</tr>
+<tr>
+<td><code class="prettyprint">bookings</code></td>
+<td><em>array&lt;<a href="#bookings">booking</a>&gt;</em></td>
+<td>Client bookings</td>
+</tr>
+</tbody></table>
+
+<h2 id="paymethods">Paymethods</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/paymethods"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Business card"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3344"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stripe"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"payment_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"231231jsklfhaksj231§2"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Paymethods for a client</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;paymethods&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code class="prettyprint">brand</code></td>
+<td><em>string</em></td>
+<td>Brand for the paymethod (e.g. VISA, MasterCard etc.)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">description</code></td>
+<td><em>string</em></td>
+<td>User description for the paymethod</td>
+</tr>
+<tr>
+<td><code class="prettyprint">last4</code></td>
+<td><em>string</em></td>
+<td>Last 4 digits of a credit card</td>
+</tr>
+<tr>
+<td><code class="prettyprint">expiration_month</code></td>
+<td><em>string</em></td>
+<td>Expriation month of credit card</td>
+</tr>
+<tr>
+<td><code class="prettyprint">expiration_year</code></td>
+<td><em>string</em></td>
+<td>Expriation year of credit card</td>
+</tr>
+<tr>
+<td><code class="prettyprint">type</code></td>
+<td><em>string</em></td>
+<td>Type of paymethod. Check <a href="#payment-methods">payment_method</a>.<code class="prettyprint">type</code>.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payment_provider_id</code></td>
+<td><em>integer</em></td>
+<td>Type of payment provider. Check <a href="#payment-methods">payment_method</a>.<code class="prettyprint">payment_provider_id</code>.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">data</code></td>
+<td><em>object</em></td>
+<td>Data of payment provider. Check <a href="#payment-methods">payment_method</a>.<code class="prettyprint">data</code>.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sort</code></td>
+<td><em>integer</em></td>
+<td>Order in list</td>
+</tr>
+</tbody></table>
 
 <h2 id="purchase-membership">Purchase membership</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
