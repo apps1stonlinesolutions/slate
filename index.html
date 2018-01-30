@@ -2223,7 +2223,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
   </span><span class="nt">"social_login_provider"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="nt">"social_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@johndoe"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"last_application_profile"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last_profile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UnitedKingdom"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1433489660</span><span class="p">,</span><span class="w">
   </span><span class="nt">"membership"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nt">"credit_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£55.5"</span><span class="p">,</span><span class="w">
@@ -2430,12 +2430,12 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">paymethods</code></td>
-<td><em>array&lt;<a href="#paymenthods">paymenthod</a>&gt;</em></td>
+<td><em>array&lt;<a href="#paymethods">paymethod</a>&gt;</em></td>
 <td>Client payment methods</td>
 </tr>
 <tr>
 <td><code class="prettyprint">user_applications</code></td>
-<td><em>array&lt;<a href="#user_applications">user_application</a>&gt;</em></td>
+<td><em>array&lt;<a href="#user-applications">user_application</a>&gt;</em></td>
 <td>Platforms the client used the system on</td>
 </tr>
 <tr>
@@ -4252,28 +4252,44 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <h1 id="shared">Shared</h1>
 
-<h2 id="user-application-data">User application data</h2>
+<h2 id="user-applications">User applications</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
-<span class="s2">"https://{{BASE_URL}}/v2/shared/user_application_data"</span>
+<span class="s2">"https://{{BASE_URL}}/v2/shared/user_applications"</span>
 </code></pre>
 
 <blockquote>
 <p>The above request success response is:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98z07v980vbn98790zx7v9c8vx7890xzc8v7"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"push_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98z07v980vbn98790zx7v9c8vx7890xzc8v7"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="mi">231</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.15.2"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iPhone 6S"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"device_resolution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1915x949"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"os"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iOS"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"os_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.1.1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"db_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">25.4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"client_application_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">25.4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"battery_usage"</span><span class="p">:</span><span class="w"> </span><span class="mf">25.4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data_usage"</span><span class="p">:</span><span class="w"> </span><span class="mf">25.4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UnitedKingdom"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"browser"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chrome"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"browser_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"63.0.3239.132"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"browser_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"browser_resolution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1915x949"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"application"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>Details for the environment on which the user uses the application.</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;user_application_data&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;user_applications&quot;</code></p>
 
 <h3 id="response-parameters">Response parameters</h3>
 
@@ -4288,6 +4304,96 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">id</code></td>
 <td><em>integer</em></td>
 <td>Unique identifier</td>
+</tr>
+<tr>
+<td><code class="prettyprint">guid</code></td>
+<td><em>string</em></td>
+<td>Unique device identifier</td>
+</tr>
+<tr>
+<td><code class="prettyprint">push_token</code></td>
+<td><em>string</em></td>
+<td>Unique identifier for sending push notifications</td>
+</tr>
+<tr>
+<td><code class="prettyprint">build</code></td>
+<td><em>integer</em></td>
+<td>Application build number</td>
+</tr>
+<tr>
+<td><code class="prettyprint">version</code></td>
+<td><em>string</em></td>
+<td>Application version</td>
+</tr>
+<tr>
+<td><code class="prettyprint">device</code></td>
+<td><em>string</em></td>
+<td>Device model</td>
+</tr>
+<tr>
+<td><code class="prettyprint">device_resolution</code></td>
+<td><em>string</em></td>
+<td>Device screen resolution</td>
+</tr>
+<tr>
+<td><code class="prettyprint">os</code></td>
+<td><em>string</em></td>
+<td>Device operating system</td>
+</tr>
+<tr>
+<td><code class="prettyprint">os_version</code></td>
+<td><em>string</em></td>
+<td>Device operating system version</td>
+</tr>
+<tr>
+<td><code class="prettyprint">db_size</code></td>
+<td><em>double</em></td>
+<td>Database size on device</td>
+</tr>
+<tr>
+<td><code class="prettyprint">client_application_size</code></td>
+<td><em>double</em></td>
+<td>Application size on device</td>
+</tr>
+<tr>
+<td><code class="prettyprint">battery_usage</code></td>
+<td><em>double</em></td>
+<td>Percentage used from the application</td>
+</tr>
+<tr>
+<td><code class="prettyprint">data_usage</code><br><em>read only</em></td>
+<td><em>double</em></td>
+<td>KB the application used in communication with the server</td>
+</tr>
+<tr>
+<td><code class="prettyprint">profile</code><br><em>read only</em></td>
+<td><em>string</em></td>
+<td>Currently selected profile (keyword)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">browser</code></td>
+<td><em>stringinteger</em></td>
+<td>Browser used to access the application</td>
+</tr>
+<tr>
+<td><code class="prettyprint">browser_version</code></td>
+<td><em>string</em></td>
+<td>Version of the browser used to access the application</td>
+</tr>
+<tr>
+<td><code class="prettyprint">browser_language</code></td>
+<td><em>string</em></td>
+<td>Language of the browser used to access the application</td>
+</tr>
+<tr>
+<td><code class="prettyprint">browser_resolution</code></td>
+<td><em>string</em></td>
+<td>Resolution of the window of the browser used to access the application</td>
+</tr>
+<tr>
+<td><code class="prettyprint">application</code><br><em>read only</em></td>
+<td><em>integer</em></td>
+<td>External App application (based on X-Application)</td>
 </tr>
 </tbody></table>
 
