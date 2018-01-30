@@ -590,7 +590,7 @@ Parameter | Type | Description
 Parameter | Type | Description
 -------- | ----- | -------
 `social.oauth_id`<br>*required* | *string* | Obtained facebook user access token 
-`social.social_provider_id`<br>*optional* | *integer* | Social login provider `id`.<br><br>*<b>1</b> - Facebook*
+`social.social_provider_id`<br>*optional* | *integer* | Social login provider id. Check [user](#user).`social_login_provider`.
 
 ### `params`
 
@@ -675,7 +675,7 @@ Parameter | Type | Description
 `email`<br>*required* | *string* | User's email with validated structure (e.g. xxxx@xxx.xxx)
 `referrer_code`<br>*optional* | *string* | Referral code from another user
 `social`<br>*optional* | *[object](#facebook-login-request-parameters)* | Social login attributes. Same are used for login (check <b>Facebook login request parameters</b>).
-`type_id`<br>*optional* | *integer* | Type of registration`id`.<br><br>*<b>1</b> - Anonymous*<br>*<b>2</b> - Generic (register form)*<br>*<b>3</b> - Social (Facebook)*
+`type_id`<br>*optional* | *integer* | Type of registration id. Check [user](#user).`type`.
 
 
 ### `params`
@@ -1407,6 +1407,171 @@ Parameter | Type | Description
 
 
 # Clients
+
+## User
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/user"
+```
+
+> The above request success response is:
+
+```json
+{
+  "id": 1,
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "johndoe@mail.com",
+  "title": 2,
+  "social_login_provider": 1,
+  "type": 2,
+  "social_id": "@johndoe",
+  "last_application_profile": 26,
+  "created_at": 1433489660,
+  "membership": 1,
+  "credit_formatted": "£55.5",
+  "credit": 55.5,
+  "referral_code": "johnd1234b",
+  "phones": [
+    {
+      "id": 1,
+      "value": "+4423213213",
+      "default": true,
+      "sort": 100
+    }
+  ],
+  "avatar": {
+    "token": "euaoisd1273892173dsahjd",
+    "url": "https://server.com/image.jpg"
+  },
+  "addresses": [
+    {
+      "id": 1,
+      "address1": "24_red_lion_street",
+      "address2": "_brooklands",
+      "postcode": "_s_w11",
+      "city": "_london",
+      "country": "United Kingdom",
+      "default": true,
+      "sort": 100
+    }
+  ],
+  "paymethods": [
+    1
+  ],
+  "user_applications": [
+    1
+  ],
+  "bookings": [
+    1
+  ]
+}
+```
+
+
+User contains client details
+
+`"path": "user"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`first_name`<br>*editable* | *string* | Client first name
+`last_name`<br>*editable* | *string* | Client first name
+`email` | *string* | Client email
+`social_login_provider` | *integer* | Social provider client used to register:<br/>*<b>1</b> - Facebook*
+`type` | *integer* | *<b>1</b> - Anonymous*<br>*<b>2</b> - Generic (register form)*<br>*<b>3</b> - Social (Facebook)*
+`social_id` | *string* | Social identifier used on registration (e.g. @joe for Twitter or 23253414234 for Facebook)
+`last_profile` | *string* | Last profile the client used with our system
+`created_at` | *integer* | Client regisgration UTC timestamp.
+`membership` | *object<[membership](#membership)>* | Current purchased membership
+`credit_formatted` | *string* | Client credit amount formatted in the region currency
+`credit` | *double* | Client credit amount in the region
+`referral_code` | *string* | Referral code to send to other clients
+`phones` | *array* | Client phones
+`phones.id` | *integer* | Unique identifier of the phone
+`phones.value` | *string* | Phone number
+`phones.default` | *boolean* | Client preference for default contact phone
+`phones.sort` | *integer* | Order in list
+`avatar` | *object* | Client avatar image
+`avatar.token` | *string* | Token for image file on file server
+`avatar.url` | *string* | URL address of image file
+`addresses` | *array* | Client addresses
+`addresses.id` | *integer* | Unique identifier of the address
+`addresses.address1` | *string* | Street name and number
+`addresses.address2` | *string* | Flat, House number etc.
+`addresses.postcode` | *string* | Post code of the address
+`addresses.city` | *string* | City of the address
+`addresses.country` | *string* | Country of the address
+`addresses.default` | *boolean* | Client preference for default address
+`addresses.sort` | *integer* | Order in list
+`paymethods` | *array<[paymenthod](#paymenthods)>* | Client payment methods
+`user_applications` | *array<[user_application](#user_applications)>* | Platforms the client used the system on
+`bookings` | *array<[booking](#bookings)>* | Client bookings
+
+
+
+
+## Paymethods
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/paymethods"
+```
+
+> The above request success response is:
+
+```json
+{
+  "id": 1,
+  "brand": "visa",
+  "description": "Business card",
+  "last4": "3344",
+  "expiration_month": "2",
+  "expiration_year": "2016",
+  "type": "Stripe",
+  "payment_provider_id": 3,
+  "data": {
+    "token": "231231jsklfhaksj231§2"
+  },
+  "sort": 100
+}
+```
+
+
+Paymethods for a client
+
+`"path": "paymethods"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`brand` | *string* | Brand for the paymethod (e.g. VISA, MasterCard etc.)
+`description` | *string* | User description for the paymethod
+`last4` | *string* | Last 4 digits of a credit card
+`expiration_month` | *string* | Expriation month of credit card
+`expiration_year` | *string* | Expriation year of credit card
+`type` | *string* | Type of paymethod. Check [payment_method](#payment-methods).`type`.
+`payment_provider_id` | *integer* | Type of payment provider. Check [payment_method](#payment-methods).`payment_provider_id`.
+`data` | *object* | Data of payment provider. Check [payment_method](#payment-methods).`data`.
+`sort` | *integer* | Order in list
+
+
 
 ## Purchase membership
 
