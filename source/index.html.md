@@ -1228,7 +1228,7 @@ Parameter | Type | Description
 `id` | *integer* | Object id
 `sort` | *integer* | Order of item in list
 `parent_id` | *integer* | Parent answer (if answer is sub-answer)
-`type` | *integer* | *<b>1</b> - Check*<br>*<b>2</b> - Radio*<br>*<b>3</b> - Stepper (incremental value)*<br>*<b>4</b> - Text field*<br>*<b>5</b> - Hours (total hours for current booking configuration)*<br>*<b>6</b> - Drop down*<br>*<b>7</b> - Multi select (autocomplete with quantity)*<br>*<b>8</b> - Distance*<br>*<b>9</b> - Always Apply*<br>*<b>10</b> - Price per hour*<br>*<b>11</b> - Decimal Text*<br>
+`type` | *integer* | *<b>1</b> - Check*<br>*<b>2</b> - Radio*<br>*<b>3</b> - Stepper (incremental value)*<br>*<b>4</b> - Text field*<br>*<b>5</b> - Hours (total hours for current booking configuration)*<br>*<b>6</b> - Drop down*<br>*<b>7</b> - Multi select (autocomplete with quantity)*<br>*<b>8</b> - Distance*<br>*<b>9</b> - Always Apply*<br>*<b>10</b> - Price per hour*<br>*<b>11</b> - Decimal Text*<br>*<b>12</b> - Photo attachment*
 `max_value` | *integer* | Maximum value of answer
 `min_value` | *integer* | Minimum value of answer
 `value` | *integer* | Default value of answer
@@ -1873,7 +1873,17 @@ curl\
                 "min": 0,
                 "max": 80,
                 "step": 0.5,
-                "value": 0
+                "value": 0,
+                "select_options": [
+                  {
+                    "id": 6000,
+                    "name": "Chairs"
+                    },
+                    {
+                      "id": 6001,
+                      "name": "Sofa"
+                    }
+                ]
               }
             }
           ]
@@ -2014,6 +2024,9 @@ Parameter | Type | Description
 `phones.sort` | *string* | Order in list
 `avatar.token` | *string* | File server token
 `avatar.url` | *string* | URL to avatar image
+`services_price_modifiers` | *array* | Price modifiers for included services in the job
+`services_price_modifiers.price_modifiers` | *array* | Price modifiers for a service in the job
+`services_price_modifiers.price_modifiers.type` | *integer* | Check service.choices.[choice_items](#choice-items).type
 `permissions` | *array* | List of permissions of unit
 `permissions.can_message_client` | *boolean* | Can unit send SMS messages to clients
 `permissions.can_call_client` | *boolean* | Can unit call clients
@@ -2366,7 +2379,7 @@ Parameter | Type | Description
 `choices.choice_items` | *array* | Question answers
 `choices.choice_items.id` | *integer* | Unique identifier
 `choices.choice_items.sort` | *integer* | Order of item in list
-`choices.choice_items.type` | *integer* | *<b>1</b> - Check*<br>*<b>2</b> - Radio*<br>*<b>3</b> - Stepper (incremental value)*<br>*<b>4</b> - Text*<br>*<b>11</b> - Decimal text<br><b>12</b> - Photo attachment*
+`choices.choice_items.type` | *integer* | Check service.choices.[choice_items](#choice-items).type
 `choices.choice_items.title` | *string* | Checklist question answer
 
 
