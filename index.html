@@ -2992,8 +2992,6 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
           </span><span class="nt">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"can_message_client"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"can_call_client"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"can_change_payment_method"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"can_edit_booking_price"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"can_cross_sell"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -3033,7 +3031,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nt">"performed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"client_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Leigh Turner"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Leigh Turner"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"stop_sms_channel"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"stop_phone_channel"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="nt">"client_confirmed_job"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Booked"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -3247,46 +3249,6 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">services_price_modifiers.price_modifiers.type</code></td>
 <td><em>integer</em></td>
 <td>Check service.choices.<a href="#choice-items">choice_items</a>.type</td>
-</tr>
-<tr>
-<td><code class="prettyprint">permissions</code></td>
-<td><em>array</em></td>
-<td>List of permissions of unit</td>
-</tr>
-<tr>
-<td><code class="prettyprint">permissions.can_message_client</code></td>
-<td><em>boolean</em></td>
-<td>Can unit send SMS messages to clients</td>
-</tr>
-<tr>
-<td><code class="prettyprint">permissions.can_call_client</code></td>
-<td><em>boolean</em></td>
-<td>Can unit call clients</td>
-</tr>
-<tr>
-<td><code class="prettyprint">permissions.cannot_decline_jobs</code></td>
-<td><em>boolean</em></td>
-<td>Can unit decline jobs</td>
-</tr>
-<tr>
-<td><code class="prettyprint">permissions.can_take_ondemand_jobs</code></td>
-<td><em>boolean</em></td>
-<td>Can unit receive jobs on-demand via notifications that require response</td>
-</tr>
-<tr>
-<td><code class="prettyprint">permissions.has_to_send_summary_on_checkout</code></td>
-<td><em>boolean</em></td>
-<td>Should unit sent summary on checkout</td>
-</tr>
-<tr>
-<td><code class="prettyprint">permissions.do_not_track_location</code></td>
-<td><em>boolean</em></td>
-<td>Stops unit from sending updates for current location</td>
-</tr>
-<tr>
-<td><code class="prettyprint">permissions.do_not_track_geofence</code></td>
-<td><em>boolean</em></td>
-<td>Stops unit from sending updates for entering and leaving areas around bookings</td>
 </tr>
 <tr>
 <td><code class="prettyprint">comments</code></td>
