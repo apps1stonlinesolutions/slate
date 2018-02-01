@@ -1895,8 +1895,6 @@ curl\
           "distance": 150
         }
       ],
-      "can_message_client": true,
-      "can_call_client": true,
       "can_change_payment_method": true,
       "can_edit_booking_price": true,
       "can_cross_sell": true,
@@ -1936,7 +1934,11 @@ curl\
         }
       ],
       "performed": 0,
-      "client_name": "Leigh Turner",
+      "client": {
+        "name": "Leigh Turner",
+        "stop_sms_channel": true,
+        "stop_phone_channel": false
+      },
       "client_confirmed_job": true,
       "status": "Booked",
       "paid": false,
@@ -2027,14 +2029,6 @@ Parameter | Type | Description
 `services_price_modifiers` | *array* | Price modifiers for included services in the job
 `services_price_modifiers.price_modifiers` | *array* | Price modifiers for a service in the job
 `services_price_modifiers.price_modifiers.type` | *integer* | Check service.choices.[choice_items](#choice-items).type
-`permissions` | *array* | List of permissions of unit
-`permissions.can_message_client` | *boolean* | Can unit send SMS messages to clients
-`permissions.can_call_client` | *boolean* | Can unit call clients
-`permissions.cannot_decline_jobs` | *boolean* | Can unit decline jobs
-`permissions.can_take_ondemand_jobs` | *boolean* | Can unit receive jobs on-demand via notifications that require response
-`permissions.has_to_send_summary_on_checkout` | *boolean* | Should unit sent summary on checkout
-`permissions.do_not_track_location` | *boolean* | Stops unit from sending updates for current location
-`permissions.do_not_track_geofence` | *boolean* | Stops unit from sending updates for entering and leaving areas around bookings
 `comments` | *array* | List of comments for the job
 `comments.event_time` | *integer* | UTC timestamp of when the comment was created on the device
 `comments.created_at` | *integer* | UTC timestamp of when the comment was created on the server
