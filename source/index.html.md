@@ -1801,12 +1801,12 @@ curl\
       ],
       "icons": [
         {
-          "title": "Key:",
-          "value": "Yes"
+          "name": "Key:",
+          "note": "Yes"
         },
         {
-          "title": "Alarm:",
-          "value": "2351"
+          "name": "Alarm:",
+          "note": "2351"
         }
       ],
       "service_details": [
