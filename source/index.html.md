@@ -1545,6 +1545,7 @@ curl\
   "data": {
     "token": "231231jsklfhaksj231§2"
   },
+  "default": true,
   "sort": 100
 }
 ```
@@ -1567,6 +1568,7 @@ Parameter | Type | Description
 `type` | *string* | Type of paymethod. Check [payment_method](#payment-methods).`type`.
 `payment_provider_id` | *integer* | Type of payment provider. Check [payment_method](#payment-methods).`payment_provider_id`.
 `data` | *object* | Data of payment provider. Check [payment_method](#payment-methods).`data`.
+`default`<br>*editable* | *boolean* | Client preference for default paymethod
 `sort` | *integer* | Order in list
 
 
