@@ -1498,12 +1498,12 @@ Parameter | Type | Description
 `referral_code` | *string* | Referral code to send to other clients
 `phones`<br>*editable* | *array* | Client phones
 `phones.id` | *integer* | Unique identifier of the phone
-`phones.value` | *string* | Phone number
-`phones.default` | *boolean* | Client preference for default contact phone
+`phones.value`<br>*editable* | *string* | Phone number
+`phones.default`<br>*editable* | *boolean* | Client preference for default contact phone
 `phones.sort` | *integer* | Order in list
 `avatar`<br>*editable* | *object* | Client avatar image
-`avatar.token` | *string* | Token for image file on file server
-`avatar.url` | *string* | URL address of image file
+`avatar.token`<br>*editable* | *string* | Token for image file on file server
+`avatar.url`<br>*editable* | *string* | URL address of image file
 `addresses`<br>*editable* | *array* | Client addresses
 `addresses.id` | *integer* | Unique identifier of the address
 `addresses.address1` | *string* | Street name and number
@@ -1511,13 +1511,11 @@ Parameter | Type | Description
 `addresses.postcode` | *string* | Post code of the address
 `addresses.city` | *string* | City of the address
 `addresses.country` | *string* | Country of the address
-`addresses.default` | *boolean* | Client preference for default address
+`addresses.default`<br>*editable* | *boolean* | Client preference for default address
 `addresses.sort` | *integer* | Order in list
 `paymethods`<br>*editable* | *array<[paymethod](#paymethods)>* | Client payment methods
 `user_applications`<br>*editable* | *array<[user_application](#user-applications)>* | Platforms the client used the system on
 `bookings` | *array<[booking](#bookings)>* | Client bookings
-
-
 
 
 ## Paymethods
@@ -1562,7 +1560,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `brand` | *string* | Brand for the paymethod (e.g. VISA, MasterCard etc.)
-`description` | *string* | User description for the paymethod
+`description`<br>*editable* | *string* | User description for the paymethod
 `last4` | *string* | Last 4 digits of a credit card
 `expiration_month` | *string* | Expriation month of credit card
 `expiration_year` | *string* | Expriation year of credit card
@@ -2779,7 +2777,7 @@ Details for the environment on which the user uses the application.
 
 Parameter | Type | Description
 -------- | ----- | -------
-`id` | *integer* | Unique identifier
+`id`<br>*read-only* | *integer* | Unique identifier
 `guid` | *string* | Unique device identifier
 `push_token` | *string* | Unique identifier for sending push notifications
 `build` | *integer* | Application build number
@@ -2793,7 +2791,7 @@ Parameter | Type | Description
 `battery_usage` | *double* | Percentage used from the application
 `data_usage`<br>*read only* | *double* | KB the application used in communication with the server
 `profile`<br>*read only* | *string* | Currently selected profile (keyword)
-`browser` | *stringinteger* | Browser used to access the application
+`browser` | *string* | Browser used to access the application
 `browser_version` | *string* | Version of the browser used to access the application
 `browser_language` | *string* | Language of the browser used to access the application
 `browser_resolution` | *string* | Resolution of the window of the browser used to access the application
