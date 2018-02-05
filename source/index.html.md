@@ -1496,15 +1496,15 @@ Parameter | Type | Description
 `credit_formatted` | *string* | Client credit amount formatted in the region currency
 `credit` | *double* | Client credit amount in the region
 `referral_code` | *string* | Referral code to send to other clients
-`phones` | *array* | Client phones
+`phones`<br>*editable* | *array* | Client phones
 `phones.id` | *integer* | Unique identifier of the phone
 `phones.value` | *string* | Phone number
 `phones.default` | *boolean* | Client preference for default contact phone
 `phones.sort` | *integer* | Order in list
-`avatar` | *object* | Client avatar image
+`avatar`<br>*editable* | *object* | Client avatar image
 `avatar.token` | *string* | Token for image file on file server
 `avatar.url` | *string* | URL address of image file
-`addresses` | *array* | Client addresses
+`addresses`<br>*editable* | *array* | Client addresses
 `addresses.id` | *integer* | Unique identifier of the address
 `addresses.address1` | *string* | Street name and number
 `addresses.address2` | *string* | Flat, House number etc.
@@ -1513,8 +1513,8 @@ Parameter | Type | Description
 `addresses.country` | *string* | Country of the address
 `addresses.default` | *boolean* | Client preference for default address
 `addresses.sort` | *integer* | Order in list
-`paymethods` | *array<[paymethod](#paymethods)>* | Client payment methods
-`user_applications` | *array<[user_application](#user-applications)>* | Platforms the client used the system on
+`paymethods`<br>*editable* | *array<[paymethod](#paymethods)>* | Client payment methods
+`user_applications`<br>*editable* | *array<[user_application](#user-applications)>* | Platforms the client used the system on
 `bookings` | *array<[booking](#bookings)>* | Client bookings
 
 
