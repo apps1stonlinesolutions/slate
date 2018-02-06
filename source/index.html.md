@@ -1416,6 +1416,7 @@ curl\
  -X GET\
  -H "Content-Type: application/json"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
 "https://{{BASE_URL}}/v2/client/user"
 ```
@@ -1432,7 +1433,6 @@ curl\
   "social_login_provider": 1,
   "type": 2,
   "social_id": "@johndoe",
-  "last_profile": "UnitedKingdom",
   "created_at": 1433489660,
   "membership": 1,
   "credit_formatted": "£55.5",
@@ -1490,7 +1490,6 @@ Parameter | Type | Description
 `social_login_provider` | *integer* | Social provider client used to register:<br/>*<b>1</b> - Facebook*
 `type` | *integer* | *<b>1</b> - Anonymous*<br>*<b>2</b> - Generic (register form)*<br>*<b>3</b> - Social (Facebook)*
 `social_id` | *string* | Social identifier used on registration (e.g. @joe for Twitter or 23253414234 for Facebook)
-`last_profile` | *string* | Last profile the client used with our system
 `created_at` | *integer* | Client regisgration UTC timestamp.
 `membership` | *object<[membership](#membership)>* | Current purchased membership
 `credit_formatted` | *string* | Client credit amount formatted in the region currency
@@ -1526,6 +1525,7 @@ curl\
  -X GET\
  -H "Content-Type: application/json"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
 "https://{{BASE_URL}}/v2/client/paymethods"
 ```
@@ -1581,6 +1581,7 @@ curl\
  -X POST\
  -H "Content-Type: application/json"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
  -d '{
        "client_paymethod_id": 12345,
