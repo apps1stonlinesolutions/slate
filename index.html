@@ -2207,6 +2207,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
  -X GET<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
 <span class="s2">"https://{{BASE_URL}}/v2/client/user"</span>
 </code></pre>
@@ -2223,7 +2224,6 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
   </span><span class="nt">"social_login_provider"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="nt">"social_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@johndoe"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"last_profile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UnitedKingdom"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1433489660</span><span class="p">,</span><span class="w">
   </span><span class="nt">"membership"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nt">"credit_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£55.5"</span><span class="p">,</span><span class="w">
@@ -2312,11 +2312,6 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">social_id</code></td>
 <td><em>string</em></td>
 <td>Social identifier used on registration (e.g. @joe for Twitter or 23253414234 for Facebook)</td>
-</tr>
-<tr>
-<td><code class="prettyprint">last_profile</code></td>
-<td><em>string</em></td>
-<td>Last profile the client used with our system</td>
 </tr>
 <tr>
 <td><code class="prettyprint">created_at</code></td>
@@ -2450,6 +2445,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
  -X GET<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
 <span class="s2">"https://{{BASE_URL}}/v2/client/paymethods"</span>
 </code></pre>
@@ -2549,6 +2545,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
  -X POST<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
  -d <span class="s1">'{
        "client_paymethod_id": 12345,
