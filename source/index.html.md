@@ -1428,11 +1428,10 @@ curl\
   "id": 1,
   "first_name": "John",
   "last_name": "Doe",
-  "email": "johndoe@mail.com",
-  "title": 2,
-  "social_login_provider": 1,
+  "username": "johndoe@mail.com",
+  "social_provider": 1,
   "type": 2,
-  "social_id": "@johndoe",
+  "social_key": "@johndoe",
   "created_at": 1433489660,
   "membership": 1,
   "credit_formatted": "£55.5",
@@ -1486,8 +1485,8 @@ Parameter | Type | Description
 `id` | *integer* | Unique identifier
 `first_name`<br>*editable* | *string* | Client first name
 `last_name`<br>*editable* | *string* | Client first name
-`email` | *string* | Client email
-`social_login_provider` | *integer* | Social provider client used to register:<br/>*<b>1</b> - Facebook*
+`username` | *string* | Client email used for login
+`social_provider` | *integer* | Social provider client used to register:<br/>*<b>1</b> - Facebook*
 `type` | *integer* | *<b>1</b> - Anonymous*<br>*<b>2</b> - Generic (register form)*<br>*<b>3</b> - Social (Facebook)*
 `social_id` | *string* | Social identifier used on registration (e.g. @joe for Twitter or 23253414234 for Facebook)
 `created_at` | *integer* | Client regisgration UTC timestamp.
@@ -1535,15 +1534,15 @@ curl\
 ```json
 {
   "id": 1,
-  "brand": "visa",
   "description": "Business card",
-  "last4": "3344",
-  "expiration_month": "2",
-  "expiration_year": "2016",
   "type": "Stripe",
   "payment_provider_id": 3,
   "data": {
-    "token": "231231jsklfhaksj231§2"
+    "token": "231231jsklfhaksj231§2",
+    "brand": "visa",
+    "last_four_digits": "3344",
+    "expiration_year": "2016",
+    "expiration_month": "2"
   },
   "default": true,
   "sort": 100
@@ -1562,7 +1561,7 @@ Parameter | Type | Description
 `id` | *integer* | Unique identifier
 `brand` | *string* | Brand for the paymethod (e.g. VISA, MasterCard etc.)
 `description`<br>*editable* | *string* | User description for the paymethod
-`last4` | *string* | Last 4 digits of a credit card
+`last_four_digits` | *string* | Last 4 digits of a credit card
 `expiration_month` | *string* | Expriation month of credit card
 `expiration_year` | *string* | Expriation year of credit card
 `type` | *string* | Type of paymethod. Check [payment_method](#payment-methods).`type`.
