@@ -1753,9 +1753,6 @@ curl\
         "id": 1,
         "name": "Cash"
       },
-      "service_names": [
-        "Gardening"
-      ],
       "app_time": 1504620000,
       "flexible_from": null,
       "flexible_to": null,
@@ -1813,6 +1810,7 @@ curl\
       ],
       "service_details": [
         {
+          "id": 1,
           "name": "Gardening",
           "prop": [
             {
