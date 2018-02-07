@@ -1756,9 +1756,9 @@ curl\
       "service_names": [
         "Gardening"
       ],
-      "app_time_utc_raw": 1504620000,
-      "flexible_from_utc_raw": null,
-      "flexible_to_utc_raw": null,
+      "app_time": 1504620000,
+      "flexible_from": null,
+      "flexible_to": null,
       "insufficient_travel_time_warning_time": 1504616400,
       "total_formatted": "£97",
       "require_summary": 4,
@@ -2002,9 +2002,9 @@ Schedule with jobs for the unit
 Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
-`app_time_utc_raw` | *integer* | Appointment time for the job in UTC timestamp
-`flexible_from_utc_raw` | *integer* | Start of timeframe to execute the job in UTC timestamp
-`flexible_to_utc_raw` | *integer* | End of timeframe to execute the job in UTC timestamp
+`app_time` | *integer* | Appointment time for the job in UTC timestamp
+`flexible_from` | *integer* | Start of timeframe to execute the job in UTC timestamp
+`flexible_to` | *integer* | End of timeframe to execute the job in UTC timestamp
 `client_name` | *string* | Client name
 `client_contacts` | *array client_contacts* | Phone numbers client provided for contact
 `total_formatted` | *string* | Price of the service
