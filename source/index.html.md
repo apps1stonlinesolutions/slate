@@ -401,6 +401,7 @@ curl\
     "terms_and_conditions_url": "https://gofantastic.com/terms-and-conditions.html",
     "privacy_policy_url": "https://gofantastic.com/privacy-policy.html",
     "show_manage_membership_section": true,
+    "referral_bonus_formatted": "£20",
     "payment_methods": [
       1,
       3,
@@ -456,6 +457,7 @@ Parameter | Type | Description
 `terms_and_conditions_url` | *string* | Configuration of full url in website for terms and conditions
 `privacy_policy_url` | *string* | Configuration of full url in website for privacy and policy]
 `show_manage_membership_section` | *boolean* | Configuration for hiding or showing managing membership section in account
+`referral_bonus_formatted` | *string* | Formatted amount of bonus client receives when another client registers with their referral code and book a service.
 `payment_methods` | *array\<[payment_methods](#payment-methods)\>* | Payment methods for profile
 
 ### Web profiles additional response parameters
