@@ -2767,7 +2767,10 @@ curl\
   "browser_version": "63.0.3239.132",
   "browser_language": "en-US",
   "browser_resolution": "1915x949",
-  "application": 1
+  "application": {
+    "id": 1,
+    "title": "BFantastic iOS"
+  }
 }
 ```
 
