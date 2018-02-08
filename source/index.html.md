@@ -1542,7 +1542,7 @@ curl\
   "data": {
     "token": "231231jsklfhaksj231§2",
     "brand": "visa",
-    "last_four_digits": "3344",
+    "last_four_digit": "3344",
     "expiration_year": "2016",
     "expiration_month": "2"
   },
@@ -1563,7 +1563,7 @@ Parameter | Type | Description
 `id` | *integer* | Unique identifier
 `brand` | *string* | Brand for the paymethod (e.g. VISA, MasterCard etc.)
 `description`<br>*editable* | *string* | User description for the paymethod
-`last_four_digits` | *string* | Last 4 digits of a credit card
+`last_four_digit` | *string* | Last 4 digits of a credit card
 `expiration_month` | *string* | Expriation month of credit card
 `expiration_year` | *string* | Expriation year of credit card
 `type` | *string* | Type of paymethod. Check [payment_method](#payment-methods).`type`.
