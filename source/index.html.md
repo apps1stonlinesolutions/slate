@@ -1206,6 +1206,7 @@ curl\
       "min_value": 0,
       "value": 0,
       "duration": 0,
+      "required": false,
       "summary_title": "",
       "is_in_summary": false,
       "name": "1 bedroom",
@@ -1235,6 +1236,7 @@ Parameter | Type | Description
 `min_value` | *integer* | Minimum value of answer
 `value` | *integer* | Default value of answer
 `duration` | *integer* | Minutes added to booking estimated time from the answer
+`required` | *boolean* | Determines weather choice item requires child to be selected
 `summary_title` | *string* | Answer short title text in summary
 `is_in_summary` | *boolean* | Should the answer be included in the summary of booking
 `name` | *string* | Title of answer
@@ -1432,7 +1434,7 @@ curl\
   "last_name": "Doe",
   "username": "johndoe@mail.com",
   "social_provider": 1,
-  "type": 2,
+  "type_id": 2,
   "social_key": "@johndoe",
   "created_at": 1433489660,
   "membership": 1,
@@ -1489,7 +1491,7 @@ Parameter | Type | Description
 `last_name`<br>*editable* | *string* | Client first name
 `username` | *string* | Client email used for login
 `social_provider` | *integer* | Social provider client used to register:<br/>*<b>1</b> - Facebook*
-`type` | *integer* | *<b>1</b> - Anonymous*<br>*<b>2</b> - Generic (register form)*<br>*<b>3</b> - Social (Facebook)*
+`type_id` | *integer* | *<b>1</b> - Anonymous*<br>*<b>2</b> - Generic (register form)*<br>*<b>3</b> - Social (Facebook)*
 `social_id` | *string* | Social identifier used on registration (e.g. @joe for Twitter or 23253414234 for Facebook)
 `created_at` | *integer* | Client regisgration UTC timestamp.
 `membership` | *object<[membership](#membership)>* | Current purchased membership
@@ -1516,6 +1518,172 @@ Parameter | Type | Description
 `paymethods`<br>*editable* | *array<[paymethod](#paymethods)>* | Client payment methods
 `user_applications`<br>*editable* | *array<[user_application](#user-applications)>* | Platforms the client used the system on
 `bookings` | *array<[booking](#bookings)>* | Client bookings
+
+
+## Bookings
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/bookings"
+```
+
+> The above request success response is:
+
+```json
+{
+  "id": "laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas",
+  "reference_number": "1042MB",
+  "timeslot": 1525343435,
+  "timeslot_formatted": "2015-03-24 10:00",
+  "price": {
+    "test": 12,
+    "promo_code_description": "_you are at the minimum",
+    "type": 1
+  },
+  "work_time": 120,
+  "payment_method": 3,
+  "paymethod": 1,
+  "voucher": "GO10OFF",
+  "feedback_rate": 0,
+  "online": true,
+  "online_status": 20,
+  "service": {
+    "title": "One-off",
+    "choices": [
+      {
+        "id": 338,
+        "sort": 100,
+        "title": "have the tradesmen left the property?",
+        "summary_title": "tradesman _left",
+        "required": true,
+        "choice_items": [
+          {
+            "id": 1110,
+            "sort": 100,
+            "parent_id": 0,
+            "type": 1,
+            "max_value": 0,
+            "min_value": 0,
+            "value": 0,
+            "duration": 0,
+            "summary_title": "",
+            "is_in_summary": false,
+            "title": "1 bedroom",
+            "required": true,
+            "choice_items": null,
+            "image_url": "http://image.url/here.jpg",
+            "customize": null
+          }
+        ]
+      }
+    ]
+  },
+  "can_reschedule_until": 1459953968,
+  "can_cancel_until": 1459953968,
+  "addresses": [
+    15
+  ],
+  "comments": [
+    {
+      "id": 123,
+      "created_at": 15433454354,
+      "text": "i have a big dog"
+    }
+  ],
+  "client_attached_files": [
+    {
+      "url": "http://image.url.jpg",
+      "token": "_ft5_cfq_o7_t2_r_iq_ywj_h_wq3s_vrp_r_r7f9_yyy85_p8a_pgc_m_y_c5ywke1f_v_pe_btfeys_p",
+      "note": ""
+    },
+    {
+      "url": "http://image.url.jpg",
+      "token": "_ft5_cfq_o7_t2_r_iq_ywj_h_wq3s_vrp_r_r7f9_yyy85_p8a_pgc_m_y_c5ywke1f_v_pe_btfeys_p"
+    }
+  ],
+  "documents": [
+    {
+      "type": 1,
+      "title": "_invoice _s_t_l9099",
+      "num": "_s_t_l9099",
+      "date_formatted": "01.01.2018",
+      "url": "http://doc.url",
+      "mime_type": "application/pdf"
+    },
+    {
+      "type": 2,
+      "title": "_credit note _i_n_v-_s_t_l0316",
+      "num": "_c_n-_s_t_l0316",
+      "url": "http://doc.url",
+      "mime_type": "application/pdf"
+    },
+    {
+      "type": 3,
+      "title": "_proform _p9099",
+      "num": "_p9099",
+      "url": "http://doc.url",
+      "mime_type": "application/pdf"
+    }
+  ],
+  "service_summary": [
+    {
+      "title": "_one-off",
+      "type": "service"
+    },
+    {
+      "title": "1 _bedroom",
+      "type": "property"
+    },
+    {
+      "title": "_hoover and mop floor",
+      "type": "item"
+    },
+    {
+      "title": "_dust tops, lampshades, pictures",
+      "type": "item"
+    },
+    {
+      "title": "_clean and wipe skirting board",
+      "type": "item"
+    }
+  ]
+}
+```
+
+
+Bookings for a client
+
+`"path": "bookings"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *string* | Unique identifier
+`reference_number` | *string* | Unique identifier for processed booking
+`timeslot`<br>*editable* | *integer* | Appointment time in UTC time zone
+`timeslot_formatted`<br>*editable* | *string* | Appointment time in local time zone
+`price`<br>*editable* | *object<[price](#price)>* | Selected price breakdown
+`work_time` | *integer* | Service duration in minutes
+`payment_method`<br>*editable* | *object<[payment_method](#payment-methods)>* | Selected payment method for the booking
+`paymethods`<br>*editable* | *object<[paymethod](#paymethods)>* | Selected paymethod for the booking (particular credit card etc.)
+`voucher`<br>*editable* | *string* | Discount voucher code used for booking
+`feedback_rate`<br>*editable* | *integer* | Rating of client for booking service
+`online` | *boolean* | Determines weather booking was made online or via the phone
+`online_status` | *integer* | Status of the booking:<br/>*<b>10</b> - Quote*<br>*<b>20</b> - Booked*<br>*<b>30</b> - Cancelled*
+`service`<br>*editable* | *object<[service](#services)>* | Booking service
+`can_reschedule_until` | *integer* | The time up untilclient can reschedule the service in UTC
+`can_cancel_until` | *integer* | The time up until the client can cancel the service in UTC
+`addresses`<br>*editable* | *array<[address](#user)>* | Addresses for the booking
+`comments`<br>*editable* | *array* | Comments left by the client
+`client_attached_files`<br>*editable* | *array* | Files uploaded from the client
+`documents` | *array* | Documents related to the booking
+`service_summary` | *array* | Summary for processed booking
 
 
 ## Paymethods
@@ -1633,6 +1801,49 @@ curl\
 
 `"path": "purchase_membership_payment_methods"`
 
+# Booking process
+
+## Booking transactions
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/booking_transactions"
+```
+
+Booking transactions are representation of an ongoing booking process. They are similar to a booking object with additional `confirmed` field.
+
+`"path": "bookings"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *string* | Unique identifier
+`reference_number` | *string* | Unique identifier for processed booking
+`timeslot`<br>*editable* | *integer* | Appointment time in UTC time zone
+`timeslot_formatted`<br>*editable* | *string* | Appointment time in local time zone
+`price`<br>*editable* | *object<[price](#price)>* | Selected price breakdown
+`work_time` | *integer* | Service duration in minutes
+`payment_method`<br>*editable* | *object<[payment_method](#payment-methods)>* | Selected payment method for the booking
+`paymethods`<br>*editable* | *object<[paymethod](#paymethods)>* | Selected paymethod for the booking (particular credit card etc.)
+`voucher`<br>*editable* | *string* | Discount voucher code used for booking
+`feedback_rate`<br>*editable* | *integer* | Rating of client for booking service
+`online` | *boolean* | Determines weather booking was made online or via the phone
+`online_status` | *integer* | Status of the booking:<br/>*<b>10</b> - Quote*<br>*<b>20</b> - Booked*<br>*<b>30</b> - Cancelled*
+`service`<br>*editable* | *object<[service](#services)>* | Booking service
+`can_reschedule_until` | *integer* | The time up untilclient can reschedule the service in UTC
+`can_cancel_until` | *integer* | The time up until the client can cancel the service in UTC
+`addresses`<br>*editable* | *array<[address](#user)>* | Addresses for the booking
+`comments`<br>*editable* | *array* | Comments left by the client
+`client_attached_files`<br>*editable* | *array* | Files uploaded from the client
+`documents` | *array* | Documents related to the booking
+`service_summary` | *array* | Summary for processed booking
+
 # Units
 
 ## Profile
@@ -1684,6 +1895,9 @@ curl\
       "do_not_track_location": false,
       "do_not_track_geofence": false
     },
+    "user_applications": [
+      1
+    ]
     "created_at": 1504857514
   }
 }
@@ -2689,6 +2903,7 @@ List of available [job](#jobs) offers for the unit
 
 Parameter | Type | Description
 -------- | ----- | -------
+`offer_id` | *integer* | Unique identifier for the offer
 `offer_expire_time` | *integer* | Time when offer expires UTC timestamp
 
 
