@@ -1861,6 +1861,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"min_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nt">"summary_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="nt">"is_in_summary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 bedroom"</span><span class="p">,</span><span class="w">
@@ -1924,6 +1925,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">duration</code></td>
 <td><em>integer</em></td>
 <td>Minutes added to booking estimated time from the answer</td>
+</tr>
+<tr>
+<td><code class="prettyprint">required</code></td>
+<td><em>boolean</em></td>
+<td>Determines weather choice item requires child to be selected</td>
 </tr>
 <tr>
 <td><code class="prettyprint">summary_title</code></td>
@@ -2227,7 +2233,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
   </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@mail.com"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"social_provider"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="nt">"social_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@johndoe"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1433489660</span><span class="p">,</span><span class="w">
   </span><span class="nt">"membership"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -2309,7 +2315,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Social provider client used to register:<br/><em><b>1</b> - Facebook</em></td>
 </tr>
 <tr>
-<td><code class="prettyprint">type</code></td>
+<td><code class="prettyprint">type_id</code></td>
 <td><em>integer</em></td>
 <td><em><b>1</b> - Anonymous</em><br><em><b>2</b> - Generic (register form)</em><br><em><b>3</b> - Social (Facebook)</em></td>
 </tr>
@@ -2442,6 +2448,254 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">bookings</code></td>
 <td><em>array&lt;<a href="#bookings">booking</a>&gt;</em></td>
 <td>Client bookings</td>
+</tr>
+</tbody></table>
+
+<h2 id="bookings">Bookings</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/bookings"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1042MB"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"timeslot"</span><span class="p">:</span><span class="w"> </span><span class="mi">1525343435</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"timeslot_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-03-24 10:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"test"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"promo_code_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_you are at the minimum"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"work_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"paymethod"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"voucher"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GO10OFF"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"feedback_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"online"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"online_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One-off"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">338</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"have the tradesmen left the property?"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"summary_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tradesman _left"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1110</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"max_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"min_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"summary_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"is_in_summary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 bedroom"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"can_reschedule_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459953968</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"can_cancel_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459953968</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">15</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">15433454354</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"i have a big dog"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"client_attached_files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_ft5_cfq_o7_t2_r_iq_ywj_h_wq3s_vrp_r_r7f9_yyy85_p8a_pgc_m_y_c5ywke1f_v_pe_btfeys_p"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_ft5_cfq_o7_t2_r_iq_ywj_h_wq3s_vrp_r_r7f9_yyy85_p8a_pgc_m_y_c5ywke1f_v_pe_btfeys_p"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_invoice _s_t_l9099"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"num"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_s_t_l9099"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"date_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01.01.2018"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://doc.url"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mime_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_credit note _i_n_v-_s_t_l0316"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"num"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_c_n-_s_t_l0316"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://doc.url"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mime_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_proform _p9099"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"num"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_p9099"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://doc.url"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mime_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"service_summary"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_one-off"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 _bedroom"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"property"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_hoover and mop floor"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_dust tops, lampshades, pictures"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_clean and wipe skirting board"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Bookings for a client</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;bookings&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code class="prettyprint">reference_number</code></td>
+<td><em>string</em></td>
+<td>Unique identifier for processed booking</td>
+</tr>
+<tr>
+<td><code class="prettyprint">timeslot</code><br><em>editable</em></td>
+<td><em>integer</em></td>
+<td>Appointment time in UTC time zone</td>
+</tr>
+<tr>
+<td><code class="prettyprint">timeslot_formatted</code><br><em>editable</em></td>
+<td><em>string</em></td>
+<td>Appointment time in local time zone</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price</code><br><em>editable</em></td>
+<td><em>object&lt;<a href="#price">price</a>&gt;</em></td>
+<td>Selected price breakdown</td>
+</tr>
+<tr>
+<td><code class="prettyprint">work_time</code></td>
+<td><em>integer</em></td>
+<td>Service duration in minutes</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payment_method</code><br><em>editable</em></td>
+<td><em>object&lt;<a href="#payment-methods">payment_method</a>&gt;</em></td>
+<td>Selected payment method for the booking</td>
+</tr>
+<tr>
+<td><code class="prettyprint">paymethods</code><br><em>editable</em></td>
+<td><em>object&lt;<a href="#paymethods">paymethod</a>&gt;</em></td>
+<td>Selected paymethod for the booking (particular credit card etc.)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">voucher</code><br><em>editable</em></td>
+<td><em>string</em></td>
+<td>Discount voucher code used for booking</td>
+</tr>
+<tr>
+<td><code class="prettyprint">feedback_rate</code><br><em>editable</em></td>
+<td><em>integer</em></td>
+<td>Rating of client for booking service</td>
+</tr>
+<tr>
+<td><code class="prettyprint">online</code></td>
+<td><em>boolean</em></td>
+<td>Determines weather booking was made online or via the phone</td>
+</tr>
+<tr>
+<td><code class="prettyprint">online_status</code></td>
+<td><em>integer</em></td>
+<td>Status of the booking:<br/><em><b>10</b> - Quote</em><br><em><b>20</b> - Booked</em><br><em><b>30</b> - Cancelled</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">service</code><br><em>editable</em></td>
+<td><em>object&lt;<a href="#services">service</a>&gt;</em></td>
+<td>Booking service</td>
+</tr>
+<tr>
+<td><code class="prettyprint">can_reschedule_until</code></td>
+<td><em>integer</em></td>
+<td>The time up untilclient can reschedule the service in UTC</td>
+</tr>
+<tr>
+<td><code class="prettyprint">can_cancel_until</code></td>
+<td><em>integer</em></td>
+<td>The time up until the client can cancel the service in UTC</td>
+</tr>
+<tr>
+<td><code class="prettyprint">addresses</code><br><em>editable</em></td>
+<td><em>array&lt;<a href="#user">address</a>&gt;</em></td>
+<td>Addresses for the booking</td>
+</tr>
+<tr>
+<td><code class="prettyprint">comments</code><br><em>editable</em></td>
+<td><em>array</em></td>
+<td>Comments left by the client</td>
+</tr>
+<tr>
+<td><code class="prettyprint">client_attached_files</code><br><em>editable</em></td>
+<td><em>array</em></td>
+<td>Files uploaded from the client</td>
+</tr>
+<tr>
+<td><code class="prettyprint">documents</code></td>
+<td><em>array</em></td>
+<td>Documents related to the booking</td>
+</tr>
+<tr>
+<td><code class="prettyprint">service_summary</code></td>
+<td><em>array</em></td>
+<td>Summary for processed booking</td>
 </tr>
 </tbody></table>
 
@@ -2632,6 +2886,133 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;purchase_membership_payment_methods&quot;</code></p>
 
+<h1 id="booking-process">Booking process</h1>
+
+<h2 id="booking-transactions">Booking transactions</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/booking_transactions"</span>
+</code></pre>
+
+<p>Booking transactions are representation of an ongoing booking process. They are similar to a booking object with additional <code class="prettyprint">confirmed</code> field.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;bookings&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code class="prettyprint">reference_number</code></td>
+<td><em>string</em></td>
+<td>Unique identifier for processed booking</td>
+</tr>
+<tr>
+<td><code class="prettyprint">timeslot</code><br><em>editable</em></td>
+<td><em>integer</em></td>
+<td>Appointment time in UTC time zone</td>
+</tr>
+<tr>
+<td><code class="prettyprint">timeslot_formatted</code><br><em>editable</em></td>
+<td><em>string</em></td>
+<td>Appointment time in local time zone</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price</code><br><em>editable</em></td>
+<td><em>object&lt;<a href="#price">price</a>&gt;</em></td>
+<td>Selected price breakdown</td>
+</tr>
+<tr>
+<td><code class="prettyprint">work_time</code></td>
+<td><em>integer</em></td>
+<td>Service duration in minutes</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payment_method</code><br><em>editable</em></td>
+<td><em>object&lt;<a href="#payment-methods">payment_method</a>&gt;</em></td>
+<td>Selected payment method for the booking</td>
+</tr>
+<tr>
+<td><code class="prettyprint">paymethods</code><br><em>editable</em></td>
+<td><em>object&lt;<a href="#paymethods">paymethod</a>&gt;</em></td>
+<td>Selected paymethod for the booking (particular credit card etc.)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">voucher</code><br><em>editable</em></td>
+<td><em>string</em></td>
+<td>Discount voucher code used for booking</td>
+</tr>
+<tr>
+<td><code class="prettyprint">feedback_rate</code><br><em>editable</em></td>
+<td><em>integer</em></td>
+<td>Rating of client for booking service</td>
+</tr>
+<tr>
+<td><code class="prettyprint">online</code></td>
+<td><em>boolean</em></td>
+<td>Determines weather booking was made online or via the phone</td>
+</tr>
+<tr>
+<td><code class="prettyprint">online_status</code></td>
+<td><em>integer</em></td>
+<td>Status of the booking:<br/><em><b>10</b> - Quote</em><br><em><b>20</b> - Booked</em><br><em><b>30</b> - Cancelled</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">service</code><br><em>editable</em></td>
+<td><em>object&lt;<a href="#services">service</a>&gt;</em></td>
+<td>Booking service</td>
+</tr>
+<tr>
+<td><code class="prettyprint">can_reschedule_until</code></td>
+<td><em>integer</em></td>
+<td>The time up untilclient can reschedule the service in UTC</td>
+</tr>
+<tr>
+<td><code class="prettyprint">can_cancel_until</code></td>
+<td><em>integer</em></td>
+<td>The time up until the client can cancel the service in UTC</td>
+</tr>
+<tr>
+<td><code class="prettyprint">addresses</code><br><em>editable</em></td>
+<td><em>array&lt;<a href="#user">address</a>&gt;</em></td>
+<td>Addresses for the booking</td>
+</tr>
+<tr>
+<td><code class="prettyprint">comments</code><br><em>editable</em></td>
+<td><em>array</em></td>
+<td>Comments left by the client</td>
+</tr>
+<tr>
+<td><code class="prettyprint">client_attached_files</code><br><em>editable</em></td>
+<td><em>array</em></td>
+<td>Files uploaded from the client</td>
+</tr>
+<tr>
+<td><code class="prettyprint">documents</code></td>
+<td><em>array</em></td>
+<td>Documents related to the booking</td>
+</tr>
+<tr>
+<td><code class="prettyprint">service_summary</code></td>
+<td><em>array</em></td>
+<td>Summary for processed booking</td>
+</tr>
+</tbody></table>
+
 <h1 id="units">Units</h1>
 
 <h2 id="profile">Profile</h2>
@@ -2680,7 +3061,10 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"do_not_track_location"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nt">"do_not_track_geofence"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1504857514</span><span class="w">
+    </span><span class="nt">"user_applications"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mi">1</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="err">:</span><span class="w"> </span><span class="mi">1504857514</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -4184,6 +4568,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><code class="prettyprint">offer_id</code></td>
+<td><em>integer</em></td>
+<td>Unique identifier for the offer</td>
+</tr>
 <tr>
 <td><code class="prettyprint">offer_expire_time</code></td>
 <td><em>integer</em></td>
