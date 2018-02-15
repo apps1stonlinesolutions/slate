@@ -1815,34 +1815,37 @@ curl\
 "https://{{BASE_URL}}/v2/client/booking_transactions"
 ```
 
-Booking transactions are representation of an ongoing booking process. They are similar to a booking object with additional `confirmed` field.
+Booking transactions are representation of an ongoing booking process. They are similar to a [booking](#bookings) object with additional `confirmed` field. When client confirms their booking it's set to true. Then server validates if all required fields are filled and allows it.
 
-`"path": "bookings"`
+`"path": "booking_transactions"`
+
+### Creating booking transaction
+
+Booking transaction can be created in two ways:
+
+* `session` and `service` - minimum to create a booking transaction for booking a service is logged in user and a service. `session` is taken from `Authorization` header of the request, `service` value should be object id. Any other fields can be passed in addition.
+* `reference_number` - creates booking transaction to edit an existing booking. Any other fields can be passed in addition.
+
+### Set addresses
+
+Addresses are validated based on the service coverage.
+
+### Set price
+
+Price is object returned from availability request.
+
+### Booking configuration
+
+Each transaction holds a service object. It contains the choice and choice item objects needed to book the service. Editing booking has pre-filled choice items.
 
 ### Response parameters
 
 Parameter | Type | Description
 -------- | ----- | -------
-`id` | *string* | Unique identifier
-`reference_number` | *string* | Unique identifier for processed booking
-`timeslot`<br>*editable* | *integer* | Appointment time in UTC time zone
-`timeslot_formatted`<br>*editable* | *string* | Appointment time in local time zone
-`price`<br>*editable* | *object<[price](#price)>* | Selected price breakdown
-`work_time` | *integer* | Service duration in minutes
-`payment_method`<br>*editable* | *object<[payment_method](#payment-methods)>* | Selected payment method for the booking
-`paymethods`<br>*editable* | *object<[paymethod](#paymethods)>* | Selected paymethod for the booking (particular credit card etc.)
-`voucher`<br>*editable* | *string* | Discount voucher code used for booking
-`feedback_rate`<br>*editable* | *integer* | Rating of client for booking service
-`online` | *boolean* | Determines weather booking was made online or via the phone
-`online_status` | *integer* | Status of the booking:<br/>*<b>10</b> - Quote*<br>*<b>20</b> - Booked*<br>*<b>30</b> - Cancelled*
-`service`<br>*editable* | *object<[service](#services)>* | Booking service
-`can_reschedule_until` | *integer* | The time up untilclient can reschedule the service in UTC
-`can_cancel_until` | *integer* | The time up until the client can cancel the service in UTC
-`addresses`<br>*editable* | *array<[address](#user)>* | Addresses for the booking
-`comments`<br>*editable* | *array* | Comments left by the client
-`client_attached_files`<br>*editable* | *array* | Files uploaded from the client
-`documents` | *array* | Documents related to the booking
-`service_summary` | *array* | Summary for processed booking
+`confirmed` | *boolean* | Marks when booking transaction is confirmed by client and accepted by server
+
+
+Transactions can be created in one of 2 ways:
 
 # Units
 
