@@ -2898,9 +2898,30 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <span class="s2">"https://{{BASE_URL}}/v2/client/booking_transactions"</span>
 </code></pre>
 
-<p>Booking transactions are representation of an ongoing booking process. They are similar to a booking object with additional <code class="prettyprint">confirmed</code> field.</p>
+<p>Booking transactions are representation of an ongoing booking process. They are similar to a <a href="#bookings">booking</a> object with additional <code class="prettyprint">confirmed</code> field. When client confirms their booking it&rsquo;s set to true. Then server validates if all required fields are filled and allows it.</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;bookings&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;booking_transactions&quot;</code></p>
+
+<h3 id="creating-booking-transaction">Creating booking transaction</h3>
+
+<p>Booking transaction can be created in two ways:</p>
+
+<ul>
+<li><code class="prettyprint">session</code> and <code class="prettyprint">service</code> - minimum to create a booking transaction for booking a service is logged in user and a service. <code class="prettyprint">session</code> is taken from <code class="prettyprint">Authorization</code> header of the request, <code class="prettyprint">service</code> value should be object id. Any other fields can be passed in addition.</li>
+<li><code class="prettyprint">reference_number</code> - creates booking transaction to edit an existing booking. Any other fields can be passed in addition.</li>
+</ul>
+
+<h3 id="set-addresses">Set addresses</h3>
+
+<p>Addresses are validated based on the service coverage.</p>
+
+<h3 id="set-price">Set price</h3>
+
+<p>Price is object returned from availability request.</p>
+
+<h3 id="booking-configuration">Booking configuration</h3>
+
+<p>Each transaction holds a service object. It contains the choice and choice item objects needed to book the service. Editing booking has pre-filled choice items.</p>
 
 <h3 id="response-parameters">Response parameters</h3>
 
@@ -2912,106 +2933,13 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">id</code></td>
-<td><em>string</em></td>
-<td>Unique identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">reference_number</code></td>
-<td><em>string</em></td>
-<td>Unique identifier for processed booking</td>
-</tr>
-<tr>
-<td><code class="prettyprint">timeslot</code><br><em>editable</em></td>
-<td><em>integer</em></td>
-<td>Appointment time in UTC time zone</td>
-</tr>
-<tr>
-<td><code class="prettyprint">timeslot_formatted</code><br><em>editable</em></td>
-<td><em>string</em></td>
-<td>Appointment time in local time zone</td>
-</tr>
-<tr>
-<td><code class="prettyprint">price</code><br><em>editable</em></td>
-<td><em>object&lt;<a href="#price">price</a>&gt;</em></td>
-<td>Selected price breakdown</td>
-</tr>
-<tr>
-<td><code class="prettyprint">work_time</code></td>
-<td><em>integer</em></td>
-<td>Service duration in minutes</td>
-</tr>
-<tr>
-<td><code class="prettyprint">payment_method</code><br><em>editable</em></td>
-<td><em>object&lt;<a href="#payment-methods">payment_method</a>&gt;</em></td>
-<td>Selected payment method for the booking</td>
-</tr>
-<tr>
-<td><code class="prettyprint">paymethods</code><br><em>editable</em></td>
-<td><em>object&lt;<a href="#paymethods">paymethod</a>&gt;</em></td>
-<td>Selected paymethod for the booking (particular credit card etc.)</td>
-</tr>
-<tr>
-<td><code class="prettyprint">voucher</code><br><em>editable</em></td>
-<td><em>string</em></td>
-<td>Discount voucher code used for booking</td>
-</tr>
-<tr>
-<td><code class="prettyprint">feedback_rate</code><br><em>editable</em></td>
-<td><em>integer</em></td>
-<td>Rating of client for booking service</td>
-</tr>
-<tr>
-<td><code class="prettyprint">online</code></td>
+<td><code class="prettyprint">confirmed</code></td>
 <td><em>boolean</em></td>
-<td>Determines weather booking was made online or via the phone</td>
-</tr>
-<tr>
-<td><code class="prettyprint">online_status</code></td>
-<td><em>integer</em></td>
-<td>Status of the booking:<br/><em><b>10</b> - Quote</em><br><em><b>20</b> - Booked</em><br><em><b>30</b> - Cancelled</em></td>
-</tr>
-<tr>
-<td><code class="prettyprint">service</code><br><em>editable</em></td>
-<td><em>object&lt;<a href="#services">service</a>&gt;</em></td>
-<td>Booking service</td>
-</tr>
-<tr>
-<td><code class="prettyprint">can_reschedule_until</code></td>
-<td><em>integer</em></td>
-<td>The time up untilclient can reschedule the service in UTC</td>
-</tr>
-<tr>
-<td><code class="prettyprint">can_cancel_until</code></td>
-<td><em>integer</em></td>
-<td>The time up until the client can cancel the service in UTC</td>
-</tr>
-<tr>
-<td><code class="prettyprint">addresses</code><br><em>editable</em></td>
-<td><em>array&lt;<a href="#user">address</a>&gt;</em></td>
-<td>Addresses for the booking</td>
-</tr>
-<tr>
-<td><code class="prettyprint">comments</code><br><em>editable</em></td>
-<td><em>array</em></td>
-<td>Comments left by the client</td>
-</tr>
-<tr>
-<td><code class="prettyprint">client_attached_files</code><br><em>editable</em></td>
-<td><em>array</em></td>
-<td>Files uploaded from the client</td>
-</tr>
-<tr>
-<td><code class="prettyprint">documents</code></td>
-<td><em>array</em></td>
-<td>Documents related to the booking</td>
-</tr>
-<tr>
-<td><code class="prettyprint">service_summary</code></td>
-<td><em>array</em></td>
-<td>Summary for processed booking</td>
+<td>Marks when booking transaction is confirmed by client and accepted by server</td>
 </tr>
 </tbody></table>
+
+<p>Transactions can be created in one of 2 ways:</p>
 
 <h1 id="units">Units</h1>
 
