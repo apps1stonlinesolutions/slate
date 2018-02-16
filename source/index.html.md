@@ -504,12 +504,12 @@ curl\
       "path": "addresses",
       "fields": [
         {
-          "name": "address1",
+          "name": "address_line_one",
           "regex": "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)",
           "required": true
         },
         {
-          "name": "address2",
+          "name": "address_line_two",
           "regex": "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)",
           "required": false
         }
@@ -1412,8 +1412,8 @@ Parameter | Type | Description
 
 # Clients
 
-## User
 
+## User
 
 ```shell
 curl\
@@ -1429,54 +1429,38 @@ curl\
 
 ```json
 {
-  "id": 1,
-  "first_name": "John",
-  "last_name": "Doe",
-  "username": "johndoe@mail.com",
-  "social_provider": 1,
-  "type_id": 2,
-  "social_key": "@johndoe",
-  "created_at": 1433489660,
-  "membership": 1,
-  "credit_formatted": "£55.5",
-  "credit": 55.5,
-  "referral_code": "johnd1234b",
-  "phones": [
-    {
-      "id": 1,
-      "value": "+4423213213",
-      "default": true,
-      "sort": 100
-    }
-  ],
-  "avatar": {
-    "token": "euaoisd1273892173dsahjd",
-    "url": "https://server.com/image.jpg"
-  },
-  "addresses": [
-    {
-      "id": 1,
-      "address1": "24_red_lion_street",
-      "address2": "_brooklands",
-      "postcode": "_s_w11",
-      "city": "_london",
-      "country": "United Kingdom",
-      "default": true,
-      "sort": 100
-    }
-  ],
-  "paymethods": [
-    1
-  ],
-  "user_applications": [
-    1
-  ],
-  "bookings": [
-    1
-  ]
+  "data": {
+    "id": 1,
+    "first_name": "John",
+    "last_name": "Doe",
+    "username": "johndoe@mail.com",
+    "social_provider": 1,
+    "type_id": 2,
+    "social_key": "@johndoe",
+    "credit": 55.5,
+    "credit_formatted": "£55.5",
+    "referral_code": "johnd1234b",
+    "created_at": 1433489660,
+    "membership": 1,
+    "avatar": 1,
+    "addresses": [
+      1
+    ],
+    "phones": [
+      1
+    ],
+    "paymethods": [
+      1
+    ],
+    "user_applications": [
+      1
+    ],
+    "bookings": [
+      1
+    ]
+  }
 }
 ```
-
 
 User contains client details
 
@@ -1492,32 +1476,161 @@ Parameter | Type | Description
 `username` | *string* | Client email used for login
 `social_provider` | *integer* | Social provider client used to register:<br/>*<b>1</b> - Facebook*
 `type_id` | *integer* | *<b>1</b> - Anonymous*<br>*<b>2</b> - Generic (register form)*<br>*<b>3</b> - Social (Facebook)*
-`social_id` | *string* | Social identifier used on registration (e.g. @joe for Twitter or 23253414234 for Facebook)
-`created_at` | *integer* | Client regisgration UTC timestamp.
-`membership` | *object<[membership](#membership)>* | Current purchased membership
-`credit_formatted` | *string* | Client credit amount formatted in the region currency
+`social_key` | *string* | Social identifier used on registration (e.g. @joe for Twitter or 23253414234 for Facebook)
 `credit` | *double* | Client credit amount in the region
+`credit_formatted` | *string* | Client credit amount formatted in the region currency
 `referral_code` | *string* | Referral code to send to other clients
-`phones`<br>*editable* | *array* | Client phones
-`phones.id` | *integer* | Unique identifier of the phone
-`phones.value`<br>*editable* | *string* | Phone number
-`phones.default`<br>*editable* | *boolean* | Client preference for default contact phone
-`phones.sort` | *integer* | Order in list
-`avatar`<br>*editable* | *object* | Client avatar image
-`avatar.token`<br>*editable* | *string* | Token for image file on file server
-`avatar.url`<br>*editable* | *string* | URL address of image file
-`addresses`<br>*editable* | *array* | Client addresses
-`addresses.id` | *integer* | Unique identifier of the address
-`addresses.address1` | *string* | Street name and number
-`addresses.address2` | *string* | Flat, House number etc.
-`addresses.postcode` | *string* | Post code of the address
-`addresses.city` | *string* | City of the address
-`addresses.country` | *string* | Country of the address
-`addresses.default`<br>*editable* | *boolean* | Client preference for default address
-`addresses.sort` | *integer* | Order in list
+`created_at`<br>*originates from `now`* | *integer* | Client regisgration UTC timestamp.
+`membership` | *object<[membership](#membership)>* | Current purchased membership
+`avatar`<br>*editable* | *object<[avatar](#avatar)>* | Client avatar image
+`addresses`<br>*editable* | *array<[address](#addresses)>* | Client addresses
+`phones`<br>*editable* | *array<[phone](#phones)>* | Client phones
 `paymethods`<br>*editable* | *array<[paymethod](#paymethods)>* | Client payment methods
 `user_applications`<br>*editable* | *array<[user_application](#user-applications)>* | Platforms the client used the system on
 `bookings` | *array<[booking](#bookings)>* | Client bookings
+
+
+## Addresses
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/user/addresses"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "address_line_one": "24_red_lion_street",
+      "address_line_two": "_brooklands",
+      "postcode": "_s_w11",
+      "city": "_london",
+      "country": "United Kingdom",
+      "default": true,
+      "sort": 100
+    }
+  ]
+}
+```
+
+Addresses of the client
+
+`"path": "user/addresses"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier of the address
+`address_line_one`<br>*editable*<br>*originates from `address1`* | *string* | Street name and number
+`address_line_two`<br>*editable*<br>*originates from `address2`* | *string* | Flat, House number etc.
+`postcode`<br>*editable* | *string* | Post code of the address
+`city`<br>*editable* | *string* | City of the address
+`country`<br>*editable* | *string* | Country of the address
+`default`<br>*editable* | *boolean* | Client preference for default address
+`sort` | *integer* | Order in list
+
+
+## Phones
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/user/phones"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "value": "+4423213213",
+      "default": true,
+      "sort": 100
+    }
+  ]
+}
+```
+
+Phoned of the client
+
+`"path": "user/phones"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier of the phone
+`value`<br>*editable* | *string* | Phone number
+`default`<br>*editable* | *boolean* | Client preference for default contact phone
+`sort` | *integer* | Order in list
+
+
+## Paymethods
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/user/paymethods"
+```
+
+> The above request success response is:
+
+```json
+{
+  "id": 1,
+  "description": "Business card",
+  "type": "Stripe",
+  "payment_provider_id": 3,
+  "data": {
+    "token": "231231jsklfhaksj231§2",
+    "brand": "visa",
+    "last_four_digit": "3344",
+    "expiration_year": "2016",
+    "expiration_month": "2"
+  },
+  "default": true,
+  "sort": 100
+}
+```
+
+Paymethods for a client
+
+`"path": "user/paymethods"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`brand` | *string* | Brand for the paymethod (e.g. VISA, MasterCard etc.)
+`description`<br>*editable* | *string* | User description for the paymethod
+`last_four_digit` | *string* | Last 4 digits of a credit card
+`expiration_month` | *string* | Expriation month of credit card
+`expiration_year` | *string* | Expriation year of credit card
+`type` | *string* | Type of paymethod. Check [payment_method](#payment-methods).`type`.
+`payment_provider_id` | *integer* | Type of payment provider. Check [payment_method](#payment-methods).`payment_provider_id`.
+`data` | *object* | Data of payment provider. Check [payment_method](#payment-methods).`data`.
+`default`<br>*editable* | *boolean* | Client preference for default paymethod
+`sort` | *integer* | Order in list
 
 
 ## Bookings
@@ -1529,7 +1642,7 @@ curl\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "X-Profile: {{PROFILE_ID}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
-"https://{{BASE_URL}}/v2/client/bookings"
+"https://{{BASE_URL}}/v2/client/user/bookings"
 ```
 
 > The above request success response is:
@@ -1658,7 +1771,7 @@ curl\
 
 Bookings for a client
 
-`"path": "bookings"`
+`"path": "user/bookings"`
 
 ### Response parameters
 
@@ -1686,8 +1799,7 @@ Parameter | Type | Description
 `service_summary` | *array* | Summary for processed booking
 
 
-## Paymethods
-
+## Avatar
 
 ```shell
 curl\
@@ -1696,54 +1808,33 @@ curl\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "X-Profile: {{PROFILE_ID}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
-"https://{{BASE_URL}}/v2/client/paymethods"
+"https://{{BASE_URL}}/v2/client/user/avatar"
 ```
 
 > The above request success response is:
 
 ```json
 {
-  "id": 1,
-  "description": "Business card",
-  "type": "Stripe",
-  "payment_provider_id": 3,
   "data": {
-    "token": "231231jsklfhaksj231§2",
-    "brand": "visa",
-    "last_four_digit": "3344",
-    "expiration_year": "2016",
-    "expiration_month": "2"
-  },
-  "default": true,
-  "sort": 100
+    "token": "euaoisd1273892173dsahjd",
+    "url": "https://server.com/image.jpg"
+  }
 }
 ```
 
+Avatar of the client
 
-Paymethods for a client
-
-`"path": "paymethods"`
+`"path": "user/avatar"`
 
 ### Response parameters
 
 Parameter | Type | Description
 -------- | ----- | -------
-`id` | *integer* | Unique identifier
-`brand` | *string* | Brand for the paymethod (e.g. VISA, MasterCard etc.)
-`description`<br>*editable* | *string* | User description for the paymethod
-`last_four_digit` | *string* | Last 4 digits of a credit card
-`expiration_month` | *string* | Expriation month of credit card
-`expiration_year` | *string* | Expriation year of credit card
-`type` | *string* | Type of paymethod. Check [payment_method](#payment-methods).`type`.
-`payment_provider_id` | *integer* | Type of payment provider. Check [payment_method](#payment-methods).`payment_provider_id`.
-`data` | *object* | Data of payment provider. Check [payment_method](#payment-methods).`data`.
-`default`<br>*editable* | *boolean* | Client preference for default paymethod
-`sort` | *integer* | Order in list
-
+`token`<br>*editable* | *string* | Token for image file on file server
+`url`<br>*editable* | *string* | URL address of image file
 
 
 ## Purchase membership
-
 
 ```shell
 curl\
@@ -1941,7 +2032,7 @@ Parameter | Type | Description
 `permissions.has_to_send_summary_on_checkout` | *boolean* | Should unit send summary on checkout
 `permissions.do_not_track_location` | *boolean* | Stops unit from sending updates for current location
 `permissions.do_not_track_geofence` | *boolean* | Stops unit from sending updates for entering and leaving areas around bookings
-`created_at` | *integer* | Timestamp of unit registration
+`created_at`<br>*originates from `now`* | *integer* | Timestamp of unit registration
 
 
 
@@ -2248,8 +2339,8 @@ Parameter | Type | Description
 `services_price_modifiers.price_modifiers.type` | *integer* | Check service.choices.[choice_items](#choice-items).type
 `comments` | *array* | List of comments for the job
 `comments.event_time` | *integer* | UTC timestamp of when the comment was created on the device
-`comments.created_at` | *integer* | UTC timestamp of when the comment was created on the server
-`created_at` | *integer* | Timestamp of unit registration
+`comments.created_at`<br>*originates from `now`* | *integer* | UTC timestamp of when the comment was created on the server
+`created_at`<br>*originates from `now`* | *integer* | Timestamp of unit registration
 
 
 ## Jobs history
@@ -2411,7 +2502,7 @@ Parameter | Type | Description
 `value` | *string* | Phone number, skype name or other identifier for contact
 `type` | *integer* | *<b>1</b> - Phone*<br>*<b>2</b> - Skype*<br>*<b>3</b> - Chat*
 `description` | *string* | Display text of contact
-`display_positions` | *array<integer>* | Position slot in the UI
+`display_positions`<br>*originates from `contact_position`* | *array<integer>* | Position slot in the UI
 
 This endpoint returns:
 
@@ -2525,7 +2616,7 @@ Units can review their registered vouchers.
 Parameter | Type | Description
 -------- | ----- | -------
 `voucher_code` | *string* | Voucher code
-`created_at` | *integer* | Timestamp when the voucher was registered
+`created_at`<br>*originates from `now`* | *integer* | Timestamp when the voucher was registered
 
 This endpoint returns:
 
@@ -2642,9 +2733,9 @@ Parameter | Type | Description
 -------- | ----- | -------
 `type` | *integer* | Checklist type (see [checklists](#checklists))
 `event_time` | *integer* | Timestamp when the event ocurred and was saved.
-`choice_items` | *array* | Checklist answers
+`choice_items`<br>*originates from `answers`* | *array* | Checklist answers
 `choice_items.id` | *integer* | Unique identifier
-`choice_items.value` | *string/array* | Answer user entered
+`choice_items.value`<br>*originates from `answer_value`* | *string/array* | Answer user entered
 
 
 ## Ratings
@@ -2693,7 +2784,7 @@ Parameter | Type | Description
 `rate` | *integer* | Rating client gave for the job
 `comment` | *string* | Client comment upon rating the job 
 `client_name` | *string* | Name of client who rated the job
-`created_at` | *integer* | Timestamp when the rating was made
+`created_at`<br>*originates from `now`* | *integer* | Timestamp when the rating was made
 
 This endpoint returns:
 
@@ -3339,7 +3430,7 @@ Parameter | Type | Description
 `message` | *string* | Push notification text
 `sound` | *string* | Push notification sound file name
 `payload` <br>*dynamic* | *object* | Custom data based on action
-`created_at` | *integer* | Timestamp of creation
+`created_at`<br>*originates from `now`* | *integer* | Timestamp of creation
 
 ### Popup push response parameters
 
