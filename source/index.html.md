@@ -1480,7 +1480,7 @@ Parameter | Type | Description
 `credit` | *double* | Client credit amount in the region
 `credit_formatted` | *string* | Client credit amount formatted in the region currency
 `referral_code` | *string* | Referral code to send to other clients
-`created_at`<br>*originates from `now`* | *integer* | Client regisgration UTC timestamp.
+`created_at` | *integer* | Client regisgration UTC timestamp.
 `membership` | *object<[membership](#membership)>* | Current purchased membership
 `avatar`<br>*editable* | *object<[avatar](#avatar)>* | Client avatar image
 `addresses`<br>*editable* | *array<[address](#addresses)>* | Client addresses
@@ -1530,8 +1530,8 @@ Addresses of the client
 Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier of the address
-`address_line_one`<br>*editable*<br>*originates from `address1`* | *string* | Street name and number
-`address_line_two`<br>*editable*<br>*originates from `address2`* | *string* | Flat, House number etc.
+`address_line_one`<br>*editable* | *string* | Street name and number
+`address_line_two`<br>*editable* | *string* | Flat, House number etc.
 `postcode`<br>*editable* | *string* | Post code of the address
 `city`<br>*editable* | *string* | City of the address
 `country`<br>*editable* | *string* | Country of the address
@@ -2032,7 +2032,7 @@ Parameter | Type | Description
 `permissions.has_to_send_summary_on_checkout` | *boolean* | Should unit send summary on checkout
 `permissions.do_not_track_location` | *boolean* | Stops unit from sending updates for current location
 `permissions.do_not_track_geofence` | *boolean* | Stops unit from sending updates for entering and leaving areas around bookings
-`created_at`<br>*originates from `now`* | *integer* | Timestamp of unit registration
+`created_at` | *integer* | Timestamp of unit registration
 
 
 
@@ -2339,8 +2339,8 @@ Parameter | Type | Description
 `services_price_modifiers.price_modifiers.type` | *integer* | Check service.choices.[choice_items](#choice-items).type
 `comments` | *array* | List of comments for the job
 `comments.event_time` | *integer* | UTC timestamp of when the comment was created on the device
-`comments.created_at`<br>*originates from `now`* | *integer* | UTC timestamp of when the comment was created on the server
-`created_at`<br>*originates from `now`* | *integer* | Timestamp of unit registration
+`comments.created_at` | *integer* | UTC timestamp of when the comment was created on the server
+`created_at` | *integer* | Timestamp of unit registration
 
 
 ## Jobs history
@@ -2502,7 +2502,7 @@ Parameter | Type | Description
 `value` | *string* | Phone number, skype name or other identifier for contact
 `type` | *integer* | *<b>1</b> - Phone*<br>*<b>2</b> - Skype*<br>*<b>3</b> - Chat*
 `description` | *string* | Display text of contact
-`display_positions`<br>*originates from `contact_position`* | *array<integer>* | Position slot in the UI
+`display_positions` | *array<integer>* | Position slot in the UI
 
 This endpoint returns:
 
@@ -2616,7 +2616,7 @@ Units can review their registered vouchers.
 Parameter | Type | Description
 -------- | ----- | -------
 `voucher_code` | *string* | Voucher code
-`created_at`<br>*originates from `now`* | *integer* | Timestamp when the voucher was registered
+`created_at` | *integer* | Timestamp when the voucher was registered
 
 This endpoint returns:
 
@@ -2733,9 +2733,9 @@ Parameter | Type | Description
 -------- | ----- | -------
 `type` | *integer* | Checklist type (see [checklists](#checklists))
 `event_time` | *integer* | Timestamp when the event ocurred and was saved.
-`choice_items`<br>*originates from `answers`* | *array* | Checklist answers
+`choice_items` | *array* | Checklist answers
 `choice_items.id` | *integer* | Unique identifier
-`choice_items.value`<br>*originates from `answer_value`* | *string/array* | Answer user entered
+`choice_items.value` | *string/array* | Answer user entered
 
 
 ## Ratings
@@ -2784,7 +2784,7 @@ Parameter | Type | Description
 `rate` | *integer* | Rating client gave for the job
 `comment` | *string* | Client comment upon rating the job 
 `client_name` | *string* | Name of client who rated the job
-`created_at`<br>*originates from `now`* | *integer* | Timestamp when the rating was made
+`created_at` | *integer* | Timestamp when the rating was made
 
 This endpoint returns:
 
@@ -3430,7 +3430,7 @@ Parameter | Type | Description
 `message` | *string* | Push notification text
 `sound` | *string* | Push notification sound file name
 `payload` <br>*dynamic* | *object* | Custom data based on action
-`created_at`<br>*originates from `now`* | *integer* | Timestamp of creation
+`created_at` | *integer* | Timestamp of creation
 
 ### Popup push response parameters
 
