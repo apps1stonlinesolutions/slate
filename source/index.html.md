@@ -3181,6 +3181,29 @@ curl\
 }
 ```
 
+> The above request success response for inbox is:
+
+```json
+{
+  "data": [
+    {
+      "id": 26,
+      "status": 3000,
+      "action": 3,
+      "message": "The dog is tied.",
+      "sound": "default.mp3",
+      "payload": {
+        "job_id": 1,
+        "client_name": "John Doe",
+        "postcode": "SW12 2TH",
+        "text": "The dog is tied."
+      },
+      "created_at": 1497859985
+    }
+  ]
+}
+```
+
 > The above request success response for job offer is:
 
 ```json
