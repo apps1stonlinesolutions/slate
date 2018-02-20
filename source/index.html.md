@@ -106,7 +106,7 @@ Parameter | Type   | Default | Description
 `paging`<br>*optional* | *object* | *none* | Information about paged results
 `paging.offset` | *integer* | *0* | Page starting element
 `paging.limit` | *integer* | *10* | Page size
-`filter` | *array\<string\>* | *none* | Paramters for filtering results. It can contain attributes and values. Examples:<br/><br/><i>`default=true` will return only objects that have attribute `default` equal to `true`.<br/><br/>`phones.default=true` will return only objects that have attribute `phones` containing objects with attribute `default` equal to `true`.<i>
+`filter` | *object* | *none* | Paramters for filtering results. It can contain attributes and values. Examples:<br/><br/><i>`default=true` will return only objects that have attribute `default` equal to `true`.<br/><br/>`phones[default]=true` will return only objects that have attribute `phones` containing objects with attribute `default` equal to `true`.<br/><br/>For batchet requests the filter value would be `{"phones": {"default": true}}` and will return only objects that have attribute `phones` containing objects with attribute `default` equal to `true`.<i>
 
 ## Response
 
@@ -1123,7 +1123,7 @@ Parameter | Type | Description
 
 Parameter | Type   | Default | Description
 -------- | ---------- | ---- | -------
-`visible` | *string* | *true* | Filters services by visible flag. If `any` passed both `true` and `false` are returned.
+`filter.visible` | *string* | *true* | Filters services by visible flag. If `any` passed both `true` and `false` are returned.
 
 
 ## Choices
@@ -3599,7 +3599,7 @@ Parameter | Type | Description
 Parameter | Type | Description
 -------- | ----- | -------
 `created_at_gt`<br>*optional, default <b>0</b>* | *integer* | Filters response with created_at greater than the passed
-`action`<br>*optional* | *integer* | Filters response with action equal to the passed
+`filter.action`<br>*optional* | *integer* | Filters response with action equal to the passed
 
 This endpoint returns:
 
