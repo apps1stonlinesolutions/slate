@@ -252,9 +252,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">filter</code></td>
-<td><em>array&lt;string&gt;</em></td>
+<td><em>object</em></td>
 <td><em>none</em></td>
-<td>Paramters for filtering results. It can contain attributes and values. Examples:<br/><br/><i><code class="prettyprint">default=true</code> will return only objects that have attribute <code class="prettyprint">default</code> equal to <code class="prettyprint">true</code>.<br/><br/><code class="prettyprint">phones.default=true</code> will return only objects that have attribute <code class="prettyprint">phones</code> containing objects with attribute <code class="prettyprint">default</code> equal to <code class="prettyprint">true</code>.<i></td>
+<td>Paramters for filtering results. It can contain attributes and values. Examples:<br/><br/><i><code class="prettyprint">default=true</code> will return only objects that have attribute <code class="prettyprint">default</code> equal to <code class="prettyprint">true</code>.<br/><br/><code class="prettyprint">phones[default]=true</code> will return only objects that have attribute <code class="prettyprint">phones</code> containing objects with attribute <code class="prettyprint">default</code> equal to <code class="prettyprint">true</code>.<br/><br/>For batchet requests the filter value would be <code class="prettyprint">{&quot;phones&quot;: {&quot;default&quot;: true}}</code> and will return only objects that have attribute <code class="prettyprint">phones</code> containing objects with attribute <code class="prettyprint">default</code> equal to <code class="prettyprint">true</code>.<i></td>
 </tr>
 </tbody></table>
 
@@ -1756,7 +1756,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">visible</code></td>
+<td><code class="prettyprint">filter.visible</code></td>
 <td><em>string</em></td>
 <td><em>true</em></td>
 <td>Filters services by visible flag. If <code class="prettyprint">any</code> passed both <code class="prettyprint">true</code> and <code class="prettyprint">false</code> are returned.</td>
@@ -5502,7 +5502,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Filters response with created_at greater than the passed</td>
 </tr>
 <tr>
-<td><code class="prettyprint">action</code><br><em>optional</em></td>
+<td><code class="prettyprint">filter.action</code><br><em>optional</em></td>
 <td><em>integer</em></td>
 <td>Filters response with action equal to the passed</td>
 </tr>
