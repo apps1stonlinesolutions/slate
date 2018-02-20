@@ -1360,6 +1360,48 @@ Parameter | Type | Description
 `sort` | *integer* | Order of item in list
 
 
+## Topics
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/topics"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "id": 45,
+      "title": "Best app ever",
+      "image_url": "https://files.dxr.cloud/qYvi51mYq98Bvj1wk94RQSCNAuOvY4GXhEjqMdNRAFKYpckaFnTipz8YwJyT",
+      "sort": 100
+    }
+  ]
+}
+```
+
+
+Topics used at startup of app to show benefits.
+
+`"path": "topics"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`title` | *string* | Topic title text
+`image_url` | *string* | Topic image direct link
+`sort` | *integer* | Order of item in list
+
+
 
 ## Reschedule reasons
 
@@ -1668,15 +1710,16 @@ Paymethods for a client
 Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
-`brand` | *string* | Brand for the paymethod (e.g. VISA, MasterCard etc.)
 `description`<br>*editable* | *string* | User description for the paymethod
-`last_four_digit` | *string* | Last 4 digits of a credit card
-`expiration_month` | *string* | Expriation month of credit card
-`expiration_year` | *string* | Expriation year of credit card
 `type` | *string* | Type of paymethod. Check [payment_method](#payment-methods).`type`.
 `payment_provider_id` | *integer* | Type of payment provider. Check [payment_method](#payment-methods).`payment_provider_id`.
-`data` | *object* | Data of payment provider. Check [payment_method](#payment-methods).`data`.
 `default`<br>*editable* | *boolean* | Client preference for default paymethod
+`data` | *object* | Custom data of paymethod.
+`data.token` | *string* | Token from stripe for paymethod creation
+`data.brand` | *string* | Brand for the paymethod (e.g. VISA, MasterCard etc.)
+`data.last_four_digit` | *string* | Last 4 digits of a credit card
+`data.expiration_month` | *string* | Expriation month of credit card
+`data.expiration_year` | *string* | Expriation year of credit card
 `sort` | *integer* | Order in list
 
 
@@ -3240,10 +3283,12 @@ curl\
       "message": "The dog is tied.",
       "sound": "default.mp3",
       "payload": {
-        "job_id": 1,
-        "client_name": "John Doe",
-        "postcode": "SW12 2TH",
-        "text": "The dog is tied."
+        "message": {
+          "job_id": 1,
+          "client_name": "John Doe",
+          "postcode": "SW12 2TH",
+          "text": "The dog is tied."
+        }
       },
       "created_at": 1497859985
     }
