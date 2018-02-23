@@ -1244,8 +1244,100 @@ Parameter | Type | Description
 `image_url`| *string* | List image for choice item
 `customize` | *object* | Key-value pairs of custom attributes
 
+## Infos
 
 
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/infos"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "id": 487,
+      "title": "About the service:",
+      "sort": 1,
+      "contents": [
+        {
+          "id": 1744,
+          "text": "The Game Console & Drone Evaluation service is provided by one of our Trusted Partners. Basically, send your device using the post to one of their labs and a skilled technician will take a look at it and then we'll tell you about what repairs are needed.",
+          "sort": 1
+        }
+      ]
+    }
+  ]
+}
+```
+
+Information for categories and services.
+
+
+`"path": "infos"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`title` | *string* | Info title text
+`sort` | *integer* | Order of item in list
+`contents` | *array\<[info content](#info-contents)\>* | List of info contents
+
+
+
+## Info contents
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/info_contents"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "id": 487,
+      "title": "About the service:",
+      "sort": 1,
+      "contents": [
+        {
+          "id": 1744,
+          "text": "The Game Console & Drone Evaluation service is provided by one of our Trusted Partners. Basically, send your device using the post to one of their labs and a skilled technician will take a look at it and then we'll tell you about what repairs are needed.",
+          "sort": 1
+        }
+      ]
+    }
+  ]
+}
+```
+
+Information contents for categories and services.
+
+
+`"path": "info_contents"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`text` | *string* | Text content
+`sort` | *integer* | Order of item in list
 
 ## Payment methods
 
