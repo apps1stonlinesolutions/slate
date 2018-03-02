@@ -1873,6 +1873,7 @@ curl\
   },
   "work_time": 120,
   "payment_method": 3,
+  "payment_method_title": "Cash",
   "paymethod": 1,
   "voucher": "GO10OFF",
   "feedback_rate": 0,
@@ -1997,6 +1998,7 @@ Parameter | Type | Description
 `price`<br>*editable* | *object<[price](#price)>* | Selected price breakdown
 `work_time` | *integer* | Service duration in minutes
 `payment_method`<br>*editable* | *object<[payment_method](#payment-methods)>* | Selected payment method for the booking
+`payment_method_title` | *string* | Display text for payment method
 `paymethods`<br>*editable* | *object<[paymethod](#paymethods)>* | Selected paymethod for the booking (particular credit card etc.)
 `voucher`<br>*editable* | *string* | Discount voucher code used for booking
 `feedback_rate`<br>*editable* | *integer* | Rating of client for booking service
