@@ -850,7 +850,7 @@ curl\
 {
   "data": {
     "username": "john_doe@test.test"
-  }
+  },
   "success": [
     {
       "code": 2000,
