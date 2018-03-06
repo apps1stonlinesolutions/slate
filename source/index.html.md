@@ -848,6 +848,9 @@ curl\
 
 ```json
 {
+  "data": {
+    "username": "john_doe@test.test"
+  }
   "success": [
     {
       "code": 2000,
@@ -870,6 +873,12 @@ Parameter | Type | Description
 `token `<br>*required* | *string* | Token for resetting password received via email
 `password`<br>*required* | *string* | Client new password
 `confirm_password`<br>*optional* | *string* | Password confirmation for server check
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`username ` | *string* | Login email address of client who resetted their password
 
 This endpoint returns:
 
