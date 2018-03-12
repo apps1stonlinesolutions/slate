@@ -1664,6 +1664,7 @@ curl\
     "created_at": 1433489660,
     "membership": 1,
     "avatar": 1,
+    "last_profile_keyword": "UnitedKingdomGF",
     "addresses": [
       1
     ],
@@ -1704,6 +1705,7 @@ Parameter | Type | Description
 `created_at` | *integer* | Client regisgration UTC timestamp.
 `membership` | *object<[membership](#membership)>* | Current purchased membership
 `avatar`<br>*editable* | *object<[avatar](#avatar)>* | Client avatar image
+`last_profile_keyword` | *string* | Keyword of last chosen profile for the client
 `addresses`<br>*editable* | *array<[address](#addresses)>* | Client addresses
 `phones`<br>*editable* | *array<[phone](#phones)>* | Client phones
 `paymethods`<br>*editable* | *array<[paymethod](#paymethods)>* | Client payment methods
