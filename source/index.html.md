@@ -1186,6 +1186,7 @@ curl\
     {
       "id": 338,
       "sort": 100,
+      "position": "init",
       "title": "have the tradesmen left the property?",
       "summary_title": "tradesman _left",
       "required": true,
@@ -1211,13 +1212,18 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `sort` | *integer* | Order of item in list
+`position` | *string* | Determines where the choice should be dislpayed in the booking process:<br/>*<b>init</b> - begining of booking process. Minimum requirement to create a [booking_transaction](#booking-transactions)*<br>*<b>configurator</b> - choices describing service configuration*<br>*<b>before_summary</b> - middle scree before showing the booking summary*<br>*<b>on_summary</b> - choices at the summary screen (e.g. cross sell)*<br>*<b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)*
 `title` | *string* | Question text
 `summary_title` | *string* | Question short title text in summary
 `required` | *boolean* | Should the question be answered to book
 `choice_items` | *array\<[choice_item](#choice-items)\>* | List of answers for the question
 
 
+### `params`
 
+Parameter | Type   | Default | Description
+-------- | ---------- | ---- | -------
+`filter.position` | *string* | *configurator* | Filters services by position string. If no filter is passed only choices with position `configurator` is returned. To get choices with differentt position pass an array of desired positions e.g. `['configurator', 'init']`
 
 
 ## Choice items
@@ -1923,9 +1929,7 @@ curl\
   },
   "can_reschedule_until": 1459953968,
   "can_cancel_until": 1459953968,
-  "addresses": [
-    15
-  ],
+  "address_display_text": "SW12 2TH, Red Lion Street 24",
   "comments": [
     {
       "id": 123,
@@ -2018,7 +2022,7 @@ Parameter | Type | Description
 `service`<br>*editable* | *object<[service](#services)>* | Booking service
 `can_reschedule_until` | *integer* | The time up untilclient can reschedule the service in UTC
 `can_cancel_until` | *integer* | The time up until the client can cancel the service in UTC
-`addresses`<br>*editable* | *array<[address](#user)>* | Addresses for the booking
+`address_display_text` | *string* | Display text of main booking address
 `comments`<br>*editable* | *array* | Comments left by the client
 `client_attached_files`<br>*editable* | *array* | Files uploaded from the client
 `documents` | *array* | Documents related to the booking
