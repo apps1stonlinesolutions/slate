@@ -440,7 +440,17 @@ curl\
         "link": "https://accounts.fantasticservices.com/login",
         "sort": 1
       }
-  ]
+    ],
+    "register_popup_titles": [
+      {
+        "position": "app_start",
+        "title": "Hello there"
+      },
+      {
+        "positions": "before_summary",
+        "title": "Hello there too"
+      }
+    ],
     "template_name": "default",
     "brand_name": "Local Cleaners",
     "website_url": "http://domainname.com/",
@@ -490,6 +500,9 @@ Parameter | Type | Description
 `banners.category_id` | *integer* | Category in which to show the banner
 `banners.image_url` | *string* | URL for image to display in banner
 `banners.sort` | *integer* | Order in list of categories or services
+`register_popup_titles` | *array\<register_popup_titles\>* | List of titles for registration popup
+`register_popup_titles.position` | *string* | Position of register popup:<br/>*<b>categories</b> - at categories list*<br>*<b>account_tab</b> - on tapping of account tab*<br>*<b>deal</b> - on tapping a deal*<br>*<b>membership</b> - on tapping membership in account tab*<br>*<b>referral</b> - on tapping referral in account tab*<br>*<b>before_timeslots</b> - before showing timeslots (request_logi_step:4)*<br>*<b>before_summary</b> - before showing summary(request_logi_step:5)*
+`register_popup_titles.title` | *string* | Title of register popup for the position
 
 ### Web profiles additional response parameters
 
