@@ -3461,7 +3461,94 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
-<p>Transactions can be created in one of 2 ways:</p>
+<h2 id="coverage">Coverage</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "postcode": "SW12 2TH"
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/coverage"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+442221123123"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"short_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This service is very nice"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"clean"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uk"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domestic"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"regular"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"list_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.image.com/1jsklfas.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"thumbnail_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.image.com/1jsklfas.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"infos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="mi">5</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">21</span><span class="p">,</span><span class="w">
+        </span><span class="mi">36</span><span class="p">,</span><span class="w">
+        </span><span class="mi">89</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"profile_config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.fantasticservices.com/cleaning/one-off"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="err">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Check which services are covered for a postcode.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;coverage&quot;</code></p>
+
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">postcode</code></td>
+<td><em>string</em></td>
+<td>Postcode to check coverage for</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">categories</code></td>
+<td><em>array&lt;<a href="#categories">categories</a>&gt;</em></td>
+<td>Covered services grouped in categories</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
 
 <h1 id="units">Units</h1>
 
