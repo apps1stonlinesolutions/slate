@@ -2186,7 +2186,77 @@ Parameter | Type | Description
 `confirmed` | *boolean* | Marks when booking transaction is confirmed by client and accepted by server
 
 
-Transactions can be created in one of 2 ways:
+## Coverage
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -d '{
+        "postcode": "SW12 2TH"
+}'\
+ "https://{{BASE_URL}}/v2/client/coverage"
+```
+
+> The above request success response is :
+
+```json
+{
+  "data": [
+    {
+      "id": 27,
+      "sort": 200,
+      "title": "Cleaning",
+      "phone": "+442221123123",
+      "short_description": "This service is very nice",
+      "keywords": [
+        "clean",
+        "uk",
+        "domestic",
+        "regular"
+      ],
+      "list_image_url": "http://www.image.com/1jsklfas.jpg",
+      "thumbnail_image_url": "http://www.image.com/1jsklfas.jpg",
+      "infos": [
+        3,
+        4,
+        5
+      ],
+      "services": [
+        21,
+        36,
+        89
+      ],
+      "profile_config": {
+        "url": "https://www.fantasticservices.com/cleaning/one-off"
+      },
+    }
+  ]
+}
+```
+
+
+Check which services are covered for a postcode.
+
+`"path": "coverage"`
+
+### `params`
+
+Parameter | Type | Description
+-------- | ----- | -------
+`postcode` | *string* | Postcode to check coverage for
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`categories` | *array<[categories](#categories)>* | Covered services grouped in categories
+
+* [Common errors](#common-errors)
+
 
 # Units
 
