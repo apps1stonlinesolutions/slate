@@ -3514,7 +3514,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;coverage&quot;</code></p>
 
-<h3 id="params"><code class="prettyprint">params</code></h3>
+<h3 id="request-parameters">Request parameters</h3>
 
 <table><thead>
 <tr>
@@ -3543,6 +3543,207 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">categories</code></td>
 <td><em>array&lt;<a href="#categories">categories</a>&gt;</em></td>
 <td>Covered services grouped in categories</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
+<h2 id="availability">Availability</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "transaction_id": "laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/availability"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"availabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-03-24"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"timeslots"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"unavailable"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testsad das"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ffffff"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1110</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"max_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"min_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Regular price"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="nt">"price_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£140"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1110</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"max_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"min_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Membership price"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="nt">"price_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£120"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"special_timeslots"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"asap"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-03-24 10:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"best_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-03-24 12:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Check which services are covered for a postcode.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;coverage&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">transaction_id</code></td>
+<td><em>string</em></td>
+<td>Identifier for transaction to check availability for</td>
+</tr>
+</tbody></table>
+
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">from_date_utc</code></td>
+<td><em>integer</em></td>
+<td>Filter availability from this date on (UTC timestamp)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">to_date_utc</code></td>
+<td><em>string</em></td>
+<td>Filter availability to this date on (UTC timestamp)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">special_timeslot_from_date_utc</code></td>
+<td><em>string</em></td>
+<td>Filter availability for determining special timeslots from this date on (UTC timestamp)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">special_timeslot_to_date_utc</code></td>
+<td><em>string</em></td>
+<td>Filter availability for determining special timeslots to this date on (UTC timestamp)</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">availabilities</code></td>
+<td><em>array</em></td>
+<td>List of days the service is available</td>
+</tr>
+<tr>
+<td><code class="prettyprint">availabilities.date</code></td>
+<td><em>string</em></td>
+<td>Date of availability</td>
+</tr>
+<tr>
+<td><code class="prettyprint">availabilities.timeslots</code></td>
+<td><em>array</em></td>
+<td>List of timeslots for the day</td>
+</tr>
+<tr>
+<td><code class="prettyprint">availabilities.timeslots.time</code></td>
+<td><em>string</em></td>
+<td>Time of timeslot</td>
+</tr>
+<tr>
+<td><code class="prettyprint">availabilities.timeslots.unavailable</code></td>
+<td><em>integer</em></td>
+<td>Status of the timeslot:<br/><em><b>0</b> - available</em><br><em><b>1</b> - fully booked</em><br><em><b>2</b> - only for member</em><br><em><b>3</b> - non working day for service</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">availabilities.timeslots.type</code></td>
+<td><em>object</em></td>
+<td>Visual customization of timeslot</td>
+</tr>
+<tr>
+<td><code class="prettyprint">availabilities.timeslots.type.id</code></td>
+<td><em>integer</em></td>
+<td>Type of visualisation:<br/><em><b>1</b> - carbon slot</em><br><em><b>2</b> - members only slot</em><br><em><b>3</b> - standard slot</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">availabilities.timeslots.type.note</code></td>
+<td><em>string</em></td>
+<td>Description text</td>
+</tr>
+<tr>
+<td><code class="prettyprint">availabilities.timeslots.type.color</code></td>
+<td><em>string</em></td>
+<td>Color for displaying</td>
+</tr>
+<tr>
+<td><code class="prettyprint">availabilities.timeslots.choice_items</code></td>
+<td><em>array&lt;<a href="#choice-items">choice_item</a>&gt;</em></td>
+<td>Timeslot price options as choice items</td>
+</tr>
+<tr>
+<td><code class="prettyprint">special_timeslots</code></td>
+<td><em>object</em></td>
+<td>Special timeslots</td>
+</tr>
+<tr>
+<td><code class="prettyprint">special_timeslots.asap</code></td>
+<td><em>string</em></td>
+<td>First available slot</td>
+</tr>
+<tr>
+<td><code class="prettyprint">special_timeslots.best_price</code></td>
+<td><em>string</em></td>
+<td>Slot with lowest price</td>
 </tr>
 </tbody></table>
 
