@@ -3031,6 +3031,10 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     </span><span class="nt">"promo_code_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_you are at the minimum"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@test.test"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">1</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="nt">"work_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
   </span><span class="nt">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
   </span><span class="nt">"payment_method_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cash"</span><span class="p">,</span><span class="w">
@@ -3040,6 +3044,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
   </span><span class="nt">"online"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"online_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
   </span><span class="nt">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One-off"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -3172,6 +3177,16 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">timeslot_formatted</code><br><em>editable</em></td>
 <td><em>string</em></td>
 <td>Appointment time in local time zone</td>
+</tr>
+<tr>
+<td><code class="prettyprint">email</code><br><em>editable</em></td>
+<td><em>string</em></td>
+<td>Client email collected during booking process</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phones</code><br><em>editable</em></td>
+<td><em>array&lt;<a href="#phones">phones</a>&gt;</em></td>
+<td>Client phones collected during booking process</td>
 </tr>
 <tr>
 <td><code class="prettyprint">price</code><br><em>editable</em></td>
@@ -3414,7 +3429,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <p>Booking transaction can be created in two ways:</p>
 
 <ul>
-<li><code class="prettyprint">session</code> and <code class="prettyprint">service</code> - minimum to create a booking transaction for booking a service is logged in user and a service. <code class="prettyprint">session</code> is taken from <code class="prettyprint">Authorization</code> header of the request, <code class="prettyprint">service</code> value should be object id. Any other fields can be passed in addition.</li>
+<li><code class="prettyprint">session</code>, <code class="prettyprint">service</code>, all <code class="prettyprint">init</code> choices for the service - minimum to create a booking transaction for booking a service is logged in user, service and values for all choices with position <code class="prettyprint">init</code>. <code class="prettyprint">session</code> is taken from <code class="prettyprint">Authorization</code> header of the request, <code class="prettyprint">service</code> value should be object id. Choices should be sent with their filled choice items. Any other fields can be passed in addition if available.</li>
 <li><code class="prettyprint">reference_number</code> - creates booking transaction to edit an existing booking. Any other fields can be passed in addition.</li>
 </ul>
 
