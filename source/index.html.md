@@ -1901,6 +1901,10 @@ curl\
     "promo_code_description": "_you are at the minimum",
     "type": 1
   },
+  "email": "john.doe@test.test",
+  "phones": [
+    1
+  ],
   "work_time": 120,
   "payment_method": 3,
   "payment_method_title": "Cash",
@@ -1910,6 +1914,7 @@ curl\
   "online": true,
   "online_status": 20,
   "service": {
+    "id": 1,
     "title": "One-off",
     "choices": [
       {
@@ -2023,6 +2028,8 @@ Parameter | Type | Description
 `reference_number` | *string* | Unique identifier for processed booking
 `timeslot`<br>*editable* | *integer* | Appointment time in UTC time zone
 `timeslot_formatted`<br>*editable* | *string* | Appointment time in local time zone
+`email`<br>*editable* | *string* | Client email collected during booking process
+`phones`<br>*editable* | *array<[phones](#phones)>* | Client phones collected during booking process
 `price`<br>*editable* | *object<[price](#price)>* | Selected price breakdown
 `work_time` | *integer* | Service duration in minutes
 `payment_method`<br>*editable* | *object<[payment_method](#payment-methods)>* | Selected payment method for the booking
@@ -2157,7 +2164,7 @@ Booking transactions are representation of an ongoing booking process. They are 
 
 Booking transaction can be created in two ways:
 
-* `session` and `service` - minimum to create a booking transaction for booking a service is logged in user and a service. `session` is taken from `Authorization` header of the request, `service` value should be object id. Any other fields can be passed in addition.
+* `session`, `service`, all `init` choices for the service - minimum to create a booking transaction for booking a service is logged in user, service and values for all choices with position `init`. `session` is taken from `Authorization` header of the request, `service` value should be object id. Choices should be sent with their filled choice items. Any other fields can be passed in addition if available.
 * `reference_number` - creates booking transaction to edit an existing booking. Any other fields can be passed in addition.
 
 ### Set addresses
