@@ -2243,7 +2243,7 @@ Check which services are covered for a postcode.
 
 `"path": "coverage"`
 
-### `params`
+### Request parameters
 
 Parameter | Type | Description
 -------- | ----- | -------
@@ -2254,6 +2254,120 @@ Parameter | Type | Description
 Parameter | Type | Description
 -------- | ----- | -------
 `categories` | *array<[categories](#categories)>* | Covered services grouped in categories
+
+* [Common errors](#common-errors)
+
+
+## Availability
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "transaction_id": "laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"
+}'\
+ "https://{{BASE_URL}}/v2/client/availability"
+```
+
+> The above request success response is :
+
+```json
+{
+  "data": {
+    "availabilities": [
+      {
+        "date": "2015-03-24",
+        "timeslots": [
+          {
+            "time": "10:00",
+            "unavailable": 0,
+            "type": {
+              "id": 3,
+              "note": "testsad das",
+              "color": "#ffffff"
+            },
+            "choice_items": [
+              {
+                "id": 1110,
+                "sort": 100,
+                "type": 1,
+                "max_value": 0,
+                "min_value": 0,
+                "value": 0,
+                "name": "Regular price",
+                "image_url": "http://image.url/here.jpg",
+                "customize": {
+                  "price_formatted": "£140"
+                }
+              },
+              {
+                "id": 1110,
+                "sort": 100,
+                "type": 1,
+                "max_value": 0,
+                "min_value": 0,
+                "value": 0,
+                "name": "Membership price",
+                "image_url": "http://image.url/here.jpg",
+                "customize": {
+                  "price_formatted": "£120"
+                }
+              }
+            ]
+          }
+        ],
+        "special_timeslots": {
+          "asap": "2015-03-24 10:00",
+          "best_price": "2015-03-24 12:00"
+        }
+      }
+    ]
+  }
+}
+```
+
+
+Check which services are covered for a postcode.
+
+`"path": "coverage"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`transaction_id` | *string* | Identifier for transaction to check availability for
+
+### `params`
+
+Parameter | Type | Description
+-------- | ----- | -------
+`from_date_utc` | *integer* | Filter availability from this date on (UTC timestamp)
+`to_date_utc` | *string* | Filter availability to this date on (UTC timestamp)
+`special_timeslot_from_date_utc` | *string* | Filter availability for determining special timeslots from this date on (UTC timestamp)
+`special_timeslot_to_date_utc` | *string* | Filter availability for determining special timeslots to this date on (UTC timestamp)
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`availabilities` | *array* | List of days the service is available
+`availabilities.date` | *string* | Date of availability
+`availabilities.timeslots` | *array* | List of timeslots for the day
+`availabilities.timeslots.time` | *string* | Time of timeslot
+`availabilities.timeslots.unavailable` | *integer* | Status of the timeslot:<br/>*<b>0</b> - available*<br>*<b>1</b> - fully booked*<br>*<b>2</b> - only for member*<br>*<b>3</b> - non working day for service*
+`availabilities.timeslots.type` | *object* | Visual customization of timeslot
+`availabilities.timeslots.type.id` | *integer* | Type of visualisation:<br/>*<b>1</b> - carbon slot*<br>*<b>2</b> - members only slot*<br>*<b>3</b> - standard slot*
+`availabilities.timeslots.type.note` | *string* | Description text
+`availabilities.timeslots.type.color` | *string* | Color for displaying
+`availabilities.timeslots.choice_items` | *array<[choice_item](#choice-items)>* | Timeslot price options as choice items
+`special_timeslots` | *object* | Special timeslots
+`special_timeslots.asap` | *string* | First available slot
+`special_timeslots.best_price` | *string* | Slot with lowest price
 
 * [Common errors](#common-errors)
 
