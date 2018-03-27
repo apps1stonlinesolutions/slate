@@ -1897,9 +1897,40 @@ curl\
   "timeslot": 1525343435,
   "timeslot_formatted": "2015-03-24 10:00",
   "price": {
-    "test": 12,
-    "promo_code_description": "_you are at the minimum",
-    "type": 1
+    "type": "no_price",
+    "description": "Maximum price reached",
+    "price_breakdown": [
+      {
+        "name": "Membership price",
+        "value": "£49",
+        "description": "Yearly fee payed once upon booking",
+        "type": "membership"
+      },
+      {
+        "name": "Service price",
+        "value": "£80",
+        "description": null,
+        "type": "service_price"
+      },
+      {
+        "name": "Voucher discount",
+        "value": "-£5",
+        "description": "Reached minimum for service",
+        "type": "voucher"
+      },
+      {
+        "name": "Credit used",
+        "value": "£25",
+        "description": "All available credit is used for this booking",
+        "type": "credit"
+      },
+      {
+        "name": "Total:",
+        "value": "£99",
+        "description": "All available credit is used for this booking",
+        "type": "total"
+      }
+    ]
   },
   "email": "john.doe@test.test",
   "phones": [
@@ -2030,7 +2061,14 @@ Parameter | Type | Description
 `timeslot_formatted`<br>*editable* | *string* | Appointment time in local time zone
 `email`<br>*editable* | *string* | Client email collected during booking process
 `phones`<br>*editable* | *array<[phones](#phones)>* | Client phones collected during booking process
-`price`<br>*editable* | *object<[price](#price)>* | Selected price breakdown
+`price` | *object<[price](#price)>* | Selected price breakdown
+`price.type` | *string*| Price type:<br/>*<b>no_price</b> - when user reached maximum price and will create a quote*<br>*<b>voucher_applied</b> - when prices are with applied voucher*
+`price.description` | *string* | Description text for the price
+`price.price_breakdown` | *object* | Breakdown of how price was calculated
+`price.price_breakdown.name` | *string* | Name of field
+`price.price_breakdown.value` | *string* | Value of field
+`price.price_breakdown.description` | *string* | Description text for field
+`price.price_breakdown.type` | *string* | Type of breakdown element:<br/>*<b>membership</b> - price of a membership*<br>*<b>service</b> - price of a service after membership discount*<br>*<b>voucher</b> - discount from vouchers applied*<br>*<b>credit</b> - discounts from credits applied*<br>*<b>total</b> - total price after discounts*
 `work_time` | *integer* | Service duration in minutes
 `payment_method`<br>*editable* | *object<[payment_method](#payment-methods)>* | Selected payment method for the booking
 `payment_method_title` | *string* | Display text for payment method
@@ -2356,7 +2394,7 @@ Parameter | Type | Description
 Parameter | Type | Description
 -------- | ----- | -------
 `banner` | *object* | Description of the price
-`banner.type` | *string* | Type of the price:<br/>*<b>no_price</b> - when user reached maximum price and will create a quote*<br>*<b>voucher_applied</b> - when prices are with applied voucher*
+`banner.type` | *string* | Type of the price (check [booking](#bookings)`.price.type`).
 `banner.description` | *string* | Description text for the price
 `availabilities` | *array* | List of days the service is available
 `availabilities.date` | *string* | Date of availability
