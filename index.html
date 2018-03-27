@@ -3027,9 +3027,40 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
   </span><span class="nt">"timeslot"</span><span class="p">:</span><span class="w"> </span><span class="mi">1525343435</span><span class="p">,</span><span class="w">
   </span><span class="nt">"timeslot_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-03-24 10:00"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"test"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"promo_code_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_you are at the minimum"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no_price"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maximum price reached"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"price_breakdown"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Membership price"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£49"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yearly fee payed once upon booking"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"membership"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Service price"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£80"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service_price"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Voucher discount"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-£5"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reached minimum for service"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"voucher"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Credit used"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£25"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All available credit is used for this booking"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"credit"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Total:"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£99"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All available credit is used for this booking"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"total"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@test.test"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -3189,9 +3220,44 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Client phones collected during booking process</td>
 </tr>
 <tr>
-<td><code class="prettyprint">price</code><br><em>editable</em></td>
+<td><code class="prettyprint">price</code></td>
 <td><em>object&lt;<a href="#price">price</a>&gt;</em></td>
 <td>Selected price breakdown</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price.type</code></td>
+<td><em>string</em></td>
+<td>Price type:<br/><em><b>no_price</b> - when user reached maximum price and will create a quote</em><br><em><b>voucher_applied</b> - when prices are with applied voucher</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">price.description</code></td>
+<td><em>string</em></td>
+<td>Description text for the price</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price.price_breakdown</code></td>
+<td><em>object</em></td>
+<td>Breakdown of how price was calculated</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price.price_breakdown.name</code></td>
+<td><em>string</em></td>
+<td>Name of field</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price.price_breakdown.value</code></td>
+<td><em>string</em></td>
+<td>Value of field</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price.price_breakdown.description</code></td>
+<td><em>string</em></td>
+<td>Description text for field</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price.price_breakdown.type</code></td>
+<td><em>string</em></td>
+<td>Type of breakdown element:<br/><em><b>membership</b> - price of a membership</em><br><em><b>service</b> - price of a service after membership discount</em><br><em><b>voucher</b> - discount from vouchers applied</em><br><em><b>credit</b> - discounts from credits applied</em><br><em><b>total</b> - total price after discounts</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">work_time</code></td>
@@ -3688,7 +3754,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">banner.type</code></td>
 <td><em>string</em></td>
-<td>Type of the price:<br/><em><b>no_price</b> - when user reached maximum price and will create a quote</em><br><em><b>voucher_applied</b> - when prices are with applied voucher</em></td>
+<td>Type of the price (check <a href="#bookings">booking</a><code class="prettyprint">.price.type</code>).</td>
 </tr>
 <tr>
 <td><code class="prettyprint">banner.description</code></td>
