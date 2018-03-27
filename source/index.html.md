@@ -2279,18 +2279,18 @@ curl\
 ```json
 {
   "data": {
+    "banner": {
+      "type": "no_price",
+      "description": "Maximum price reached."
+    },
     "availabilities": [
       {
         "date": "2015-03-24",
         "timeslots": [
           {
             "time": "10:00",
-            "unavailable": 0,
-            "type": {
-              "id": 3,
-              "note": "testsad das",
-              "color": "#ffffff"
-            },
+            "available": true,
+            "tags": ["carbon", "members_only"],
             "choice_items": [
               {
                 "id": 1110,
@@ -2355,15 +2355,15 @@ Parameter | Type | Description
 
 Parameter | Type | Description
 -------- | ----- | -------
+`banner` | *object* | Description of the price
+`banner.type` | *string* | Type of the price:<br/>*<b>no_price</b> - when user reached maximum price and will create a quote*<br>*<b>voucher_applied</b> - when prices are with applied voucher*
+`banner.description` | *string* | Description text for the price
 `availabilities` | *array* | List of days the service is available
 `availabilities.date` | *string* | Date of availability
 `availabilities.timeslots` | *array* | List of timeslots for the day
 `availabilities.timeslots.time` | *string* | Time of timeslot
-`availabilities.timeslots.unavailable` | *integer* | Status of the timeslot:<br/>*<b>0</b> - available*<br>*<b>1</b> - fully booked*<br>*<b>2</b> - only for member*<br>*<b>3</b> - non working day for service*
-`availabilities.timeslots.type` | *object* | Visual customization of timeslot
-`availabilities.timeslots.type.id` | *integer* | Type of visualisation:<br/>*<b>1</b> - carbon slot*<br>*<b>2</b> - members only slot*<br>*<b>3</b> - standard slot*
-`availabilities.timeslots.type.note` | *string* | Description text
-`availabilities.timeslots.type.color` | *string* | Color for displaying
+`availabilities.timeslots.available` | *boolean* | Determines weather slot can be booked
+`availabilities.timeslots.tags` | *array\<string\>* | Visual customization of timeslot:<br/>*<b>carbon</b> - carbon slot*<br>*<b>members_only</b> - members only slot*<br>*<b>fully_booked</b> - fully booked*<br>*<b>non_working_day</b> - non working day for service*
 `availabilities.timeslots.choice_items` | *array<[choice_item](#choice-items)>* | Timeslot price options as choice items
 `special_timeslots` | *object* | Special timeslots
 `special_timeslots.asap` | *string* | First available slot
