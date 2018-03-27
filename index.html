@@ -3568,18 +3568,18 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"banner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no_price"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maximum price reached."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nt">"availabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-03-24"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"timeslots"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"unavailable"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testsad das"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ffffff"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"available"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"carbon"</span><span class="p">,</span><span class="w"> </span><span class="s2">"members_only"</span><span class="p">],</span><span class="w">
             </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1110</span><span class="p">,</span><span class="w">
@@ -3681,6 +3681,21 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
+<td><code class="prettyprint">banner</code></td>
+<td><em>object</em></td>
+<td>Description of the price</td>
+</tr>
+<tr>
+<td><code class="prettyprint">banner.type</code></td>
+<td><em>string</em></td>
+<td>Type of the price:<br/><em><b>no_price</b> - when user reached maximum price and will create a quote</em><br><em><b>voucher_applied</b> - when prices are with applied voucher</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">banner.description</code></td>
+<td><em>string</em></td>
+<td>Description text for the price</td>
+</tr>
+<tr>
 <td><code class="prettyprint">availabilities</code></td>
 <td><em>array</em></td>
 <td>List of days the service is available</td>
@@ -3701,29 +3716,14 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Time of timeslot</td>
 </tr>
 <tr>
-<td><code class="prettyprint">availabilities.timeslots.unavailable</code></td>
-<td><em>integer</em></td>
-<td>Status of the timeslot:<br/><em><b>0</b> - available</em><br><em><b>1</b> - fully booked</em><br><em><b>2</b> - only for member</em><br><em><b>3</b> - non working day for service</em></td>
+<td><code class="prettyprint">availabilities.timeslots.available</code></td>
+<td><em>boolean</em></td>
+<td>Determines weather slot can be booked</td>
 </tr>
 <tr>
-<td><code class="prettyprint">availabilities.timeslots.type</code></td>
-<td><em>object</em></td>
-<td>Visual customization of timeslot</td>
-</tr>
-<tr>
-<td><code class="prettyprint">availabilities.timeslots.type.id</code></td>
-<td><em>integer</em></td>
-<td>Type of visualisation:<br/><em><b>1</b> - carbon slot</em><br><em><b>2</b> - members only slot</em><br><em><b>3</b> - standard slot</em></td>
-</tr>
-<tr>
-<td><code class="prettyprint">availabilities.timeslots.type.note</code></td>
-<td><em>string</em></td>
-<td>Description text</td>
-</tr>
-<tr>
-<td><code class="prettyprint">availabilities.timeslots.type.color</code></td>
-<td><em>string</em></td>
-<td>Color for displaying</td>
+<td><code class="prettyprint">availabilities.timeslots.tags</code></td>
+<td><em>array&lt;string&gt;</em></td>
+<td>Visual customization of timeslot:<br/><em><b>carbon</b> - carbon slot</em><br><em><b>members_only</b> - members only slot</em><br><em><b>fully_booked</b> - fully booked</em><br><em><b>non_working_day</b> - non working day for service</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">availabilities.timeslots.choice_items</code></td>
