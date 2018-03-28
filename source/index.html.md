@@ -2384,10 +2384,10 @@ Parameter | Type | Description
 
 Parameter | Type | Description
 -------- | ----- | -------
-`from_date_utc` | *integer* | Filter availability from this date on (UTC timestamp)
-`to_date_utc` | *integer* | Filter availability to this date on (UTC timestamp)
-`special_timeslot_from_date_utc` | *integer* | Filter availability for determining special timeslots from this date on (UTC timestamp)
-`special_timeslot_to_date_utc` | *integer* | Filter availability for determining special timeslots to this date on (UTC timestamp)
+`from_date` | *integer* | Filter availability from this date on (UTC timestamp)
+`to_date` | *integer* | Filter availability to this date on (UTC timestamp)
+`special_timeslot_from_date` | *integer* | Filter availability for determining special timeslots from this date on (UTC timestamp)
+`special_timeslot_to_date` | *integer* | Filter availability for determining special timeslots to this date on (UTC timestamp)
 
 ### Response parameters
 
