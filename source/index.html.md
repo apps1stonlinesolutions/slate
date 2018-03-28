@@ -2382,12 +2382,13 @@ Parameter | Type | Description
 
 ### `params`
 
-Parameter | Type | Description
--------- | ----- | -------
-`from_date` | *integer* | Filter availability from this date on (UTC timestamp)
-`to_date` | *integer* | Filter availability to this date on (UTC timestamp)
-`special_timeslot_from_date` | *integer* | Filter availability for determining special timeslots from this date on (UTC timestamp)
-`special_timeslot_to_date` | *integer* | Filter availability for determining special timeslots to this date on (UTC timestamp)
+Parameter | Type | Default | Description
+-------- | ----- | ----- | -------
+`from_date` | *integer* | now | Filter availability from this date on (UTC timestamp)
+`to_date` | *integer* | two month from now | Filter availability to this date on (UTC timestamp)
+`special_timeslot_from_date` | *integer* | now | Filter availability for determining special timeslots from this date on (UTC timestamp)
+`special_timeslot_to_date` | *integer* | two month from now | Filter availability for determining special timeslots to this date on (UTC timestamp)
+`filter.available` | *string* | *true* | Filters availabilities by available flag. If `any` passed both `true` and `false` are returned.
 
 ### Response parameters
 
