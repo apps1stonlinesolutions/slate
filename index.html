@@ -3712,28 +3712,39 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">from_date_utc</code></td>
+<td><code class="prettyprint">from_date</code></td>
 <td><em>integer</em></td>
+<td>now</td>
 <td>Filter availability from this date on (UTC timestamp)</td>
 </tr>
 <tr>
-<td><code class="prettyprint">to_date_utc</code></td>
+<td><code class="prettyprint">to_date</code></td>
 <td><em>integer</em></td>
+<td>a month from now</td>
 <td>Filter availability to this date on (UTC timestamp)</td>
 </tr>
 <tr>
-<td><code class="prettyprint">special_timeslot_from_date_utc</code></td>
+<td><code class="prettyprint">special_timeslot_from_date</code></td>
 <td><em>integer</em></td>
+<td>now</td>
 <td>Filter availability for determining special timeslots from this date on (UTC timestamp)</td>
 </tr>
 <tr>
-<td><code class="prettyprint">special_timeslot_to_date_utc</code></td>
+<td><code class="prettyprint">special_timeslot_to_date</code></td>
 <td><em>integer</em></td>
+<td>a month from now</td>
 <td>Filter availability for determining special timeslots to this date on (UTC timestamp)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">filter.available</code></td>
+<td><em>string</em></td>
+<td><em>true</em></td>
+<td>Filters availabilities by available flag. If <code class="prettyprint">any</code> passed both <code class="prettyprint">true</code> and <code class="prettyprint">false</code> are returned.</td>
 </tr>
 </tbody></table>
 
