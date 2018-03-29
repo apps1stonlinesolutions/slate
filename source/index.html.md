@@ -4026,29 +4026,20 @@ Parameter | Type | Description
 
 ```shell
 curl\
- -X GET\
+ -X POST\
  -H "Content-Type: application/json"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+  "path": "https://middlepoint-dev.1dxr.com/v2/client/addresses",
+  "message": "Invalid path",
+  "body": {
+    "address_line_1": "Red Lion Street 24",
+    "postcode": "22"
+  },
+  "external_identifier": "AccountViewController"
+}'\
 "https://{{BASE_URL}}/v2/shared/exceptions"
-```
-
-> The above request success response is:
-
-```json
-{
-  "data": [
-    {
-      "path": "https://middlepoint-dev.1dxr.com/v2/client/addresses",
-      "message": "Invalid path",
-      "body": {
-        "address_line_1": "Red Lion Street 24",
-        "postcode": "22"
-      },
-      "external_identifier": "AccountViewController"
-    }
-  ]
-}
 ```
 
 Errors appearing on clients.
