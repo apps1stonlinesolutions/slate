@@ -4030,7 +4030,7 @@ curl\
  -H "Content-Type: application/json"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
-"https://{{BASE_URL}}/v2/unit/tracked_locations"
+"https://{{BASE_URL}}/v2/shared/exceptions"
 ```
 
 > The above request success response is:
@@ -4039,27 +4039,31 @@ curl\
 {
   "data": [
     {
-      "latitude": 21.197216,
-      "longitude": 21.621094,
-      "event_time": 1496922768
+      "path": "https://middlepoint-dev.1dxr.com/v2/client/addresses",
+      "message": "Invalid path",
+      "body": {
+        "address_line_1": "Red Lion Street 24",
+        "postcode": "22"
+      },
+      "external_identifier": "AccountViewController"
     }
   ]
 }
 ```
 
-Locations tracked over time for the unit.
+Errors appearing on clients.
 
-`"path": "tracked_locations"`
+`"path": "exceptions"`
 
 ### Response parameters
 
 Parameter | Type | Description
 -------- | ----- | -------
-`latitude` | *double* | Latitude tracked
-`longitude` | *double* | Longitude tracked
-`event_time` | *integer* | Timestamp when the event occurred and was saved (may be sent later)
+`path` | *string* | Request path
+`message` | *string* | Message returned from server
+`body` | *string* | Content for error
+`external_identifier` | *string* | Identifier for the source of the error on the client
 
 This endpoint returns:
 
 * [Common errors](#common-errors)
-* [Tracked locations errors](#tracked-locations-errors)
