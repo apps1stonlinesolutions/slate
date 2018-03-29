@@ -6212,7 +6212,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
-<span class="s2">"https://{{BASE_URL}}/v2/unit/tracked_locations"</span>
+<span class="s2">"https://{{BASE_URL}}/v2/shared/exceptions"</span>
 </code></pre>
 
 <blockquote>
@@ -6221,17 +6221,21 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">21.197216</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">21.621094</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"event_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1496922768</span><span class="w">
+      </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://middlepoint-dev.1dxr.com/v2/client/addresses"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid path"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Red Lion Street 24"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"external_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountViewController"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Locations tracked over time for the unit.</p>
+<p>Errors appearing on clients.</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;tracked_locations&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;exceptions&quot;</code></p>
 
 <h3 id="response-parameters">Response parameters</h3>
 
@@ -6243,19 +6247,24 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">latitude</code></td>
-<td><em>double</em></td>
-<td>Latitude tracked</td>
+<td><code class="prettyprint">path</code></td>
+<td><em>string</em></td>
+<td>Request path</td>
 </tr>
 <tr>
-<td><code class="prettyprint">longitude</code></td>
-<td><em>double</em></td>
-<td>Longitude tracked</td>
+<td><code class="prettyprint">message</code></td>
+<td><em>string</em></td>
+<td>Message returned from server</td>
 </tr>
 <tr>
-<td><code class="prettyprint">event_time</code></td>
-<td><em>integer</em></td>
-<td>Timestamp when the event occurred and was saved (may be sent later)</td>
+<td><code class="prettyprint">body</code></td>
+<td><em>string</em></td>
+<td>Content for error</td>
+</tr>
+<tr>
+<td><code class="prettyprint">external_identifier</code></td>
+<td><em>string</em></td>
+<td>Identifier for the source of the error on the client</td>
 </tr>
 </tbody></table>
 
@@ -6263,7 +6272,6 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <ul>
 <li><a href="#common-errors">Common errors</a></li>
-<li><a href="#tracked-locations-errors">Tracked locations errors</a></li>
 </ul>
 
           <h1 id="errors">Errors</h1>
