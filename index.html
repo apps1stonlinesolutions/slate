@@ -6208,30 +6208,21 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <h2 id="exceptions">Exceptions</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
- -X GET<span class="se">\</span>
+ -X POST<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+  "path": "https://middlepoint-dev.1dxr.com/v2/client/addresses",
+  "message": "Invalid path",
+  "body": {
+    "address_line_1": "Red Lion Street 24",
+    "postcode": "22"
+  },
+  "external_identifier": "AccountViewController"
+}'</span><span class="se">\</span>
 <span class="s2">"https://{{BASE_URL}}/v2/shared/exceptions"</span>
 </code></pre>
-
-<blockquote>
-<p>The above request success response is:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://middlepoint-dev.1dxr.com/v2/client/addresses"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid path"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Red Lion Street 24"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"external_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountViewController"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <p>Errors appearing on clients.</p>
 
