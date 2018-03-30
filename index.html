@@ -3029,6 +3029,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
   </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no_price"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maximum price reached"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],</span><span class="w">
     </span><span class="nt">"price_breakdown"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Membership price"</span><span class="p">,</span><span class="w">
@@ -3233,6 +3234,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">price.description</code></td>
 <td><em>string</em></td>
 <td>Description text for the price</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price.choice_items</code></td>
+<td><em>array&lt;<a href="#choice-items">choice_item</a>&gt;</em></td>
+<td>Price choice items selected on availability</td>
 </tr>
 <tr>
 <td><code class="prettyprint">price.price_breakdown</code></td>
