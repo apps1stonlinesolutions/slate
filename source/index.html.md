@@ -2319,7 +2319,7 @@ curl\
 ```json
 {
   "data": {
-    "banner": {
+    "price": {
       "type": "no_price",
       "description": "Maximum price reached."
     },
@@ -2396,9 +2396,9 @@ Parameter | Type | Default | Description
 
 Parameter | Type | Description
 -------- | ----- | -------
-`banner` | *object* | Description of the price
-`banner.type` | *string* | Type of the price (check [booking](#bookings)`.price.type`).
-`banner.description` | *string* | Description text for the price
+`price` | *object* | Description of the price
+`price.type` | *string* | Type of the price (check [booking](#bookings)`.price.type`).
+`price.description` | *string* | Description text for the price
 `availabilities` | *array* | List of days the service is available
 `availabilities.date` | *string* | Date of availability
 `availabilities.timeslots` | *array* | List of timeslots for the day
