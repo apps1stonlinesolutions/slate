@@ -1899,6 +1899,7 @@ curl\
   "price": {
     "type": "no_price",
     "description": "Maximum price reached",
+    "choice_items": [1, 2],
     "price_breakdown": [
       {
         "name": "Membership price",
@@ -2064,6 +2065,7 @@ Parameter | Type | Description
 `price` | *object<[price](#price)>* | Selected price breakdown
 `price.type` | *string*| Price type:<br/>*<b>no_price</b> - when user reached maximum price and will create a quote*<br>*<b>voucher_applied</b> - when prices are with applied voucher*
 `price.description` | *string* | Description text for the price
+`price.choice_items` | *array\<[choice_item](#choice-items)\>* | Price choice items selected on availability
 `price.price_breakdown` | *object* | Breakdown of how price was calculated
 `price.price_breakdown.name` | *string* | Name of field
 `price.price_breakdown.value` | *string* | Value of field
