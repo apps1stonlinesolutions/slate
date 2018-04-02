@@ -1417,7 +1417,7 @@ curl\
   "data": [
     {
       "id": 1,
-      "sort": 1,
+      "sort": 100,
       "default": true,
       "title": "Cash",
       "type": "None",
@@ -1427,13 +1427,25 @@ curl\
     },
     {
       "id": 2,
-      "sort": 1,
+      "sort": 200,
       "default": false,
       "title": "Card",
       "type": "Stripe",
       "payment_provider_id": 3,
       "data": {
         "stripe_key": "kdj9DSA923131safdfd89a7fklj`cxzc"
+      },
+      "icon_image_url": "http://image.url/here.jpg"
+    },
+    {
+      "id": 3,
+      "sort": 300,
+      "default": false,
+      "title": "PayPal",
+      "type": "PayPal",
+      "payment_provider_id": 15,
+      "data": {
+        "paypal_key": "kdj9DSA923131safdfd89a7fklj`cxzc"
       },
       "icon_image_url": "http://image.url/here.jpg"
     }
@@ -1454,10 +1466,11 @@ Parameter | Type | Description
 `sort` | *integer* | Order of item in list
 `default` | *boolean* | Is this payment method the default
 `title` | *string* | Display name of payment method
-`type` | *string* | *<b>None</b> - No processing needed (e.g. Cash payment)*<br>*<b>Stripe</b> - Card payment via Stripe*
+`type` | *string* | *<b>None</b> - No processing needed (e.g. Cash payment)*<br>*<b>Stripe</b> - Card payment via Stripe*<br>*<b>PayPal</b> - PayPal via Braintree*
 `payment_provider_id` | *integer* | Identifier for the the account used for the payment method (e.g. Stripe UK, Stripe AUS etc.)
 `data`<br>*optional* | *object* | Based on the payment provider different data may be provided (such as keys, tokens etc.)
 `data.stripe_key`<br>*optional* | *string* | Stripe API authorization key
+`data.paypal_key`<br>*optional* | *string* | PayPal Braintree authorization key
 `icon_image_url` | *string* | Icon image for payment method
 
 
