@@ -3953,7 +3953,7 @@ Parameter | Type | Description
 `payload.popup.title` | *string* | 
 `payload.popup.description` | *string* | 
 `payload.popup.cta_button.title` | *string* | 
-`payload.popup.cta_button.target.screen_id` | *integer* | 
+`payload.popup.cta_button.target.screen_id` | *integer* | Determines which screen is opened when tapping the CTA button:<br/>*<b>1</b> - Categories*<br>*<b>2</b> - Category*<br>*<b>3</b> - Service*<br>*<b>4</b> - Deals*<br>*<b>5</b> - Deal*<br>*<b>6</b> - Chat*<br>*<b>7</b> - Referral*<br>*<b>8</b> - Treats*<br>*<b>9</b> - Membership*
 `payload.popup.cta_button.target.screen_id.item_id` | *integer* | 
 `payload.popup.voucher.voucher_code` | *string* | 
 `payload.popup.voucher.title` | *string* | 
