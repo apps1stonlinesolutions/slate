@@ -3328,6 +3328,188 @@ This endpoint returns:
 * [Common errors](#common-errors)
 * [Tracked locations errors](#tracked-locations-errors)
 
+## Availability
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/availability"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+     {
+      "date": "21-02-2018",
+      "intervals": [
+        {
+          "from_time": "10:00",
+          "to_time": "14:00"
+        },
+        {
+          "from_time": "15:00",
+          "to_time": "19:00"
+        }
+      ],
+      "pending_requests": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}
+```
+
+Unit availability (shifts).
+
+`"path": "availability"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`date` | *string* | Date of availability (date string with format 2018-02-25)
+`intervals` | *array\<intervals\>* | List of working intervals for the day
+`intervals.from_time` | *string* | Start time of interval (time string with format 10:00)
+`intervals.to_time` | *string* | End time of interval (time string with format 10:00)
+`pending_requests` | *array\<[availability_requests](#availability-requests)\>* | List of pending requests for the day
+
+### `params`
+
+Parameter | Type | Default | Description
+-------- | ----- | ----- | -------
+`from_date` | *string* | Monday | Filter availability from this date on (date string with format 2018-02-25)
+`to_date` | *string* | Sunday | Filter availability to this date (date string with format 2018-02-25)
+
+
+## Availability requests
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/availability_requests"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "type": "time_off",
+      "from_formatted": "2018-12-25 12:00",
+      "to_formatted": "2018-12-25 18:00",
+      "dayoff_type_id": 1,
+      "comment": "Want to have a break on 25th afternoon",
+      "status": "approved"
+    },
+    {
+      "id": 2,
+      "type": "days_off",
+      "from_formatted": "2018-12-25 00:00",
+      "to_formatted": "2018-12-25 23:59",
+      "dayoff_type_id": 1,
+      "comment": "Want to take the day 25th off",
+      "status": "declined"
+    },
+    {
+      "id": 3,
+      "type": "working_hours",
+      "day_of_week": 2,
+      "intervals": [
+        {
+          "from_time": "10:00",
+          "to_time": "14:00"
+        },
+        {
+          "from_time": "15:00",
+          "to_time": "19:00"
+        }
+      ],
+      "comment": "Want to work from 10:00-14:00 and from 15:00-19:00 Tuesdays",
+      "status": "pending"
+    },
+    {
+      "id": 3,
+      "type": "working_hours",
+      "day_of_week": 7,
+      "dayoff_type_id": 1,
+      "comment": "Won't work in Sundays",
+      "status": "pending"
+    }
+  ]
+}
+```
+
+Requests of unit for changes of availability (shifts, working days etc.).
+
+`"path": "availability_requests"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`type` | *string* | Request type:<br>*<b>time_off</b> - Part of day off*<br>*<b>days_off</b> - Days off*<br>*<b>working_hours</b> - Change in shift*
+`from_formatted` | *string* | Request start date formatted (string date with format 2018-12-25 12:00)
+`to_formatted` | *string* | Request end date formatted (string date with format 2018-12-25 12:00)
+`dayoff_type_id` | *integer* | `id` of [reason](#day-off-types) for change.
+`comment` | *string* | Unit comment for request
+`status` | *string* | Status of request:<br>*<b>pending</b> - Waiting for approval*<br>*<b>approved</b> - Approved*<br>*<b>declined</b> - Declined*
+
+### `params`
+
+Parameter | Type | Description
+-------- | ----- | -------
+`filter.status`<br>*optional* | *string* | Filters response with type equal to the passed
+
+## Day off types
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/day_off_types"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Broken car",
+      "sort": 100
+    }
+  ]
+}
+```
+
+Reasons for availability change.
+
+`"path": "day_off_types"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`name` | *string* | Name of day off reason
+`sort` | *integer* | Order of item in list
+
 
 ## Feedback
 
