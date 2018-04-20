@@ -495,7 +495,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `referral_bonus_formatted` | *string* | Referral program bonus amount formatted
 `membership_section_content` | *string* | JSON with membership section content in account tab and on timeslots purchase.
-`show_service_search` | *boolean* | Configuration for hiding or showing search servide field
+`show_service_searchx` | *boolean* | Configuration for hiding or showing search servide field
 `request_login_step` | *integer* | Determines where user has to login to continue:<br>*<b>1</b> - on welcome screen*<br>*<b>2</b> - after welcome screen*<br>*<b>3</b> - after coverage*<br>*<b>4</b> - before timeslots*<br>*<b>5</b> - after timeslots*<br>
 `banners` | *array\<banner\>* | List of banners for the application
 `banners.type` | *integer* | Determines where to show the banner:<br>*<b>1</b> - categories list*<br>*<b>2</b> - services list*<br>
@@ -4054,7 +4054,8 @@ curl\
     "address_line_1": "Red Lion Street 24",
     "postcode": "22"
   },
-  "external_identifier": "AccountViewController"
+  "external_identifier": "AccountViewController",
+  "exception": ""
 }'\
 "https://{{BASE_URL}}/v2/shared/exceptions"
 ```
@@ -4071,6 +4072,7 @@ Parameter | Type | Description
 `message` | *string* | Message returned from server
 `body` | *string* | Content for error
 `external_identifier` | *string* | Identifier for the source of the error on the client
+`exception` | *string* | Details for the exception
 
 This endpoint returns:
 
