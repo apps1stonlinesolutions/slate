@@ -781,7 +781,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>JSON with membership section content in account tab and on timeslots purchase.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">show_service_search</code></td>
+<td><code class="prettyprint">show_service_searchx</code></td>
 <td><em>boolean</em></td>
 <td>Configuration for hiding or showing search servide field</td>
 </tr>
@@ -6248,7 +6248,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     "address_line_1": "Red Lion Street 24",
     "postcode": "22"
   },
-  "external_identifier": "AccountViewController"
+  "external_identifier": "AccountViewController",
+  "exception": ""
 }'</span><span class="se">\</span>
 <span class="s2">"https://{{BASE_URL}}/v2/shared/exceptions"</span>
 </code></pre>
@@ -6285,6 +6286,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">external_identifier</code></td>
 <td><em>string</em></td>
 <td>Identifier for the source of the error on the client</td>
+</tr>
+<tr>
+<td><code class="prettyprint">exception</code></td>
+<td><em>string</em></td>
+<td>Details for the exception</td>
 </tr>
 </tbody></table>
 
