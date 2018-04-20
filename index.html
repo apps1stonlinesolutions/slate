@@ -5201,6 +5201,286 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <li><a href="#tracked-locations-errors">Tracked locations errors</a></li>
 </ul>
 
+<h2 id="availability">Availability</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/availability"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21-02-2018"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"from_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"to_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"from_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"to_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"pending_requests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="mi">3</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Unit availability (shifts).</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;availability&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">date</code></td>
+<td><em>string</em></td>
+<td>Date of availability (date string with format 2018-02-25)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">intervals</code></td>
+<td><em>array&lt;intervals&gt;</em></td>
+<td>List of working intervals for the day</td>
+</tr>
+<tr>
+<td><code class="prettyprint">intervals.from_time</code></td>
+<td><em>string</em></td>
+<td>Start time of interval (time string with format 10:00)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">intervals.to_time</code></td>
+<td><em>string</em></td>
+<td>End time of interval (time string with format 10:00)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">pending_requests</code></td>
+<td><em>array&lt;<a href="#availability-requests">availability_requests</a>&gt;</em></td>
+<td>List of pending requests for the day</td>
+</tr>
+</tbody></table>
+
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">from_date</code></td>
+<td><em>string</em></td>
+<td>Monday</td>
+<td>Filter availability from this date on (date string with format 2018-02-25)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">to_date</code></td>
+<td><em>string</em></td>
+<td>Sunday</td>
+<td>Filter availability to this date (date string with format 2018-02-25)</td>
+</tr>
+</tbody></table>
+
+<h2 id="availability-requests">Availability requests</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/availability_requests"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"time_off"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"from_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-25 12:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"to_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-25 18:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"dayoff_type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Want to have a break on 25th afternoon"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"days_off"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"from_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-25 00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"to_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-25 23:59"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"dayoff_type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Want to take the day 25th off"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"declined"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working_hours"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"day_of_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"from_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"to_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"from_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"to_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Want to work from 10:00-14:00 and from 15:00-19:00 Tuesdays"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working_hours"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"day_of_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"dayoff_type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Won't work in Sundays"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Requests of unit for changes of availability (shifts, working days etc.).</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;availability_requests&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code class="prettyprint">type</code></td>
+<td><em>string</em></td>
+<td>Request type:<br><em><b>time_off</b> - Part of day off</em><br><em><b>days_off</b> - Days off</em><br><em><b>working_hours</b> - Change in shift</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">from_formatted</code></td>
+<td><em>string</em></td>
+<td>Request start date formatted (string date with format 2018-12-25 12:00)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">to_formatted</code></td>
+<td><em>string</em></td>
+<td>Request end date formatted (string date with format 2018-12-25 12:00)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">dayoff_type_id</code></td>
+<td><em>integer</em></td>
+<td><code class="prettyprint">id</code> of <a href="#day-off-types">reason</a> for change.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">comment</code></td>
+<td><em>string</em></td>
+<td>Unit comment for request</td>
+</tr>
+<tr>
+<td><code class="prettyprint">status</code></td>
+<td><em>string</em></td>
+<td>Status of request:<br><em><b>pending</b> - Waiting for approval</em><br><em><b>approved</b> - Approved</em><br><em><b>declined</b> - Declined</em></td>
+</tr>
+</tbody></table>
+
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">filter.status</code><br><em>optional</em></td>
+<td><em>string</em></td>
+<td>Filters response with type equal to the passed</td>
+</tr>
+</tbody></table>
+
+<h2 id="day-off-types">Day off types</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/day_off_types"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Broken car"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Reasons for availability change.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;day_off_types&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td><em>string</em></td>
+<td>Name of day off reason</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sort</code></td>
+<td><em>integer</em></td>
+<td>Order of item in list</td>
+</tr>
+</tbody></table>
+
 <h2 id="feedback">Feedback</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X POST<span class="se">\</span>
