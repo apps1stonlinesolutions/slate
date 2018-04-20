@@ -424,6 +424,7 @@ curl\
     "privacy_policy_url": "https://gofantastic.com/privacy-policy.html",
     "show_manage_membership_section": true,
     "show_service_search": true,
+    "most_booked_search_section": [1, 2, 3],
     "referral_bonus_formatted": "£20",
     "membership_section_content" : "{\"join_the_club_screen\":{\"title\":\"Join the Fantastic Club and Start Saving Now!\",\"description\":\"Enjoy the exclusive perks of being a member of the Fantastic Club for an annual fee of <b>only \\u00a349<\\/b>.\",\"how_to_title\":\"How to join?\",\"club_member_benefits\":{\"title\":\"Club Member Benefits\",\"benefits\":[{\"image_url\":\"\",\"title\":\"Flat 10% discount on 25+ Fantastic services\",\"description\":\"Fantastic Club Members get a fixed 10% OFF 25+ Fantastic services*, as well as access to members only deals and slots.\"},{\"image_url\":\"\",\"title\":\"Save over \\u00a3400 a year with our preferential domestic cleaning rates.\",\"description\":\"Book domestic cleaning services at a special rate of \\u00a312\\/h and one-off cleaning at \\u00a314\\/h \"},{\"image_url\":\"\",\"title\":\"Money back guarantee and no cancellation fees\",\"description\":\"100% money-back guarantee on your membership within 30 days of purchase and no bookings cancellation fee for an entire year.\"}],\"additional_details\":\"* Minimum charges per service, slot and area apply. Does not apply to already existing bookings and quotes. For all services discount applies to labour cost only.\"},\"join_button_title\":\"JOIN THE CLUB FOR \\u00a349\\/year\",\"button_description\":\"100% money-back guarantee on your membership within 30 days of purchase\"},\"how_to_join_screen\":{\"description\":\"Becoming a Fantastic Club member is really easy! Simply select the button at the bottom of this page. We\\u2019ll send you an email with more information regarding your membership fee payment.\\n\\nYou can also become a member by following these four steps:\",\"steps\":[\"Choose the service you want to book and pick your desired time slot.\",\"Select the discounted prices for members by tapping the switch at the top of the screen.\",\"Press proceed and select Join the Club to add the annual \\u00a349 Fantastic Club membership fee to your booking. The price of the service will then be automatically updated with the discounted price for members.\",\"Finish your booking by completing your payment by credit card. The next time you book a service, you will automatically see your discounted member price.\"],\"join_button_title\":\"JOIN THE CLUB FOR \\u00a349\\/year\",\"button_description\":\"100% money-back guarantee on your membership within 30 days of purchase\"},\"become_a_member_section\":{\"title\":\"Become a Member for only \\u00a349\",\"description\":\"Join now to continue booking at the discounted rates for members. Your annual membership will be added to the total of your booking and valid for one year from the time of purchase.\"}}",
     "request_login_step": 5,
@@ -496,6 +497,7 @@ Parameter | Type | Description
 `referral_bonus_formatted` | *string* | Referral program bonus amount formatted
 `membership_section_content` | *string* | JSON with membership section content in account tab and on timeslots purchase.
 `show_service_searchx` | *boolean* | Configuration for hiding or showing search servide field
+`most_booked_search_section` | *array\<integer\>* | List of service/deals ids
 `request_login_step` | *integer* | Determines where user has to login to continue:<br>*<b>1</b> - on welcome screen*<br>*<b>2</b> - after welcome screen*<br>*<b>3</b> - after coverage*<br>*<b>4</b> - before timeslots*<br>*<b>5</b> - after timeslots*<br>
 `banners` | *array\<banner\>* | List of banners for the application
 `banners.type` | *integer* | Determines where to show the banner:<br>*<b>1</b> - categories list*<br>*<b>2</b> - services list*<br>
@@ -1133,7 +1135,8 @@ curl\
         2
       ],
       "customize": {
-        "tooltip": "Click here"
+        "tooltip": "Click here",
+        "search_keywords": ["fantastic", "cleaning"]
       },
       "profile_config": {
         "url": "https://www.fantasticservices.com/cleaning/one-off"
@@ -1171,6 +1174,7 @@ Parameter | Type | Description
 `choices` | *array\<[choice](#choices)\>* | List of questions to book the service
 `payment_methods` | *array\<[payment_methods](#payment-methods)\>* | List of available payment methods for the service
 `customize` | *object* | Key-value pairs of custom attributes
+`customize.search_keywords` | *array\<string\>* | Array of search keywords for the service
 `profile_config` | *object* | Key-value pairs of custom attributes with different values for each Profile
 `logic_js` | *string* | JavaScript containing functions for modification of booking process
 
