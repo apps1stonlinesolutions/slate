@@ -3328,6 +3328,54 @@ This endpoint returns:
 * [Common errors](#common-errors)
 * [Tracked locations errors](#tracked-locations-errors)
 
+
+## Work time
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/work_time"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+     {
+      "day_of_week": 1,
+      "intervals": [
+        {
+          "from_time": "10:00",
+          "to_time": "14:00"
+        },
+        {
+          "from_time": "15:00",
+          "to_time": "19:00"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Unit week work time (shifts).
+
+`"path": "work_time"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`day_of_week` | *integer* | Day of the week:<br>*<b>1</b> - Monday*<br>*<b>2</b> - Tuesday*<br>*<b>3</b> - Wednesday*<br>*<b>4</b> - Thursday*<br>*<b>5</b> - Friday*<br>*<b>6</b> - Saturday*<br>*<b>7</b> - Sunday*
+`intervals` | *array\<intervals\>* | List of working intervals for the day
+`intervals.from_time` | *string* | Start time of interval (time string with format 10:00)
+`intervals.to_time` | *string* | End time of interval (time string with format 10:00)
+
+
 ## Availability
 
 ```shell
@@ -3424,7 +3472,7 @@ curl\
     },
     {
       "id": 3,
-      "type": "working_hours",
+      "type": "work_time",
       "day_of_week": 2,
       "intervals": [
         {
@@ -3441,7 +3489,7 @@ curl\
     },
     {
       "id": 3,
-      "type": "working_hours",
+      "type": "work_time",
       "day_of_week": 7,
       "dayoff_type_id": 1,
       "comment": "Won't work in Sundays",
@@ -3460,10 +3508,11 @@ Requests of unit for changes of availability (shifts, working days etc.).
 Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
-`type` | *string* | Request type:<br>*<b>time_off</b> - Part of day off*<br>*<b>days_off</b> - Days off*<br>*<b>working_hours</b> - Change in shift*
+`type` | *string* | Request type:<br>*<b>time_off</b> - Part of day off*<br>*<b>days_off</b> - Days off*<br>*<b>work_time</b> - Change in shift*
 `from_formatted` | *string* | Request start date formatted (string date with format 2018-12-25 12:00)
 `to_formatted` | *string* | Request end date formatted (string date with format 2018-12-25 12:00)
 `dayoff_type_id` | *integer* | `id` of [reason](#day-off-types) for change.
+`day_of_week` | *integer* | Day of the week:<br>*<b>1</b> - Monday*<br>*<b>2</b> - Tuesday*<br>*<b>3</b> - Wednesday*<br>*<b>4</b> - Thursday*<br>*<b>5</b> - Friday*<br>*<b>6</b> - Sunday*
 `comment` | *string* | Unit comment for request
 `status` | *string* | Status of request:<br>*<b>pending</b> - Waiting for approval*<br>*<b>approved</b> - Approved*<br>*<b>declined</b> - Declined*
 
