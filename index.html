@@ -5201,6 +5201,72 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <li><a href="#tracked-locations-errors">Tracked locations errors</a></li>
 </ul>
 
+<h2 id="work-time">Work time</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/work_time"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"day_of_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"from_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"to_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"from_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"to_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Unit week work time (shifts).</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;work_time&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">day_of_week</code></td>
+<td><em>integer</em></td>
+<td>Day of the week:<br><em><b>1</b> - Monday</em><br><em><b>2</b> - Tuesday</em><br><em><b>3</b> - Wednesday</em><br><em><b>4</b> - Thursday</em><br><em><b>5</b> - Friday</em><br><em><b>6</b> - Saturday</em><br><em><b>7</b> - Sunday</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">intervals</code></td>
+<td><em>array&lt;intervals&gt;</em></td>
+<td>List of working intervals for the day</td>
+</tr>
+<tr>
+<td><code class="prettyprint">intervals.from_time</code></td>
+<td><em>string</em></td>
+<td>Start time of interval (time string with format 10:00)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">intervals.to_time</code></td>
+<td><em>string</em></td>
+<td>End time of interval (time string with format 10:00)</td>
+</tr>
+</tbody></table>
+
 <h2 id="availability">Availability</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
@@ -5335,7 +5401,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working_hours"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work_time"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"day_of_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="nt">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -5352,7 +5418,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working_hours"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work_time"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"day_of_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
       </span><span class="nt">"dayoff_type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Won't work in Sundays"</span><span class="p">,</span><span class="w">
@@ -5383,7 +5449,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">type</code></td>
 <td><em>string</em></td>
-<td>Request type:<br><em><b>time_off</b> - Part of day off</em><br><em><b>days_off</b> - Days off</em><br><em><b>working_hours</b> - Change in shift</em></td>
+<td>Request type:<br><em><b>time_off</b> - Part of day off</em><br><em><b>days_off</b> - Days off</em><br><em><b>work_time</b> - Change in shift</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">from_formatted</code></td>
@@ -5399,6 +5465,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">dayoff_type_id</code></td>
 <td><em>integer</em></td>
 <td><code class="prettyprint">id</code> of <a href="#day-off-types">reason</a> for change.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">day_of_week</code></td>
+<td><em>integer</em></td>
+<td>Day of the week:<br><em><b>1</b> - Monday</em><br><em><b>2</b> - Tuesday</em><br><em><b>3</b> - Wednesday</em><br><em><b>4</b> - Thursday</em><br><em><b>5</b> - Friday</em><br><em><b>6</b> - Sunday</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">comment</code></td>
