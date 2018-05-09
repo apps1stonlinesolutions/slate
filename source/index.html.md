@@ -1173,7 +1173,7 @@ curl\
       ],
       "customize": {
         "tooltip": "Click here",
-        "search_keywords": ["fantastic", "cleaning"]
+        "search_keywords": "[\"fantastic\", \"cleaning\"]"
       },
       "profile_config": {
         "url": "https://www.fantasticservices.com/cleaning/one-off"
@@ -1211,7 +1211,7 @@ Parameter | Type | Description
 `choices` | *array\<[choice](#choices)\>* | List of questions to book the service
 `payment_methods` | *array\<[payment_methods](#payment-methods)\>* | List of available payment methods for the service
 `customize` | *object* | Key-value pairs of custom attributes
-`customize.search_keywords` | *array\<string\>* | Array of search keywords for the service
+`customize.search_keywords` | *string* | Represents array of search keywords for the service
 `profile_config` | *object* | Key-value pairs of custom attributes with different values for each Profile
 `logic_js` | *string* | JavaScript containing functions for modification of booking process
 
