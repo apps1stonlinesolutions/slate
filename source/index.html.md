@@ -1742,6 +1742,15 @@ curl\
     "membership": 1,
     "avatar": 1,
     "last_profile_keyword": "UnitedKingdomGF",
+    "preferences": {
+      "preferences_submitted": true,
+      "allow_mk_all": true,
+      "allow_mk_push_notification": true,
+      "allow_mk_sms": true,
+      "allow_mk_email": true,
+      "allow_mk_call": true,
+      "allow_mk_letter": true
+    },
     "addresses": [
       1
     ],
@@ -1783,6 +1792,9 @@ Parameter | Type | Description
 `membership` | *object<[membership](#membership)>* | Current purchased membership
 `avatar`<br>*editable* | *object<[avatar](#avatar)>* | Client avatar image
 `last_profile_keyword` | *string* | Keyword of last chosen profile for the client
+`preferences` | *object* | Flags with user preferences for marketing
+`preferences.preferences_submitted` | *boolean* | True if user has set their initial preferences
+`preferences.allow_mk_all`<br>*write-only* | *object* | When set all preferences are set to true (except preferences_submitted)
 `addresses`<br>*editable* | *array<[address](#addresses)>* | Client addresses
 `phones`<br>*editable* | *array<[phone](#phones)>* | Client phones
 `paymethods`<br>*editable* | *array<[paymethod](#paymethods)>* | Client payment methods
