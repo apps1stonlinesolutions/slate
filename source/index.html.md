@@ -683,7 +683,15 @@ curl\
           "oauth_id": "EAAEo0IpvAQcBAK1gy3VjCJPZCp6vidasdvEvEtxmO0gjFFjtz3jd8omEuhVhg3Y3ZAzIjSLQVMMZBaWwIZBRY9U8B7XZCFvGpledf38DPUTfeHNA2PCZALtPFTjXYFD1aPeB6IK4oo8dJWAIMAcpKPmFATTtXABljEA02jIDExTAp5brMUuNLMQlQr48ISRhbNy4hbKyI6plbO6ZCd1iHJ9kxd09PfpiwcZD",
           "social_provider_id": 1
         },
-        "type_id": 1
+        "type_id": 1,
+        "preferences": {
+          "allow_mk_all": true,
+          "allow_mk_push_notification": true,
+          "allow_mk_sms": true,
+          "allow_mk_email": true,
+          "allow_mk_call": true,
+          "allow_mk_letter": true
+        }
 }'\
  "https://{{BASE_URL}}/v2/client/register"
 ```
@@ -728,6 +736,8 @@ Parameter | Type | Description
 `referrer_code`<br>*optional* | *string* | Referral code from another user
 `social`<br>*optional* | *[object](#facebook-login-request-parameters)* | Social login attributes. Same are used for login (check <b>Facebook login request parameters</b>).
 `type_id`<br>*optional* | *integer* | Type of registration id. Check [user](#user).`type`.
+`preferences.allow_mk_all`<br>*optional* | *boolean* | Sets all preferences to true.
+
 
 
 ### `params`
