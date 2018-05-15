@@ -1105,7 +1105,15 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
           "oauth_id": "EAAEo0IpvAQcBAK1gy3VjCJPZCp6vidasdvEvEtxmO0gjFFjtz3jd8omEuhVhg3Y3ZAzIjSLQVMMZBaWwIZBRY9U8B7XZCFvGpledf38DPUTfeHNA2PCZALtPFTjXYFD1aPeB6IK4oo8dJWAIMAcpKPmFATTtXABljEA02jIDExTAp5brMUuNLMQlQr48ISRhbNy4hbKyI6plbO6ZCd1iHJ9kxd09PfpiwcZD",
           "social_provider_id": 1
         },
-        "type_id": 1
+        "type_id": 1,
+        "preferences": {
+          "allow_mk_all": true,
+          "allow_mk_push_notification": true,
+          "allow_mk_sms": true,
+          "allow_mk_email": true,
+          "allow_mk_call": true,
+          "allow_mk_letter": true
+        }
 }'</span><span class="se">\</span>
  <span class="s2">"https://{{BASE_URL}}/v2/client/register"</span>
 </code></pre>
@@ -1186,6 +1194,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">type_id</code><br><em>optional</em></td>
 <td><em>integer</em></td>
 <td>Type of registration id. Check <a href="#user">user</a>.<code class="prettyprint">type</code>.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">preferences.allow_mk_all</code><br><em>optional</em></td>
+<td><em>boolean</em></td>
+<td>Sets all preferences to true.</td>
 </tr>
 </tbody></table>
 
