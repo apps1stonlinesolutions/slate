@@ -1051,6 +1051,43 @@ This endpoint returns:
 * [Register token info errors](#register-token-infos-errors)
 
 
+## Delete account
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -d '{
+        "password": "yourPasswordHere"
+}'\
+ "https://{{BASE_URL}}/v2/client/delete_account"
+```
+
+> The above request success response is :
+
+```json
+{
+  "success": [
+    {
+      "code": 2000,
+      "message": "Success",
+      "debug_message": null,
+      "debug_id": null
+    }
+  ]
+}
+```
+
+
+Request account deletion.
+
+`"path": "delete_account"`
+
+
+
 
 # Service data
 
@@ -1803,7 +1840,7 @@ Parameter | Type | Description
 `avatar`<br>*editable* | *object<[avatar](#avatar)>* | Client avatar image
 `last_profile_keyword` | *string* | Keyword of last chosen profile for the client
 `preferences` | *object* | Flags with user preferences for marketing
-`preferences.preferences_submitted` | *boolean* | True if user has set their initial preferences
+`preferences.preferences_submitted`<br>*read-only*  | *boolean* | True if user has set their initial preferences
 `preferences.allow_mk_all`<br>*write-only* | *object* | When set all preferences are set to true (except preferences_submitted)
 `addresses`<br>*editable* | *array<[address](#addresses)>* | Client addresses
 `phones`<br>*editable* | *array<[phone](#phones)>* | Client phones
