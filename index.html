@@ -1629,16 +1629,17 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <li><a href="#register-token-infos-errors">Register token info errors</a></li>
 </ul>
 
-<h2 id="delete-account">Delete account</h2>
+<h2 id="request-delete-account">Request delete account</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X POST<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
  -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -d <span class="s1">'{
-        "password": "yourPasswordHere"
+        "password": "yourPasswordHere",
+        "comment": "I don`t want to use your services anymore"
 }'</span><span class="se">\</span>
- <span class="s2">"https://{{BASE_URL}}/v2/client/delete_account"</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/request_delete_account"</span>
 </code></pre>
 
 <blockquote>
@@ -1658,7 +1659,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <p>Request account deletion.</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;delete_account&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;request_delete_account&quot;</code></p>
 
 <h1 id="service-data">Service data</h1>
 
@@ -2749,6 +2750,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     </span><span class="nt">"membership"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nt">"last_profile_keyword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UnitedKingdomGF"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"delete_account_requested"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nt">"preferences"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"preferences_submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"allow_mk_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -2859,6 +2861,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">last_profile_keyword</code></td>
 <td><em>string</em></td>
 <td>Keyword of last chosen profile for the client</td>
+</tr>
+<tr>
+<td><code class="prettyprint">delete_account_requested</code><br><em>read-only</em></td>
+<td><em>boolean</em></td>
+<td>True if user requested account deletion</td>
 </tr>
 <tr>
 <td><code class="prettyprint">preferences</code></td>
