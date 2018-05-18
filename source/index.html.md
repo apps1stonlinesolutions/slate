@@ -1089,6 +1089,13 @@ Request account deletion.
 `"path": "request_delete_account"`
 
 
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`password`<br>*required* | *string* | Account password
+`comment`<br>*optional* | *string* | Reason for requesting account deletion
+
 
 
 # Service data
