@@ -1051,7 +1051,7 @@ This endpoint returns:
 * [Register token info errors](#register-token-infos-errors)
 
 
-## Delete account
+## Request delete account
 
 
 ```shell
@@ -1061,9 +1061,10 @@ curl\
  -H "X-Profile: {{PROFILE_ID}}"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -d '{
-        "password": "yourPasswordHere"
+        "password": "yourPasswordHere",
+        "comment": "I don`t want to use your services anymore"
 }'\
- "https://{{BASE_URL}}/v2/client/delete_account"
+ "https://{{BASE_URL}}/v2/client/request_delete_account"
 ```
 
 > The above request success response is :
@@ -1084,7 +1085,7 @@ curl\
 
 Request account deletion.
 
-`"path": "delete_account"`
+`"path": "request_delete_account"`
 
 
 
@@ -1789,6 +1790,7 @@ curl\
     "membership": 1,
     "avatar": 1,
     "last_profile_keyword": "UnitedKingdomGF",
+    "delete_account_requested": false,
     "preferences": {
       "preferences_submitted": true,
       "allow_mk_all": true,
@@ -1839,6 +1841,7 @@ Parameter | Type | Description
 `membership` | *object<[membership](#membership)>* | Current purchased membership
 `avatar`<br>*editable* | *object<[avatar](#avatar)>* | Client avatar image
 `last_profile_keyword` | *string* | Keyword of last chosen profile for the client
+`delete_account_requested`<br>*read-only*  | *boolean* | True if user requested account deletion
 `preferences` | *object* | Flags with user preferences for marketing
 `preferences.preferences_submitted`<br>*read-only*  | *boolean* | True if user has set their initial preferences
 `preferences.allow_mk_all`<br>*write-only* | *object* | When set all preferences are set to true (except preferences_submitted)
