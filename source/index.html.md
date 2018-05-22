@@ -1337,7 +1337,7 @@ Parameter | Type | Description
 
 Parameter | Type   | Default | Description
 -------- | ---------- | ---- | -------
-`filter.position` | *string* | *configurator* | Filters services by position string. If no filter is passed only choices with position `configurator` is returned. To get choices with differentt position pass an array of desired positions e.g. `['configurator', 'init']`
+`filter.position` | *string* | *configurator* | Filters services by position string. If no filter is passed only choices with position `configurator` is returned. To get choices with different position pass an array of desired positions e.g. `['configurator', 'init']`
 
 
 ## Choice items
@@ -1969,10 +1969,12 @@ curl\
 {
   "id": 1,
   "description": "Business card",
+  "label": "**** **** **** 1234",
   "type": "Stripe",
   "payment_provider_id": 3,
   "data": {
     "token": "231231jsklfhaksj231§2",
+    "device_data": "shdyjtyruhdfgfsdgfdsgdsf",
     "brand": "visa",
     "last_four_digit": "3344",
     "expiration_year": "2016",
@@ -1993,17 +1995,24 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `description`<br>*editable* | *string* | User description for the paymethod
+`label` | *string* | Generated description for the paymethod
 `type` | *string* | Type of paymethod. Check [payment_method](#payment-methods).`type`.
 `payment_provider_id` | *integer* | Type of payment provider. Check [payment_method](#payment-methods).`payment_provider_id`.
 `default`<br>*editable* | *boolean* | Client preference for default paymethod
 `data` | *object* | Custom data of paymethod.
-`data.token` | *string* | Token from stripe for paymethod creation
+`data.token` | *string* | Token from Stripe/PayPal for paymethod creation
+`data.device_data` | *string* | Token from PayPal anti-fraud system
 `data.brand` | *string* | Brand for the paymethod (e.g. VISA, MasterCard etc.)
 `data.last_four_digit` | *string* | Last 4 digits of a credit card
 `data.expiration_month` | *string* | Expriation month of credit card
 `data.expiration_year` | *string* | Expriation year of credit card
 `sort` | *integer* | Order in list
 
+### `params`
+
+Parameter | Type   | Default | Description
+-------- | ---------- | ---- | -------
+`filter.type` | *string* | *Stripe* | Filters paymethods by type string. If no filter is passed only paymethods with type `Stripe` are returned. To get paymethods with different types pass an array of desired types e.g. `['Stripe', 'PayPal']`
 
 ## Bookings
 
