@@ -1369,7 +1369,7 @@ curl\
       "required": false,
       "summary_title": "",
       "is_in_summary": false,
-      "name": "1 bedroom",
+      "title": "1 bedroom",
       "choice_items": null,
       "image_url": "http://image.url/here.jpg",
       "customize": null
@@ -1399,7 +1399,7 @@ Parameter | Type | Description
 `required` | *boolean* | Determines weather choice item requires child to be selected
 `summary_title` | *string* | Answer short title text in summary
 `is_in_summary` | *boolean* | Should the answer be included in the summary of booking
-`name` | *string* | Title of answer
+`title` | *string* | Title of answer
 `choice_items` | *array\<[choice_item](#choice-items)\>* | List of sub-answers for the answers
 `image_url`| *string* | List image for choice item
 `customize` | *object* | Key-value pairs of custom attributes
@@ -2362,6 +2362,11 @@ Each transaction holds a service object. It contains the choice and choice item 
 Parameter | Type | Description
 -------- | ----- | -------
 `confirmed` | *boolean* | Marks when booking transaction is confirmed by client and accepted by server
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+* [Booking process errors](#booking-process-errors)
 
 
 ## Coverage
@@ -4309,7 +4314,7 @@ Parameter | Type | Description
 `payload.popup.title` | *string* | 
 `payload.popup.description` | *string* | 
 `payload.popup.cta_button.title` | *string* | 
-`payload.popup.cta_button.target.screen_id` | *integer* | Determines which screen is opened when tapping the CTA button:<br/>*<b>1</b> - Categories*<br>*<b>2</b> - Category*<br>*<b>3</b> - Service*<br>*<b>4</b> - Deals*<br>*<b>5</b> - Deal*<br>*<b>6</b> - Chat*<br>*<b>7</b> - Referral*<br>*<b>8</b> - Treats*<br>*<b>9</b> - Membership*
+`payload.popup.cta_button.target.screen_id` | *integer* | Determines which screen is opened when tapping the CTA button:<br/>*<b>1</b> - Categories*<br>*<b>2</b> - Category*<br>*<b>3</b> - Service*<br>*<b>4</b> - Deals*<br>*<b>5</b> - Deal*<br>*<b>6</b> - Chat*<br>*<b>7</b> - Referral*<br>*<b>8</b> - Treats*<br>*<b>9</b> - Membership*<br>*<b>10</b> - Privacy policy*
 `payload.popup.cta_button.target.screen_id.item_id` | *integer* | 
 `payload.popup.voucher.voucher_code` | *string* | 
 `payload.popup.voucher.title` | *string* | 

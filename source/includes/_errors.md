@@ -65,6 +65,12 @@ Error Code | Meaning
 5516 | At least 5-character password is required
 5532 | Password and password confirmation do not match - # optional if password_confirm passsed
 
+## Booking process errors
+Error Code | Meaning
+---------- | -------
+6742 | Init choice items are required
+
+
 ## Register voucher errors
 Error Code | Meaning
 ---------- | -------
