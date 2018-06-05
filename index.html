@@ -2126,7 +2126,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nt">"summary_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="nt">"is_in_summary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 bedroom"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 bedroom"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
@@ -2166,7 +2166,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">type</code></td>
 <td><em>integer</em></td>
-<td><em><b>1</b> - Check</em><br><em><b>2</b> - Radio</em><br><em><b>3</b> - Stepper (incremental value)</em><br><em><b>4</b> - Text field</em><br><em><b>5</b> - Hours (total hours for current booking configuration)</em><br><em><b>6</b> - Drop down</em><br><em><b>7</b> - Multi select (autocomplete with quantity)</em><br><em><b>8</b> - Distance</em><br><em><b>9</b> - Always Apply</em><br><em><b>10</b> - Price per hour</em><br><em><b>11</b> - Decimal Text</em><br><em><b>12</b> - Photo attachment</em></td>
+<td><em><b>1</b> - Check</em><br><em><b>2</b> - Radio</em><br><em><b>3</b> - Stepper (incremental value)</em><br><em><b>4</b> - Text field</em><br><em><b>5</b> - Hours (total hours for current booking configuration)</em><br><em><b>6</b> - Drop down</em><br><em><b>7</b> - Multi select (autocomplete with quantity)</em><br><em><b>8</b> - Distance</em><br><em><b>9</b> - Always Apply</em><br><em><b>10</b> - Price per hour</em><br><em><b>11</b> - Decimal Text</em><br><em><b>12</b> - Photo attachment</em><br><em><b>14</b> - Address. Accepts <a href="#addresses">address</a> object</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">max_value</code></td>
@@ -2204,7 +2204,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Should the answer be included in the summary of booking</td>
 </tr>
 <tr>
-<td><code class="prettyprint">name</code></td>
+<td><code class="prettyprint">title</code></td>
 <td><em>string</em></td>
 <td>Title of answer</td>
 </tr>
@@ -3735,6 +3735,13 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Marks when booking transaction is confirmed by client and accepted by server</td>
 </tr>
 </tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+<li><a href="#booking-process-errors">Booking process errors</a></li>
+</ul>
 
 <h2 id="coverage">Coverage</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
@@ -5556,7 +5563,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"to_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-25 18:00"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"dayoff_type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Want to have a break on 25th afternoon"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1528180405</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1528180405</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -5565,7 +5574,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"to_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-25 23:59"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"dayoff_type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Want to take the day 25th off"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"declined"</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"declined"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1528180405</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1528180405</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
@@ -5582,7 +5593,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Want to work from 10:00-14:00 and from 15:00-19:00 Tuesdays"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1528180405</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1528180405</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
@@ -5590,7 +5603,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"day_of_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
       </span><span class="nt">"dayoff_type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Won't work in Sundays"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1528180405</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1528180405</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5648,6 +5663,16 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">status</code></td>
 <td><em>string</em></td>
 <td>Status of request:<br><em><b>pending</b> - Waiting for approval</em><br><em><b>approved</b> - Approved</em><br><em><b>declined</b> - Declined</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td><em>integer</em></td>
+<td>Unix timestamp when request is created</td>
+</tr>
+<tr>
+<td><code class="prettyprint">updated_at</code></td>
+<td><em>integer</em></td>
+<td>Unix timestamp when request is updated (approved or declined)</td>
 </tr>
 </tbody></table>
 
@@ -6566,7 +6591,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">payload.popup.cta_button.target.screen_id</code></td>
 <td><em>integer</em></td>
-<td>Determines which screen is opened when tapping the CTA button:<br/><em><b>1</b> - Categories</em><br><em><b>2</b> - Category</em><br><em><b>3</b> - Service</em><br><em><b>4</b> - Deals</em><br><em><b>5</b> - Deal</em><br><em><b>6</b> - Chat</em><br><em><b>7</b> - Referral</em><br><em><b>8</b> - Treats</em><br><em><b>9</b> - Membership</em></td>
+<td>Determines which screen is opened when tapping the CTA button:<br/><em><b>1</b> - Categories</em><br><em><b>2</b> - Category</em><br><em><b>3</b> - Service</em><br><em><b>4</b> - Deals</em><br><em><b>5</b> - Deal</em><br><em><b>6</b> - Chat</em><br><em><b>7</b> - Referral</em><br><em><b>8</b> - Treats</em><br><em><b>9</b> - Membership</em><br><em><b>10</b> - Privacy policy</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">payload.popup.cta_button.target.screen_id.item_id</code></td>
@@ -7042,6 +7067,20 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td>5532</td>
 <td>Password and password confirmation do not match - # optional if password_confirm passsed</td>
+</tr>
+</tbody></table>
+
+<h2 id="booking-process-errors">Booking process errors</h2>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>6742</td>
+<td>Init choice items are required</td>
 </tr>
 </tbody></table>
 
