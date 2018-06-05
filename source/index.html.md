@@ -3583,7 +3583,9 @@ curl\
       "to_formatted": "2018-12-25 18:00",
       "dayoff_type_id": 1,
       "comment": "Want to have a break on 25th afternoon",
-      "status": "approved"
+      "status": "approved",
+      "created_at": 1528180405,
+      "updated_at": 1528180405
     },
     {
       "id": 2,
@@ -3592,7 +3594,9 @@ curl\
       "to_formatted": "2018-12-25 23:59",
       "dayoff_type_id": 1,
       "comment": "Want to take the day 25th off",
-      "status": "declined"
+      "status": "declined",
+      "created_at": 1528180405,
+      "updated_at": 1528180405
     },
     {
       "id": 3,
@@ -3609,7 +3613,9 @@ curl\
         }
       ],
       "comment": "Want to work from 10:00-14:00 and from 15:00-19:00 Tuesdays",
-      "status": "pending"
+      "status": "pending",
+      "created_at": 1528180405,
+      "updated_at": 1528180405
     },
     {
       "id": 3,
@@ -3617,7 +3623,9 @@ curl\
       "day_of_week": 7,
       "dayoff_type_id": 1,
       "comment": "Won't work in Sundays",
-      "status": "pending"
+      "status": "pending",
+      "created_at": 1528180405,
+      "updated_at": 1528180405
     }
   ]
 }
@@ -3639,6 +3647,8 @@ Parameter | Type | Description
 `day_of_week` | *integer* | Day of the week:<br>*<b>1</b> - Monday*<br>*<b>2</b> - Tuesday*<br>*<b>3</b> - Wednesday*<br>*<b>4</b> - Thursday*<br>*<b>5</b> - Friday*<br>*<b>6</b> - Sunday*
 `comment` | *string* | Unit comment for request
 `status` | *string* | Status of request:<br>*<b>pending</b> - Waiting for approval*<br>*<b>approved</b> - Approved*<br>*<b>declined</b> - Declined*
+`created_at` | *integer* | Unix timestamp when request is created
+`updated_at` | *integer* | Unix timestamp when request is updated (approved or declined)
 
 ### `params`
 
