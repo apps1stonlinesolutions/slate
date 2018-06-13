@@ -1256,11 +1256,11 @@ Parameter | Type | Description
 `description` | *string* | Service detailed description text
 `short_description` | *string* | Service short description text
 `keywords` | *array\<string\>* | List of keywords for service
-`list_image_url` | *string* | Link to list image
-`info_image_url` | *string* | Link to info image
-`booking_image_url` | *string* | Link to booking image
-`inactive_booking_image_url` | *string* | Link to inactive booking image
-`thumbnail_image_url` | *string* | Link to thumbnail image
+`list_image_url` | *string* | Link to list image. Used to show a list of services. Could be square or rectangle based on layout.
+`info_image_url` | *string* | Link to info image. Used in web sites in side panel above booking summary.
+`booking_image_url` | *string* | Link to booking image. Used in booking cards for upcoming appointments.
+`inactive_booking_image_url` | *string* | Link to inactive booking image. Used in booking cards for past appointments.
+`thumbnail_image_url` | *string* | Link to thumbnail image. Used for search results in spotlight or in app service search.
 `infos` | *array\<info\>* | List of infos for the services
 `choices` | *array\<[choice](#choices)\>* | List of questions to book the service
 `payment_methods` | *array\<[payment_methods](#payment-methods)\>* | List of available payment methods for the service
