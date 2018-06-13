@@ -1257,7 +1257,7 @@ Parameter | Type | Description
 `short_description` | *string* | Service short description text
 `keywords` | *array\<string\>* | List of keywords for service
 `list_image_url` | *string* | Link to list image. Used to show a list of services. Could be square or rectangle based on layout.
-`info_image_url` | *string* | Link to info image. Used in web sites in side panel above booking summary.
+`info_image_url` | *string* | Link to info image. Used in web sites in side panel above the info text section/
 `booking_image_url` | *string* | Link to booking image. Used in booking cards for upcoming appointments.
 `inactive_booking_image_url` | *string* | Link to inactive booking image. Used in booking cards for past appointments.
 `thumbnail_image_url` | *string* | Link to thumbnail image. Used for search results in spotlight or in app service search.
