@@ -1208,14 +1208,10 @@ curl\
         "fantastic"
       ],
       "list_image_url": "http://www.image.com/1jsklfas.jpg",
-      "inactive_list_image_url": "http://www.image.com/1jsklfas.jpg",
-      "choices_images_urls": [
-        "http://www.image.com/1jsklfas.jpg",
-        "http://www.image.com/1jsklfas.jpg",
-        "http://www.image.com/1jsklfas.jpg"
-      ],
+      "booking_image_url": "http://www.image.com/1jsklfas.jpg",
+      "inactive_booking_image_url": "http://www.image.com/1jsklfas.jpg",
+      "info_image_url": "http://www.image.com/1jsklfas.jpg",
       "thumbnail_image_url": "http://www.image.com/1jsklfas.jpg",
-      "logo_image_url": "http://www.image.com/1jsklfas.jpg",
       "infos": [
         4,
         5,
@@ -1261,10 +1257,10 @@ Parameter | Type | Description
 `short_description` | *string* | Service short description text
 `keywords` | *array\<string\>* | List of keywords for service
 `list_image_url` | *string* | Link to list image
+`info_image_url` | *string* | Link to info image
+`booking_image_url` | *string* | Link to booking image
+`inactive_booking_image_url` | *string* | Link to inactive booking image
 `thumbnail_image_url` | *string* | Link to thumbnail image
-`inactive_list_image_url` | *string* | Link to inactive image for displaying past and cancelled bookings
-`choices_images_urls` | *string* | Link to choices images rotating in booking process
-`logo_image_url` | *string* | Link to logo image
 `infos` | *array\<info\>* | List of infos for the services
 `choices` | *array\<[choice](#choices)\>* | List of questions to book the service
 `payment_methods` | *array\<[payment_methods](#payment-methods)\>* | List of available payment methods for the service
