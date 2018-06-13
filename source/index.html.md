@@ -1168,7 +1168,7 @@ Parameter | Type | Description
 `short_description` | *string* | Category short description text
 `keywords` | *array\<string\>* | List of keywords for category
 `list_image_url` | *string* | Link to list image
-`thumbnail_image_url` | *string* | Link to thumbnail image
+`thumbnail_image_url` | *string* | Link to thumbnail image. Used for search results in spotlight or in app service search.
 `infos` | *array\<info\>* | List of infos for the category
 `services` | *array\<[service](#services)\>* | List of services for the category
 `profile_config` | *object* | Key-value pairs of custom attributes with different values for each Profile
