@@ -98,15 +98,16 @@ Accepted request `method`s are:
 
 Parameter | Type   | Default | Description
 -------- | ---------- | ---- | -------
-`expand` | *array* | *none* | By default child objects are returned as id. With this attribute they can be returned as full objects. Send array of attribute names to expand.<br><br> Keywords:<br><br>all - *expands all first level attributes*<br>all.all - *expands all second level attributes*<br>attribute.all - *expands all attributes child elements*
+`expand` | *array* | *null* | By default child objects are returned as id. With this attribute they can be returned as full objects. Send array of attribute names to expand.<br><br> Keywords:<br><br>all - *expands all first level attributes*<br>all.all - *expands all second level attributes*<br>attribute.all - *expands all attributes child elements*
 `fields` | *array* | *all* | Attributes to receive in response
-`exclude_fields` | *array* | *none* | Attributes to exclude from response
-`include_fields` | *array* | *none* | Attributes to add to response which are not returned by default
+`exclude_fields` | *array* | *null* | Attributes to exclude from response
+`include_fields` | *array* | *null* | Attributes to add to response which are not returned by default
 `return_meta` | *boolean* | *false* | Weather response includes `meta`
-`paging`<br>*optional* | *object* | *none* | Information about paged results
+`paging`<br>*optional* | *object* | *null* | Information about paged results
 `paging.offset` | *integer* | *0* | Page starting element
 `paging.limit` | *integer* | *10* | Page size
-`filter` | *object* | *none* | Paramters for filtering results. It can contain attributes and values. Examples:<br/><br/><i>`default=true` will return only objects that have attribute `default` equal to `true`.<br/><br/>`phones[default]=true` will return only objects that have attribute `phones` containing objects with attribute `default` equal to `true`.<br/><br/>For batchet requests the filter value would be `{"phones": {"default": true}}` and will return only objects that have attribute `phones` containing objects with attribute `default` equal to `true`.<i>
+`filter` | *object* | *null* | Paramters for filtering results. Object has the same structure as the result.<br/><br/>Example result:<br/><br/>`[{"name":"John","age":20,"cats":[{"name":"Meaw","color":"white"},{"name":"Silent","color":"brown"}]}]`<br/><br/>filter: `name=John`<br/><br/> `[{"name":"John","age":20,"cats":[{"name":"Meaw","color":"white"},{"name":"Silent","color":"brown"}]}]` <br/><br/>filter: `name=John&cats[color]=white`<br/><br/> `[{"name":"John","age":20,"cats":[{"name":"Meaw","color":"white"}]}]` <br/><br/>filter: `name=John&cats[color]=white&cats[color]=brown`<br/><br/> `[{"name":"John","age":20,"cats":[{"name":"Meaw","color":"white"},{"name":"Silent","color":"brown"}]}]`
+
 
 ## Response
 
@@ -310,7 +311,30 @@ curl\
     {
       "method": "GET",
       "path": "addresses",
-      "params": null,
+      "params": {
+        "expand": [
+          "all"
+        ],
+        "include_fields": [
+          "services.logic_js"
+        ],
+        "filter": {
+          "postcode": "SW12 2TH",
+          "country": [
+            "United Kingdom",
+            "Austrlia"
+          ]
+        },
+        "paging": {
+          "offset": 30,
+          "limit": 10
+        },
+        "query": {
+          "from_date": 1529047252,
+          "to_date": 1529047252
+        },
+        "return_meta": true
+      },
       "data": null
     }
   ]
@@ -648,7 +672,7 @@ Parameter | Type | Description
 
 Parameter | Type | Description
 -------- | ----- | -------
-`return_user`<br>*optional, default <b>false</b>* | *boolean* | Return user object with expanded avatar, phones, addresses, payment details and last 10 bookings.
+`query.return_user`<br>*optional, default <b>false</b>* | *boolean* | Return user object with expanded avatar, phones, addresses, payment details and last 10 bookings.
 
 ### Response parameters
 
@@ -744,7 +768,7 @@ Parameter | Type | Description
 
 Parameter | Type | Description
 -------- | ----- | -------
-`return_user`<br>*optional, default <b>false</b>* | *boolean* | Return user object with expanded phones objects.
+`query.return_user`<br>*optional, default <b>false</b>* | *boolean* | Return user object with expanded phones objects.
 
 ### Response parameters
 
@@ -1273,7 +1297,7 @@ Parameter | Type | Description
 
 Parameter | Type   | Default | Description
 -------- | ---------- | ---- | -------
-`filter.visible` | *string* | *true* | Filters services by visible flag. If `any` passed both `true` and `false` are returned.
+`filter.visible` | *boolean* | *[true, false]* | Filters services by `visible` flag. If no filter is passed all services are returned.
 
 
 ## Choices
@@ -1333,7 +1357,7 @@ Parameter | Type | Description
 
 Parameter | Type   | Default | Description
 -------- | ---------- | ---- | -------
-`filter.position` | *string* | *configurator* | Filters services by position string. If no filter is passed only choices with position `configurator` is returned. To get choices with different position pass an array of desired positions e.g. `['configurator', 'init']`
+`filter.position` | *string* | *configurator* | Filters choices by `position`. If no filter is passed only `configurator` choices are returned. To filter choices by more than one position pass an array of positions e.g. `["configurator", "init"]`
 
 
 ## Choice items
@@ -1876,10 +1900,10 @@ curl\
   "data": [
     {
       "id": 1,
-      "address_line_one": "24_red_lion_street",
-      "address_line_two": "_brooklands",
-      "postcode": "_s_w11",
-      "city": "_london",
+      "address_line_one": "24 Red Lion Street",
+      "address_line_two": "Brooklands",
+      "postcode": "SW12 2TH",
+      "city": "London",
       "country": "United Kingdom",
       "default": true,
       "sort": 100
@@ -2008,7 +2032,8 @@ Parameter | Type | Description
 
 Parameter | Type   | Default | Description
 -------- | ---------- | ---- | -------
-`filter.type` | *string* | *Stripe* | Filters paymethods by type string. If no filter is passed only paymethods with type `Stripe` are returned. To get paymethods with different types pass an array of desired types e.g. `['Stripe', 'PayPal']`
+`filter.type` | *string* | *Stripe* | Filters paymethods by `type`. If no filter is passed `Stripe` paymethods are returned. To filter paymethods by more than one type pass an array of types e.g. `["Stripe", "PayPal"]`
+
 
 ## Bookings
 
@@ -2521,15 +2546,6 @@ Parameter | Type | Description
 -------- | ----- | -------
 `transaction_id` | *string* | Identifier for transaction to check availability for
 
-### `params`
-
-Parameter | Type | Default | Description
--------- | ----- | ----- | -------
-`from_date` | *integer* | now | Filter availability from this date on (UTC timestamp)
-`to_date` | *integer* | two month from now | Filter availability to this date on (UTC timestamp)
-`special_timeslot_from_date` | *integer* | now | Filter availability for determining special timeslots from this date on (UTC timestamp)
-`special_timeslot_to_date` | *integer* | two month from now | Filter availability for determining special timeslots to this date on (UTC timestamp)
-`filter.available` | *string* | *true* | Filters availabilities by available flag. If `any` passed both `true` and `false` are returned.
 
 ### Response parameters
 
@@ -2977,8 +2993,8 @@ History of schedule with [jobs](#jobs) for the unit
 
 Parameter | Type   | Default | Description
 -------- | ---------- | ---- | -------
-`from_date` | *integer* | *one month ago* | UTC time stamp to filter results from a date
-`to_date` | *integer* | *now* | UTC time stamp to filter results to a date
+`query.from_date` | *integer* | *one month ago* | UTC time stamp to filter results from a date
+`query.to_date` | *integer* | *now* | UTC time stamp to filter results to a date
 
 
 ## Payment methods
@@ -3552,8 +3568,8 @@ Parameter | Type | Description
 
 Parameter | Type | Default | Description
 -------- | ----- | ----- | -------
-`from_date` | *string* | Monday | Filter availability from this date on (date string with format 2018-02-25)
-`to_date` | *string* | Sunday | Filter availability to this date (date string with format 2018-02-25)
+`query.from_date` | *string* | Monday | Filter availability from this date on (date string with format 2018-02-25)
+`query.to_date` | *string* | Sunday | Filter availability to this date (date string with format 2018-02-25)
 
 
 ## Availability requests
@@ -3648,9 +3664,10 @@ Parameter | Type | Description
 
 ### `params`
 
-Parameter | Type | Description
--------- | ----- | -------
-`filter.status`<br>*optional* | *string* | Filters response with type equal to the passed
+Parameter | Type | Default | Description
+-------- | ----- | ----- | -------
+`filter.status`<br>*optional* | *string* | *all statuses*  | Filters availability requests by `status`. If no filter is passed all availability requests are returned. To filter availability requests by more than one status pass an array of statuses e.g. `["pending", "approved"]`
+
 
 ## Day off types
 
@@ -4361,10 +4378,10 @@ Parameter | Type | Description
 
 ### `params`
 
-Parameter | Type | Description
--------- | ----- | -------
-`created_at_gt`<br>*optional, default <b>0</b>* | *integer* | Filters response with created_at greater than the passed
-`filter.action`<br>*optional* | *integer* | Filters response with action equal to the passed
+Parameter | Type | Default | Description
+-------- | ----- | ----- | -------
+`query.created_at_gt`<br>*optional* | *integer* | *<b>0</b>* | Filters response with created_at greater than the passed
+`filter.action`<br>*optional* | *integer* | *all actions* | Filters push notifications by `action`. If no filter is passed all push notifications are returned. To filter push notifications by more than one action pass an array of actions e.g. `[1, 2]`
 
 This endpoint returns:
 
