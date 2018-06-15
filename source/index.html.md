@@ -106,7 +106,7 @@ Parameter | Type   | Default | Description
 `paging`<br>*optional* | *object* | *null* | Information about paged results
 `paging.offset` | *integer* | *0* | Page starting element
 `paging.limit` | *integer* | *10* | Page size
-`filter` | *object* | *null* | Paramters for filtering results. Object has the same structure as the result.<br/><br/>Examples<br/><br/>to filter services by type 1<br/>`filter[type]=1`<br/><br/>to filter services by type 1 or 2<br/>`filter[type][0]=1&filter[type][1]=2`<br/><br/>to filter services by payment_method.type Stripe<br/>`filter[payment_methods][type]=Stripe`<br/><br/>to filter services by payment_method.type Stripe or PayPal<br/>`filter[payment_methods][type][0]=Stripe&filter[payment_methods][type][1]=PayPal`<br/><br/>to filter services by type 1 and payment_method.type Stripe<br/>`filter[type][0]=1&filter[payment_methods][type][1]=Stripe`
+`filter` | *object* | *null* | Paramters for filtering results. Object has the same structure as the result.<br/><br/>Examples<br/><br/>to filter services by type 1<br/>`filter[type]=1`<br/><br/>to filter services by type 1 or 2<br/>`filter[type][0]=1&filter[type][1]=2`<br/><br/>to filter services by payment_method.type Stripe<br/>`filter[payment_methods][type]=Stripe`<br/><br/>to filter services by payment_method.type Stripe or PayPal<br/>`filter[payment_methods][type][0]=Stripe&filter[payment_methods][type][1]=PayPal`<br/><br/>to filter services by type 1 and payment_method.type Stripe<br/>`filter[payment_methods][type][0]=1&filter[payment_methods][type][1]=Stripe`
 `query` | *object* | *null* | Custom parameters
 
 
