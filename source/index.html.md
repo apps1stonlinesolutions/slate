@@ -98,7 +98,7 @@ Accepted request `method`s are:
 
 Parameter | Type   | Default | Description
 -------- | ---------- | ---- | -------
-`expand` | *array* | *null* | By default child objects are returned as id. With this attribute they can be returned as full objects. Send array of attribute names to expand.<br><br> Keywords:<br><br>all - *expands all first level attributes*<br>all.all - *expands all second level attributes*<br>attribute.all - *expands all attributes child elements*
+`expand` | *array* | *null* | By default child objects are returned as id. With this attribute they can be returned as full objects. Send array of attribute names to expand.<br><br> Keywords:<br><br>all - *expands all first level attributes*<br>all.all - *expands all second level attributes*<br/><br/>Examples:<br/><br/>to expand only services in a category<br/>`expand[0]=services`<br/><br/>to expand all child elements of a category<br/>`expand[0]=all`<br/><br/>to expand all child elements of a category and their child elements<br/>`expand[0]=all.all`<br/><br/>to expand only services in a category and all services child element<br/>`expand[0]=services.all`<br/><br/>to expand only services and infos in a category<br/>`expand[0]=services&expand[1]=infos`
 `fields` | *array* | *all* | Attributes to receive in response
 `exclude_fields` | *array* | *null* | Attributes to exclude from response
 `include_fields` | *array* | *null* | Attributes to add to response which are not returned by default
@@ -106,7 +106,7 @@ Parameter | Type   | Default | Description
 `paging`<br>*optional* | *object* | *null* | Information about paged results
 `paging.offset` | *integer* | *0* | Page starting element
 `paging.limit` | *integer* | *10* | Page size
-`filter` | *object* | *null* | Paramters for filtering results. Object has the same structure as the result.<br/><br/>Examples<br/><br/>to filter services by type 1<br/>`filter[type]=1`<br/><br/>to filter services by type 1 or 2<br/>`filter[type]=1&filter[type]=2`<br/><br/>to filter services by payment_method.type Stripe<br/>`filter[payment_methods][type]=Stripe`<br/><br/>to filter services by payment_method.type Stripe or PayPal<br/>`filter[payment_methods][type]=Stripe&filter[payment_methods][type]=PayPal`<br/><br/>to filter services by type 1 and payment_method.type Stripe<br/>`filter[type]=1&filter[payment_methods][type]=Stripe`
+`filter` | *object* | *null* | Paramters for filtering results. Object has the same structure as the result.<br/><br/>Examples<br/><br/>to filter services by type 1<br/>`filter[type]=1`<br/><br/>to filter services by type 1 or 2<br/>`filter[type]=1&filter[type]=2`<br/><br/>to filter services by payment_method.type Stripe<br/>`filter[payment_methods][type]=Stripe`<br/><br/>to filter services by payment_method.type Stripe or PayPal<br/>`filter[payment_methods][type]=Stripe&filter[payment_methods][type]=PayPal`<br/><br/>to filter services by type 1 and payment_method.type Stripe<br/>`filter[type][0]=1&filter[payment_methods][type][0]=Stripe`
 `query` | *object* | *null* | Custom parameters
 
 
@@ -311,28 +311,27 @@ curl\
   "requests": [
     {
       "method": "GET",
-      "path": "addresses",
+      "path": "services",
       "params": {
         "expand": [
           "all"
         ],
         "include_fields": [
-          "services.logic_js"
+          "logic_js"
+          "choices.customize"
         ],
         "filter": {
-          "postcode": "SW12 2TH",
-          "country": [
-            "United Kingdom",
-            "Austrlia"
-          ]
+          "type": 1,
+          "payment_methods": {
+            "type": ["Stripe, "PayPal"]
+          }
         },
         "paging": {
           "offset": 30,
           "limit": 10
         },
         "query": {
-          "from_date": 1529047252,
-          "to_date": 1529047252
+          "with_promotions": true
         },
         "return_meta": true
       },
