@@ -107,6 +107,7 @@ Parameter | Type   | Default | Description
 `paging.offset` | *integer* | *0* | Page starting element
 `paging.limit` | *integer* | *10* | Page size
 `filter` | *object* | *null* | Paramters for filtering results. Object has the same structure as the result.<br/><br/>Examples<br/><br/>to filter services by type 1<br/>`filter[type]=1`<br/><br/>to filter services by type 1 or 2<br/>`filter[type]=1&filter[type]=2`<br/><br/>to filter services by payment_method.type Stripe<br/>`filter[payment_methods][type]=Stripe`<br/><br/>to filter services by payment_method.type Stripe or PayPal<br/>`filter[payment_methods][type]=Stripe&filter[payment_methods][type]=PayPal`<br/><br/>to filter services by type 1 and payment_method.type Stripe<br/>`filter[type]=1&filter[payment_methods][type]=Stripe`
+`query` | *object* | *null* | Custom parameters
 
 
 ## Response
