@@ -205,7 +205,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">expand</code></td>
 <td><em>array</em></td>
-<td><em>none</em></td>
+<td><em>null</em></td>
 <td>By default child objects are returned as id. With this attribute they can be returned as full objects. Send array of attribute names to expand.<br><br> Keywords:<br><br>all - <em>expands all first level attributes</em><br>all.all - <em>expands all second level attributes</em><br>attribute.all - <em>expands all attributes child elements</em></td>
 </tr>
 <tr>
@@ -217,13 +217,13 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">exclude_fields</code></td>
 <td><em>array</em></td>
-<td><em>none</em></td>
+<td><em>null</em></td>
 <td>Attributes to exclude from response</td>
 </tr>
 <tr>
 <td><code class="prettyprint">include_fields</code></td>
 <td><em>array</em></td>
-<td><em>none</em></td>
+<td><em>null</em></td>
 <td>Attributes to add to response which are not returned by default</td>
 </tr>
 <tr>
@@ -235,7 +235,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">paging</code><br><em>optional</em></td>
 <td><em>object</em></td>
-<td><em>none</em></td>
+<td><em>null</em></td>
 <td>Information about paged results</td>
 </tr>
 <tr>
@@ -253,8 +253,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">filter</code></td>
 <td><em>object</em></td>
-<td><em>none</em></td>
-<td>Paramters for filtering results. It can contain attributes and values. Examples:<br/><br/><i><code class="prettyprint">default=true</code> will return only objects that have attribute <code class="prettyprint">default</code> equal to <code class="prettyprint">true</code>.<br/><br/><code class="prettyprint">phones[default]=true</code> will return only objects that have attribute <code class="prettyprint">phones</code> containing objects with attribute <code class="prettyprint">default</code> equal to <code class="prettyprint">true</code>.<br/><br/>For batchet requests the filter value would be <code class="prettyprint">{&quot;phones&quot;: {&quot;default&quot;: true}}</code> and will return only objects that have attribute <code class="prettyprint">phones</code> containing objects with attribute <code class="prettyprint">default</code> equal to <code class="prettyprint">true</code>.<i></td>
+<td><em>null</em></td>
+<td>Paramters for filtering results. Object has the same structure as the result.<br/><br/>Example result:<br/><br/><code class="prettyprint">[{&quot;name&quot;:&quot;John&quot;,&quot;age&quot;:20,&quot;cats&quot;:[{&quot;name&quot;:&quot;Meaw&quot;,&quot;color&quot;:&quot;white&quot;},{&quot;name&quot;:&quot;Silent&quot;,&quot;color&quot;:&quot;brown&quot;}]}]</code><br/><br/>filter: <code class="prettyprint">name=John</code><br/><br/> <code class="prettyprint">[{&quot;name&quot;:&quot;John&quot;,&quot;age&quot;:20,&quot;cats&quot;:[{&quot;name&quot;:&quot;Meaw&quot;,&quot;color&quot;:&quot;white&quot;},{&quot;name&quot;:&quot;Silent&quot;,&quot;color&quot;:&quot;brown&quot;}]}]</code> <br/><br/>filter: <code class="prettyprint">name=John&amp;cats[color]=white</code><br/><br/> <code class="prettyprint">[{&quot;name&quot;:&quot;John&quot;,&quot;age&quot;:20,&quot;cats&quot;:[{&quot;name&quot;:&quot;Meaw&quot;,&quot;color&quot;:&quot;white&quot;}]}]</code> <br/><br/>filter: <code class="prettyprint">name=John&amp;cats[color]=white&amp;cats[color]=brown</code><br/><br/> <code class="prettyprint">[{&quot;name&quot;:&quot;John&quot;,&quot;age&quot;:20,&quot;cats&quot;:[{&quot;name&quot;:&quot;Meaw&quot;,&quot;color&quot;:&quot;white&quot;},{&quot;name&quot;:&quot;Silent&quot;,&quot;color&quot;:&quot;brown&quot;}]}]</code></td>
 </tr>
 </tbody></table>
 
@@ -494,7 +494,30 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     {
       "method": "GET",
       "path": "addresses",
-      "params": null,
+      "params": {
+        "expand": [
+          "all"
+        ],
+        "include_fields": [
+          "services.logic_js"
+        ],
+        "filter": {
+          "postcode": "SW12 2TH",
+          "country": [
+            "United Kingdom",
+            "Austrlia"
+          ]
+        },
+        "paging": {
+          "offset": 30,
+          "limit": 10
+        },
+        "query": {
+          "from_date": 1529047252,
+          "to_date": 1529047252
+        },
+        "return_meta": true
+      },
       "data": null
     }
   ]
@@ -1053,7 +1076,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">return_user</code><br><em>optional, default <b>false</b></em></td>
+<td><code class="prettyprint">query.return_user</code><br><em>optional, default <b>false</b></em></td>
 <td><em>boolean</em></td>
 <td>Return user object with expanded avatar, phones, addresses, payment details and last 10 bookings.</td>
 </tr>
@@ -1212,7 +1235,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">return_user</code><br><em>optional, default <b>false</b></em></td>
+<td><code class="prettyprint">query.return_user</code><br><em>optional, default <b>false</b></em></td>
 <td><em>boolean</em></td>
 <td>Return user object with expanded phones objects.</td>
 </tr>
@@ -1991,9 +2014,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">filter.visible</code></td>
-<td><em>string</em></td>
-<td><em>true</em></td>
-<td>Filters services by visible flag. If <code class="prettyprint">any</code> passed both <code class="prettyprint">true</code> and <code class="prettyprint">false</code> are returned.</td>
+<td><em>boolean</em></td>
+<td><em>[true, false]</em></td>
+<td>Filters services by <code class="prettyprint">visible</code> flag. If no filter is passed all services are returned.</td>
 </tr>
 </tbody></table>
 
@@ -2092,7 +2115,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">filter.position</code></td>
 <td><em>string</em></td>
 <td><em>configurator</em></td>
-<td>Filters services by position string. If no filter is passed only choices with position <code class="prettyprint">configurator</code> is returned. To get choices with different position pass an array of desired positions e.g. <code class="prettyprint">[&#39;configurator&#39;, &#39;init&#39;]</code></td>
+<td>Filters choices by <code class="prettyprint">position</code>. If no filter is passed only <code class="prettyprint">configurator</code> choices are returned. To filter choices by more than one position pass an array of positions e.g. <code class="prettyprint">[&quot;configurator&quot;, &quot;init&quot;]</code></td>
 </tr>
 </tbody></table>
 
@@ -2945,10 +2968,10 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"address_line_one"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24_red_lion_street"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"address_line_two"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_brooklands"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_s_w11"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_london"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address_line_one"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 Red Lion Street"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address_line_two"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brooklands"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SW12 2TH"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"London"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
@@ -3203,7 +3226,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">filter.type</code></td>
 <td><em>string</em></td>
 <td><em>Stripe</em></td>
-<td>Filters paymethods by type string. If no filter is passed only paymethods with type <code class="prettyprint">Stripe</code> are returned. To get paymethods with different types pass an array of desired types e.g. <code class="prettyprint">[&#39;Stripe&#39;, &#39;PayPal&#39;]</code></td>
+<td>Filters paymethods by <code class="prettyprint">type</code>. If no filter is passed <code class="prettyprint">Stripe</code> paymethods are returned. To filter paymethods by more than one type pass an array of types e.g. <code class="prettyprint">[&quot;Stripe&quot;, &quot;PayPal&quot;]</code></td>
 </tr>
 </tbody></table>
 
@@ -3915,48 +3938,6 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">transaction_id</code></td>
 <td><em>string</em></td>
 <td>Identifier for transaction to check availability for</td>
-</tr>
-</tbody></table>
-
-<h3 id="params"><code class="prettyprint">params</code></h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">from_date</code></td>
-<td><em>integer</em></td>
-<td>now</td>
-<td>Filter availability from this date on (UTC timestamp)</td>
-</tr>
-<tr>
-<td><code class="prettyprint">to_date</code></td>
-<td><em>integer</em></td>
-<td>two month from now</td>
-<td>Filter availability to this date on (UTC timestamp)</td>
-</tr>
-<tr>
-<td><code class="prettyprint">special_timeslot_from_date</code></td>
-<td><em>integer</em></td>
-<td>now</td>
-<td>Filter availability for determining special timeslots from this date on (UTC timestamp)</td>
-</tr>
-<tr>
-<td><code class="prettyprint">special_timeslot_to_date</code></td>
-<td><em>integer</em></td>
-<td>two month from now</td>
-<td>Filter availability for determining special timeslots to this date on (UTC timestamp)</td>
-</tr>
-<tr>
-<td><code class="prettyprint">filter.available</code></td>
-<td><em>string</em></td>
-<td><em>true</em></td>
-<td>Filters availabilities by available flag. If <code class="prettyprint">any</code> passed both <code class="prettyprint">true</code> and <code class="prettyprint">false</code> are returned.</td>
 </tr>
 </tbody></table>
 
@@ -4713,13 +4694,13 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">from_date</code></td>
+<td><code class="prettyprint">query.from_date</code></td>
 <td><em>integer</em></td>
 <td><em>one month ago</em></td>
 <td>UTC time stamp to filter results from a date</td>
 </tr>
 <tr>
-<td><code class="prettyprint">to_date</code></td>
+<td><code class="prettyprint">query.to_date</code></td>
 <td><em>integer</em></td>
 <td><em>now</em></td>
 <td>UTC time stamp to filter results to a date</td>
@@ -5525,13 +5506,13 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">from_date</code></td>
+<td><code class="prettyprint">query.from_date</code></td>
 <td><em>string</em></td>
 <td>Monday</td>
 <td>Filter availability from this date on (date string with format 2018-02-25)</td>
 </tr>
 <tr>
-<td><code class="prettyprint">to_date</code></td>
+<td><code class="prettyprint">query.to_date</code></td>
 <td><em>string</em></td>
 <td>Sunday</td>
 <td>Filter availability to this date (date string with format 2018-02-25)</td>
@@ -5678,13 +5659,15 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">filter.status</code><br><em>optional</em></td>
 <td><em>string</em></td>
-<td>Filters response with type equal to the passed</td>
+<td><em>all statuses</em></td>
+<td>Filters availability requests by <code class="prettyprint">status</code>. If no filter is passed all availability requests are returned. To filter availability requests by more than one status pass an array of statuses e.g. <code class="prettyprint">[&quot;pending&quot;, &quot;approved&quot;]</code></td>
 </tr>
 </tbody></table>
 
@@ -6726,18 +6709,21 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">created_at_gt</code><br><em>optional, default <b>0</b></em></td>
+<td><code class="prettyprint">query.created_at_gt</code><br><em>optional</em></td>
 <td><em>integer</em></td>
+<td><em><b>0</b></em></td>
 <td>Filters response with created_at greater than the passed</td>
 </tr>
 <tr>
 <td><code class="prettyprint">filter.action</code><br><em>optional</em></td>
 <td><em>integer</em></td>
-<td>Filters response with action equal to the passed</td>
+<td><em>all actions</em></td>
+<td>Filters push notifications by <code class="prettyprint">action</code>. If no filter is passed all push notifications are returned. To filter push notifications by more than one action pass an array of actions e.g. <code class="prettyprint">[1, 2]</code></td>
 </tr>
 </tbody></table>
 
