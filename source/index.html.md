@@ -106,7 +106,7 @@ Parameter | Type   | Default | Description
 `paging`<br>*optional* | *object* | *null* | Information about paged results
 `paging.offset` | *integer* | *0* | Page starting element
 `paging.limit` | *integer* | *10* | Page size
-`filter` | *object* | *null* | Paramters for filtering results. Object has the same structure as the result.<br/><br/>Example result:<br/><br/>`[{"name":"John","age":20,"cats":[{"name":"Meaw","color":"white"},{"name":"Silent","color":"brown"}]}]`<br/><br/>filter: `name=John`<br/><br/> `[{"name":"John","age":20,"cats":[{"name":"Meaw","color":"white"},{"name":"Silent","color":"brown"}]}]` <br/><br/>filter: `name=John&cats[color]=white`<br/><br/> `[{"name":"John","age":20,"cats":[{"name":"Meaw","color":"white"}]}]` <br/><br/>filter: `name=John&cats[color]=white&cats[color]=brown`<br/><br/> `[{"name":"John","age":20,"cats":[{"name":"Meaw","color":"white"},{"name":"Silent","color":"brown"}]}]`
+`filter` | *object* | *null* | Paramters for filtering results. Object has the same structure as the result.<br/><br/>Examples<br/><br/>to filter services by type 1<br/>`filter[type]=1`<br/><br/>to filter services by type 1 or 2<br/>`filter[type]=1&filter[type]=2`<br/><br/>to filter services by payment_method.type Stripe<br/>`filter[payment_methods][type]=Stripe`<br/><br/>to filter services by payment_method.type Stripe or PayPal<br/>`filter[payment_methods][type]=Stripe&filter[payment_methods][type]=PayPal`<br/><br/>to filter services by type 1 and payment_method.type Stripe<br/>`filter[type]=1&filter[payment_methods][type]=Stripe`
 
 
 ## Response
