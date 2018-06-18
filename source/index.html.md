@@ -96,6 +96,8 @@ Accepted request `method`s are:
 
 ### `params`
 
+When passing an array, index number is optional. For example the array `foo = ["a", "b", "c"]` can be passed both ways - `foo[]=a&foo[]=b&foo[]=c` or `foo[0]=a&foo[1]=b&foo[2]=c`
+
 Parameter | Type   | Default | Description
 -------- | ---------- | ---- | -------
 `expand` | *array* | *null* | By default child objects are returned as id. With this attribute they can be returned as full objects. Send array of attribute names to expand.<br><br> Keywords:<br><br>all - *expands all first level attributes*<br>all.all - *expands all second level attributes*<br/><br/>Examples:<br/><br/>to expand only services in a category<br/>`expand[0]=services`<br/><br/>to expand all child elements of a category<br/>`expand[0]=all`<br/><br/>to expand all child elements of a category and their child elements<br/>`expand[0]=all.all`<br/><br/>to expand only services in a category and all services child element<br/>`expand[0]=services.all`<br/><br/>to expand only services and infos in a category<br/>`expand[0]=services&expand[1]=infos`
