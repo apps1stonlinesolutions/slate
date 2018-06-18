@@ -68,6 +68,41 @@ Error Code | Meaning
 ## Booking process errors
 Error Code | Meaning
 ---------- | -------
+6500 | Time slot is unavailable
+6501 | Time slots for this service tend to get booked very quickly and this one is no longer available. Don\'t worry, just pick another one and try again.
+6502 | timeslot or timeslot_formatted are required
+6710 | Invalid transaction token
+6711 | Invalid service
+6712 | Invalid address
+6713 | Invalid postcode
+6714 | Service %s in %s is not covered
+6715 | address_line_one is required
+6716 | addresses are required
+6717 | Invalid payment_method
+6718 | Invalid paymethod
+6719 | Service mismatch
+6720 | Client mismatch
+6721 | Address mismatch
+6722 | choice_items are required
+6723 | Choice \'%s\' items are required
+6724 | Choice item object format is: id and value
+6725 | Selected choice item does not belong to the service
+6726 | Choice item \'%s\' is required
+6727 | Invalid phone
+6728 | Invalid email
+6729 | Invalid file token
+6730 | Invalid reschedule reason
+6731 | Invalid online status - no transaction state
+6732 | Authorization is required to confirm the booking transaction
+6733 | Invalid cross token
+6734 | You cannot access this booking
+6735 | Postcode is required
+6736 | Postcode \'%s\' not covered
+6737 | Booking is already performed
+6738 | Invalid cancel reason
+6739 | Invalid booking status
+6740 | Booking cannot be canceled due to short notice
+6741 | Booking cannot be rescheduled due to short notice
 6742 | Init choice items are required
 
 
