@@ -256,7 +256,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">filter</code></td>
 <td><em>object</em></td>
 <td><em>null</em></td>
-<td>Paramters for filtering results. Object has the same structure as the result.<br/><br/>Examples<br/><br/>to filter services by type 1<br/><code class="prettyprint">filter[type]=1</code><br/><br/>to filter services by type 1 or 2<br/><code class="prettyprint">filter[type][0]=1&amp;filter[type][1]=2</code><br/><br/>to filter services by payment_method.type Stripe<br/><code class="prettyprint">filter[payment_methods][type]=Stripe</code><br/><br/>to filter services by payment_method.type Stripe or PayPal<br/><code class="prettyprint">filter[payment_methods][type][0]=Stripe&amp;filter[payment_methods][type][1]=PayPal</code><br/><br/>to filter services by type 1 and payment_method.type Stripe<br/><code class="prettyprint">filter[payment_methods][type][0]=1&amp;filter[payment_methods][type][1]=Stripe</code></td>
+<td>Paramters for filtering results. Object has the same structure as the result.<br/><br/>Examples<br/><br/>to filter services by type 1<br/><code class="prettyprint">filter[type]=1</code><br/><br/>to filter services by type 1 or 2<br/><code class="prettyprint">filter[type][0]=1&amp;filter[type][1]=2</code><br/><br/>to filter services by payment_method.type Stripe<br/><code class="prettyprint">filter[payment_methods][type]=Stripe</code><br/><br/>to filter services by payment_method.type Stripe or PayPal<br/><code class="prettyprint">filter[payment_methods][type][0]=Stripe&amp;filter[payment_methods][type][1]=PayPal</code><br/><br/>to filter services by type 1 and payment_method.type Stripe<br/><code class="prettyprint">filter[payment_methods][type][0]=1&amp;filter[payment_methods][type][1]=Stripe</code><br/><br/>Filter parameter filters only the last node.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">query</code></td>
@@ -6996,6 +6996,146 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <th>Meaning</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>6500</td>
+<td>Time slot is unavailable</td>
+</tr>
+<tr>
+<td>6501</td>
+<td>Time slots for this service tend to get booked very quickly and this one is no longer available. Don\&rsquo;t worry, just pick another one and try again.</td>
+</tr>
+<tr>
+<td>6502</td>
+<td>timeslot or timeslot_formatted are required</td>
+</tr>
+<tr>
+<td>6710</td>
+<td>Invalid transaction token</td>
+</tr>
+<tr>
+<td>6711</td>
+<td>Invalid service</td>
+</tr>
+<tr>
+<td>6712</td>
+<td>Invalid address</td>
+</tr>
+<tr>
+<td>6713</td>
+<td>Invalid postcode</td>
+</tr>
+<tr>
+<td>6714</td>
+<td>Service %s in %s is not covered</td>
+</tr>
+<tr>
+<td>6715</td>
+<td>address_line_one is required</td>
+</tr>
+<tr>
+<td>6716</td>
+<td>addresses are required</td>
+</tr>
+<tr>
+<td>6717</td>
+<td>Invalid payment_method</td>
+</tr>
+<tr>
+<td>6718</td>
+<td>Invalid paymethod</td>
+</tr>
+<tr>
+<td>6719</td>
+<td>Service mismatch</td>
+</tr>
+<tr>
+<td>6720</td>
+<td>Client mismatch</td>
+</tr>
+<tr>
+<td>6721</td>
+<td>Address mismatch</td>
+</tr>
+<tr>
+<td>6722</td>
+<td>choice_items are required</td>
+</tr>
+<tr>
+<td>6723</td>
+<td>Choice \&rsquo;%s\&rsquo; items are required</td>
+</tr>
+<tr>
+<td>6724</td>
+<td>Choice item object format is: id and value</td>
+</tr>
+<tr>
+<td>6725</td>
+<td>Selected choice item does not belong to the service</td>
+</tr>
+<tr>
+<td>6726</td>
+<td>Choice item \&rsquo;%s\&rsquo; is required</td>
+</tr>
+<tr>
+<td>6727</td>
+<td>Invalid phone</td>
+</tr>
+<tr>
+<td>6728</td>
+<td>Invalid email</td>
+</tr>
+<tr>
+<td>6729</td>
+<td>Invalid file token</td>
+</tr>
+<tr>
+<td>6730</td>
+<td>Invalid reschedule reason</td>
+</tr>
+<tr>
+<td>6731</td>
+<td>Invalid online status - no transaction state</td>
+</tr>
+<tr>
+<td>6732</td>
+<td>Authorization is required to confirm the booking transaction</td>
+</tr>
+<tr>
+<td>6733</td>
+<td>Invalid cross token</td>
+</tr>
+<tr>
+<td>6734</td>
+<td>You cannot access this booking</td>
+</tr>
+<tr>
+<td>6735</td>
+<td>Postcode is required</td>
+</tr>
+<tr>
+<td>6736</td>
+<td>Postcode \&rsquo;%s\&rsquo; not covered</td>
+</tr>
+<tr>
+<td>6737</td>
+<td>Booking is already performed</td>
+</tr>
+<tr>
+<td>6738</td>
+<td>Invalid cancel reason</td>
+</tr>
+<tr>
+<td>6739</td>
+<td>Invalid booking status</td>
+</tr>
+<tr>
+<td>6740</td>
+<td>Booking cannot be canceled due to short notice</td>
+</tr>
+<tr>
+<td>6741</td>
+<td>Booking cannot be rescheduled due to short notice</td>
+</tr>
 <tr>
 <td>6742</td>
 <td>Init choice items are required</td>
