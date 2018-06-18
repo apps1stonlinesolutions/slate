@@ -1199,7 +1199,11 @@ Parameter | Type | Description
 `services` | *array\<[service](#services)\>* | List of services for the category
 `profile_config` | *object* | Key-value pairs of custom attributes with different values for each Profile
 
+### `params`
 
+Parameter | Type   | Default | Description
+-------- | ---------- | ---- | -------
+`query.covering_postcode` | *string* | *null* | Filters response to return only services that cover the postcode
 
 
 
