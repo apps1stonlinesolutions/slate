@@ -3785,6 +3785,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <ul>
 <li><a href="#common-errors">Common errors</a></li>
 <li><a href="#booking-process-errors">Booking process errors</a></li>
+<li><a href="#booking-process-warnings">Booking process warning</a></li>
 </ul>
 
 <h2 id="availability">Availability</h2>
@@ -7140,6 +7141,10 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>6742</td>
 <td>Init choice items are required</td>
 </tr>
+<tr>
+<td>6800</td>
+<td>Something went wrong</td>
+</tr>
 </tbody></table>
 
 <h2 id="register-voucher-errors">Register voucher errors</h2>
@@ -7230,14 +7235,20 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
           <h1 id="warnings">Warnings</h1>
 
-<p>The API uses the following success codes:</p>
+<p>The API uses the following warning codes:</p>
+
+<h2 id="booking-process-warnings">Booking process warnings</h2>
 
 <table><thead>
 <tr>
-<th>Warning Code</th>
+<th>Error Code</th>
 <th>Meaning</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>6750</td>
+<td>Invalid payment method for the service. Please choose another!</td>
+</tr>
 </tbody></table>
 
           <h1 id="successes">Successes</h1>
