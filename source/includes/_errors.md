@@ -104,6 +104,7 @@ Error Code | Meaning
 6740 | Booking cannot be canceled due to short notice
 6741 | Booking cannot be rescheduled due to short notice
 6742 | Init choice items are required
+6800 | Something went wrong
 
 
 ## Register voucher errors

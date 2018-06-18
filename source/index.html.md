@@ -2394,6 +2394,7 @@ This endpoint returns:
 
 * [Common errors](#common-errors)
 * [Booking process errors](#booking-process-errors)
+* [Booking process warning](#booking-process-warnings)
 
 
 ## Availability
