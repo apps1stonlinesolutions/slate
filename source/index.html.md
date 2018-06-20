@@ -18,7 +18,7 @@ search: true
 
 
 
-# Introductionn
+# Introduction
 
 Welcome to XRM/MP API.
 
@@ -2062,7 +2062,17 @@ curl\
   "price": {
     "type": "no_price",
     "description": "Maximum price reached",
-    "choice_items": [1, 2],
+    "choices": [
+      {
+        "id": 1,
+        "choice_items": [
+          {
+            "id": 1,
+            "value": 1
+          }
+        ]
+      }
+    ],
     "price_breakdown": [
       {
         "name": "Membership price",
@@ -2356,7 +2366,69 @@ curl\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "X-Profile: {{PROFILE_ID}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
-"https://{{BASE_URL}}/v2/client/booking_transactions"
+"https://{{BASE_URL}}/v2/client/booking_transactions/laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"
+```
+
+```shell
+Example setting address:
+
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+  "service": {
+    "id": 1,
+    "choices": [
+      {
+        "id": 338,
+        "position": "init",
+        "choice_items": [
+          {
+            "id": 1110,
+            "value": {
+              "address_line_one": "24 Red Lion Street",
+              "address_line_two": "Brooklands",
+              "postcode": "SW12 2TH"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}'\
+"https://{{BASE_URL}}/v2/client/booking_transactions/laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"
+```
+
+
+```shell
+Example setting price:
+
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+  "timeslot_formatted": "2015-03-24 10:00",
+  "price": {
+    "choices": [
+      {
+        "id": 1,
+        "choice_items": [
+          {
+            "id": 1,
+            "value": 1
+          }
+        ]
+      }
+    ]
+  }
+}'\
+"https://{{BASE_URL}}/v2/client/booking_transactions/laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"
 ```
 
 Booking transactions are representation of an ongoing booking process. They are similar to a [booking](#bookings) object with additional `confirmed` field. When client confirms their booking it's set to true. Then server validates if all required fields are filled and allows it.
@@ -2372,11 +2444,16 @@ Booking transaction can be created in two ways:
 
 ### Set addresses
 
-Addresses are validated based on the service coverage.
+Address is set as value for choice items. An object is passed that should minumum contain postcode. Value can be further updated with other attributes as address line 1 etc. Addresses are validated based on the service coverage.
 
 ### Set price
 
-Price is object returned from availability request.
+To set price you need to:
+
+* Get [avaialbility](#availabilty)
+* Pick time of the service by selecting an object from `availabilities.timeslots`
+* Combine `availabilities.date` with `availabilities.timeslots.time` and set `booking_transaction.timeslot_formatted` matching it`s format
+* From the selected `avilability.timeslots` object pick objects from `chocies.choice_items` and set `booking_transaction.price.choices` matching it`s structure
 
 ### Booking configuration
 
@@ -2427,33 +2504,41 @@ curl\
           {
             "time": "10:00",
             "available": true,
-            "tags": ["carbon", "members_only"],
-            "choice_items": [
+            "tags": [
+              "carbon",
+              "members_only"
+            ],
+            "choices": [
               {
-                "id": 1110,
-                "sort": 100,
-                "type": 1,
-                "max_value": 0,
-                "min_value": 0,
-                "value": 0,
-                "name": "Regular price",
-                "image_url": "http://image.url/here.jpg",
-                "customize": {
-                  "price_formatted": "£140"
-                }
-              },
-              {
-                "id": 1110,
-                "sort": 100,
-                "type": 1,
-                "max_value": 0,
-                "min_value": 0,
-                "value": 0,
-                "name": "Membership price",
-                "image_url": "http://image.url/here.jpg",
-                "customize": {
-                  "price_formatted": "£120"
-                }
+                "id": 1,
+                "choice_items": [
+                  {
+                    "id": 1110,
+                    "sort": 100,
+                    "type": 1,
+                    "max_value": 0,
+                    "min_value": 0,
+                    "value": 0,
+                    "name": "Regular price",
+                    "image_url": "http://image.url/here.jpg",
+                    "customize": {
+                      "price_formatted": "£140"
+                    }
+                  },
+                  {
+                    "id": 1110,
+                    "sort": 100,
+                    "type": 1,
+                    "max_value": 0,
+                    "min_value": 0,
+                    "value": 0,
+                    "name": "Membership price",
+                    "image_url": "http://image.url/here.jpg",
+                    "customize": {
+                      "price_formatted": "£120"
+                    }
+                  }
+                ]
               }
             ]
           }
