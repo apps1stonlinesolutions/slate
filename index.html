@@ -3799,6 +3799,39 @@ curl<span class="se">\</span>
 }'</span><span class="se">\</span>
 <span class="s2">"https://{{BASE_URL}}/v2/client/booking_transactions/laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"</span>
 </code></pre>
+<pre class="highlight shell"><code>Example setting new paymethod:
+
+curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+  "payment_method": 3,
+  "paymethod": {
+    "payment_provider_id": 3,
+    "data": {
+      "token": "231231jsklfhaksj231§2"
+    }
+  }
+}'</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/booking_transactions/laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"</span>
+</code></pre>
+<pre class="highlight shell"><code>Example setting existing paymethod:
+
+curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+  "payment_method": 3,
+  "paymethod": 5
+}'</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/booking_transactions/laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"</span>
+</code></pre>
 
 <p>Booking transactions are representation of an ongoing booking process. They are similar to a <a href="#bookings">booking</a> object with additional <code class="prettyprint">confirmed</code> field. When client confirms their booking it&rsquo;s set to true. Then server validates if all required fields are filled and allows it.</p>
 
@@ -3815,7 +3848,7 @@ curl<span class="se">\</span>
 
 <h3 id="set-addresses">Set addresses</h3>
 
-<p>Address is set as value for choice items. An object is passed that should minumum contain postcode. Value can be further updated with other attributes as address line 1 etc. Addresses are validated based on the service coverage.</p>
+<p>Address is set as value for choice items. An object is passed that should minumum contain <code class="prettyprint">postcode</code>. Value can be further updated with other attributes as <code class="prettyprint">address_line_1</code> etc. Addresses are validated based on the service coverage.</p>
 
 <h3 id="set-price">Set price</h3>
 
@@ -3826,6 +3859,15 @@ curl<span class="se">\</span>
 <li>Pick time of the service by selecting an object from <code class="prettyprint">availabilities.timeslots</code></li>
 <li>Combine <code class="prettyprint">availabilities.date</code> with <code class="prettyprint">availabilities.timeslots.time</code> and set <code class="prettyprint">booking_transaction.timeslot_formatted</code> matching it`s format</li>
 <li>From the selected <code class="prettyprint">avilability.timeslots</code> object pick objects from <code class="prettyprint">chocies.choice_items</code> and set <code class="prettyprint">booking_transaction.price.choices</code> matching it`s structure</li>
+</ul>
+
+<h3 id="set-paymethod">Set paymethod</h3>
+
+<p>Paymethod can be set by:</p>
+
+<ul>
+<li>Passing new paymethod details - set at least <code class="prettyprint">payment_provider_id</code> and <code class="prettyprint">data.token</code> at <code class="prettyprint">booking_transaction.paymethod</code> to create new paymethod for the booking transaction. Optionally other fields as <code class="prettyprint">description</code>, <code class="prettyprint">default</code> or <code class="prettyprint">sort</code> can be passed.</li>
+<li>Passing existing paymethod id - if you want to use existing paymethod set it&rsquo;s <code class="prettyprint">id</code> at <code class="prettyprint">booking_transaction.paymethod</code></li>
 </ul>
 
 <h3 id="booking-configuration">Booking configuration</h3>
