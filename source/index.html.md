@@ -2431,6 +2431,43 @@ curl\
 "https://{{BASE_URL}}/v2/client/booking_transactions/laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"
 ```
 
+```shell
+Example setting new paymethod:
+
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+  "payment_method": 3,
+  "paymethod": {
+    "payment_provider_id": 3,
+    "data": {
+      "token": "231231jsklfhaksj231§2"
+    }
+  }
+}'\
+"https://{{BASE_URL}}/v2/client/booking_transactions/laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"
+```
+
+```shell
+Example setting existing paymethod:
+
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+  "payment_method": 3,
+  "paymethod": 5
+}'\
+"https://{{BASE_URL}}/v2/client/booking_transactions/laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"
+```
+
 Booking transactions are representation of an ongoing booking process. They are similar to a [booking](#bookings) object with additional `confirmed` field. When client confirms their booking it's set to true. Then server validates if all required fields are filled and allows it.
 
 `"path": "booking_transactions"`
@@ -2444,7 +2481,7 @@ Booking transaction can be created in two ways:
 
 ### Set addresses
 
-Address is set as value for choice items. An object is passed that should minumum contain postcode. Value can be further updated with other attributes as address line 1 etc. Addresses are validated based on the service coverage.
+Address is set as value for choice items. An object is passed that should minumum contain `postcode`. Value can be further updated with other attributes as `address_line_1` etc. Addresses are validated based on the service coverage.
 
 ### Set price
 
@@ -2454,6 +2491,13 @@ To set price you need to:
 * Pick time of the service by selecting an object from `availabilities.timeslots`
 * Combine `availabilities.date` with `availabilities.timeslots.time` and set `booking_transaction.timeslot_formatted` matching it`s format
 * From the selected `avilability.timeslots` object pick objects from `chocies.choice_items` and set `booking_transaction.price.choices` matching it`s structure
+
+### Set paymethod
+
+Paymethod can be set by:
+
+* Passing new paymethod details - set at least `payment_provider_id` and `data.token` at `booking_transaction.paymethod` to create new paymethod for the booking transaction. Optionally other fields as `description`, `default` or `sort` can be passed.
+* Passing existing paymethod id - if you want to use existing paymethod set it's `id` at `booking_transaction.paymethod`
 
 ### Booking configuration
 
