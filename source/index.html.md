@@ -2679,7 +2679,8 @@ curl\
       "can_take_ondemand_jobs": true,
       "has_to_send_summary_on_checkout": true,
       "do_not_track_location": false,
-      "do_not_track_geofence": false
+      "do_not_track_geofence": false,
+      "can_set_availability": false
     },
     "user_applications": [
       1
@@ -2724,6 +2725,7 @@ Parameter | Type | Description
 `permissions.has_to_send_summary_on_checkout` | *boolean* | Should unit send summary on checkout
 `permissions.do_not_track_location` | *boolean* | Stops unit from sending updates for current location
 `permissions.do_not_track_geofence` | *boolean* | Stops unit from sending updates for entering and leaving areas around bookings
+`permissions.can_set_availability` | *boolean* | Can unit set it's availability
 `created_at` | *integer* | Timestamp of unit registration
 
 
