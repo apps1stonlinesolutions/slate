@@ -1787,6 +1787,95 @@ Parameter | Type | Description
 `sort` | *integer* | Order of item in list
 
 
+## Edit booking reasons
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/edit_booking_reasons"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+      {
+          "id": 1,
+          "name": "Pro delay",
+          "sort": 100
+      },
+      {
+          "id": 2,
+          "name": "Client personal reasons",
+          "sort": 200
+      }
+
+  ]
+}
+```
+
+Client chooses the reasons to edit a booking from a list of edit reasons
+
+`"path": "edit_booking_reasons"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`name` | *string* | Edit reason title text
+`sort` | *integer* | Order of item in list
+
+## Edit regular plan reasons
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/edit_regular_plan_reasons"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+      {
+          "id": 1,
+          "name": "Pro delay",
+          "sort": 100
+      },
+      {
+          "id": 2,
+          "name": "Client personal reasons",
+          "sort": 200
+      }
+
+  ]
+}
+```
+
+Client chooses the reasons to edit a regular plan from a list of edit reasons
+
+`"path": "edit_regular_plan_reasons"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`name` | *string* | Edit reason title text
+`sort` | *integer* | Order of item in list
+
+
 
 # Clients
 
