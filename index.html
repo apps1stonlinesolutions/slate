@@ -6952,6 +6952,80 @@ curl<span class="se">\</span>
 </tr>
 </tbody></table>
 
+<h2 id="tasks">Tasks</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+  "booking_reference_number": "180619112MB",
+  "priority_id": 34,
+  "description": "some random description",
+  "department_id": 7112,
+  "user_id": 1763,
+  "schedule_time_formatted": "2018-06-19 12:00:00",
+  "email_on_completion": "tihomir.kamenov@1stonlinesolutions.com"
+}'</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/shared/tasks"</span>
+</code></pre>
+
+<p>Errors appearing on clients.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;tasks&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">booking_reference_number</code></td>
+<td><em>string</em></td>
+<td>Reference number of booking to create task to</td>
+</tr>
+<tr>
+<td><code class="prettyprint">priority_id</code></td>
+<td><em>integer</em></td>
+<td>identifier of priority to create task with</td>
+</tr>
+<tr>
+<td><code class="prettyprint">description</code></td>
+<td><em>string</em></td>
+<td>Text comment left on creating the task</td>
+</tr>
+<tr>
+<td><code class="prettyprint">department_id</code><br><em>read-only</em></td>
+<td><em>integer</em></td>
+<td>Identifier of department that will take care of the task</td>
+</tr>
+<tr>
+<td><code class="prettyprint">user_id</code><br><em>read-only</em></td>
+<td><em>integer</em></td>
+<td>Identifier of user that will take care of the task</td>
+</tr>
+<tr>
+<td><code class="prettyprint">schedule_time_formatted</code><br><em>read-only</em></td>
+<td><em>string</em></td>
+<td>Time of tasks when the task has to be performed</td>
+</tr>
+<tr>
+<td><code class="prettyprint">email_on_completion</code><br><em>read-only</em></td>
+<td><em>string</em></td>
+<td>Email recepient of task completion notification email</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h2 id="exceptions">Exceptions</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X POST<span class="se">\</span>
