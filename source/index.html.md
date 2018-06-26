@@ -4065,8 +4065,6 @@ This endpoint returns:
 
 # Shared
 
-
-
 ## User applications
 
 
@@ -4573,6 +4571,48 @@ The current time on the server.
 Parameter | Type | Description
 -------- | ----- | -------
 `utc_time` | *integer* | UTC timestamp
+
+
+## Tasks
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+  "booking_reference_number": "180619112MB",
+  "priority_id": 34,
+  "description": "some random description",
+  "department_id": 7112,
+  "user_id": 1763,
+  "schedule_time_formatted": "2018-06-19 12:00:00",
+  "email_on_completion": "tihomir.kamenov@1stonlinesolutions.com"
+}'\
+"https://{{BASE_URL}}/v2/shared/tasks"
+```
+
+Errors appearing on clients.
+
+`"path": "tasks"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`booking_reference_number` | *string* | Reference number of booking to create task to
+`priority_id` | *integer* | identifier of priority to create task with
+`description` | *string* | Text comment left on creating the task
+`department_id`<br>*read-only* | *integer* | Identifier of department that will take care of the task
+`user_id`<br>*read-only* | *integer* | Identifier of user that will take care of the task
+`schedule_time_formatted`<br>*read-only* | *string* | Time of tasks when the task has to be performed
+`email_on_completion`<br>*read-only* | *string* | Email recepient of task completion notification email
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
 
 ## Exceptions
 
