@@ -4593,7 +4593,7 @@ curl\
 "https://{{BASE_URL}}/v2/shared/tasks"
 ```
 
-Errors appearing on clients.
+Creates task to files. Used when clients want to make changes on a booking that require manual action from operator.
 
 `"path": "tasks"`
 
