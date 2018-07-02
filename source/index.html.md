@@ -1807,11 +1807,13 @@ curl\
       {
           "id": 1,
           "name": "Pro delay",
+          "requires_comment": true,
           "sort": 100
       },
       {
           "id": 2,
           "name": "Client personal reasons",
+          "requires_comment": true,
           "sort": 200
       }
 
@@ -1829,6 +1831,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `name` | *string* | Edit reason title text
+`requires_comment` | *boolean* | Determines weather comment is required to edit booking with this reason
 `sort` | *integer* | Order of item in list
 
 ## Edit regular plan reasons
@@ -1851,11 +1854,13 @@ curl\
       {
           "id": 1,
           "name": "Pro delay",
+          "requires_comment": true,
           "sort": 100
       },
       {
           "id": 2,
           "name": "Client personal reasons",
+          "requires_comment": true,
           "sort": 200
       }
 
@@ -1873,6 +1878,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `name` | *string* | Edit reason title text
+`requires_comment` | *boolean* | Determines weather comment is required to edit regular plan with this reason
 `sort` | *integer* | Order of item in list
 
 
