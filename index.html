@@ -2796,11 +2796,13 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="p">{</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pro delay"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"requires_comment"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
           </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client personal reasons"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"requires_comment"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
       </span><span class="p">}</span><span class="w">
 
@@ -2832,6 +2834,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Edit reason title text</td>
 </tr>
 <tr>
+<td><code class="prettyprint">requires_comment</code></td>
+<td><em>boolean</em></td>
+<td>Determines weather comment is required to edit booking with this reason</td>
+</tr>
+<tr>
 <td><code class="prettyprint">sort</code></td>
 <td><em>integer</em></td>
 <td>Order of item in list</td>
@@ -2855,11 +2862,13 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="p">{</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pro delay"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"requires_comment"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
           </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client personal reasons"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"requires_comment"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
       </span><span class="p">}</span><span class="w">
 
@@ -2889,6 +2898,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">name</code></td>
 <td><em>string</em></td>
 <td>Edit reason title text</td>
+</tr>
+<tr>
+<td><code class="prettyprint">requires_comment</code></td>
+<td><em>boolean</em></td>
+<td>Determines weather comment is required to edit regular plan with this reason</td>
 </tr>
 <tr>
 <td><code class="prettyprint">sort</code></td>
