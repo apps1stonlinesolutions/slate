@@ -2753,7 +2753,7 @@ curl\
         "cancel_reason_id": 123,
         "comment": "Don`t need the service anymore"
 }'\
- "https://{{BASE_URL}}/v2/client/bookings/id:fjlkasdhflekjhkasd/cancel"
+ "https://{{BASE_URL}}/v2/client/bookings/123/cancel"
 ```
 
 To cancel booking pick a "[cancel reasons](#cancel-reasons)" and pass it with a comment (if required for the reason)
