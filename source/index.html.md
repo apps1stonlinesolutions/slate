@@ -2739,6 +2739,39 @@ Parameter | Type | Default | Description
 * [Common errors](#common-errors)
 
 
+## Cancel booking
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "cancel_reason_id": 123,
+        "comment": "Don`t need the service anymore"
+}'\
+ "https://{{BASE_URL}}/v2/client/bookings/id:fjlkasdhflekjhkasd/cancel"
+```
+
+To cancel booking pick a "[cancel reasons](#cancel-reasons)" and pass it with a comment (if required for the reason)
+
+`"path": "bookings/{{id}}/cancel"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`cancel_reason_id`<br>*required* | *integer* | [Cancel reason](#cancel-reasons) user selected from a list of reasons
+`comment` | *string* | Comment left by the client (if comment is required for the selected reason)
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
 # Units
 
 ## Profile
