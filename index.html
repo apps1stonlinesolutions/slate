@@ -4251,6 +4251,51 @@ curl<span class="se">\</span>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
+<h2 id="cancel-booking">Cancel booking</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "cancel_reason_id": 123,
+        "comment": "Don`t need the service anymore"
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/bookings/id:fjlkasdhflekjhkasd/cancel"</span>
+</code></pre>
+
+<p>To cancel booking pick a &ldquo;<a href="#cancel-reasons">cancel reasons</a>&rdquo; and pass it with a comment (if required for the reason)</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;bookings/{{id}}/cancel&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">cancel_reason_id</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td><a href="#cancel-reasons">Cancel reason</a> user selected from a list of reasons</td>
+</tr>
+<tr>
+<td><code class="prettyprint">comment</code></td>
+<td><em>string</em></td>
+<td>Comment left by the client (if comment is required for the selected reason)</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h1 id="units">Units</h1>
 
 <h2 id="profile">Profile</h2>
