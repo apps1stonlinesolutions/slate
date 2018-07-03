@@ -4127,9 +4127,9 @@ curl<span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Check which services are covered for a postcode.</p>
+<p>Returns available slots for performing a service.</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;coverage&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;availability&quot;</code></p>
 
 <h3 id="request-parameters">Request parameters</h3>
 
@@ -4220,6 +4220,30 @@ curl<span class="se">\</span>
 <td><code class="prettyprint">special_timeslots.best_price</code></td>
 <td><em>string</em></td>
 <td>Slot with lowest price</td>
+</tr>
+</tbody></table>
+
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">query.from_date</code></td>
+<td><em>string</em></td>
+<td><em>today</em></td>
+<td>Filter availability from this date on (date string with format 2018-02-25)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">query.to_date</code></td>
+<td><em>string</em></td>
+<td><em>a week from today</em></td>
+<td>Filter availability to this date (date string with format 2018-02-25)</td>
 </tr>
 </tbody></table>
 
@@ -4908,13 +4932,13 @@ curl<span class="se">\</span>
 <tr>
 <td><code class="prettyprint">query.from_date</code></td>
 <td><em>integer</em></td>
-<td><em>one month ago</em></td>
+<td><em>yesterday</em></td>
 <td>UTC time stamp to filter results from a date</td>
 </tr>
 <tr>
 <td><code class="prettyprint">query.to_date</code></td>
 <td><em>integer</em></td>
-<td><em>now</em></td>
+<td><em>last Monday</em></td>
 <td>UTC time stamp to filter results to a date</td>
 </tr>
 </tbody></table>
@@ -5719,15 +5743,15 @@ curl<span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">query.from_date</code></td>
-<td><em>string</em></td>
-<td>Monday</td>
-<td>Filter availability from this date on (date string with format 2018-02-25)</td>
+<td><em>integer</em></td>
+<td><em>Monday</em></td>
+<td>UTC time stamp to filter results from a date</td>
 </tr>
 <tr>
 <td><code class="prettyprint">query.to_date</code></td>
-<td><em>string</em></td>
-<td>Sunday</td>
-<td>Filter availability to this date (date string with format 2018-02-25)</td>
+<td><em>integer</em></td>
+<td><em>Sunday</em></td>
+<td>UTC time stamp to filter results to a date</td>
 </tr>
 </tbody></table>
 
