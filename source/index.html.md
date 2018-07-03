@@ -2700,9 +2700,9 @@ curl\
 ```
 
 
-Check which services are covered for a postcode.
+Returns available slots for performing a service.
 
-`"path": "coverage"`
+`"path": "availability"`
 
 ### Request parameters
 
@@ -2728,6 +2728,13 @@ Parameter | Type | Description
 `special_timeslots` | *object* | Special timeslots
 `special_timeslots.asap` | *string* | First available slot
 `special_timeslots.best_price` | *string* | Slot with lowest price
+
+### `params`
+
+Parameter | Type | Default | Description
+-------- | ----- | ----- | -------
+`query.from_date` | *string* | *today* | Filter availability from this date on (date string with format 2018-02-25)
+`query.to_date` | *string* | *a week from today* | Filter availability to this date (date string with format 2018-02-25)
 
 * [Common errors](#common-errors)
 
@@ -3159,8 +3166,8 @@ History of schedule with [jobs](#jobs) for the unit
 
 Parameter | Type   | Default | Description
 -------- | ---------- | ---- | -------
-`query.from_date` | *integer* | *one month ago* | UTC time stamp to filter results from a date
-`query.to_date` | *integer* | *now* | UTC time stamp to filter results to a date
+`query.from_date` | *integer* | *yesterday* | UTC time stamp to filter results from a date
+`query.to_date` | *integer* | *last Monday* | UTC time stamp to filter results to a date
 
 
 ## Payment methods
@@ -3732,11 +3739,10 @@ Parameter | Type | Description
 
 ### `params`
 
-Parameter | Type | Default | Description
--------- | ----- | ----- | -------
-`query.from_date` | *string* | Monday | Filter availability from this date on (date string with format 2018-02-25)
-`query.to_date` | *string* | Sunday | Filter availability to this date (date string with format 2018-02-25)
-
+Parameter | Type   | Default | Description
+-------- | ---------- | ---- | -------
+`query.from_date` | *integer* | *Monday* | UTC time stamp to filter results from a date
+`query.to_date` | *integer* | *Sunday* | UTC time stamp to filter results to a date
 
 ## Availability requests
 
