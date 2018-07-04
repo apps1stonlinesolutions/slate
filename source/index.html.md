@@ -4666,6 +4666,39 @@ This endpoint returns:
 * [Common errors](#common-errors)
 
 
+## Edit requests (temporary)
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+  "booking_id": 123,
+  "reason_id": 34,
+  "comment": "some random description"
+}'\
+"https://{{BASE_URL}}/v2/shared/edit_requests"
+```
+
+Creates task to files for changes on regular plan, sessions or bookings.
+
+`"path": "edit_requests"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`booking_id` | *integer* | Object id of booking to create task to
+`reason_id` | *integer* | Identifier of edit booking or plan reasons selected
+`comment` | *string* | Text comment left on creating the task
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
 ## Exceptions
 
 ```shell
