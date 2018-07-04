@@ -2772,6 +2772,75 @@ This endpoint returns:
 * [Common errors](#common-errors)
 
 
+## Edit requests (temporary)
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+  "booking_id": 123,
+  "reason_id": 34,
+  "comment": "some random description"
+}'\
+"https://{{BASE_URL}}/v2/shared/edit_requests"
+```
+
+Creates task to files for changes on regular plan, sessions or bookings.
+
+`"path": "edit_requests"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`booking_id` | *integer* | Object id of booking to create task to
+`reason_id` | *integer* | Identifier of edit booking or plan reasons selected
+`comment` | *string* | Text comment left on creating the task
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+
+
+## Add note (temporary)
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+  "booking_id": 123,
+  "note": "Bring detergents"
+}'\
+"https://{{BASE_URL}}/v2/client/add_note"
+```
+
+Adds a comment to the booking.
+
+`"path": "add_note"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`booking_id` | *integer* | Object id of booking to add note to
+`note` | *string* | Text comment left
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+
 # Units
 
 ## Profile
@@ -4660,74 +4729,6 @@ Parameter | Type | Description
 `user_id`<br>*read-only* | *integer* | Identifier of user that will take care of the task
 `schedule_time_formatted`<br>*read-only* | *string* | Time of tasks when the task has to be performed
 `email_on_completion`<br>*read-only* | *string* | Email recepient of task completion notification email
-
-This endpoint returns:
-
-* [Common errors](#common-errors)
-
-
-## Edit requests (temporary)
-
-```shell
-curl\
- -X POST\
- -H "Content-Type: application/json"\
- -H "X-Profile: {{PROFILE_ID}}"\
- -H "X-Application: {{APPLICATION_TOKEN}}"\
- -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
- -d '{
-  "booking_id": 123,
-  "reason_id": 34,
-  "comment": "some random description"
-}'\
-"https://{{BASE_URL}}/v2/shared/edit_requests"
-```
-
-Creates task to files for changes on regular plan, sessions or bookings.
-
-`"path": "edit_requests"`
-
-### Response parameters
-
-Parameter | Type | Description
--------- | ----- | -------
-`booking_id` | *integer* | Object id of booking to create task to
-`reason_id` | *integer* | Identifier of edit booking or plan reasons selected
-`comment` | *string* | Text comment left on creating the task
-
-This endpoint returns:
-
-* [Common errors](#common-errors)
-
-
-
-
-## Add note (temporary)
-
-```shell
-curl\
- -X POST\
- -H "Content-Type: application/json"\
- -H "X-Profile: {{PROFILE_ID}}"\
- -H "X-Application: {{APPLICATION_TOKEN}}"\
- -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
- -d '{
-  "booking_id": 123,
-  "note": "Bring detergents"
-}'\
-"https://{{BASE_URL}}/v2/shared/add_note"
-```
-
-Adds a comment to the booking.
-
-`"path": "add_note"`
-
-### Response parameters
-
-Parameter | Type | Description
--------- | ----- | -------
-`booking_id` | *integer* | Object id of booking to add note to
-`comment` | *string* | Text comment left
 
 This endpoint returns:
 
