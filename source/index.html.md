@@ -2786,7 +2786,7 @@ curl\
   "reason_id": 34,
   "comment": "some random description"
 }'\
-"https://{{BASE_URL}}/v2/shared/edit_requests"
+"https://{{BASE_URL}}/v2/client/edit_requests"
 ```
 
 Creates task to files for changes on regular plan, sessions or bookings.
