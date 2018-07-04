@@ -4672,6 +4672,7 @@ This endpoint returns:
 curl\
  -X POST\
  -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
  -d '{
