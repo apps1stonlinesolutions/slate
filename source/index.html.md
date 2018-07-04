@@ -4700,6 +4700,40 @@ This endpoint returns:
 * [Common errors](#common-errors)
 
 
+
+
+## Add note (temporary)
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+  "booking_id": 123,
+  "note": "Bring detergents"
+}'\
+"https://{{BASE_URL}}/v2/shared/add_note"
+```
+
+Adds a comment to the booking.
+
+`"path": "add_note"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`booking_id` | *integer* | Object id of booking to add note to
+`comment` | *string* | Text comment left
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
 ## Exceptions
 
 ```shell
