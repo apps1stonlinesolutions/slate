@@ -3004,12 +3004,19 @@ curl\
           "destination_option_title": "to office"
         }
       ],
-      "decline_reasons": [
+      "decline_reason_groups": [
         {
-          "id": 1,
-          "title": "Car is broken",
-          "response": "Please contact Stanimir Tomov on 07472761402 - he can find you another.",
-          "sort": 100
+          "title": "Technical issues",
+          "sort": 100,
+          "decline_reasons": [
+            {
+              "id": 11,
+              "name": "Car is broken",
+              "requires_comment": true,
+              "success_message": "Please contact Stanimir Tomov on 07472761402 - he can find you another.",
+              "sort": 100
+            }
+          ]
         }
       ],
       "icons": [
