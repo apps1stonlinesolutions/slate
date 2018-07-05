@@ -4632,6 +4632,7 @@ curl<span class="se">\</span>
       </span><span class="nt">"total_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£97"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"require_summary"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
       </span><span class="nt">"work_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"credit_applied"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">203</span><span class="p">,</span><span class="w">
@@ -4695,8 +4696,8 @@ curl<span class="se">\</span>
                   </span><span class="nt">"attr"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="p">{</span><span class="w">
                       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Administration fee"</span><span class="p">,</span><span class="w">
-                      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                    </span><span class="err">}</span><span class="w">
+                      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
                   </span><span class="p">]</span><span class="w">
                 </span><span class="p">}</span><span class="w">
               </span><span class="p">]</span><span class="w">
@@ -4750,11 +4751,11 @@ curl<span class="se">\</span>
                   </span><span class="p">{</span><span class="w">
                     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6000</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chairs"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6001</span><span class="p">,</span><span class="w">
-                      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sofa"</span><span class="w">
-                    </span><span class="p">}</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6001</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sofa"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
                 </span><span class="p">]</span><span class="w">
               </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -4929,6 +4930,11 @@ curl<span class="se">\</span>
 <td><code class="prettyprint">work_time</code></td>
 <td><em>integer</em></td>
 <td>Job duration in minutes</td>
+</tr>
+<tr>
+<td><code class="prettyprint">credit_applied</code></td>
+<td><em>boolean</em></td>
+<td>Shows weather the price was reduced with client credit</td>
 </tr>
 <tr>
 <td><code class="prettyprint">require_summary</code></td>
