@@ -2973,6 +2973,7 @@ curl\
       "total_formatted": "£97",
       "require_summary": 4,
       "work_time": 120,
+      "credit_applied": true,
       "contacts": [
         {
           "id": 203,
@@ -3036,7 +3037,7 @@ curl\
                   "attr": [
                     {
                       "name": "Administration fee",
-                      "sort": 1,
+                      "sort": 1
                     }
                   ]
                 }
@@ -3091,11 +3092,11 @@ curl\
                   {
                     "id": 6000,
                     "name": "Chairs"
-                    },
-                    {
-                      "id": 6001,
-                      "name": "Sofa"
-                    }
+                  },
+                  {
+                    "id": 6001,
+                    "name": "Sofa"
+                  }
                 ]
               }
             }
@@ -3223,6 +3224,7 @@ Parameter | Type | Description
 `currency_code` | *string* | Currency code
 `paid` | *boolean* | Flag indicating if client is charged
 `work_time` | *integer* | Job duration in minutes
+`credit_applied` | *boolean* | Shows weather the price was reduced with client credit
 `require_summary` | *integer* | *<b>0</b> - No summary required*<br>*<b>1</b> - Should send summary at the end of the day*<br>*<b>2</b> - Should send summary now*<br>*<b>3</b> - Can't proceed until summary sent*<br>*<b>4</b> - Summary sent*
 `performed` | *integer* | *<b>0</b> - No checkout or auto performed*<br>*<b>1</b> - Checked out*<br>*<b>2</b> - Auto performed (24h passed)*
 `rating` | *double* | Performance score of Unit (1-5)
