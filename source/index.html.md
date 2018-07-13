@@ -2971,9 +2971,12 @@ curl\
       "flexible_to": null,
       "insufficient_travel_time_warning_time": 1504616400,
       "total_formatted": "£97",
+      "price_notes": [
+        "Credit applied",
+        "Compensation included"
+      ],
       "require_summary": 4,
       "work_time": 120,
-      "credit_applied": true,
       "contacts": [
         {
           "id": 203,
@@ -3227,11 +3230,11 @@ Parameter | Type | Description
 `client_name` | *string* | Client name
 `client_contacts` | *array client_contacts* | Phone numbers client provided for contact
 `total_formatted` | *string* | Price of the service
+`price_notes` | *array<string>* | Description notes for the price of the services.
 `payment_method` | *array payment_methods* | Payment method client will use to pay
 `currency_code` | *string* | Currency code
 `paid` | *boolean* | Flag indicating if client is charged
 `work_time` | *integer* | Job duration in minutes
-`credit_applied` | *boolean* | Shows weather the price was reduced with client credit
 `require_summary` | *integer* | *<b>0</b> - No summary required*<br>*<b>1</b> - Should send summary at the end of the day*<br>*<b>2</b> - Should send summary now*<br>*<b>3</b> - Can't proceed until summary sent*<br>*<b>4</b> - Summary sent*
 `performed` | *integer* | *<b>0</b> - No checkout or auto performed*<br>*<b>1</b> - Checked out*<br>*<b>2</b> - Auto performed (24h passed)*
 `rating` | *double* | Performance score of Unit (1-5)
