@@ -4630,9 +4630,12 @@ curl<span class="se">\</span>
       </span><span class="nt">"flexible_to"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"insufficient_travel_time_warning_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1504616400</span><span class="p">,</span><span class="w">
       </span><span class="nt">"total_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£97"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"price_notes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Credit applied"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Compensation included"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
       </span><span class="nt">"require_summary"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
       </span><span class="nt">"work_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"credit_applied"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">203</span><span class="p">,</span><span class="w">
@@ -4919,6 +4922,11 @@ curl<span class="se">\</span>
 <td>Price of the service</td>
 </tr>
 <tr>
+<td><code class="prettyprint">price_notes</code></td>
+<td><em>array<string></em></td>
+<td>Description notes for the price of the services.</td>
+</tr>
+<tr>
 <td><code class="prettyprint">payment_method</code></td>
 <td><em>array payment_methods</em></td>
 <td>Payment method client will use to pay</td>
@@ -4937,11 +4945,6 @@ curl<span class="se">\</span>
 <td><code class="prettyprint">work_time</code></td>
 <td><em>integer</em></td>
 <td>Job duration in minutes</td>
-</tr>
-<tr>
-<td><code class="prettyprint">credit_applied</code></td>
-<td><em>boolean</em></td>
-<td>Shows weather the price was reduced with client credit</td>
 </tr>
 <tr>
 <td><code class="prettyprint">require_summary</code></td>
