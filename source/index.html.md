@@ -1567,7 +1567,7 @@ curl\
       "sort": 200,
       "default": false,
       "title": "Card",
-      "type": "Stripe",
+      "type": "Braintree",
       "payment_provider_id": 3,
       "data": {
         "braintree_key": "kdj9DSA923131safdfd89a7fklj`cxzc"
