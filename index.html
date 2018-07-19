@@ -2425,6 +2425,18 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"icon_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Card"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stripe"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payment_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"braintree_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kdj9DSA923131safdfd89a7fklj`cxzc"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"icon_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
       </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
       </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -2476,7 +2488,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">type</code></td>
 <td><em>string</em></td>
-<td><em><b>None</b> - No processing needed (e.g. Cash payment)</em><br><em><b>Stripe</b> - Card payment via Stripe</em><br><em><b>PayPal</b> - PayPal via Braintree</em></td>
+<td><em><b>None</b> - No processing needed (e.g. Cash payment)</em><br><em><b>Stripe</b> - Card payment via Stripe</em><br><em><b>Braintree</b> - Card payment via Braintree</em><br><em><b>PayPal</b> - PayPal via Braintree</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">payment_provider_id</code></td>
@@ -3265,6 +3277,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
   </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"**** **** **** 1234"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stripe"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"payment_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"available_for_payment_methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"231231jsklfhaksj231§2"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"device_data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shdyjtyruhdfgfsdgfdsgdsf"</span><span class="p">,</span><span class="w">
@@ -3315,6 +3328,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">payment_provider_id</code></td>
 <td><em>integer</em></td>
 <td>Type of payment provider. Check <a href="#payment-methods">payment_method</a>.<code class="prettyprint">payment_provider_id</code>.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">available_for_payment_methods</code></td>
+<td><em>array&lt;<a href="#payment-methods">payment_method</a>&gt;</em></td>
+<td>Array of <a href="#payment-methods">payment_method</a> id&rsquo;s that this paymethod can be used with</td>
 </tr>
 <tr>
 <td><code class="prettyprint">default</code><br><em>editable</em></td>
