@@ -1563,6 +1563,18 @@ curl\
       "icon_image_url": "http://image.url/here.jpg"
     },
     {
+      "id": 2,
+      "sort": 200,
+      "default": false,
+      "title": "Card",
+      "type": "Stripe",
+      "payment_provider_id": 3,
+      "data": {
+        "braintree_key": "kdj9DSA923131safdfd89a7fklj`cxzc"
+      },
+      "icon_image_url": "http://image.url/here.jpg"
+    },
+    {
       "id": 3,
       "sort": 300,
       "default": false,
@@ -1591,7 +1603,7 @@ Parameter | Type | Description
 `sort` | *integer* | Order of item in list
 `default` | *boolean* | Is this payment method the default
 `title` | *string* | Display name of payment method
-`type` | *string* | *<b>None</b> - No processing needed (e.g. Cash payment)*<br>*<b>Stripe</b> - Card payment via Stripe*<br>*<b>PayPal</b> - PayPal via Braintree*
+`type` | *string* | *<b>None</b> - No processing needed (e.g. Cash payment)*<br>*<b>Stripe</b> - Card payment via Stripe*<br>*<b>Braintree</b> - Card payment via Braintree*<br>*<b>PayPal</b> - PayPal via Braintree*
 `payment_provider_id` | *integer* | Identifier for the the account used for the payment method (e.g. Stripe UK, Stripe AUS etc.)
 `data`<br>*optional* | *object* | Based on the payment provider different data may be provided (such as keys, tokens etc.)
 `data.stripe_key`<br>*optional* | *string* | Stripe API authorization key
@@ -2091,6 +2103,7 @@ curl\
   "label": "**** **** **** 1234",
   "type": "Stripe",
   "payment_provider_id": 3,
+  "available_for_payment_methods": [1, 2],
   "data": {
     "token": "231231jsklfhaksj231§2",
     "device_data": "shdyjtyruhdfgfsdgfdsgdsf",
@@ -2117,6 +2130,7 @@ Parameter | Type | Description
 `label` | *string* | Generated description for the paymethod
 `type` | *string* | Type of paymethod. Check [payment_method](#payment-methods).`type`.
 `payment_provider_id` | *integer* | Type of payment provider. Check [payment_method](#payment-methods).`payment_provider_id`.
+`available_for_payment_methods` | *array<[payment_method](#payment-methods)>* | Array of [payment_method](#payment-methods) id's that this paymethod can be used with
 `default`<br>*editable* | *boolean* | Client preference for default paymethod
 `data` | *object* | Custom data of paymethod.
 `data.token` | *string* | Token from Stripe/PayPal for paymethod creation
