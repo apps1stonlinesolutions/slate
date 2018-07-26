@@ -7323,6 +7323,70 @@ curl<span class="se">\</span>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
+<h1 id="compatibility">Compatibility</h1>
+
+<p>Response modifications based on <code class="prettyprint">X-Application-Build</code>.</p>
+
+<h2 id="payment-methods">Payment methods</h2>
+
+<p>Filters payment methods by type</p>
+
+<h3 id="modifications">Modifications</h3>
+
+<table><thead>
+<tr>
+<th>Application</th>
+<th>Operator</th>
+<th>Build</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>GoFantastic iOS</em></td>
+<td>&lt;</td>
+<td>747</td>
+<td>Cut PayPal</td>
+</tr>
+<tr>
+<td><em>GoFantastic iOS</em></td>
+<td>&gt;</td>
+<td>785</td>
+<td>Cut Stripe</td>
+</tr>
+<tr>
+<td><em>GoFantastic iOS</em></td>
+<td>&lt;=</td>
+<td>785</td>
+<td>Cut Braintree</td>
+</tr>
+<tr>
+<td><em>GoFantastic Android</em></td>
+<td>&lt;</td>
+<td>460</td>
+<td>Cut PayPal</td>
+</tr>
+<tr>
+<td><em>GoFantastic Android</em></td>
+<td>&gt;</td>
+<td>647</td>
+<td>Cut Stripe</td>
+</tr>
+<tr>
+<td><em>GoFantastic Android</em></td>
+<td>&lt;=</td>
+<td>647</td>
+<td>Cut Braintree</td>
+</tr>
+</tbody></table>
+
+<p>Applied on endpoints:</p>
+
+<ul>
+<li><a href="#payment-methods">Payment methods</a></li>
+<li><a href="#configuration">Configuration payment methods</a></li>
+<li><a href="#purchase-membership-payment-methods">Purchase membership payment methods</a></li>
+</ul>
+
           <h1 id="errors">Errors</h1>
 
 <p>The API uses the following success codes:</p>
