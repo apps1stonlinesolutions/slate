@@ -4799,3 +4799,30 @@ Parameter | Type | Description
 This endpoint returns:
 
 * [Common errors](#common-errors)
+
+
+# Compatibility
+
+Response modifications based on `X-Application-Build`.
+
+## Payment methods
+
+Filters payment methods by type
+
+### Modifications
+
+Application | Operator | Build | Description
+-------- | ----- | ------- | -------
+ *GoFantastic iOS* | < | 747 | Cut PayPal
+ *GoFantastic iOS* | > | 785 | Cut Stripe
+ *GoFantastic iOS* | <= | 785 | Cut Braintree
+ *GoFantastic Android* | < | 460 | Cut PayPal
+ *GoFantastic Android* | > | 647 | Cut Stripe
+ *GoFantastic Android* | <= | 647 | Cut Braintree
+
+
+Applied on endpoints:
+
+* [Payment methods](#payment-methods)
+* [Configuration payment methods](#configuration)
+* [Purchase membership payment methods](#purchase-membership-payment-methods)
