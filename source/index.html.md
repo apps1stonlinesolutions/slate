@@ -4814,10 +4814,10 @@ Filters payment methods by type
 Application | Operator | Build | Description
 -------- | ----- | ------- | -------
  *GoFantastic iOS* | < | 747 | Remove object with type `PayPal` from response
- *GoFantastic iOS* | > | 785 | Remove object with type `Stripe` from response
+ *GoFantastic iOS* | > | 785 | Remove object with type `Stripe` from response (if `Braintree` is available in response)
  *GoFantastic iOS* | <= | 785 | Remove object with type `Braintree` from response
  *GoFantastic Android* | < | 460 | Remove object with type `PayPal` from response
- *GoFantastic Android* | > | 647 | Remove object with type `Stripe` from response
+ *GoFantastic Android* | > | 647 | Remove object with type `Stripe` from response (if `Braintree` is available in response)
  *GoFantastic Android* | <= | 647 | Remove object with type `Braintree` from response
 
 
