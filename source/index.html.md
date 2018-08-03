@@ -3133,6 +3133,13 @@ curl\
           "distance": 150
         }
       ],
+      "arrival_timeframes": [
+        {
+          "id": 1,
+          "name": "10:00 - 10:30",
+          "sort": 100
+        }
+      ],
       "can_change_payment_method": true,
       "can_edit_booking_price": true,
       "can_cross_sell": true,
@@ -3146,26 +3153,27 @@ curl\
       ],
       "events": [
         {
-          "type": 20,
+          "type": 7,
+          "lat": 23.4324324,
+          "lng": 23.4324324,
+          "event_time": 1431936812
+        },
+        {
+          "type": 1,
+          "lat": 23.4324324,
+          "lng": 23.4324324,
           "event_time": 1504610238
         },
         {
-          "type": 70,
+          "type": 12,
           "radius": 1,
           "lat": 23.4324324,
           "lng": 23.4324324,
           "event_time": 1431936812
         },
         {
-          "type": 70,
-          "note": "This is a comment",
-          "lat": 23.4324324,
-          "lng": 23.4324324,
-          "event_time": 1431936812
-        },
-        {
-          "type": 70,
-          "note": "This is a comment",
+          "type": 101,
+          "arrival_timeframe_id": 25,
           "lat": 23.4324324,
           "lng": 23.4324324,
           "event_time": 1431936812
@@ -3238,40 +3246,28 @@ Schedule with jobs for the unit
 Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
+`currency_code` | *string* | Currency code
+`payment_method` | *array payment_methods* | Payment method client will use to pay
 `app_time` | *integer* | Appointment time for the job in UTC timestamp
 `flexible_from` | *integer* | Start of timeframe to execute the job in UTC timestamp
 `flexible_to` | *integer* | End of timeframe to execute the job in UTC timestamp
-`client_name` | *string* | Client name
-`client_contacts` | *array client_contacts* | Phone numbers client provided for contact
+`insufficient_travel_time_warning_time` | *integer* | Time up until Pro should leave previous job in order to get to this job in time in UTC timestamp
 `total_formatted` | *string* | Price of the service
 `price_notes` | *array<string>* | Description notes for the price of the services.
-`payment_method` | *array payment_methods* | Payment method client will use to pay
-`currency_code` | *string* | Currency code
-`paid` | *boolean* | Flag indicating if client is charged
-`work_time` | *integer* | Job duration in minutes
 `require_summary` | *integer* | *<b>0</b> - No summary required*<br>*<b>1</b> - Should send summary at the end of the day*<br>*<b>2</b> - Should send summary now*<br>*<b>3</b> - Can't proceed until summary sent*<br>*<b>4</b> - Summary sent*
-`performed` | *integer* | *<b>0</b> - No checkout or auto performed*<br>*<b>1</b> - Checked out*<br>*<b>2</b> - Auto performed (24h passed)*
-`rating` | *double* | Performance score of Unit (1-5)
-`birthdate` | *integer* | Timestamp of unit date of birth
-`gender` | *string* | Gender of the unit
-`team` | *string* | Name of team the unit is assigned to
-`country_code` | *string* | Country code of area the Unit operates in
-`language_code` | *string* | Language code user chose from Settings in XRM or app. List of languages received at [system_languages](#system-languages)
-`events.type` | *integer* | *<b>1</b> - Checkin*<br>*<b>2</b> - Checkout*<br>*<b>7</b> - View*<br>*<b>8</b> - Confirm*<br>*<b>12</b> - Arrive*<br>*<b>13</b> - Depart*<br>
-`phones` | *array* | List of phone numbers of unit
-`phones.id` | *int* | Unique identifier
-`phones.value` | *string* | Phone number
-`phones.default` | *boolean* | Is the phone the default used by the system for receiving calls and SMS
-`phones.sort` | *string* | Order in list
-`avatar.token` | *string* | File server token
-`avatar.url` | *string* | URL to avatar image
+`work_time` | *integer* | Job duration in minutes
 `services_price_modifiers` | *array* | Price modifiers for included services in the job
 `services_price_modifiers.price_modifiers` | *array* | Price modifiers for a service in the job
 `services_price_modifiers.price_modifiers.type` | *integer* | Check service.choices.[choice_items](#choice-items).type
+`arrival_timeframes` | *array<arrival_timeframes>* | Timeframes in which Pro can warn the client it will arrive
+`client_contacts` | *array client_contacts* | Phone numbers client provided for contact
+`events.type` | *integer* | *<b>1</b> - Checkin*<br>*<b>2</b> - Checkout*<br>*<b>7</b> - View*<br>*<b>8</b> - Confirm*<br>*<b>12</b> - Arrive*<br>*<b>13</b> - Depart*<br>*<b>101</b> - Arrival timeframe*
+`performed` | *integer* | *<b>0</b> - No checkout or auto performed*<br>*<b>1</b> - Checked out*<br>*<b>2</b> - Auto performed (24h passed)*
+`client` | *object* | Client details
+`paid` | *boolean* | Flag indicating if client is charged
 `comments` | *array* | List of comments for the job
 `comments.event_time` | *integer* | UTC timestamp of when the comment was created on the device
 `comments.created_at` | *integer* | UTC timestamp of when the comment was created on the server
-`created_at` | *integer* | Timestamp of unit registration
 
 
 ## Jobs history
