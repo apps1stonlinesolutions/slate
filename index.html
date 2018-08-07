@@ -900,6 +900,80 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<h2 id="social-providers">Social providers</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/social_providers"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Facebook Sign In"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Facebook"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"application_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123351117549831</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Google"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Google"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Social providers for client registering and logging in.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;social_providers&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code class="prettyprint">type</code></td>
+<td><em>string</em></td>
+<td>Type of social provider:<br/><em><b>Facebook</b> - Facebook</em><br/><em><b>Google</b> - Google</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td><em>string</em></td>
+<td>Name of social provider</td>
+</tr>
+<tr>
+<td><code class="prettyprint">token</code></td>
+<td><em>string</em></td>
+<td>Key for communication with social provider API</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sort</code></td>
+<td><em>integer</em></td>
+<td>Order of item in list</td>
+</tr>
+</tbody></table>
+
 <h2 id="validations">Validations</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
@@ -1069,7 +1143,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">social.social_provider_id</code><br><em>optional</em></td>
 <td><em>integer</em></td>
-<td>Social login provider id. Check <a href="#user">user</a>.<code class="prettyprint">social_login_provider</code>.</td>
+<td>Social login provider id. Check <a href="#social-providers">social providers</a>.</td>
 </tr>
 </tbody></table>
 
@@ -2096,7 +2170,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">position</code></td>
 <td><em>string</em></td>
-<td>Determines where the choice should be dislpayed in the booking process:<br/><em><b>init</b> - begining of booking process. Minimum requirement to create a <a href="#booking-transactions">booking_transaction</a></em><br><em><b>configurator</b> - choices describing service configuration</em><br><em><b>before_summary</b> - middle scree before showing the booking summary</em><br><em><b>on_summary</b> - choices at the summary screen (e.g. cross sell)</em><br><em><b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)</em></td>
+<td>Determines where the choice should be dislpayed in the booking process:<br/><em><b>init</b> - begining of booking process. Minimum requirement to create a <a href="#booking-transactions">booking_transaction</a></em><br><em><b>configurator</b> - choices describing service configuration</em><br><em><b>before_summary</b> - middle screen before showing the booking summary</em><br><em><b>on_summary</b> - choices at the summary screen (e.g. cross sell)</em><br><em><b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">title</code></td>
@@ -3019,8 +3093,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">social_provider</code></td>
-<td><em>integer</em></td>
-<td>Social provider client used to register:<br/><em><b>1</b> - Facebook</em></td>
+<td><em><a href="#social-providers">object</a></em></td>
+<td>Social provider client used to register.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">type_id</code></td>
