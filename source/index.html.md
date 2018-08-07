@@ -544,6 +544,59 @@ Parameter | Type | Description
 `cta_color` | *string* | Configuration if you want to customize Call to Action colors in the template
 `logo_url` | *string* | Configuration full path of the website logo Ex.: https://domainname.com/images/logo.png
 
+
+## Social providers
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/social_providers"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "type": "Facebook Sign In",
+      "name": "Facebook",
+      "data": {
+        "application_id": 123351117549831
+      },
+      "sort": 100
+    },
+    {
+      "id": 2,
+      "type": "Google",
+      "name": "Google",
+      "data": null,
+      "sort": 200
+    }
+  ]
+}
+```
+
+Social providers for client registering and logging in.
+
+`"path": "social_providers"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`type` | *string* | Type of social provider:<br/>*<b>Facebook</b> - Facebook*<br/>*<b>Google</b> - Google*
+`name` | *string* | Name of social provider
+`token` | *string* | Key for communication with social provider API
+`sort` | *integer* | Order of item in list
+
+
 ## Validations
 
 
@@ -668,7 +721,7 @@ Parameter | Type | Description
 Parameter | Type | Description
 -------- | ----- | -------
 `social.oauth_id`<br>*required* | *string* | Obtained facebook user access token 
-`social.social_provider_id`<br>*optional* | *integer* | Social login provider id. Check [user](#user).`social_login_provider`.
+`social.social_provider_id`<br>*optional* | *integer* | Social login provider id. Check [social providers](#social-providers).
 
 ### `params`
 
@@ -1350,7 +1403,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `sort` | *integer* | Order of item in list
-`position` | *string* | Determines where the choice should be dislpayed in the booking process:<br/>*<b>init</b> - begining of booking process. Minimum requirement to create a [booking_transaction](#booking-transactions)*<br>*<b>configurator</b> - choices describing service configuration*<br>*<b>before_summary</b> - middle scree before showing the booking summary*<br>*<b>on_summary</b> - choices at the summary screen (e.g. cross sell)*<br>*<b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)*
+`position` | *string* | Determines where the choice should be dislpayed in the booking process:<br/>*<b>init</b> - begining of booking process. Minimum requirement to create a [booking_transaction](#booking-transactions)*<br>*<b>configurator</b> - choices describing service configuration*<br>*<b>before_summary</b> - middle screen before showing the booking summary*<br>*<b>on_summary</b> - choices at the summary screen (e.g. cross sell)*<br>*<b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)*
 `title` | *string* | Question text
 `summary_title` | *string* | Question short title text in summary
 `required` | *boolean* | Should the question be answered to book
@@ -1971,7 +2024,7 @@ Parameter | Type | Description
 `first_name`<br>*editable* | *string* | Client first name
 `last_name`<br>*editable* | *string* | Client first name
 `username` | *string* | Client email used for login
-`social_provider` | *integer* | Social provider client used to register:<br/>*<b>1</b> - Facebook*
+`social_provider` | *[object](#social-providers)* | Social provider client used to register.
 `type_id` | *integer* | *<b>1</b> - Anonymous*<br>*<b>2</b> - Generic (register form)*<br>*<b>3</b> - Social (Facebook)*
 `social_key` | *string* | Social identifier used on registration (e.g. @joe for Twitter or 23253414234 for Facebook)
 `credit` | *double* | Client credit amount in the region
