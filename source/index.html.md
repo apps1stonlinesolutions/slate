@@ -2646,7 +2646,7 @@ Booking transactions are representation of an ongoing booking process. They are 
 Booking transaction can be created in two ways:
 
 * `session`, `service`, all `init` choices for the service - minimum to create a booking transaction for booking a service is logged in user, service and values for all choices with position `init`. `session` is taken from `Authorization` header of the request, `service` value should be object id. Choices should be sent with their filled choice items. Any other fields can be passed in addition if available.
-* `reference_number` - creates booking transaction to edit an existing booking. Any other fields can be passed in addition.
+* `booking_id` - creates booking transaction to edit an existing booking. Any other fields can be passed in addition.
 
 ### Set addresses
 
