@@ -1983,6 +1983,7 @@ curl\
     "avatar": 1,
     "last_profile_keyword": "UnitedKingdomGF",
     "delete_account_requested": false,
+    "upcoming_bookings_count": 2,
     "preferences": {
       "id": 1,
       "preferences_submitted": true,
@@ -2210,7 +2211,7 @@ curl\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "X-Profile: {{PROFILE_ID}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
-"https://{{BASE_URL}}/v2/client/user/bookings"
+"https://{{BASE_URL}}/v2/client/bookings"
 ```
 
 > The above request success response is:
@@ -3225,7 +3226,7 @@ curl\
           "event_time": 1431936812
         },
         {
-          "type": 101,
+          "type": 110,
           "arrival_timeframe_id": 25,
           "lat": 23.4324324,
           "lng": 23.4324324,
@@ -3314,7 +3315,7 @@ Parameter | Type | Description
 `services_price_modifiers.price_modifiers.type` | *integer* | Check service.choices.[choice_items](#choice-items).type
 `arrival_timeframes` | *array<arrival_timeframes>* | Timeframes in which Pro can warn the client it will arrive
 `client_contacts` | *array client_contacts* | Phone numbers client provided for contact
-`events.type` | *integer* | *<b>1</b> - Checkin*<br>*<b>2</b> - Checkout*<br>*<b>7</b> - View*<br>*<b>8</b> - Confirm*<br>*<b>12</b> - Arrive*<br>*<b>13</b> - Depart*<br>*<b>101</b> - Arrival timeframe*
+`events.type` | *integer* | *<b>1</b> - Checkin*<br>*<b>2</b> - Checkout*<br>*<b>7</b> - View*<br>*<b>8</b> - Confirm*<br>*<b>12</b> - Arrive*<br>*<b>13</b> - Depart*<br>*<b>110</b> - Arrival timeframe*
 `performed` | *integer* | *<b>0</b> - No checkout or auto performed*<br>*<b>1</b> - Checked out*<br>*<b>2</b> - Auto performed (24h passed)*
 `client` | *object* | Client details
 `paid` | *boolean* | Flag indicating if client is charged
