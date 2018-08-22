@@ -2963,7 +2963,8 @@ curl\
     },
     "user_applications": [
       1
-    ]
+    ],
+    "session_has_updates": true,
     "created_at": 1504857514
   }
 }
@@ -3194,9 +3195,18 @@ curl\
           "sort": 100
         }
       ],
-      "can_change_payment_method": true,
-      "can_edit_booking_price": true,
-      "can_cross_sell": true,
+      "can_change_payment_method": {
+        "from": 1534953201,
+        "to": 1534993201
+      },
+      "can_edit_booking_price": {
+        "from": 0,
+        "to": 9999999999
+      },
+      "can_cross_sell": {
+        "from": null,
+        "to": null
+      },
       "client_contacts": [
         {
           "id": 2197447,
@@ -3282,6 +3292,7 @@ curl\
     }
   ],
   "meta": {
+    "session_has_updates": true,
     "databaseVersion": 70,
     "iOSLatestApplicationBuild": 300,
     "androidLatestApplicationBuild": 1,
