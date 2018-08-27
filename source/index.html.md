@@ -3051,6 +3051,7 @@ curl\
       ],
       "require_summary": 4,
       "work_time": 120,
+      "valid_to": 1504620000,
       "contacts": [
         {
           "id": 203,
@@ -3326,6 +3327,7 @@ Parameter | Type | Description
 `price_notes` | *array<string>* | Description notes for the price of the services.
 `require_summary` | *integer* | *<b>0</b> - No summary required*<br>*<b>1</b> - Should send summary at the end of the day*<br>*<b>2</b> - Should send summary now*<br>*<b>3</b> - Can't proceed until summary sent*<br>*<b>4</b> - Summary sent*
 `work_time` | *integer* | Job duration in minutes
+`valid_to` | *integer* | Time after which job is no more valid and has to be updated in UTC timestamp
 `services_price_modifiers` | *array* | Price modifiers for included services in the job
 `services_price_modifiers.price_modifiers` | *array* | Price modifiers for a service in the job
 `services_price_modifiers.price_modifiers.type` | *integer* | Check service.choices.[choice_items](#choice-items).type
