@@ -1982,7 +1982,8 @@ curl\
     "membership": {
       "valid_from": 1433489660,
       "valid_to": 1433489660,
-      "expiration_reminder": 1433489660
+      "expiration_reminder": 1433489660,
+      "cancellation_requested": true
     },
     "avatar": 1,
     "last_profile_keyword": "UnitedKingdomGF",
@@ -4891,3 +4892,18 @@ Applied on endpoints:
 * [Payment methods](#payment-methods)
 * [Configuration payment methods](#configuration)
 * [Purchase membership payment methods](#purchase-membership-payment-methods)
+
+## Users
+
+Modifies user object data format.
+
+### Modifications
+
+Application | Operator | Build | Description
+-------- | ----- | ------- | -------
+ *GoFantastic iOS* | <= | 794 | Transform membership object to integer. If membership is `null` transform to 0. If membership object has value transform to 1.
+ *GoFantastic Android* | <= | 654 | Transform membership object to integer. If membership is `null` transform to 0. If membership object has value transform to 1.
+
+Applied on endpoints:
+
+* [Users](#users)
