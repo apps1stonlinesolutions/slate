@@ -1979,7 +1979,11 @@ curl\
     "credit_formatted": "£55.5",
     "referral_code": "johnd1234b",
     "created_at": 1433489660,
-    "membership": 1,
+    "membership": {
+      "valid_from": 1433489660,
+      "valid_to": 1433489660,
+      "expiration_reminder": 1433489660
+    },
     "avatar": 1,
     "last_profile_keyword": "UnitedKingdomGF",
     "delete_account_requested": false,
