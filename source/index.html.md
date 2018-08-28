@@ -1946,6 +1946,52 @@ Parameter | Type | Description
 `requires_comment` | *boolean* | Determines weather comment is required to edit regular plan with this reason
 `sort` | *integer* | Order of item in list
 
+## Cancel membership reasons
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/cancel_membership_reasons"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+      {
+          "id": 1,
+          "name": "I don't need the membership anymore",
+          "requires_comment": true,
+          "sort": 100
+      },
+      {
+          "id": 2,
+          "name": "I am not happy with the discount",
+          "requires_comment": false,
+          "sort": 200
+      }
+
+  ]
+}
+```
+
+Client chooses the reasons to cancel membership from a list of cancel reasons
+
+`"path": "cancel_membership_reasons"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`name` | *string* | Reschedule reason title text
+`requires_comment` | *boolean* | Determines weather comment is required to cancel membership with this reason
+`sort` | *integer* | Order of item in list
 
 
 # Clients
