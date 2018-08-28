@@ -1177,6 +1177,43 @@ Parameter | Type | Description
 
 
 
+
+
+## Cancel membership
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "cancel_membership_reason_id": 123,
+        "comment": "Don`t need the membership anymore"
+}'\
+ "https://{{BASE_URL}}/v2/client/cancel_membership"
+```
+
+To cancel membership pick a "[cancel membership reasons](#cancel-membership-reasons)" and pass it with a comment (if required for the reason)
+
+`"path": "cancel_membership"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`cancel_membership_reason_id`<br>*required* | *integer* | [Cancel membership reason](#cancel-membership-reasons) user selected from a list of reasons
+`comment` | *string* | Comment left by the client (if comment is required for the selected reason)
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+
+
 # Service data
 
 
