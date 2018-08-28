@@ -1983,7 +1983,8 @@ curl\
       "valid_from": 1433489660,
       "valid_to": 1433489660,
       "expiration_reminder": 1433489660,
-      "cancellation_requested": true
+      "cancellation_requested": true,
+      "auto_renew_enabled": true
     },
     "avatar": 1,
     "last_profile_keyword": "UnitedKingdomGF",
