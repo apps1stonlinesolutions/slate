@@ -1176,11 +1176,7 @@ Parameter | Type | Description
 `comment`<br>*optional* | *string* | Reason for requesting account deletion
 
 
-
-
-
 ## Cancel membership
-
 
 ```shell
 curl\
@@ -1213,14 +1209,9 @@ This endpoint returns:
 
 
 
-
 # Service data
 
-
-
-
 ## Categories
-
 
 ```shell
 curl\
@@ -1505,7 +1496,7 @@ Parameter | Type | Description
 `id` | *integer* | Object id
 `sort` | *integer* | Order of item in list
 `parent_id` | *integer* | Parent answer (if answer is sub-answer)
-`type` | *integer* | *<b>1</b> - Check*<br>*<b>2</b> - Radio*<br>*<b>3</b> - Stepper (incremental value)*<br>*<b>4</b> - Text field*<br>*<b>5</b> - Hours (total hours for current booking configuration)*<br>*<b>6</b> - Select*<br>*<b>7</b> - Multi select (autocomplete with quantity)*<br>*<b>8</b> - Distance*<br>*<b>9</b> - Always Apply*<br>*<b>10</b> - Price per hour*<br>*<b>11</b> - Decimal Text*<br>*<b>12</b> - Photo attachment*<br>*<b>14</b> - Address. Accepts [address](#addresses) object*<br>*<b>13</b> - Dropdown*
+`type` | *integer* | *<b>1</b> - Check*<br>*<b>2</b> - Radio*<br>*<b>3</b> - Stepper (incremental value)*<br>*<b>4</b> - Text field*<br>*<b>5</b> - Hours (total hours for current booking configuration)*<br>*<b>7</b> - Multi select (autocomplete with quantity)*<br>*<b>8</b> - Distance*<br>*<b>9</b> - Always Apply*<br>*<b>10</b> - Price per hour*<br>*<b>11</b> - Decimal Text*<br>*<b>12</b> - Photo attachment*<br>*<b>13</b> - Dropdown*<br>*<b>14</b> - Address. Accepts [address](#addresses) object*
 `max_value` | *integer* | Maximum value of answer
 `min_value` | *integer* | Minimum value of answer
 `value` | *integer* | Default value of answer
@@ -2477,9 +2468,9 @@ curl\
 ```
 
 
-Bookings for a client
+Upcoming bookings for a client in ascending order based on appointment time.
 
-`"path": "user/bookings"`
+`"path": "bookings"`
 
 ### Response parameters
 
@@ -2520,6 +2511,22 @@ Parameter | Type | Description
 `documents` | *array* | Documents related to the booking
 `service_summary` | *array* | Summary for processed booking
 
+
+## Past bookings
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/past_bookings"
+```
+
+Past [bookings](#bookings) for a client in descending order based on appointment time.
+
+`"path": "past_bookings"`
 
 ## Avatar
 
@@ -2923,6 +2930,41 @@ Parameter | Type | Description
 -------- | ----- | -------
 `cancel_reason_id`<br>*required* | *integer* | [Cancel reason](#cancel-reasons) user selected from a list of reasons
 `comment` | *string* | Comment left by the client (if comment is required for the selected reason)
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+
+
+## Rate booking
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "rating": 3,
+        "comment": "The apartment is still dirty"
+}'\
+ "https://{{BASE_URL}}/v2/client/bookings/123/rate"
+```
+
+Rate booking with 1-5 stars. Negative rate (1-3) can leave a comment as well.
+
+`"path": "bookings/{{id}}/rate"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`rating`<br>*required* | *integer* | 1-5 stars rating of the service
+`comment` | *string* | Comment left by the client
 
 This endpoint returns:
 
