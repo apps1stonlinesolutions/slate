@@ -2323,7 +2323,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">type</code></td>
 <td><em>integer</em></td>
-<td><em><b>1</b> - Check</em><br><em><b>2</b> - Radio</em><br><em><b>3</b> - Stepper (incremental value)</em><br><em><b>4</b> - Text field</em><br><em><b>5</b> - Hours (total hours for current booking configuration)</em><br><em><b>6</b> - Select</em><br><em><b>7</b> - Multi select (autocomplete with quantity)</em><br><em><b>8</b> - Distance</em><br><em><b>9</b> - Always Apply</em><br><em><b>10</b> - Price per hour</em><br><em><b>11</b> - Decimal Text</em><br><em><b>12</b> - Photo attachment</em><br><em><b>14</b> - Address. Accepts <a href="#addresses">address</a> object</em><br><em><b>13</b> - Dropdown</em></td>
+<td><em><b>1</b> - Check</em><br><em><b>2</b> - Radio</em><br><em><b>3</b> - Stepper (incremental value)</em><br><em><b>4</b> - Text field</em><br><em><b>5</b> - Hours (total hours for current booking configuration)</em><br><em><b>7</b> - Multi select (autocomplete with quantity)</em><br><em><b>8</b> - Distance</em><br><em><b>9</b> - Always Apply</em><br><em><b>10</b> - Price per hour</em><br><em><b>11</b> - Decimal Text</em><br><em><b>12</b> - Photo attachment</em><br><em><b>13</b> - Dropdown</em><br><em><b>14</b> - Address. Accepts <a href="#addresses">address</a> object</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">max_value</code></td>
@@ -3774,9 +3774,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Bookings for a client</p>
+<p>Upcoming bookings for a client in ascending order based on appointment time.</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;user/bookings&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;bookings&quot;</code></p>
 
 <h3 id="response-parameters">Response parameters</h3>
 
@@ -3958,6 +3958,20 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Summary for processed booking</td>
 </tr>
 </tbody></table>
+
+<h2 id="past-bookings">Past bookings</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/past_bookings"</span>
+</code></pre>
+
+<p>Past <a href="#bookings">bookings</a> for a client in descending order based on appointment time.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;past_bookings&quot;</code></p>
 
 <h2 id="avatar">Avatar</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
@@ -4497,6 +4511,51 @@ curl<span class="se">\</span>
 <td><code class="prettyprint">comment</code></td>
 <td><em>string</em></td>
 <td>Comment left by the client (if comment is required for the selected reason)</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
+<h2 id="rate-booking">Rate booking</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "rating": 3,
+        "comment": "The apartment is still dirty"
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/bookings/123/rate"</span>
+</code></pre>
+
+<p>Rate booking with 1-5 stars. Negative rate (1-3) can leave a comment as well.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;bookings/{{id}}/rate&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">rating</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td>1-5 stars rating of the service</td>
+</tr>
+<tr>
+<td><code class="prettyprint">comment</code></td>
+<td><em>string</em></td>
+<td>Comment left by the client</td>
 </tr>
 </tbody></table>
 
