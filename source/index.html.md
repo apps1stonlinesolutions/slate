@@ -775,6 +775,8 @@ Parameter | Type | Description
 Parameter | Type | Description
 -------- | ----- | -------
 `session.sid` | *string* | Your session id. Use for `Authorization` header.
+`session.create_time` | *integer* | Session creation time in UTC timestamp
+`session.expire_time` | *integer* | Session expiration time in UTC timestamp
 `user` | *object* | Logged in user with expanded avatar, phones, addresses, payment details and last 10 bookings.
 
 This endpoint returns:
@@ -3082,6 +3084,71 @@ This endpoint returns:
 
 
 # Units
+
+## Login
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -d '{
+        "username": "test@test.com",
+        "password": "1234"
+}'\
+ "https://{{BASE_URL}}/v2/unit/login"
+```
+
+> The above request success response is :
+
+```json
+{
+  "data": [
+    {
+      "session": {
+        "sid": "1cjkidhfqoihoufu18j0ncoy0jl7eu0d4ge1kslggp4outkh",
+        "create_time": 1429863734,
+        "expire_time": 1429906934
+      }
+    }
+  ],
+  "success": [
+    {
+      "code": 2000,
+      "message": "Success",
+      "debug_message": null,
+      "debug_id": null
+    }
+  ]
+}
+```
+
+
+To login you can use username and password.
+
+`"path": "login"`
+
+### Username and password login request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`username`<br>*required* | *string* | Username of the account to login
+`password`<br>*required* | *string* | Password of the account to login
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`session.sid` | *string* | Your session id. Use for `Authorization` header.
+`session.create_time` | *integer* | Session creation time in UTC timestamp
+`session.expire_time` | *integer* | Session expiration time in UTC timestamp
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+* [Login errors](#login-errors)
+
 
 ## Profile
 
