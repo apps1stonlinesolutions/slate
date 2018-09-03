@@ -1717,7 +1717,7 @@ curl\
 Available payment methods for service
 
 
-`"path": "services/{service id}/payment_methods"`
+`"path": "services/{{service_id}}/payment_methods"`
 
 ### Response parameters
 
@@ -2965,7 +2965,7 @@ curl\
 
 To cancel booking pick a "[cancel reasons](#cancel-reasons)" and pass it with a comment (if required for the reason)
 
-`"path": "bookings/{{id}}/cancel"`
+`"path": "bookings/{{booking_id}}/cancel"`
 
 ### Request parameters
 
@@ -3000,7 +3000,7 @@ curl\
 
 Rate booking with 1-5 stars. Negative rate (1-3) can leave a comment as well.
 
-`"path": "bookings/{{id}}/rate"`
+`"path": "bookings/{{booking_id}}/rate"`
 
 ### Request parameters
 
@@ -3946,7 +3946,7 @@ curl\
 
 Checklists for performing a job
 
-`"path": "jobs/{{id}}/checklists"`
+`"path": "jobs/{{job_id}}/checklists"`
 
 ### Response parameters
 
@@ -4005,7 +4005,7 @@ curl\
 
 Checklist answers after filling checklist.
 
-`"path": "jobs/{{id}}/checklist_reports"`
+`"path": "jobs/{{job_id}}/checklist_reports"`
 
 ### Response parameters
 
@@ -4363,6 +4363,7 @@ curl\
  -X POST\
  -H "Content-Type: application/json"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
  -d '{
         "text": "I really like this app!"
 }'\
@@ -4404,6 +4405,7 @@ curl\
  -X POST\
  -H "Content-Type: application/json"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
  -d '{
         "booking_id": 123,
         "message_template_id": 12,
@@ -4438,6 +4440,35 @@ Parameter | Type | Description
 * [Common errors](#common-errors)
 
 
+## Change payment method
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "payment_method": 1
+}'\
+ "https://{{BASE_URL}}/v2/unit/jobs/123"
+```
+
+Unit can change payment method by writing the payment method id to the job.
+
+`"path": "jobs/{{job_id}}"`
+
+### Change payment method request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`payment_method`<br>*required* | *integer* | Identifier of payment method to set on the job
+
+* [Common errors](#common-errors)
+
+
+
+
 
 ## Decline job
 
@@ -4446,6 +4477,7 @@ curl\
  -X POST\
  -H "Content-Type: application/json"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
  -d '{
         "reason_id": 123,
         "comment": "Can not get on time",
@@ -4457,7 +4489,7 @@ curl\
 
 Units can decline jobs by passing decline_reason
 
-`"path": "jobs/{job id}/decline"`
+`"path": "jobs/{{job_id}}/decline"`
 
 ### Decline job request parameters
 
