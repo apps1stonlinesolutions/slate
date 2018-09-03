@@ -3742,6 +3742,53 @@ This endpoint returns:
 * [Common errors](#common-errors)
 
 
+## Available cross sales
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/jobs/123/available_cross_sales"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "service_title": "One-Off Cleaning",
+      "cross_sale_bonus": "£2",
+      "cross_sale_URL": "www.fantasticservices.com/upsell?serviceId=12&clientId=23512&proRefNumber=32143BST",
+      "sort": 100
+    }
+  ]
+}
+```
+
+Available services to cross sell for a job.
+
+
+`"path": "jobs/{{job_id}}/available_cross_sales"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`service_title` | *string* | Title of service to cross sale
+`cross_sale_bonus` | *string* | Bonus on completion of cross sold service
+`cross_sale_URL` | *string* | URL to start cross selling the service
+`sort` | *integer* | Order of item in list
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+
 
 ## System languages
 
