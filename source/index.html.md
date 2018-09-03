@@ -396,7 +396,48 @@ In batched responses `meta` is returned once at the end.
 
 
 
-# Profiles
+# Profile
+
+
+## Profiles
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/profiles"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "United Kingdom",
+      "keyword": "GoFantasticUK",
+      "sort": 100
+    }
+  ]
+}
+```
+
+Profiles who contain service data (regions like United Kingdom, Australia etc.)
+
+`"path": "profiles"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`title` | *string* | Title of profile
+`keyword` | *string* | Profile identifier used in request headers (`PROFILE_ID`)
+`sort` | *integer* | Order of item in list
+
 
 
 ## Configuration
