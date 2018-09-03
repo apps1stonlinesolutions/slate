@@ -5036,6 +5036,47 @@ This endpoint returns:
 * [Common errors](#common-errors)
 
 
+
+## Latest version
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/shared/latest_version"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "build": 100,
+      "force_update": true,
+      "download_url": "https://itunes.apple.com/bg/app/gofantastic-home-services-app/id906994413",
+      "description": "Download the latest version to manage your regular appointments."
+    }
+  ]
+}
+```
+
+Returns data for latest version of the application requesting it.
+
+`"path": "latest_version"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`build` | *integer* | Build number of the version
+`force_update` | *boolean* | Determines weather update to this version is optional or required
+`download_url` | *string* | URL to get the latest version (AppStore, PlayStore, Enterprise installation file etc.)
+`description` | *string* | Message containing details for the update
+
+
 # Compatibility
 
 Response modifications based on `X-Application-Build`.
