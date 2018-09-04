@@ -618,7 +618,65 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <p>In batched responses <code class="prettyprint">meta</code> is returned once at the end.</p>
 
-<h1 id="profiles">Profiles</h1>
+<h1 id="profile">Profile</h1>
+
+<h2 id="profiles">Profiles</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/profiles"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"keyword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GoFantasticUK"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Profiles who contain service data (regions like United Kingdom, Australia etc.)</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;profiles&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code class="prettyprint">title</code></td>
+<td><em>string</em></td>
+<td>Title of profile</td>
+</tr>
+<tr>
+<td><code class="prettyprint">keyword</code></td>
+<td><em>string</em></td>
+<td>Profile identifier used in request headers (<code class="prettyprint">PROFILE_ID</code>)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sort</code></td>
+<td><em>integer</em></td>
+<td>Order of item in list</td>
+</tr>
+</tbody></table>
 
 <h2 id="configuration">Configuration</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
@@ -788,7 +846,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">payment_methods</code></td>
-<td><em>array&lt;<a href="#payment-methods">payment_methods</a>&gt;</em></td>
+<td><em>array&lt;<a href="#payment-methods">payment_method</a>&gt;</em></td>
 <td>Payment methods for profile</td>
 </tr>
 </tbody></table>
@@ -859,7 +917,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">register_popup_titles</code></td>
-<td><em>array&lt;register_popup_titles&gt;</em></td>
+<td><em>array&lt;register_popup_title&gt;</em></td>
 <td>List of titles for registration popup</td>
 </tr>
 <tr>
@@ -1176,6 +1234,16 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">session.sid</code></td>
 <td><em>string</em></td>
 <td>Your session id. Use for <code class="prettyprint">Authorization</code> header.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">session.create_time</code></td>
+<td><em>integer</em></td>
+<td>Session creation time in UTC timestamp</td>
+</tr>
+<tr>
+<td><code class="prettyprint">session.expire_time</code></td>
+<td><em>integer</em></td>
+<td>Session expiration time in UTC timestamp</td>
 </tr>
 <tr>
 <td><code class="prettyprint">user</code></td>
@@ -2115,7 +2183,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">payment_methods</code></td>
-<td><em>array&lt;<a href="#payment-methods">payment_methods</a>&gt;</em></td>
+<td><em>array&lt;<a href="#payment-methods">payment_method</a>&gt;</em></td>
 <td>List of available payment methods for the service</td>
 </tr>
 <tr>
@@ -2442,7 +2510,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">contents</code></td>
-<td><em>array&lt;<a href="#info-contents">info content</a>&gt;</em></td>
+<td><em>array&lt;<a href="#info-contents">info_content</a>&gt;</em></td>
 <td>List of info contents</td>
 </tr>
 </tbody></table>
@@ -2573,7 +2641,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <p>Available payment methods for service</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;services/{service id}/payment_methods&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;services/{{service_id}}/payment_methods&quot;</code></p>
 
 <h3 id="response-parameters">Response parameters</h3>
 
@@ -4491,7 +4559,7 @@ curl<span class="se">\</span>
 
 <p>To cancel booking pick a &ldquo;<a href="#cancel-reasons">cancel reasons</a>&rdquo; and pass it with a comment (if required for the reason)</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;bookings/{{id}}/cancel&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;bookings/{{booking_id}}/cancel&quot;</code></p>
 
 <h3 id="request-parameters">Request parameters</h3>
 
@@ -4536,7 +4604,7 @@ curl<span class="se">\</span>
 
 <p>Rate booking with 1-5 stars. Negative rate (1-3) can leave a comment as well.</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;bookings/{{id}}/rate&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;bookings/{{booking_id}}/rate&quot;</code></p>
 
 <h3 id="request-parameters">Request parameters</h3>
 
@@ -4662,6 +4730,100 @@ curl<span class="se">\</span>
 </ul>
 
 <h1 id="units">Units</h1>
+
+<h2 id="login">Login</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "username": "test@test.com",
+        "password": "1234"
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/unit/login"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"session"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cjkidhfqoihoufu18j0ncoy0jl7eu0d4ge1kslggp4outkh"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"create_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1429863734</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"expire_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1429906934</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>To login you can use username and password.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;login&quot;</code></p>
+
+<h3 id="username-and-password-login-request-parameters">Username and password login request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">username</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Username of the account to login</td>
+</tr>
+<tr>
+<td><code class="prettyprint">password</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Password of the account to login</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">session.sid</code></td>
+<td><em>string</em></td>
+<td>Your session id. Use for <code class="prettyprint">Authorization</code> header.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">session.create_time</code></td>
+<td><em>integer</em></td>
+<td>Session creation time in UTC timestamp</td>
+</tr>
+<tr>
+<td><code class="prettyprint">session.expire_time</code></td>
+<td><em>integer</em></td>
+<td>Session expiration time in UTC timestamp</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+<li><a href="#login-errors">Login errors</a></li>
+</ul>
 
 <h2 id="profile">Profile</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
@@ -5068,14 +5230,6 @@ curl<span class="se">\</span>
         </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"client_contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2197447</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07568***919"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
       </span><span class="nt">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
@@ -5108,8 +5262,16 @@ curl<span class="se">\</span>
       </span><span class="nt">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Leigh Turner"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"stop_sms_channel"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"stop_phone_channel"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-      </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"stop_phone_channel"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2197447</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07568***919"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="err">}</span><span class="p">,</span><span class="w">
       </span><span class="nt">"client_confirmed_job"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Booked"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -5531,6 +5693,71 @@ curl<span class="se">\</span>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
+<h2 id="available-cross-sales">Available cross sales</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/jobs/123/available_cross_sales"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"service_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One-Off Cleaning"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"cross_sale_bonus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£2"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"cross_sale_URL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.fantasticservices.com/upsell?serviceId=12&amp;clientId=23512&amp;proRefNumber=32143BST"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Available services to cross sell for a job.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{{job_id}}/available_cross_sales&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">service_title</code></td>
+<td><em>string</em></td>
+<td>Title of service to cross sale</td>
+</tr>
+<tr>
+<td><code class="prettyprint">cross_sale_bonus</code></td>
+<td><em>string</em></td>
+<td>Bonus on completion of cross sold service</td>
+</tr>
+<tr>
+<td><code class="prettyprint">cross_sale_URL</code></td>
+<td><em>string</em></td>
+<td>URL to start cross selling the service</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sort</code></td>
+<td><em>integer</em></td>
+<td>Order of item in list</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h2 id="system-languages">System languages</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
@@ -5701,7 +5928,7 @@ curl<span class="se">\</span>
 
 <p>Checklists for performing a job</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{{id}}/checklists&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{{job_id}}/checklists&quot;</code></p>
 
 <h3 id="response-parameters">Response parameters</h3>
 
@@ -5805,7 +6032,7 @@ curl<span class="se">\</span>
 
 <p>Checklist answers after filling checklist.</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{{id}}/checklist_reports&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{{job_id}}/checklist_reports&quot;</code></p>
 
 <h3 id="response-parameters">Response parameters</h3>
 
@@ -6031,7 +6258,7 @@ curl<span class="se">\</span>
 </tr>
 <tr>
 <td><code class="prettyprint">intervals</code></td>
-<td><em>array&lt;intervals&gt;</em></td>
+<td><em>array&lt;interval&gt;</em></td>
 <td>List of working intervals for the day</td>
 </tr>
 <tr>
@@ -6102,7 +6329,7 @@ curl<span class="se">\</span>
 </tr>
 <tr>
 <td><code class="prettyprint">intervals</code></td>
-<td><em>array&lt;intervals&gt;</em></td>
+<td><em>array&lt;interval&gt;</em></td>
 <td>List of working intervals for the day</td>
 </tr>
 <tr>
@@ -6117,7 +6344,7 @@ curl<span class="se">\</span>
 </tr>
 <tr>
 <td><code class="prettyprint">pending_requests</code></td>
-<td><em>array&lt;<a href="#availability-requests">availability_requests</a>&gt;</em></td>
+<td><em>array&lt;<a href="#availability-requests">availability_request</a>&gt;</em></td>
 <td>List of pending requests for the day</td>
 </tr>
 </tbody></table>
@@ -6356,6 +6583,7 @@ curl<span class="se">\</span>
  -X POST<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
  -d <span class="s1">'{
         "text": "I really like this app!"
 }'</span><span class="se">\</span>
@@ -6402,11 +6630,12 @@ curl<span class="se">\</span>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
-<h2 id="send-message">Send message</h2>
+<h2 id="send-message-to-client">Send message to client</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X POST<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
  -d <span class="s1">'{
         "booking_id": 123,
         "message_template_id": 12,
@@ -6476,11 +6705,195 @@ curl<span class="se">\</span>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
+<h2 id="call-client">Call client</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+      "call_client_reason_id": 1,
+      "client_contact_id": 2,
+      "client_contact_type": 3
+}
+'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/unit/jobs/123/call_client"</span>
+</code></pre>
+
+<p>Units can call clients using <a href="#jobs">client contacts</a> from job</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{{job_id}}/call_client&quot;</code></p>
+
+<h3 id="call-client-request-parameters">Call client request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">call_client_reason_id</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td>Identifier for <a href="#call-client-reasons">call client reason</a> unit selected for calling</td>
+</tr>
+<tr>
+<td><code class="prettyprint">client_contact_id</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td>Identifier for client <a href="#jobs">contact</a> from job</td>
+</tr>
+<tr>
+<td><code class="prettyprint">client_contact_type</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td>Identifier for client <a href="#jobs">contact</a> type from job</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
+<h2 id="change-payment-method">Change payment method</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "payment_method": 1
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/unit/jobs/123"</span>
+</code></pre>
+
+<p>Unit can change payment method by writing the payment method id to the job.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{{job_id}}&quot;</code></p>
+
+<h3 id="change-payment-method-request-parameters">Change payment method request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">payment_method</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td>Identifier of payment method to set on the job</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
+<h2 id="modify-price">Modify price</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "read_only": true,
+        "price_modifications": [
+          {
+            "id": 1,
+            "value": "2.5",
+            "comment": "Scotch guard"
+          },
+          {
+            "id": 2,
+            "value": "15",
+            "comment": "Parking"
+          }
+        ]
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/unit/jobs/123/modify_price"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"price_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£12"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Units can modify the price of a job by passing price modifiers with values.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{{job_id}}/modify_price&quot;</code></p>
+
+<h3 id="modify-price-request-parameters">Modify price request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">read_only</code><br><em>required</em></td>
+<td><em>boolean</em></td>
+<td>Determines weather the changes are applied on the job or only new price is calculated</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price_modifications</code></td>
+<td><em>array</em></td>
+<td>List of price modifiers and values</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price_modifications.id</code></td>
+<td><em>integer</em></td>
+<td>Identifier of price modifier (from <a href="#jobs">job.services_price_modifiers.price_modifier</a>)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price_modifications.value</code></td>
+<td><em>string</em></td>
+<td>Value for price modifier (from <a href="#jobs">job.services_price_modifiers.price_modifier</a>)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">price_modifications.comment</code></td>
+<td><em>string</em></td>
+<td>Comment left from the unit for the price modification</td>
+</tr>
+</tbody></table>
+
+<h3 id="modify-price-response-parameters">Modify price response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">price_formatted</code></td>
+<td><em>string</em></td>
+<td>Calculated price after price modifications</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h2 id="decline-job">Decline job</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X POST<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
  -d <span class="s1">'{
         "reason_id": 123,
         "comment": "Can not get on time",
@@ -6492,7 +6905,7 @@ curl<span class="se">\</span>
 
 <p>Units can decline jobs by passing decline_reason</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{job id}/decline&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{{job_id}}/decline&quot;</code></p>
 
 <h3 id="decline-job-request-parameters">Decline job request parameters</h3>
 
@@ -6527,29 +6940,6 @@ curl<span class="se">\</span>
 
 <ul>
 <li><a href="#common-errors">Common errors</a></li>
-</ul>
-
-<h2 id="register-voucher">Register voucher</h2>
-<pre class="highlight shell"><code>curl<span class="se">\</span>
- -X POST<span class="se">\</span>
- -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
- -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
- -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
- -d <span class="s1">'{
-        "voucher_code": "23DSAD54"
-}'</span><span class="se">\</span>
- <span class="s2">"https://{{BASE_URL}}/v2/unit/register_voucher"</span>
-</code></pre>
-
-<p>Units can register vouchers. Bookings with registered voucher will bring them bonuses.</p>
-
-<p><code class="prettyprint">&quot;path&quot;: &quot;register_voucher&quot;</code></p>
-
-<p>This endpoint returns:</p>
-
-<ul>
-<li><a href="#common-errors">Common errors</a></li>
-<li><a href="#register-voucher-errors">Register voucher errors</a></li>
 </ul>
 
 <h2 id="job-offers">Job offers</h2>
@@ -7539,6 +7929,64 @@ curl<span class="se">\</span>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
+<h2 id="latest-version">Latest version</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/shared/latest_version"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"force_update"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://itunes.apple.com/bg/app/gofantastic-home-services-app/id906994413"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Download the latest version to manage your regular appointments."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Returns data for latest version of the application requesting it.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;latest_version&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">build</code></td>
+<td><em>integer</em></td>
+<td>Build number of the version</td>
+</tr>
+<tr>
+<td><code class="prettyprint">force_update</code></td>
+<td><em>boolean</em></td>
+<td>Determines weather update to this version is optional or required</td>
+</tr>
+<tr>
+<td><code class="prettyprint">download_url</code></td>
+<td><em>string</em></td>
+<td>URL to get the latest version (AppStore, PlayStore, Enterprise installation file etc.)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">description</code></td>
+<td><em>string</em></td>
+<td>Message containing details for the update</td>
+</tr>
+</tbody></table>
+
 <h1 id="compatibility">Compatibility</h1>
 
 <p>Response modifications based on <code class="prettyprint">X-Application-Build</code>.</p>
@@ -7635,6 +8083,42 @@ curl<span class="se">\</span>
 
 <ul>
 <li><a href="#users">Users</a></li>
+</ul>
+
+<h2 id="choices">Choices</h2>
+
+<p>Filters choices based on contained choice items type.</p>
+
+<h3 id="modifications">Modifications</h3>
+
+<table><thead>
+<tr>
+<th>Application</th>
+<th>Operator</th>
+<th>Build</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>GoFantastic iOS</em></td>
+<td>&lt;</td>
+<td>800</td>
+<td>Remove choices containing choice items of type 7, 12 and 13</td>
+</tr>
+<tr>
+<td><em>GoFantastic Android</em></td>
+<td>&lt;</td>
+<td>669</td>
+<td>Remove choices containing choice items of type 7, 12 and 13</td>
+</tr>
+</tbody></table>
+
+<p>Applied on endpoints:</p>
+
+<ul>
+<li><a href="#services">Services</a></li>
+<li><a href="#bookings">Booking service</a></li>
+<li><a href="#booking-transacations">Booking transaction service</a></li>
 </ul>
 
           <h1 id="errors">Errors</h1>
