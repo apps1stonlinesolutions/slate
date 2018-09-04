@@ -556,7 +556,7 @@ Parameter | Type | Description
 `privacy_policy_url` | *string* | Configuration of full url in website for privacy and policy]
 `show_manage_membership_section` | *boolean* | Configuration for hiding or showing managing membership section in account
 `referral_bonus_formatted` | *string* | Formatted amount of bonus client receives when another client registers with their referral code and book a service.
-`payment_methods` | *array\<[payment_methods](#payment-methods)\>* | Payment methods for profile
+`payment_methods` | *array\<[payment_method](#payment-methods)\>* | Payment methods for profile
 
 ### App profiles additional response parameters
 
@@ -573,7 +573,7 @@ Parameter | Type | Description
 `banners.category_id` | *integer* | Category in which to show the banner
 `banners.image_url` | *string* | URL for image to display in banner
 `banners.sort` | *integer* | Order in list of categories or services
-`register_popup_titles` | *array\<register_popup_titles\>* | List of titles for registration popup
+`register_popup_titles` | *array\<register_popup_title\>* | List of titles for registration popup
 `register_popup_titles.position` | *string* | Position of register popup:<br/>*<b>categories</b> - at categories list*<br>*<b>account_tab</b> - on tapping of account tab*<br>*<b>deal</b> - on tapping a deal*<br>*<b>membership</b> - on tapping membership in account tab*<br>*<b>referral</b> - on tapping referral in account tab*<br>*<b>before_timeslots</b> - before showing timeslots (request_logi_step:4)*<br>*<b>before_summary</b> - before showing summary(request_logi_step:5)*
 `register_popup_titles.title` | *string* | Title of register popup for the position
 
@@ -1415,7 +1415,7 @@ Parameter | Type | Description
 `thumbnail_image_url` | *string* | Link to thumbnail image. Used for search results in spotlight or in app service search.
 `infos` | *array\<info\>* | List of infos for the services
 `choices` | *array\<[choice](#choices)\>* | List of questions to book the service
-`payment_methods` | *array\<[payment_methods](#payment-methods)\>* | List of available payment methods for the service
+`payment_methods` | *array\<[payment_method](#payment-methods)\>* | List of available payment methods for the service
 `customize` | *object* | Key-value pairs of custom attributes
 `customize.search_keywords` | *string* | Represents array of search keywords for the service
 `profile_config` | *object* | Key-value pairs of custom attributes with different values for each Profile
@@ -1597,7 +1597,7 @@ Parameter | Type | Description
 `id` | *integer* | Unique identifier
 `title` | *string* | Info title text
 `sort` | *integer* | Order of item in list
-`contents` | *array\<[info content](#info-contents)\>* | List of info contents
+`contents` | *array\<[info_content](#info-contents)\>* | List of info contents
 
 
 
@@ -3447,14 +3447,6 @@ curl\
         "from": null,
         "to": null
       },
-      "client_contacts": [
-        {
-          "id": 2197447,
-          "info": "07568***919",
-          "type": 1,
-          "sort": 1
-        }
-      ],
       "events": [
         {
           "type": 7,
@@ -3487,7 +3479,15 @@ curl\
       "client": {
         "name": "Leigh Turner",
         "stop_sms_channel": true,
-        "stop_phone_channel": false
+        "stop_phone_channel": false,
+        "contacts": [
+        {
+          "id": 2197447,
+          "info": "07568***919",
+          "type": 1,
+          "sort": 1
+        }
+      ],
       },
       "client_confirmed_job": true,
       "status": "Booked",
@@ -3856,9 +3856,8 @@ This endpoint returns:
 * [Common errors](#common-errors)
 * [Register voucher errors](#register-voucher-errors)
 
+
 ## Registered vouchers
-
-
 
 ```shell
 curl\
@@ -4157,7 +4156,7 @@ Unit week work time (shifts).
 Parameter | Type | Description
 -------- | ----- | -------
 `day_of_week` | *integer* | Day of the week:<br>*<b>1</b> - Monday*<br>*<b>2</b> - Tuesday*<br>*<b>3</b> - Wednesday*<br>*<b>4</b> - Thursday*<br>*<b>5</b> - Friday*<br>*<b>6</b> - Saturday*<br>*<b>7</b> - Sunday*
-`intervals` | *array\<intervals\>* | List of working intervals for the day
+`intervals` | *array\<interval\>* | List of working intervals for the day
 `intervals.from_time` | *string* | Start time of interval (time string with format 10:00)
 `intervals.to_time` | *string* | End time of interval (time string with format 10:00)
 
@@ -4209,10 +4208,10 @@ Unit availability (shifts).
 Parameter | Type | Description
 -------- | ----- | -------
 `date` | *string* | Date of availability (date string with format 2018-02-25)
-`intervals` | *array\<intervals\>* | List of working intervals for the day
+`intervals` | *array\<interval\>* | List of working intervals for the day
 `intervals.from_time` | *string* | Start time of interval (time string with format 10:00)
 `intervals.to_time` | *string* | End time of interval (time string with format 10:00)
-`pending_requests` | *array\<[availability_requests](#availability-requests)\>* | List of pending requests for the day
+`pending_requests` | *array\<[availability_request](#availability-requests)\>* | List of pending requests for the day
 
 ### `params`
 
@@ -4398,7 +4397,7 @@ Parameter | Type | Description
 
 * [Common errors](#common-errors)
 
-## Send message
+## Send message to client
 
 ```shell
 curl\
@@ -4440,6 +4439,39 @@ Parameter | Type | Description
 * [Common errors](#common-errors)
 
 
+
+## Call client
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+      "call_client_reason_id": 1,
+      "client_contact_id": 2,
+      "client_contact_type": 3
+}
+'\
+ "https://{{BASE_URL}}/v2/unit/jobs/123/call_client"
+```
+
+Units can call clients using [client contacts](#jobs) from job
+
+`"path": "jobs/{{job_id}}/call_client"`
+
+### Call client request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`call_client_reason_id`<br>*required* | *integer* | Identifier for [call client reason](#call-client-reasons) unit selected for calling
+`client_contact_id`<br>*required* | *integer* | Identifier for client [contact](#jobs) from job
+`client_contact_type`<br>*required* | *integer* | Identifier for client [contact](#jobs) type from job
+
+* [Common errors](#common-errors)
+
+
 ## Change payment method
 
 ```shell
@@ -4467,6 +4499,70 @@ Parameter | Type | Description
 * [Common errors](#common-errors)
 
 
+
+
+## Modify price
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "read_only": true,
+        "price_modifications": [
+          {
+            "id": 1,
+            "value": "2.5",
+            "comment": "Scotch guard"
+          },
+          {
+            "id": 2,
+            "value": "15",
+            "comment": "Parking"
+          }
+        ]
+}'\
+ "https://{{BASE_URL}}/v2/unit/jobs/123/modify_price"
+```
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "price_formatted": "£12"
+    }
+  ]
+}
+```
+
+Units can modify the price of a job by passing price modifiers with values.
+
+`"path": "jobs/{{job_id}}/modify_price"`
+
+### Modify price request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`read_only`<br>*required* | *boolean* | Determines weather the changes are applied on the job or only new price is calculated
+`price_modifications` | *array* | List of price modifiers and values
+`price_modifications.id` | *integer* | Identifier of price modifier (from [job.services_price_modifiers.price_modifier](#jobs))
+`price_modifications.value` | *string* | Value for price modifier (from [job.services_price_modifiers.price_modifier](#jobs))
+`price_modifications.comment` | *string* | Comment left from the unit for the price modification
+
+### Modify price response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`price_formatted` | *string* | Calculated price after price modifications
+
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
 
 
 
@@ -4501,33 +4597,6 @@ Parameter | Type | Description
 `lng` | *double* | Longitude where event occured
 
 * [Common errors](#common-errors)
-
-
-
-
-## Register voucher
-
-
-```shell
-curl\
- -X POST\
- -H "Content-Type: application/json"\
- -H "X-Application: {{APPLICATION_TOKEN}}"\
- -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
- -d '{
-        "voucher_code": "23DSAD54"
-}'\
- "https://{{BASE_URL}}/v2/unit/register_voucher"
-```
-
-Units can register vouchers. Bookings with registered voucher will bring them bonuses.
-
-`"path": "register_voucher"`
-
-This endpoint returns:
-
-* [Common errors](#common-errors)
-* [Register voucher errors](#register-voucher-errors)
 
 
 ## Job offers
@@ -5263,3 +5332,21 @@ Application | Operator | Build | Description
 Applied on endpoints:
 
 * [Users](#users)
+
+## Choices
+
+Filters choices based on contained choice items type.
+
+### Modifications
+
+Application | Operator | Build | Description
+-------- | ----- | ------- | -------
+ *GoFantastic iOS* | < | 800 | Remove choices containing choice items of type 7, 12 and 13
+ *GoFantastic Android* | < | 669 | Remove choices containing choice items of type 7, 12 and 13
+ 
+
+Applied on endpoints:
+
+* [Services](#services)
+* [Booking service](#bookings)
+* [Booking transaction service](#booking-transacations)
