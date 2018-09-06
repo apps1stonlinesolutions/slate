@@ -6637,7 +6637,6 @@ curl<span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
  -d <span class="s1">'{
-        "booking_id": 123,
         "message_template_id": 12,
         "vars": [
          {
@@ -6653,7 +6652,9 @@ curl<span class="se">\</span>
 
 <p>Units can send messages to clients using <a href="#jobs">message templates</a></p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;send_message&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;send_message&quot;</code>
+<br/>
+<code class="prettyprint">&quot;path&quot;: &quot;jobs/{{job_id}}/send_message&quot;</code></p>
 
 <h3 id="send-message-request-parameters">Send message request parameters</h3>
 
@@ -6664,11 +6665,6 @@ curl<span class="se">\</span>
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><code class="prettyprint">booking_id</code><br><em>required</em></td>
-<td><em>integer</em></td>
-<td>Identifier for job to whose client message will be sent</td>
-</tr>
 <tr>
 <td><code class="prettyprint">message_template_id</code><br><em>required</em></td>
 <td><em>integer</em></td>
@@ -6699,6 +6695,11 @@ curl<span class="se">\</span>
 <td><em>double</em></td>
 <td>Longitude where event occured</td>
 </tr>
+<tr>
+<td><code class="prettyprint">booking_id</code><br><em>optional</em></td>
+<td><em>integer</em></td>
+<td>Identifier for job to whose client message will be sent. If endpoint called directly (not trough job) booking id is required.</td>
+</tr>
 </tbody></table>
 
 <ul>
@@ -6722,7 +6723,9 @@ curl<span class="se">\</span>
 
 <p>Units can call clients using <a href="#jobs">client contacts</a> from job</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{{job_id}}/call_client&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;call_client&quot;</code>
+<br/>
+<code class="prettyprint">&quot;path&quot;: &quot;jobs/{{job_id}}/call_client&quot;</code></p>
 
 <h3 id="call-client-request-parameters">Call client request parameters</h3>
 
@@ -6747,6 +6750,11 @@ curl<span class="se">\</span>
 <td><code class="prettyprint">client_contact_type</code><br><em>required</em></td>
 <td><em>integer</em></td>
 <td>Identifier for client <a href="#jobs">contact</a> type from job</td>
+</tr>
+<tr>
+<td><code class="prettyprint">booking_id</code><br><em>optional</em></td>
+<td><em>integer</em></td>
+<td>Identifier for job unit wants to call client of. If endpoint called directly (not trough job) booking id is required.</td>
 </tr>
 </tbody></table>
 
