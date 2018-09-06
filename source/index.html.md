@@ -4406,7 +4406,6 @@ curl\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
  -d '{
-        "booking_id": 123,
         "message_template_id": 12,
         "vars": [
          {
@@ -4423,18 +4422,20 @@ curl\
 Units can send messages to clients using [message templates](#jobs)
 
 `"path": "send_message"`
+<br/>
+`"path": "jobs/{{job_id}}/send_message"`
 
 ### Send message request parameters
 
 Parameter | Type | Description
 -------- | ----- | -------
-`booking_id`<br>*required* | *integer* | Identifier for job to whose client message will be sent
 `message_template_id`<br>*required* | *integer* | Message template used for the message
 `vars` | *array* | List of variables for the message template
 `vars.variable` | *string* | Variable name
 `vars.value` | *string* | Unit input for variable
 `lat` | *double* | Latitude where event occured
 `lng` | *double* | Longitude where event occured
+`booking_id`<br>*optional* | *integer* | Identifier for job to whose client message will be sent. If endpoint called directly (not trough job) booking id is required.
 
 * [Common errors](#common-errors)
 
@@ -4459,6 +4460,8 @@ curl\
 
 Units can call clients using [client contacts](#jobs) from job
 
+`"path": "call_client"`
+<br/>
 `"path": "jobs/{{job_id}}/call_client"`
 
 ### Call client request parameters
@@ -4468,6 +4471,7 @@ Parameter | Type | Description
 `call_client_reason_id`<br>*required* | *integer* | Identifier for [call client reason](#call-client-reasons) unit selected for calling
 `client_contact_id`<br>*required* | *integer* | Identifier for client [contact](#jobs) from job
 `client_contact_type`<br>*required* | *integer* | Identifier for client [contact](#jobs) type from job
+`booking_id`<br>*optional* | *integer* | Identifier for job unit wants to call client of. If endpoint called directly (not trough job) booking id is required.
 
 * [Common errors](#common-errors)
 
