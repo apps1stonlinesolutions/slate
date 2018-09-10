@@ -104,7 +104,6 @@ Parameter | Type   | Default | Description
 `fields` | *array* | *all* | Attributes to receive in response
 `exclude_fields` | *array* | *null* | Attributes to exclude from response
 `include_fields` | *array* | *null* | Attributes to add to response which are not returned by default
-`return_meta` | *boolean* | *false* | Weather response includes `meta`
 `paging`<br>*optional* | *object* | *null* | Information about paged results
 `paging.offset` | *integer* | *0* | Page starting element
 `paging.limit` | *integer* | *10* | Page size
@@ -134,8 +133,10 @@ Parameter | Type   | Default | Description
     }
   ],
   "meta": {
-    "db_version": 25,
-    "latest_build": 27
+    "changes": [
+      "profile",
+      "jobs"
+    ]
   }
 }
 ```
@@ -151,15 +152,7 @@ Parameter | Type | Description
 `paging`<br>*optional* | *object* | Information about paged result as requested
 `paging.total` | *integer* | Total elements count
 `success`, `warning`, `error`<br>*optional* | *array* | Messages with information for the request. More than one type of message can be returned in a response. `success` and `error` can't come in the same response. `warning` can be combined with `success` or `error`.
-`meta`<br>*optional*  | *object* | Parameter containing information for the system.
-
-
-### `meta`
-
-Parameter | Type | Description
---------- | ---- | -----------
-`db_version` | *integer* | Version of database model
-`latest_build` | *integer* | Latest application build release
+`meta`<br>*optional*  | *object* | Object containing system information. Data is returned by the system when action is needed.
 
 
 ## Read
@@ -334,8 +327,7 @@ curl\
         },
         "query": {
           "with_promotions": true
-        },
-        "return_meta": true
+        }
       },
       "data": null
     }
@@ -388,12 +380,7 @@ The response from batched requests is returned as batched response. It contains 
 
 Parameter | Type | Description
 --------- | ---- | -----------
-`data`<br>*optional* | *array* | Array of data objects returned in the result of the request
-`success`, `warning`, `error`<br>*optional* | *array* | Messages with information for the request. More than one type of message can be returned in a response. `success` and `error` can't come in the same response. `warning` can be combined with `success` or `error`.
-`meta`<br>*optional*  | *object* | Parameter containing information for the system.
-
-In batched responses `meta` is returned once at the end.
-
+`responses` | *array\<[response](#response)\>* | Array of response objects. Response objects have the same structure as single [response](#response).
 
 
 # Profile
@@ -2155,8 +2142,8 @@ Parameter | Type | Description
 `credit_formatted` | *string* | Client credit amount formatted in the region currency
 `referral_code` | *string* | Referral code to send to other clients
 `created_at` | *integer* | Client regisgration UTC timestamp.
-`membership` | *object<[membership](#membership)>* | Current purchased membership
-`avatar`<br>*editable* | *object<[avatar](#avatar)>* | Client avatar image
+`membership` | *[object](#membership)* | Current purchased membership
+`avatar`<br>*editable* | *[object](#avatar)* | Client avatar image
 `last_profile_keyword` | *string* | Keyword of last chosen profile for the client
 `delete_account_requested`<br>*read-only*  | *boolean* | True if user requested account deletion
 `preferences` | *object* | Flags with user preferences for marketing
@@ -2525,7 +2512,7 @@ Parameter | Type | Description
 `timeslot_formatted`<br>*editable* | *string* | Appointment time in local time zone
 `email`<br>*editable* | *string* | Client email collected during booking process
 `phones`<br>*editable* | *array<[phones](#phones)>* | Client phones collected during booking process
-`price` | *object<[price](#price)>* | Selected price breakdown
+`price` | *[object](#price)* | Selected price breakdown
 `price.type` | *string*| Price type:<br/>*<b>no_price</b> - when user reached maximum price and will create a quote*<br>*<b>voucher_applied</b> - when prices are with applied voucher*
 `price.description` | *string* | Description text for the price
 `price.choice_items` | *array\<[choice_item](#choice-items)\>* | Price choice items selected on availability
@@ -2535,9 +2522,9 @@ Parameter | Type | Description
 `price.price_breakdown.description` | *string* | Description text for field
 `price.price_breakdown.type` | *string* | Type of breakdown element:<br/>*<b>membership</b> - price of a membership*<br>*<b>service</b> - price of a service after membership discount*<br>*<b>voucher</b> - discount from vouchers applied*<br>*<b>credit</b> - discounts from credits applied*<br>*<b>total</b> - total price after discounts*
 `work_time` | *integer* | Service duration in minutes
-`payment_method`<br>*editable* | *object<[payment_method](#payment-methods)>* | Selected payment method for the booking
+`payment_method`<br>*editable* | *[object](#payment-methods)* | Selected payment method for the booking
 `payment_method_title` | *string* | Display text for payment method
-`paymethods`<br>*editable* | *object<[paymethod](#paymethods)>* | Selected paymethod for the booking (particular credit card etc.)
+`paymethods`<br>*editable* | *[object](#paymethods)* | Selected paymethod for the booking (particular credit card etc.)
 `voucher`<br>*editable* | *string* | Discount voucher code used for booking
 `feedback_rate`<br>*editable* | *integer* | Rating of client for booking service
 `online` | *boolean* | Determines weather booking was made online or via the phone
@@ -2545,7 +2532,7 @@ Parameter | Type | Description
 `source` | object | Tracking source of the booking for marketing campaigns or website. You can create a tracking source after you've purchased your tracking phone number(s) and then assign that new tracking source to specific tracking.
 `source.phone` | string | Tracking source phone of the website or marketing campaigns
 `source.domain_url` | string | Source domain name of the booking without www. and http/https protocols
-`service`<br>*editable* | *object<[service](#services)>* | Booking service
+`service`<br>*editable* | *[object](#services)* | Booking service
 `can_reschedule_until` | *integer* | The time up untilclient can reschedule the service in UTC
 `can_cancel_until` | *integer* | The time up until the client can cancel the service in UTC
 `address_display_text` | *string* | Display text of main booking address
@@ -3530,14 +3517,7 @@ curl\
         }
       ]
     }
-  ],
-  "meta": {
-    "session_has_updates": true,
-    "databaseVersion": 70,
-    "iOSLatestApplicationBuild": 300,
-    "androidLatestApplicationBuild": 1,
-    "urid": "d93f873d1c78a426ee2185a8ca325db22c758c19cf2f1bcbbfccd787a396a64e"
-  }
+  ]
 }
 ```
 
@@ -5255,36 +5235,26 @@ This endpoint returns:
 * [Common errors](#common-errors)
 
 
+# meta
 
-## Latest version
+## New version
 
-
-```shell
-curl\
- -X GET\
- -H "Content-Type: application/json"\
- -H "X-Application: {{APPLICATION_TOKEN}}"\
-"https://{{BASE_URL}}/v2/shared/latest_version"
-```
-
-> The above request success response is:
+> Meta in response for new version:
 
 ```json
 {
-  "data": [
-    {
+  "meta": {
+    "new_version": {
       "build": 100,
       "force_update": true,
-      "download_url": "https://itunes.apple.com/bg/app/gofantastic-home-services-app/id906994413",
-      "description": "Download the latest version to manage your regular appointments."
+      "download_url": "itunes://gofantastic",
+      "description": "Get the latest version to be able to manage your regular bookings!"
     }
-  ]
+  }
 }
 ```
 
-Returns data for latest version of the application requesting it.
-
-`"path": "latest_version"`
+Returns the latest version for the client.
 
 ### Response parameters
 
@@ -5294,6 +5264,29 @@ Parameter | Type | Description
 `force_update` | *boolean* | Determines weather update to this version is optional or required
 `download_url` | *string* | URL to get the latest version (AppStore, PlayStore, Enterprise installation file etc.)
 `description` | *string* | Message containing details for the update
+
+## Changes
+
+> Meta in response for changes:
+
+```json
+{
+  "meta": {
+    "changes": [
+      "profile",
+      "jobs"
+    ]
+  }
+}
+```
+
+Returns the endopoints that have chagnes and need to be read again.
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`changes` | *array\<string\>* | Array of paths to read
 
 
 # Compatibility
