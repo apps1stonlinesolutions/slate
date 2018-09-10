@@ -3422,17 +3422,43 @@ curl\
           "sort": 100
         }
       ],
-      "can_change_payment_method": {
-        "from": 1534953201,
-        "to": 1534993201
-      },
-      "can_edit_booking_price": {
-        "from": 0,
-        "to": 9999999999
-      },
-      "can_cross_sell": {
-        "from": null,
-        "to": null
+      "permissions": {
+        "can_confirm": {
+          "from": 1534953201,
+          "to": 1534993201
+        },
+        "can_checkin": {
+          "from": 1534953201,
+          "to": 1534993201
+        },
+        "can_checkout": {
+          "from": 1534953201,
+          "to": 1534993201
+        },
+        "can_attach_photo": {
+          "from": 1534953201,
+          "to": 1534993201
+        },
+        "can_comment": {
+          "from": 1534953201,
+          "to": 1534993201
+        },
+        "can_call_cs": {
+          "from": 1534953201,
+          "to": 1534993201
+        },
+        "can_change_payment_method": {
+          "from": 0,
+          "to": 9999999999
+        },
+        "can_edit_booking_price": {
+          "from": 0,
+          "to": 9999999999
+        },
+        "can_cross_sell": {
+          "from": null,
+          "to": null
+        }
       },
       "events": [
         {
@@ -3468,13 +3494,13 @@ curl\
         "stop_sms_channel": true,
         "stop_phone_channel": false,
         "contacts": [
-        {
-          "id": 2197447,
-          "info": "07568***919",
-          "type": 1,
-          "sort": 1
-        }
-      ],
+          {
+            "id": 2197447,
+            "info": "07568***919",
+            "type": 1,
+            "sort": 1
+          }
+        ]
       },
       "client_confirmed_job": true,
       "status": "Booked",
@@ -3546,6 +3572,10 @@ Parameter | Type | Description
 `services_price_modifiers.price_modifiers` | *array* | Price modifiers for a service in the job
 `services_price_modifiers.price_modifiers.type` | *integer* | Check service.choices.[choice_items](#choice-items).type
 `arrival_timeframes` | *array<arrival_timeframes>* | Timeframes in which Pro can warn the client it will arrive
+`permissions` | *array* | List of permissions for the job
+`permissions.can_confirm` | *object* | Timeframes in which  the permission is `true`
+`permissions.can_confirm.from` | *integer* | Time from which the permission is `true`
+`permissions.can_confirm.to` | *integer* | Time to which the permission is `true`
 `client_contacts` | *array client_contacts* | Phone numbers client provided for contact
 `events.type` | *integer* | *<b>1</b> - Checkin*<br>*<b>2</b> - Checkout*<br>*<b>7</b> - View*<br>*<b>8</b> - Confirm*<br>*<b>12</b> - Arrive*<br>*<b>13</b> - Depart*<br>*<b>110</b> - Arrival timeframe*
 `performed` | *integer* | *<b>0</b> - No checkout or auto performed*<br>*<b>1</b> - Checked out*<br>*<b>2</b> - Auto performed (24h passed)*
