@@ -3769,6 +3769,110 @@ This endpoint returns:
 
 
 
+## Cross sales
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/jobs/123/cross_sales"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "service_title": "Gardening",
+      "postcode": "SW12 5TH",
+      "client_name": "John Doe",
+      "app_time": 123543213,
+      "voucher_code": "GO10OFF",
+      "bonus": "£12",
+      "status": "pending",
+      "type": "on_site",
+      "sort": 100
+    }
+  ]
+}
+```
+
+Services unit cross sold when on a job.
+
+
+`"path": "jobs/{{job_id}}/cross_sales"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`service_title` | *string* | Title of cross sell service
+`postcode` | *string* | Postcode of cross sell booking
+`client_name` | *string* | Client name of cross sell booking
+`app_time` | *integer* | Appointment time (UTC timestamp) of cross sell booking
+`voucher_code` | *string* | Voucher applied for cross sell booking
+`bonus` | *string* | Bonus for cross sell booking
+`status` | *string* | *<b>pending</b> - Cross sell booking has not passed*<br>*<b>passed</b> - Cross sell booking has passed*<br>*<b>cancelled</b> - Cross sell booking is cancelled*<br>*<b>paid</b> - Cross sell bonus is paid*
+`status` | *type* | *<b>on_site</b> - Cross sell booking when on a job*<br>*<b>voucher</b> - Left voucher and client booked with promo code from it*
+`sort` | *integer* | Order of item in list
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+
+
+## Bonus totals
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/jobs/123/bonus_totals"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "status": "pending",
+      "total_formatted": "£30"
+    },
+    {
+      "status": "passed",
+      "total_formatted": "£2"
+    }
+  ]
+}
+```
+
+Bonus total breakdown per status.
+
+`"path": "jobs/{{job_id}}/bonus_totals"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`status` | *string* | Status of [cross sell](#cross-sales) for which the bonus is
+`total_formatted` | *string* | Total amount for all cross sales with that status
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+
 
 ## System languages
 
