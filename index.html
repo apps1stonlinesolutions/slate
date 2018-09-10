@@ -229,12 +229,6 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Attributes to add to response which are not returned by default</td>
 </tr>
 <tr>
-<td><code class="prettyprint">return_meta</code></td>
-<td><em>boolean</em></td>
-<td><em>false</em></td>
-<td>Weather response includes <code class="prettyprint">meta</code></td>
-</tr>
-<tr>
 <td><code class="prettyprint">paging</code><br><em>optional</em></td>
 <td><em>object</em></td>
 <td><em>null</em></td>
@@ -287,8 +281,10 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"db_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latest_build"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+    </span><span class="nt">"changes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"profile"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"jobs"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -327,28 +323,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">meta</code><br><em>optional</em></td>
 <td><em>object</em></td>
-<td>Parameter containing information for the system.</td>
-</tr>
-</tbody></table>
-
-<h3 id="meta"><code class="prettyprint">meta</code></h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">db_version</code></td>
-<td><em>integer</em></td>
-<td>Version of database model</td>
-</tr>
-<tr>
-<td><code class="prettyprint">latest_build</code></td>
-<td><em>integer</em></td>
-<td>Latest application build release</td>
+<td>Object containing system information. Data is returned by the system when action is needed.</td>
 </tr>
 </tbody></table>
 
@@ -522,8 +497,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
         },
         "query": {
           "with_promotions": true
-        },
-        "return_meta": true
+        }
       },
       "data": null
     }
@@ -600,23 +574,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">data</code><br><em>optional</em></td>
-<td><em>array</em></td>
-<td>Array of data objects returned in the result of the request</td>
-</tr>
-<tr>
-<td><code class="prettyprint">success</code>, <code class="prettyprint">warning</code>, <code class="prettyprint">error</code><br><em>optional</em></td>
-<td><em>array</em></td>
-<td>Messages with information for the request. More than one type of message can be returned in a response. <code class="prettyprint">success</code> and <code class="prettyprint">error</code> can&rsquo;t come in the same response. <code class="prettyprint">warning</code> can be combined with <code class="prettyprint">success</code> or <code class="prettyprint">error</code>.</td>
-</tr>
-<tr>
-<td><code class="prettyprint">meta</code><br><em>optional</em></td>
-<td><em>object</em></td>
-<td>Parameter containing information for the system.</td>
+<td><code class="prettyprint">responses</code></td>
+<td><em>array&lt;<a href="#response">response</a>&gt;</em></td>
+<td>Array of response objects. Response objects have the same structure as single <a href="#response">response</a>.</td>
 </tr>
 </tbody></table>
-
-<p>In batched responses <code class="prettyprint">meta</code> is returned once at the end.</p>
 
 <h1 id="profile">Profile</h1>
 
@@ -3314,12 +3276,12 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">membership</code></td>
-<td><em>object&lt;<a href="#membership">membership</a>&gt;</em></td>
+<td><em><a href="#membership">object</a></em></td>
 <td>Current purchased membership</td>
 </tr>
 <tr>
 <td><code class="prettyprint">avatar</code><br><em>editable</em></td>
-<td><em>object&lt;<a href="#avatar">avatar</a>&gt;</em></td>
+<td><em><a href="#avatar">object</a></em></td>
 <td>Client avatar image</td>
 </tr>
 <tr>
@@ -3887,7 +3849,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">price</code></td>
-<td><em>object&lt;<a href="#price">price</a>&gt;</em></td>
+<td><em><a href="#price">object</a></em></td>
 <td>Selected price breakdown</td>
 </tr>
 <tr>
@@ -3937,7 +3899,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">payment_method</code><br><em>editable</em></td>
-<td><em>object&lt;<a href="#payment-methods">payment_method</a>&gt;</em></td>
+<td><em><a href="#payment-methods">object</a></em></td>
 <td>Selected payment method for the booking</td>
 </tr>
 <tr>
@@ -3947,7 +3909,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">paymethods</code><br><em>editable</em></td>
-<td><em>object&lt;<a href="#paymethods">paymethod</a>&gt;</em></td>
+<td><em><a href="#paymethods">object</a></em></td>
 <td>Selected paymethod for the booking (particular credit card etc.)</td>
 </tr>
 <tr>
@@ -3987,7 +3949,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">service</code><br><em>editable</em></td>
-<td><em>object&lt;<a href="#services">service</a>&gt;</em></td>
+<td><em><a href="#services">object</a></em></td>
 <td>Booking service</td>
 </tr>
 <tr>
@@ -5313,14 +5275,7 @@ curl<span class="se">\</span>
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"session_has_updates"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"databaseVersion"</span><span class="p">:</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"iOSLatestApplicationBuild"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"androidLatestApplicationBuild"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"urid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d93f873d1c78a426ee2185a8ca325db22c758c19cf2f1bcbbfccd787a396a64e"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -7937,32 +7892,26 @@ curl<span class="se">\</span>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
-<h2 id="latest-version">Latest version</h2>
-<pre class="highlight shell"><code>curl<span class="se">\</span>
- -X GET<span class="se">\</span>
- -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
- -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
-<span class="s2">"https://{{BASE_URL}}/v2/shared/latest_version"</span>
-</code></pre>
+<h1 id="meta">meta</h1>
+
+<h2 id="new-version">New version</h2>
 
 <blockquote>
-<p>The above request success response is:</p>
+<p>Meta in response for new version:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"new_version"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
       </span><span class="nt">"force_update"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://itunes.apple.com/bg/app/gofantastic-home-services-app/id906994413"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Download the latest version to manage your regular appointments."</span><span class="w">
+      </span><span class="nt">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"itunes://gofantastic"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Get the latest version to be able to manage your regular bookings!"</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Returns data for latest version of the application requesting it.</p>
-
-<p><code class="prettyprint">&quot;path&quot;: &quot;latest_version&quot;</code></p>
+<p>Returns the latest version for the client.</p>
 
 <h3 id="response-parameters">Response parameters</h3>
 
@@ -7992,6 +7941,39 @@ curl<span class="se">\</span>
 <td><code class="prettyprint">description</code></td>
 <td><em>string</em></td>
 <td>Message containing details for the update</td>
+</tr>
+</tbody></table>
+
+<h2 id="changes">Changes</h2>
+
+<blockquote>
+<p>Meta in response for changes:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"changes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"profile"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"jobs"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Returns the endopoints that have chagnes and need to be read again.</p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">changes</code></td>
+<td><em>array&lt;string&gt;</em></td>
+<td>Array of paths to read</td>
 </tr>
 </tbody></table>
 
