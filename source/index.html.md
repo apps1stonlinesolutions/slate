@@ -2086,6 +2086,7 @@ curl\
     "membership": {
       "valid_from": 1433489660,
       "valid_to": 1433489660,
+      "can_cancel_until": 1433489660,
       "expiration_reminder": 1433489660,
       "cancellation_requested": true,
       "auto_renew_enabled": true
@@ -3190,7 +3191,7 @@ curl\
     "user_applications": [
       1
     ],
-    "session_has_updates": true,
+    "available_for_ondemand_jobs": false,
     "created_at": 1504857514
   }
 }
@@ -3232,6 +3233,7 @@ Parameter | Type | Description
 `permissions.do_not_track_location` | *boolean* | Stops unit from sending updates for current location
 `permissions.do_not_track_geofence` | *boolean* | Stops unit from sending updates for entering and leaving areas around bookings
 `permissions.can_set_availability` | *boolean* | Can unit set it's availability
+`available_for_ondemand_jobs` | *boolean*  | Shows weather Pro accepts on-demand jobs
 `created_at` | *integer* | Timestamp of unit registration
 
 
