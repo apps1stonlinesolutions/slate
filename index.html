@@ -3169,6 +3169,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     </span><span class="nt">"membership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"valid_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">1433489660</span><span class="p">,</span><span class="w">
       </span><span class="nt">"valid_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">1433489660</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"can_cancel_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1433489660</span><span class="p">,</span><span class="w">
       </span><span class="nt">"expiration_reminder"</span><span class="p">:</span><span class="w"> </span><span class="mi">1433489660</span><span class="p">,</span><span class="w">
       </span><span class="nt">"cancellation_requested"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"auto_renew_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -4837,7 +4838,7 @@ curl<span class="se">\</span>
     </span><span class="nt">"user_applications"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="mi">1</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"session_has_updates"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"available_for_ondemand_jobs"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1504857514</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4990,6 +4991,11 @@ curl<span class="se">\</span>
 <td><code class="prettyprint">permissions.can_set_availability</code></td>
 <td><em>boolean</em></td>
 <td>Can unit set it&rsquo;s availability</td>
+</tr>
+<tr>
+<td><code class="prettyprint">available_for_ondemand_jobs</code></td>
+<td><em>boolean</em></td>
+<td>Shows weather Pro accepts on-demand jobs</td>
 </tr>
 <tr>
 <td><code class="prettyprint">created_at</code></td>
