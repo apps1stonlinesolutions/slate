@@ -5459,8 +5459,8 @@ Modifies user object data format.
 
 Application | Operator | Build | Description
 -------- | ----- | ------- | -------
- *GoFantastic iOS* | <= | 794 | Transform membership object to integer. If membership is `null` transform to 0. If membership object has value transform to 1.
- *GoFantastic Android* | <= | 654 | Transform membership object to integer. If membership is `null` transform to 0. If membership object has value transform to 1.
+ *GoFantastic iOS* | <= | 804 | Transform membership object to integer. If membership is `null` transform to 0. If membership object has value transform to 1.
+ *GoFantastic Android* | <= | 669 | Transform membership object to integer. If membership is `null` transform to 0. If membership object has value transform to 1.
 
 Applied on endpoints:
 
