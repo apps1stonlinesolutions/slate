@@ -3801,7 +3801,7 @@ This endpoint returns:
 
 
 
-## Cross sales
+## Bonuses
 
 
 ```shell
@@ -3810,7 +3810,7 @@ curl\
  -H "Content-Type: application/json"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
-"https://{{BASE_URL}}/v2/unit/jobs/123/cross_sales"
+"https://{{BASE_URL}}/v2/unit/bonuses"
 ```
 
 > The above request success response is:
@@ -3824,7 +3824,7 @@ curl\
       "client_name": "John Doe",
       "app_time": 123543213,
       "voucher_code": "GO10OFF",
-      "bonus": "£12",
+      "amount": "£12",
       "status": "pending",
       "type": "on_site",
       "sort": 100
@@ -3836,7 +3836,7 @@ curl\
 Services unit cross sold when on a job.
 
 
-`"path": "jobs/{{job_id}}/cross_sales"`
+`"path": "jobs/bonuses"`
 
 ### Response parameters
 
@@ -3847,7 +3847,7 @@ Parameter | Type | Description
 `client_name` | *string* | Client name of cross sell booking
 `app_time` | *integer* | Appointment time (UTC timestamp) of cross sell booking
 `voucher_code` | *string* | Voucher applied for cross sell booking
-`bonus` | *string* | Bonus for cross sell booking
+`amount` | *string* | Bonus amount for cross sell booking
 `status` | *string* | *<b>pending</b> - Cross sell booking has not passed*<br>*<b>passed</b> - Cross sell booking has passed*<br>*<b>cancelled</b> - Cross sell booking is cancelled*<br>*<b>paid</b> - Cross sell bonus is paid*
 `status` | *type* | *<b>on_site</b> - Cross sell booking when on a job*<br>*<b>voucher</b> - Left voucher and client booked with promo code from it*
 `sort` | *integer* | Order of item in list
