@@ -5765,13 +5765,13 @@ curl<span class="se">\</span>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
-<h2 id="cross-sales">Cross sales</h2>
+<h2 id="bonuses">Bonuses</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
-<span class="s2">"https://{{BASE_URL}}/v2/unit/jobs/123/cross_sales"</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/bonuses"</span>
 </code></pre>
 
 <blockquote>
@@ -5785,7 +5785,7 @@ curl<span class="se">\</span>
       </span><span class="nt">"client_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"app_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">123543213</span><span class="p">,</span><span class="w">
       </span><span class="nt">"voucher_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GO10OFF"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"bonus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£12"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£12"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on_site"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
@@ -5796,7 +5796,7 @@ curl<span class="se">\</span>
 
 <p>Services unit cross sold when on a job.</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{{job_id}}/cross_sales&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/bonuses&quot;</code></p>
 
 <h3 id="response-parameters">Response parameters</h3>
 
@@ -5833,9 +5833,9 @@ curl<span class="se">\</span>
 <td>Voucher applied for cross sell booking</td>
 </tr>
 <tr>
-<td><code class="prettyprint">bonus</code></td>
+<td><code class="prettyprint">amount</code></td>
 <td><em>string</em></td>
-<td>Bonus for cross sell booking</td>
+<td>Bonus amount for cross sell booking</td>
 </tr>
 <tr>
 <td><code class="prettyprint">status</code></td>
