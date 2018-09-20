@@ -2429,6 +2429,7 @@ curl\
     ]
   },
   "can_reschedule_until": 1459953968,
+  "can_edit_until": 1459953968,
   "can_cancel_until": 1459953968,
   "address_display_text": "SW12 2TH, Red Lion Street 24",
   "comments": [
@@ -2535,6 +2536,7 @@ Parameter | Type | Description
 `source.domain_url` | string | Source domain name of the booking without www. and http/https protocols
 `service`<br>*editable* | *[object](#services)* | Booking service
 `can_reschedule_until` | *integer* | The time up untilclient can reschedule the service in UTC
+`can_edit_until` | *integer* | The time up untilclient can edit the booking in UTC
 `can_cancel_until` | *integer* | The time up until the client can cancel the service in UTC
 `address_display_text` | *string* | Display text of main booking address
 `comments`<br>*editable* | *array* | Comments left by the client
