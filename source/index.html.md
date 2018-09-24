@@ -3443,6 +3443,14 @@ curl\
           "from": 1534953201,
           "to": 1534993201
         },
+        "can_call_client": {
+          "from": 1534953201,
+          "to": 1534993201
+        },
+        "can_message_client": {
+          "from": 1534953201,
+          "to": 1534993201
+        },
         "can_attach_photo": {
           "from": 1534953201,
           "to": 1534993201
