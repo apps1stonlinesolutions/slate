@@ -3439,18 +3439,6 @@ curl\
           "from": 1534953201,
           "to": 1534993201
         },
-        "can_decline": {
-          "from": 1534953201,
-          "to": 1534993201
-        },
-        "can_call_client": {
-          "from": 1534953201,
-          "to": 1534993201
-        },
-        "can_message_client": {
-          "from": 1534953201,
-          "to": 1534993201
-        },
         "can_attach_photo": {
           "from": 1534953201,
           "to": 1534993201
@@ -3462,18 +3450,6 @@ curl\
         "can_call_cs": {
           "from": 1534953201,
           "to": 1534993201
-        },
-        "can_change_payment_method": {
-          "from": 0,
-          "to": 9999999999
-        },
-        "can_edit_booking_price": {
-          "from": 0,
-          "to": 9999999999
-        },
-        "can_cross_sell": {
-          "from": null,
-          "to": null
         }
       },
       "events": [
