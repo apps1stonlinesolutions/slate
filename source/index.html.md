@@ -3463,7 +3463,7 @@ curl\
       ],
       "permissions": {
         "can_confirm": {
-          "from": 1534953201,
+          "from": 0,
           "to": 1534993201
         },
         "can_checkin": {
@@ -3471,19 +3471,19 @@ curl\
           "to": 1534993201
         },
         "can_checkout": {
-          "from": 1534953201,
+          "from": 0,
           "to": 1534993201
         },
         "can_attach_photo": {
-          "from": 1534953201,
+          "from": 0,
           "to": 1534993201
         },
-        "can_comment": {
-          "from": 1534953201,
-          "to": 1534993201
+        "can_add_comment": {
+          "from": 0,
+          "to": 999999999
         },
         "can_call_cs": {
-          "from": 1534953201,
+          "from": 0,
           "to": 1534993201
         }
       },
