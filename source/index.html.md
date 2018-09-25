@@ -3775,6 +3775,7 @@ Available services to cross sell for a job.
 
 
 `"path": "jobs/{{job_id}}/available_cross_sales"`
+`"path": "jobs_history/{{job_id}}/available_cross_sales"`
 
 ### Response parameters
 
@@ -3826,7 +3827,7 @@ curl\
 Services unit cross sold when on a job.
 
 
-`"path": "jobs/bonuses"`
+`"path": "bonuses"`
 
 ### Response parameters
 
@@ -3858,7 +3859,7 @@ curl\
  -H "Content-Type: application/json"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
-"https://{{BASE_URL}}/v2/unit/jobs/123/bonus_totals"
+"https://{{BASE_URL}}/v2/unit/bonus_totals"
 ```
 
 > The above request success response is:
@@ -3880,7 +3881,7 @@ curl\
 
 Bonus total breakdown per status.
 
-`"path": "jobs/{{job_id}}/bonus_totals"`
+`"path": "bonus_totals"`
 
 ### Response parameters
 
