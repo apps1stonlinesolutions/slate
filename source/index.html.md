@@ -641,38 +641,73 @@ curl\
 
 ```json
 {
-  "data": [
-    {
-      "path": "register",
-      "fields": [
+    "data": [
         {
-          "name": "email",
-          "regex": "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)",
-          "required": true
+            "path": "register",
+            "fields": [
+                {
+                    "name": "first_name",
+                    "regex": "/^(?=.*\\S).+$/",
+                    "required": true
+                },
+                {
+                    "name": "last_name",
+                    "regex": "/^(?=.*\\S).+$/",
+                    "required": true
+                },
+                {
+                    "name": "email",
+                    "regex": "/([a-z0-9_\\.\\-])+\\@(([a-z0-9\\-])+\\.)+([a-z0-9]{2,})+/i",
+                    "required": true
+                },
+                {
+                    "name": "password",
+                    "regex": "/^.{5,}$/",
+                    "required": true
+                },
+                {
+                    "name": "referrer_code",
+                    "regex": "/^[0-9a-z\\.\\-]*$/i",
+                    "required": false
+                }
+            ]
         },
         {
-          "name": "password",
-          "regex": "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)",
-          "required": true
-        }
-      ]
-    },
-    {
-      "path": "addresses",
-      "fields": [
+            "path": "addresses",
+            "fields": [
+                {
+                    "name": "address_line_one",
+                    "regex": "/^.+$/",
+                    "required": true
+                },
+                {
+                    "name": "postcode",
+                    "regex": "/^([A-Z]{1,2})([0-9][0-9A-Z]?)\\s*([0-9])([A-Z]{2})$/i",
+                    "required": true
+                }
+            ]
+        },
         {
-          "name": "address_line_one",
-          "regex": "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)",
-          "required": true
-        }
+            "path": "phones",
+            "fields": [
+                {
+                    "name": "value",
+                    "regex": "/^(0|00|\\+)([0-9]{8,15})$/",
+                    "required": true
+                }
+            ]
+        },
         {
-          "name": "postcode",
-          "regex": "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)",
-          "required": true
+            "path": "booking_transactions",
+            "fields": [
+                {
+                    "name": "voucher",
+                    "regex": "/^[0-9a-z\\.\\-]*$/i",
+                    "required": false
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
 ```
 
