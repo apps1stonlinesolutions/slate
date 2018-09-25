@@ -1030,11 +1030,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
           </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"address_line_one"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"regex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-        </span><span class="p">},</span><span class="w">
+        </span><span class="p">}</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"address_line_two"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postcode"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"regex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -5720,7 +5720,8 @@ curl<span class="se">\</span>
 
 <p>Available services to cross sell for a job.</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{{job_id}}/available_cross_sales&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{{job_id}}/available_cross_sales&quot;</code>
+<code class="prettyprint">&quot;path&quot;: &quot;jobs_history/{{job_id}}/available_cross_sales&quot;</code></p>
 
 <h3 id="response-parameters">Response parameters</h3>
 
@@ -5790,7 +5791,7 @@ curl<span class="se">\</span>
 
 <p>Services unit cross sold when on a job.</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/bonuses&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;bonuses&quot;</code></p>
 
 <h3 id="response-parameters">Response parameters</h3>
 
@@ -5860,7 +5861,7 @@ curl<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
-<span class="s2">"https://{{BASE_URL}}/v2/unit/jobs/123/bonus_totals"</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/bonus_totals"</span>
 </code></pre>
 
 <blockquote>
@@ -5882,7 +5883,7 @@ curl<span class="se">\</span>
 
 <p>Bonus total breakdown per status.</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{{job_id}}/bonus_totals&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;bonus_totals&quot;</code></p>
 
 <h3 id="response-parameters">Response parameters</h3>
 
