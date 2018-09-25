@@ -1,4 +1,5 @@
 git add --all
-git commit -m 'Updated documentation'
+read -p 'Commit message: ' uservar
+git commit -m uservar
 git push
 ./deploy.sh

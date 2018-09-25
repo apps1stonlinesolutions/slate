@@ -3467,7 +3467,7 @@ curl\
           "to": 1534993201
         },
         "can_checkin": {
-          "from": 0,
+          "from": 1534953201,
           "to": 1534993201
         },
         "can_checkout": {
