@@ -592,8 +592,8 @@ curl\
   "data": [
     {
       "id": 1,
-      "type": "Facebook Sign In",
-      "name": "Facebook",
+      "type": "Facebook",
+      "name": "Facebook Sign In",
       "data": {
         "application_id": 123351117549831
       },
