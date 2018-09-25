@@ -664,11 +664,11 @@ curl\
           "name": "address_line_one",
           "regex": "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)",
           "required": true
-        },
+        }
         {
-          "name": "address_line_two",
+          "name": "postcode",
           "regex": "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)",
-          "required": false
+          "required": true
         }
       ]
     }
