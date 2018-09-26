@@ -1402,12 +1402,12 @@ curl\
       ],
       "customize": {
         "tooltip": "Click here",
-        "search_keywords": "[\"fantastic\", \"cleaning\"]"
+        "search_keywords": "[\"fantastic\", \"cleaning\"]",
+        "logic_js": "function getRequiredActionForState(items) { if (items[0].choice_item_id == \"1092\" && items[0].choice_item_value == 2) { return { \"action\": \"service_redirect\", \"redirect_message_title\": \"This is more like EOT. Wanna go?\", \"redirect_message\": \"This is more like EOT. Wanna go?\", \"OK_title\": \"Go there\", \"cancel_title\": \"Not really\", \"service_id\": 23 }; } else { return null; } }"
       },
       "profile_config": {
         "url": "https://www.fantasticservices.com/cleaning/one-off"
-      },
-      "logic_js": "function getRequiredActionForState(items) { if (items[0].choice_item_id == \"1092\" && items[0].choice_item_value == 2) { return { \"action\": \"service_redirect\", \"redirect_message_title\": \"This is more like EOT. Wanna go?\", \"redirect_message\": \"This is more like EOT. Wanna go?\", \"OK_title\": \"Go there\", \"cancel_title\": \"Not really\", \"service_id\": 23 }; } else { return null; } }"
+      }
     }
   ]
 }
@@ -1440,8 +1440,8 @@ Parameter | Type | Description
 `payment_methods` | *array\<[payment_method](#payment-methods)\>* | List of available payment methods for the service
 `customize` | *object* | Key-value pairs of custom attributes
 `customize.search_keywords` | *string* | Represents array of search keywords for the service
+`customize.logic_js` | *string* | JavaScript containing functions for modification of booking process
 `profile_config` | *object* | Key-value pairs of custom attributes with different values for each Profile
-`logic_js` | *string* | JavaScript containing functions for modification of booking process
 
 ### `params`
 
@@ -3810,6 +3810,7 @@ Available services to cross sell for a job.
 
 
 `"path": "jobs/{{job_id}}/available_cross_sales"`
+<br/>
 `"path": "jobs_history/{{job_id}}/available_cross_sales"`
 
 ### Response parameters
