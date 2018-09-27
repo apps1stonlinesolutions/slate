@@ -4854,14 +4854,7 @@ curl<span class="se">\</span>
     </span><span class="nt">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rusat"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+44"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"language_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07123456789"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07123456789"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2331xfasf23423rt43fsdfasDAS"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://files.dxr.cloud/PVk0poyRIuRG2"</span><span class="w">
@@ -4954,29 +4947,9 @@ curl<span class="se">\</span>
 <td>Language code user chose from Settings in XRM or app. List of languages received at <a href="#system-languages">system_languages</a></td>
 </tr>
 <tr>
-<td><code class="prettyprint">phones</code><br><em>editable</em></td>
-<td><em>array</em></td>
-<td>List of phone numbers of unit</td>
-</tr>
-<tr>
-<td><code class="prettyprint">phones.id</code></td>
-<td><em>int</em></td>
-<td>Unique identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">phones.value</code><br><em>editable</em></td>
+<td><code class="prettyprint">phone</code></td>
 <td><em>string</em></td>
-<td>Phone number</td>
-</tr>
-<tr>
-<td><code class="prettyprint">phones.default</code><br><em>editable</em></td>
-<td><em>boolean</em></td>
-<td>Is the phone the default used by the system for receiving calls and SMS</td>
-</tr>
-<tr>
-<td><code class="prettyprint">phones.sort</code><br><em>editable</em></td>
-<td><em>string</em></td>
-<td>Order in list</td>
+<td>Phone number of unit</td>
 </tr>
 <tr>
 <td><code class="prettyprint">avatar.token</code><br><em>editable</em></td>
@@ -5042,6 +5015,106 @@ curl<span class="se">\</span>
 <td><code class="prettyprint">created_at</code></td>
 <td><em>integer</em></td>
 <td>Timestamp of unit registration</td>
+</tr>
+</tbody></table>
+
+<h2 id="request-update-phone">Request update phone</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "phone": "+447123456789"
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/unit/request_update_phone"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Request change of phone number in profile. On the requested phone a validation code is sent via SMS. If code is later sent at <a href="#validate-phone">validate phone</a> endpoint the phone in <a href="#profile">profile</a> will be updated to the requested one.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;request_update_phone&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">phone</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Phone number to which a validation code will be send.</td>
+</tr>
+</tbody></table>
+
+<h2 id="validate-phone">Validate phone</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "phone": "+447123456789",
+        "validation_code": "ab12"
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/unit/validate_phone"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Validate a phone number previously requested at <a href="#request-update-phone">request update phone</a>. If validated phone in <a href="#profile">profile</a> will be updated.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;validate_phone&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">phone</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Phone number to validate</td>
+</tr>
+<tr>
+<td><code class="prettyprint">validation_code</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Validation code received via SMS</td>
 </tr>
 </tbody></table>
 
