@@ -3203,14 +3203,7 @@ curl\
     "team": "Rusat",
     "country_code": "+44",
     "language_code": "en",
-    "phones": [
-      {
-        "id": 1,
-        "value": "07123456789",
-        "default": false,
-        "sort": 100
-      }
-    ],
+    "phone": "07123456789",
     "avatar": {
       "token": "2331xfasf23423rt43fsdfasDAS",
       "url": "https://files.dxr.cloud/PVk0poyRIuRG2"
@@ -3254,11 +3247,7 @@ Parameter | Type | Description
 `team` | *string* | Name of team the unit is assigned to
 `country_code` | *string* | Country code of area the Unit operates in
 `language_code`<br>*editable* | *string* | Language code user chose from Settings in XRM or app. List of languages received at [system_languages](#system-languages)
-`phones`<br>*editable* | *array* | List of phone numbers of unit
-`phones.id` | *int* | Unique identifier
-`phones.value`<br>*editable* | *string* | Phone number
-`phones.default`<br>*editable* | *boolean* | Is the phone the default used by the system for receiving calls and SMS
-`phones.sort`<br>*editable* | *string* | Order in list
+`phone` | *string* | Phone number of unit
 `avatar.token`<br>*editable* | *string* | File server token
 `avatar.url` | *string* | URL to avatar image
 `permissions` | *array* | List of permissions of unit
@@ -3274,6 +3263,89 @@ Parameter | Type | Description
 `created_at` | *integer* | Timestamp of unit registration
 
 
+## Request update phone
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "phone": "+447123456789"
+}'\
+ "https://{{BASE_URL}}/v2/unit/request_update_phone"
+```
+
+> The above request success response is :
+
+```json
+{
+  "success": [
+    {
+      "code": 2000,
+      "message": "Success",
+      "debug_message": null,
+      "debug_id": null
+    }
+  ]
+}
+```
+
+
+Request change of phone number in profile. On the requested phone a validation code is sent via SMS. If code is later sent at [validate phone](#validate-phone) endpoint the phone in [profile](#profile) will be updated to the requested one.
+
+`"path": "request_update_phone"`
+
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`phone`<br>*required* | *string* | Phone number to which a validation code will be send.
+
+
+## Validate phone
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "phone": "+447123456789",
+        "validation_code": "ab12"
+}'\
+ "https://{{BASE_URL}}/v2/unit/validate_phone"
+```
+
+> The above request success response is :
+
+```json
+{
+  "success": [
+    {
+      "code": 2000,
+      "message": "Success",
+      "debug_message": null,
+      "debug_id": null
+    }
+  ]
+}
+```
+
+Validate a phone number previously requested at [request update phone](#request-update-phone). If validated phone in [profile](#profile) will be updated.
+
+`"path": "validate_phone"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`phone`<br>*required* | *string* | Phone number to validate
+`validation_code`<br>*required* | *string* | Validation code received via SMS
 
 
 ## Jobs
