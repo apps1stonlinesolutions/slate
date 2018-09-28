@@ -1533,7 +1533,7 @@ curl\
       "id": 1110,
       "sort": 100,
       "parent_id": 0,
-      "type": 1,
+      "type": "radio",
       "max_value": 0,
       "min_value": 0,
       "value": 0,
@@ -1564,7 +1564,7 @@ Parameter | Type | Description
 `id` | *integer* | Object id
 `sort` | *integer* | Order of item in list
 `parent_id` | *integer* | Parent answer (if answer is sub-answer)
-`type` | *integer* | *<b>1</b> - Check*<br>*<b>2</b> - Radio*<br>*<b>3</b> - Stepper (incremental value)*<br>*<b>4</b> - Text field*<br>*<b>5</b> - Hours (total hours for current booking configuration)*<br>*<b>7</b> - Multi select (autocomplete with quantity)*<br>*<b>8</b> - Distance*<br>*<b>9</b> - Always Apply*<br>*<b>10</b> - Price per hour*<br>*<b>11</b> - Decimal Text*<br>*<b>12</b> - Photo attachment*<br>*<b>13</b> - Dropdown*<br>*<b>14</b> - Address. Accepts [address](#addresses) object*
+`type` | *string* | *<b>checkbox</b> - Checkbox*<br>*<b>radio</b> - Radio button*<br>*<b>stepper</b> - Stepper (incremental value)*<br>*<b>text_field</b> - Text field*<br>*<b>hours</b> - Hours (total hours for current booking configuration)*<br>*<b>multiselect</b> - Multi select (autocomplete with quantity)*<br>*<b>distance</b> - Distance*<br>*<b>always_apply</b> - Always Apply*<br>*<b>price_per_hour</b> - Price per hour*<br>*<b>decimal_text</b> - Decimal Text*<br>*<b>photo_attachment</b> - Photo attachment*<br>*<b>dropdown</b> - Dropdown*<br>*<b>address</b> - Address. Accepts [address](#addresses) object*
 `max_value` | *integer* | Maximum value of answer
 `min_value` | *integer* | Minimum value of answer
 `value` | *integer* | Default value of answer
