@@ -2240,7 +2240,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">338</span><span class="p">,</span><span class="w">
       </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"init"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"positions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"init"</span><span class="p">],</span><span class="w">
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cross_sell"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"have the tradesmen left the property?"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"summary_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tradesman _left"</span><span class="p">,</span><span class="w">
@@ -2279,8 +2279,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Order of item in list</td>
 </tr>
 <tr>
-<td><code class="prettyprint">position</code></td>
-<td><em>string</em></td>
+<td><code class="prettyprint">positions</code></td>
+<td><em>array&lt;string&gt;</em></td>
 <td>Determines where the choice should be dislpayed in the booking process:<br/><em><b>init</b> - begining of booking process. Minimum requirement to create a <a href="#booking-transactions">booking_transaction</a></em><br><em><b>configurator</b> - choices describing service configuration</em><br><em><b>before_summary</b> - middle screen before showing the booking summary</em><br><em><b>on_summary</b> - choices at the summary screen (e.g. cross sell)</em><br><em><b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)</em></td>
 </tr>
 <tr>
@@ -4215,7 +4215,7 @@ curl<span class="se">\</span>
     "choices": [
       {
         "id": 338,
-        "position": "init",
+        "positions": ["init"],
         "choice_items": [
           {
             "id": 1110,
