@@ -2346,7 +2346,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1110</span><span class="p">,</span><span class="w">
       </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
       </span><span class="nt">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"radio"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"max_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="nt">"min_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -2394,8 +2394,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">type</code></td>
-<td><em>integer</em></td>
-<td><em><b>1</b> - Check</em><br><em><b>2</b> - Radio</em><br><em><b>3</b> - Stepper (incremental value)</em><br><em><b>4</b> - Text field</em><br><em><b>5</b> - Hours (total hours for current booking configuration)</em><br><em><b>7</b> - Multi select (autocomplete with quantity)</em><br><em><b>8</b> - Distance</em><br><em><b>9</b> - Always Apply</em><br><em><b>10</b> - Price per hour</em><br><em><b>11</b> - Decimal Text</em><br><em><b>12</b> - Photo attachment</em><br><em><b>13</b> - Dropdown</em><br><em><b>14</b> - Address. Accepts <a href="#addresses">address</a> object</em></td>
+<td><em>string</em></td>
+<td><em><b>checkbox</b> - Checkbox</em><br><em><b>radio</b> - Radio button</em><br><em><b>stepper</b> - Stepper (incremental value)</em><br><em><b>text_field</b> - Text field</em><br><em><b>hours</b> - Hours (total hours for current booking configuration)</em><br><em><b>multiselect</b> - Multi select (autocomplete with quantity)</em><br><em><b>distance</b> - Distance</em><br><em><b>always_apply</b> - Always Apply</em><br><em><b>price_per_hour</b> - Price per hour</em><br><em><b>decimal_text</b> - Decimal Text</em><br><em><b>photo_attachment</b> - Photo attachment</em><br><em><b>dropdown</b> - Dropdown</em><br><em><b>address</b> - Address. Accepts <a href="#addresses">address</a> object</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">max_value</code></td>
