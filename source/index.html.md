@@ -1470,7 +1470,7 @@ curl\
     {
       "id": 338,
       "sort": 100,
-      "position": "init",
+      "positions": ["init"],
       "type": "cross_sell",
       "title": "have the tradesmen left the property?",
       "summary_title": "tradesman _left",
@@ -1497,7 +1497,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `sort` | *integer* | Order of item in list
-`position` | *string* | Determines where the choice should be dislpayed in the booking process:<br/>*<b>init</b> - begining of booking process. Minimum requirement to create a [booking_transaction](#booking-transactions)*<br>*<b>configurator</b> - choices describing service configuration*<br>*<b>before_summary</b> - middle screen before showing the booking summary*<br>*<b>on_summary</b> - choices at the summary screen (e.g. cross sell)*<br>*<b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)*
+`positions` | *array\<string\>* | Determines where the choice should be dislpayed in the booking process:<br/>*<b>init</b> - begining of booking process. Minimum requirement to create a [booking_transaction](#booking-transactions)*<br>*<b>configurator</b> - choices describing service configuration*<br>*<b>before_summary</b> - middle screen before showing the booking summary*<br>*<b>on_summary</b> - choices at the summary screen (e.g. cross sell)*<br>*<b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)*
 `type` | *string* | Determines how the choice and choce items are dislpayed<br/>*<b>defualt</b> - displays choice items based on type*<br>*<b>cross_sell</b> - displays choice items based on type and uses display_price*<br>
 `title` | *string* | Question text
 `summary_title` | *string* | Question short title text in summary
@@ -2722,7 +2722,7 @@ curl\
     "choices": [
       {
         "id": 338,
-        "position": "init",
+        "positions": ["init"],
         "choice_items": [
           {
             "id": 1110,
