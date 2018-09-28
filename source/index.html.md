@@ -747,15 +747,14 @@ curl\
 
 ```json
 {
-  "data": [
-    {
-      "session": {
-        "sid": "1cjkidhfqoihoufu18j0ncoy0jl7eu0d4ge1kslggp4outkh",
-        "create_time": 1429863734,
-        "expire_time": 1429906934
-      }
+  "data":{
+    "session": {
+      "sid": "1cjkidhfqoihoufu18j0ncoy0jl7eu0d4ge1kslggp4outkh",
+      "create_time": 1429863734,
+      "expire_time": 1429906934
     }
-  ],
+  }
+  ,
   "success": [
     {
       "code": 2000,
