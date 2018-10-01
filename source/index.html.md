@@ -2125,6 +2125,7 @@ curl\
       "valid_from": 1433489660,
       "valid_to": 1433489660,
       "can_cancel_until": 1433489660,
+      "can_refund_until": 1433489660,
       "expiration_reminder": 1433489660,
       "cancellation_requested": true,
       "auto_renew_enabled": true
