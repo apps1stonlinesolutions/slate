@@ -2280,12 +2280,12 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">positions</code></td>
 <td><em>array&lt;string&gt;</em></td>
-<td>Determines where the choice should be dislpayed in the booking process:<br/><em><b>init</b> - begining of booking process. Minimum requirement to create a <a href="#booking-transactions">booking_transaction</a></em><br><em><b>configurator</b> - choices describing service configuration</em><br><em><b>before_summary</b> - middle screen before showing the booking summary</em><br><em><b>on_summary</b> - choices at the summary screen (e.g. cross sell)</em><br><em><b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)</em></td>
+<td>Determines where the choice should be dislpayed in the booking process:<br/><em><b>init</b> - begining of booking process. Minimum requirement to create a <a href="#booking-transactions">booking_transaction</a></em><br><em><b>configurator</b> - choices describing service configuration</em><br><em><b>before_summary</b> - middle screen before showing the booking summary</em><br><em><b>on_availability</b> - on showing timeslots</em><br><em><b>on_summary</b> - choices at the summary screen (e.g. cross sell)</em><br><em><b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">type</code></td>
 <td><em>string</em></td>
-<td>Determines how the choice and choce items are dislpayed<br/><em><b>defualt</b> - displays choice items based on type</em><br><em><b>cross_sell</b> - displays choice items based on type and uses display_price</em><br></td>
+<td>Determines how the choice and choce items are dislpayed<br/><em><b>defualt</b> - displays choice items based on type</em><br><em><b>price_options</b> - variants of the price (e.g. with membership)</em><br><em><b>timeslot_options</b> - additional preferences for the slot (e.g. same unit)</em><br><em><b>cross_sell</b> - displays choice items based on type and uses display_price</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">title</code></td>
