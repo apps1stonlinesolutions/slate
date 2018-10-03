@@ -267,7 +267,6 @@ curl\
  -H "X-Profile: {{PROFILE_ID}}"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
- -d ''\
  "https://{{BASE_URL}}/v2/client/addresses/255"
 ```
 
