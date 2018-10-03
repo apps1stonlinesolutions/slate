@@ -603,7 +603,9 @@ curl\
       "id": 2,
       "type": "Google",
       "name": "Google",
-      "data": null,
+      "data": {
+        "client_id": "kljfadafdsfsdf.fantastic.com"
+      },
       "sort": 200
     }
   ]
@@ -621,7 +623,7 @@ Parameter | Type | Description
 `id` | *integer* | Unique identifier
 `type` | *string* | Type of social provider:<br/>*<b>Facebook</b> - Facebook*<br/>*<b>Google</b> - Google*
 `name` | *string* | Name of social provider
-`token` | *string* | Key for communication with social provider API
+`data` | *object* | Keys to identify with the social provider
 `sort` | *integer* | Order of item in list
 
 
