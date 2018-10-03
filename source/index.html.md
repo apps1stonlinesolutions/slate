@@ -2376,15 +2376,8 @@ curl\
     "type": "no_price",
     "description": "Maximum price reached",
     "choices": [
-      {
-        "id": 1,
-        "choice_items": [
-          {
-            "id": 1,
-            "value": 1
-          }
-        ]
-      }
+      1,
+      2
     ],
     "price_breakdown": [
       {
@@ -2525,7 +2518,7 @@ Parameter | Type | Description
 `price` | *[object](#price)* | Selected price breakdown
 `price.type` | *string*| Price type:<br/>*<b>no_price</b> - when user reached maximum price and will create a quote*<br>*<b>voucher_applied</b> - when prices are with applied voucher*
 `price.description` | *string* | Description text for the price
-`price.choices.choice_items` | *array\<[choice_item](#choice-items)\>* | Price choice items selected on availability
+`price.choices` | *array\<[choices](#choices)\>* | Price choices and choice items selected on availability
 `price.price_breakdown` | *object* | Breakdown of how price was calculated
 `price.price_breakdown.name` | *string* | Name of field
 `price.price_breakdown.value` | *string* | Value of field
@@ -4082,20 +4075,8 @@ curl\
     {
       "type": 1,
       "choices": [
-        {
-          "id": 1,
-          "sort": 100,
-          "required": true,
-          "title": "How many bedrooms are there?",
-          "choice_items": [
-            {
-              "id": 2,
-              "sort": 100,
-              "type": 1,
-              "title": "1 Bedroom"
-            }
-          ]
-        }
+        1,
+        2
       ]
     }
   ]
@@ -4111,15 +4092,10 @@ Checklists for performing a job
 Parameter | Type | Description
 -------- | ----- | -------
 `type` | *integer* | *<b>10</b> - After checkin*<br>*<b>20</b> - Before checkout*
-`choices` | *array* | Checklist questions
-`choices.id` | *integer* | Unique identifier
-`choices.sort` | *integer* | Order of item in list
+`choices` | *array*\<[choices](#choices)\> | Checklist questions
 `choices.required` | *boolean* | Should question be answered to send the checklist
 `choices.title` | *string* | Checklist question
-`choices.choice_items` | *array* | Question answers
-`choices.choice_items.id` | *integer* | Unique identifier
-`choices.choice_items.sort` | *integer* | Order of item in list
-`choices.choice_items.type` | *integer* | Check service.choices.[choice_items](#choice-items).type
+`choices.choice_items` | *array\<[choice_items](#choice-items)\>* | Question answers
 `choices.choice_items.title` | *string* | Checklist question answer
 
 
@@ -4147,7 +4123,7 @@ curl\
       "choice_items": [
         {
           "id": 2,
-          "value": "1"
+          "value": 1
         },
         {
           "id": 2,
