@@ -3691,15 +3691,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no_price"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maximum price reached"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="mi">2</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"price_breakdown"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -3881,9 +3874,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Description text for the price</td>
 </tr>
 <tr>
-<td><code class="prettyprint">price.choices.choice_items</code></td>
-<td><em>array&lt;<a href="#choice-items">choice_item</a>&gt;</em></td>
-<td>Price choice items selected on availability</td>
+<td><code class="prettyprint">price.choices</code></td>
+<td><em>array&lt;<a href="#choices">choices</a>&gt;</em></td>
+<td>Price choices and choice items selected on availability</td>
 </tr>
 <tr>
 <td><code class="prettyprint">price.price_breakdown</code></td>
@@ -6121,20 +6114,8 @@ curl<span class="se">\</span>
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nt">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How many bedrooms are there?"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 Bedroom"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -6161,18 +6142,8 @@ curl<span class="se">\</span>
 </tr>
 <tr>
 <td><code class="prettyprint">choices</code></td>
-<td><em>array</em></td>
+<td><em>array</em>&lt;<a href="#choices">choices</a>&gt;</td>
 <td>Checklist questions</td>
-</tr>
-<tr>
-<td><code class="prettyprint">choices.id</code></td>
-<td><em>integer</em></td>
-<td>Unique identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">choices.sort</code></td>
-<td><em>integer</em></td>
-<td>Order of item in list</td>
 </tr>
 <tr>
 <td><code class="prettyprint">choices.required</code></td>
@@ -6186,23 +6157,8 @@ curl<span class="se">\</span>
 </tr>
 <tr>
 <td><code class="prettyprint">choices.choice_items</code></td>
-<td><em>array</em></td>
+<td><em>array&lt;<a href="#choice-items">choice_items</a>&gt;</em></td>
 <td>Question answers</td>
-</tr>
-<tr>
-<td><code class="prettyprint">choices.choice_items.id</code></td>
-<td><em>integer</em></td>
-<td>Unique identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">choices.choice_items.sort</code></td>
-<td><em>integer</em></td>
-<td>Order of item in list</td>
-</tr>
-<tr>
-<td><code class="prettyprint">choices.choice_items.type</code></td>
-<td><em>integer</em></td>
-<td>Check service.choices.<a href="#choice-items">choice_items</a>.type</td>
 </tr>
 <tr>
 <td><code class="prettyprint">choices.choice_items.title</code></td>
@@ -6231,7 +6187,7 @@ curl<span class="se">\</span>
       </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
