@@ -2435,38 +2435,7 @@ curl\
     "phone": "07123456789",
     "domain_url": "fantasticcleaners.com"
   },
-  "service": {
-    "id": 1,
-    "title": "One-off",
-    "choices": [
-      {
-        "id": 338,
-        "sort": 100,
-        "title": "have the tradesmen left the property?",
-        "summary_title": "tradesman _left",
-        "required": true,
-        "choice_items": [
-          {
-            "id": 1110,
-            "sort": 100,
-            "parent_id": 0,
-            "type": 1,
-            "max_value": 0,
-            "min_value": 0,
-            "value": 0,
-            "duration": 0,
-            "summary_title": "",
-            "is_in_summary": false,
-            "title": "1 bedroom",
-            "required": true,
-            "choice_items": null,
-            "image_url": "http://image.url/here.jpg",
-            "customize": null
-          }
-        ]
-      }
-    ]
-  },
+  "service": 1,
   "can_reschedule_until": 1459953968,
   "can_edit_until": 1459953968,
   "can_cancel_until": 1459953968,
@@ -2556,7 +2525,7 @@ Parameter | Type | Description
 `price` | *[object](#price)* | Selected price breakdown
 `price.type` | *string*| Price type:<br/>*<b>no_price</b> - when user reached maximum price and will create a quote*<br>*<b>voucher_applied</b> - when prices are with applied voucher*
 `price.description` | *string* | Description text for the price
-`price.choice_items` | *array\<[choice_item](#choice-items)\>* | Price choice items selected on availability
+`price.choices.choice_items` | *array\<[choice_item](#choice-items)\>* | Price choice items selected on availability
 `price.price_breakdown` | *object* | Breakdown of how price was calculated
 `price.price_breakdown.name` | *string* | Name of field
 `price.price_breakdown.value` | *string* | Value of field
@@ -2828,7 +2797,7 @@ To set price you need to:
 * Get [avaialbility](#availabilty)
 * Pick time of the service by selecting an object from `availabilities.timeslots`
 * Combine `availabilities.date` with `availabilities.timeslots.time` and set `booking_transaction.timeslot_formatted` matching it`s format
-* From the selected `avilability.timeslots` object pick objects from `chocies.choice_items` and set `booking_transaction.price.choices` matching it`s structure
+* From the selected `avilability.timeslots` object pick objects from `choices.choice_items` and set `booking_transaction.price.choices` matching it`s structure
 
 ### Set paymethod
 
@@ -2891,37 +2860,8 @@ curl\
               "members_only"
             ],
             "choices": [
-              {
-                "id": 1,
-                "choice_items": [
-                  {
-                    "id": 1110,
-                    "sort": 100,
-                    "type": 1,
-                    "max_value": 0,
-                    "min_value": 0,
-                    "value": 0,
-                    "name": "Regular price",
-                    "image_url": "http://image.url/here.jpg",
-                    "customize": {
-                      "price_formatted": "£140"
-                    }
-                  },
-                  {
-                    "id": 1110,
-                    "sort": 100,
-                    "type": 1,
-                    "max_value": 0,
-                    "min_value": 0,
-                    "value": 0,
-                    "name": "Membership price",
-                    "image_url": "http://image.url/here.jpg",
-                    "customize": {
-                      "price_formatted": "£120"
-                    }
-                  }
-                ]
-              }
+              1,
+              2
             ]
           }
         ],
@@ -2960,7 +2900,7 @@ Parameter | Type | Description
 `availabilities.timeslots.time` | *string* | Time of timeslot
 `availabilities.timeslots.available` | *boolean* | Determines weather slot can be booked
 `availabilities.timeslots.tags` | *array\<string\>* | Visual customization of timeslot:<br/>*<b>carbon</b> - carbon slot*<br>*<b>members_only</b> - members only slot*<br>*<b>fully_booked</b> - fully booked*<br>*<b>non_working_day</b> - non working day for service*
-`availabilities.timeslots.choice_items` | *array<[choice_item](#choice-items)>* | Timeslot price options as choice items
+`availabilities.timeslots.choices` | *array<[choices](#choices)>* | Timeslot price options as choices
 `special_timeslots` | *object* | Special timeslots
 `special_timeslots.asap` | *string* | First available slot
 `special_timeslots.best_price` | *string* | Slot with lowest price
