@@ -5401,6 +5401,7 @@ This endpoint returns:
   "meta": {
     "new_version": {
       "build": 100,
+      "version": "1.2.10",
       "force_update": true,
       "download_url": "itunes://gofantastic",
       "description": "Get the latest version to be able to manage your regular bookings!"
@@ -5416,6 +5417,7 @@ Returns the latest version for the client.
 Parameter | Type | Description
 -------- | ----- | -------
 `build` | *integer* | Build number of the version
+`version` | *string* | Version number
 `force_update` | *boolean* | Determines weather update to this version is optional or required
 `download_url` | *string* | URL to get the latest version (AppStore, PlayStore, Enterprise installation file etc.)
 `description` | *string* | Message containing details for the update
