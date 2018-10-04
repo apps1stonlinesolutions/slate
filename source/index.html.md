@@ -595,7 +595,7 @@ curl\
       "type": "Facebook",
       "name": "Facebook Sign In",
       "data": {
-        "application_id": 123351117549831
+        "app_id": 1233511121351831
       },
       "sort": 100
     },
