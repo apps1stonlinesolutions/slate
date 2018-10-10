@@ -440,7 +440,6 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
  -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
- -d <span class="s1">''</span><span class="se">\</span>
  <span class="s2">"https://{{BASE_URL}}/v2/client/addresses/255"</span>
 </code></pre>
 
@@ -2080,12 +2079,12 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="p">],</span><span class="w">
       </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"tooltip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Click here"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"search_keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[\"fantastic\", \"cleaning\"]"</span><span class="w">
+        </span><span class="nt">"search_keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[\"fantastic\", \"cleaning\"]"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"logic_js"</span><span class="p">:</span><span class="w"> </span><span class="s2">"function getRequiredActionForState(items) { if (items[0].choice_item_id == \"1092\" &amp;&amp; items[0].choice_item_value == 2) { return { \"action\": \"service_redirect\", \"redirect_message_title\": \"This is more like EOT. Wanna go?\", \"redirect_message\": \"This is more like EOT. Wanna go?\", \"OK_title\": \"Go there\", \"cancel_title\": \"Not really\", \"service_id\": 23 }; } else { return null; } }"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"profile_config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.fantasticservices.com/cleaning/one-off"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"logic_js"</span><span class="p">:</span><span class="w"> </span><span class="s2">"function getRequiredActionForState(items) { if (items[0].choice_item_id == \"1092\" &amp;&amp; items[0].choice_item_value == 2) { return { \"action\": \"service_redirect\", \"redirect_message_title\": \"This is more like EOT. Wanna go?\", \"redirect_message\": \"This is more like EOT. Wanna go?\", \"OK_title\": \"Go there\", \"cancel_title\": \"Not really\", \"service_id\": 23 }; } else { return null; } }"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2195,14 +2194,14 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Represents array of search keywords for the service</td>
 </tr>
 <tr>
+<td><code class="prettyprint">customize.logic_js</code></td>
+<td><em>string</em></td>
+<td>JavaScript containing functions for modification of booking process</td>
+</tr>
+<tr>
 <td><code class="prettyprint">profile_config</code></td>
 <td><em>object</em></td>
 <td>Key-value pairs of custom attributes with different values for each Profile</td>
-</tr>
-<tr>
-<td><code class="prettyprint">logic_js</code></td>
-<td><em>string</em></td>
-<td>JavaScript containing functions for modification of booking process</td>
 </tr>
 </tbody></table>
 
@@ -2241,7 +2240,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">338</span><span class="p">,</span><span class="w">
       </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"init"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"positions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"init"</span><span class="p">],</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cross_sell"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"have the tradesmen left the property?"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"summary_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tradesman _left"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -2279,9 +2279,14 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Order of item in list</td>
 </tr>
 <tr>
-<td><code class="prettyprint">position</code></td>
+<td><code class="prettyprint">positions</code></td>
+<td><em>array&lt;string&gt;</em></td>
+<td>Determines where the choice should be dislpayed in the booking process:<br/><em><b>init</b> - begining of booking process. Minimum requirement to create a <a href="#booking-transactions">booking_transaction</a></em><br><em><b>configurator</b> - choices describing service configuration</em><br><em><b>before_summary</b> - middle screen before showing the booking summary</em><br><em><b>on_availability</b> - on showing timeslots</em><br><em><b>on_summary</b> - choices at the summary screen (e.g. cross sell)</em><br><em><b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">type</code></td>
 <td><em>string</em></td>
-<td>Determines where the choice should be dislpayed in the booking process:<br/><em><b>init</b> - begining of booking process. Minimum requirement to create a <a href="#booking-transactions">booking_transaction</a></em><br><em><b>configurator</b> - choices describing service configuration</em><br><em><b>before_summary</b> - middle screen before showing the booking summary</em><br><em><b>on_summary</b> - choices at the summary screen (e.g. cross sell)</em><br><em><b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)</em></td>
+<td>Determines how the choice and choce items are dislpayed<br/><em><b>defualt</b> - displays choice items based on type</em><br><em><b>price_options</b> - variants of the price (e.g. with membership)</em><br><em><b>timeslot_options</b> - additional preferences for the slot (e.g. same unit)</em><br><em><b>cross_sell</b> - displays choice items based on type and uses display_price</em><br><em><b>multiselect</b> - choice with a lot of choice items that has to be displayed with a search field</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">title</code></td>
@@ -2341,7 +2346,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1110</span><span class="p">,</span><span class="w">
       </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
       </span><span class="nt">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"radio"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"max_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="nt">"min_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -2350,6 +2355,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"summary_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="nt">"is_in_summary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 bedroom"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"display_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+£5"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
@@ -2388,8 +2394,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">type</code></td>
-<td><em>integer</em></td>
-<td><em><b>1</b> - Check</em><br><em><b>2</b> - Radio</em><br><em><b>3</b> - Stepper (incremental value)</em><br><em><b>4</b> - Text field</em><br><em><b>5</b> - Hours (total hours for current booking configuration)</em><br><em><b>7</b> - Multi select (autocomplete with quantity)</em><br><em><b>8</b> - Distance</em><br><em><b>9</b> - Always Apply</em><br><em><b>10</b> - Price per hour</em><br><em><b>11</b> - Decimal Text</em><br><em><b>12</b> - Photo attachment</em><br><em><b>13</b> - Dropdown</em><br><em><b>14</b> - Address. Accepts <a href="#addresses">address</a> object</em></td>
+<td><em>string</em></td>
+<td><em><b>checkbox</b> - Checkbox</em><br><em><b>radio</b> - Radio button</em><br><em><b>stepper</b> - Stepper (incremental value)</em><br><em><b>text_field</b> - Text field</em><br><em><b>hours</b> - Hours (total hours for current booking configuration)</em><br><em><b>distance</b> - Distance</em><br><em><b>always_apply</b> - Always Apply</em><br><em><b>price_per_hour</b> - Price per hour</em><br><em><b>decimal_text</b> - Decimal Text</em><br><em><b>photo_attachment</b> - Photo attachment</em><br><em><b>dropdown</b> - Dropdown</em><br><em><b>address</b> - Address. Accepts <a href="#addresses">address</a> object</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">max_value</code></td>
@@ -2430,6 +2436,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">title</code></td>
 <td><em>string</em></td>
 <td>Title of answer</td>
+</tr>
+<tr>
+<td><code class="prettyprint">display_price</code></td>
+<td><em>string</em></td>
+<td>Details on the price for displaying.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">choice_items</code></td>
@@ -3206,6 +3217,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"valid_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">1433489660</span><span class="p">,</span><span class="w">
       </span><span class="nt">"valid_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">1433489660</span><span class="p">,</span><span class="w">
       </span><span class="nt">"can_cancel_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1433489660</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"can_refund_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1433489660</span><span class="p">,</span><span class="w">
       </span><span class="nt">"expiration_reminder"</span><span class="p">:</span><span class="w"> </span><span class="mi">1433489660</span><span class="p">,</span><span class="w">
       </span><span class="nt">"cancellation_requested"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"auto_renew_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -3680,15 +3692,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no_price"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maximum price reached"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="mi">2</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"price_breakdown"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -3739,38 +3744,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
     </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07123456789"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"domain_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fantasticcleaners.com"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One-off"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">338</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"have the tradesmen left the property?"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"summary_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tradesman _left"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1110</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"max_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"min_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"summary_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"is_in_summary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 bedroom"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"service"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nt">"can_reschedule_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459953968</span><span class="p">,</span><span class="w">
   </span><span class="nt">"can_edit_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459953968</span><span class="p">,</span><span class="w">
   </span><span class="nt">"can_cancel_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459953968</span><span class="p">,</span><span class="w">
@@ -3901,9 +3875,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Description text for the price</td>
 </tr>
 <tr>
-<td><code class="prettyprint">price.choice_items</code></td>
-<td><em>array&lt;<a href="#choice-items">choice_item</a>&gt;</em></td>
-<td>Price choice items selected on availability</td>
+<td><code class="prettyprint">price.choices</code></td>
+<td><em>array&lt;<a href="#choices">choices</a>&gt;</em></td>
+<td>Price choices and choice items selected on availability</td>
 </tr>
 <tr>
 <td><code class="prettyprint">price.price_breakdown</code></td>
@@ -4204,7 +4178,7 @@ curl<span class="se">\</span>
     "choices": [
       {
         "id": 338,
-        "position": "init",
+        "positions": ["init"],
         "choice_items": [
           {
             "id": 1110,
@@ -4306,7 +4280,7 @@ curl<span class="se">\</span>
 <li>Get <a href="#availabilty">avaialbility</a></li>
 <li>Pick time of the service by selecting an object from <code class="prettyprint">availabilities.timeslots</code></li>
 <li>Combine <code class="prettyprint">availabilities.date</code> with <code class="prettyprint">availabilities.timeslots.time</code> and set <code class="prettyprint">booking_transaction.timeslot_formatted</code> matching it`s format</li>
-<li>From the selected <code class="prettyprint">avilability.timeslots</code> object pick objects from <code class="prettyprint">chocies.choice_items</code> and set <code class="prettyprint">booking_transaction.price.choices</code> matching it`s structure</li>
+<li>From the selected <code class="prettyprint">avilability.timeslots</code> object pick objects from <code class="prettyprint">choices.choice_items</code> and set <code class="prettyprint">booking_transaction.price.choices</code> matching it`s structure</li>
 </ul>
 
 <h3 id="set-paymethod">Set paymethod</h3>
@@ -4380,37 +4354,8 @@ curl<span class="se">\</span>
               </span><span class="s2">"members_only"</span><span class="w">
             </span><span class="p">],</span><span class="w">
             </span><span class="nt">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-              </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="p">{</span><span class="w">
-                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1110</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"max_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"min_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Regular price"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                      </span><span class="nt">"price_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£140"</span><span class="w">
-                    </span><span class="p">}</span><span class="w">
-                  </span><span class="p">},</span><span class="w">
-                  </span><span class="p">{</span><span class="w">
-                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1110</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"max_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"min_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Membership price"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                      </span><span class="nt">"price_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£120"</span><span class="w">
-                    </span><span class="p">}</span><span class="w">
-                  </span><span class="p">}</span><span class="w">
-                </span><span class="p">]</span><span class="w">
-              </span><span class="p">}</span><span class="w">
+              </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="mi">2</span><span class="w">
             </span><span class="p">]</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
@@ -4499,9 +4444,9 @@ curl<span class="se">\</span>
 <td>Visual customization of timeslot:<br/><em><b>carbon</b> - carbon slot</em><br><em><b>members_only</b> - members only slot</em><br><em><b>fully_booked</b> - fully booked</em><br><em><b>non_working_day</b> - non working day for service</em></td>
 </tr>
 <tr>
-<td><code class="prettyprint">availabilities.timeslots.choice_items</code></td>
-<td><em>array&lt;<a href="#choice-items">choice_item</a>&gt;</em></td>
-<td>Timeslot price options as choice items</td>
+<td><code class="prettyprint">availabilities.timeslots.choices</code></td>
+<td><em>array&lt;<a href="#choices">choices</a>&gt;</em></td>
+<td>Timeslot price options as choices</td>
 </tr>
 <tr>
 <td><code class="prettyprint">special_timeslots</code></td>
@@ -4855,14 +4800,7 @@ curl<span class="se">\</span>
     </span><span class="nt">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rusat"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+44"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"language_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07123456789"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07123456789"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2331xfasf23423rt43fsdfasDAS"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://files.dxr.cloud/PVk0poyRIuRG2"</span><span class="w">
@@ -4955,29 +4893,9 @@ curl<span class="se">\</span>
 <td>Language code user chose from Settings in XRM or app. List of languages received at <a href="#system-languages">system_languages</a></td>
 </tr>
 <tr>
-<td><code class="prettyprint">phones</code><br><em>editable</em></td>
-<td><em>array</em></td>
-<td>List of phone numbers of unit</td>
-</tr>
-<tr>
-<td><code class="prettyprint">phones.id</code></td>
-<td><em>int</em></td>
-<td>Unique identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">phones.value</code><br><em>editable</em></td>
+<td><code class="prettyprint">phone</code></td>
 <td><em>string</em></td>
-<td>Phone number</td>
-</tr>
-<tr>
-<td><code class="prettyprint">phones.default</code><br><em>editable</em></td>
-<td><em>boolean</em></td>
-<td>Is the phone the default used by the system for receiving calls and SMS</td>
-</tr>
-<tr>
-<td><code class="prettyprint">phones.sort</code><br><em>editable</em></td>
-<td><em>string</em></td>
-<td>Order in list</td>
+<td>Phone number of unit</td>
 </tr>
 <tr>
 <td><code class="prettyprint">avatar.token</code><br><em>editable</em></td>
@@ -5043,6 +4961,106 @@ curl<span class="se">\</span>
 <td><code class="prettyprint">created_at</code></td>
 <td><em>integer</em></td>
 <td>Timestamp of unit registration</td>
+</tr>
+</tbody></table>
+
+<h2 id="request-update-phone">Request update phone</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "phone": "+447123456789"
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/unit/request_update_phone"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Request change of phone number in profile. On the requested phone a validation code is sent via SMS. If code is later sent at <a href="#validate-phone">validate phone</a> endpoint the phone in <a href="#profile">profile</a> will be updated to the requested one.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;request_update_phone&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">phone</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Phone number to which a validation code will be send.</td>
+</tr>
+</tbody></table>
+
+<h2 id="validate-phone">Validate phone</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "phone": "+447123456789",
+        "validation_code": "ab12"
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/unit/validate_phone"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Validate a phone number previously requested at <a href="#request-update-phone">request update phone</a>. If validated phone in <a href="#profile">profile</a> will be updated.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;validate_phone&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">phone</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Phone number to validate</td>
+</tr>
+<tr>
+<td><code class="prettyprint">validation_code</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Validation code received via SMS</td>
 </tr>
 </tbody></table>
 
@@ -5757,6 +5775,7 @@ curl<span class="se">\</span>
 <p>Available services to cross sell for a job.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{{job_id}}/available_cross_sales&quot;</code>
+<br/>
 <code class="prettyprint">&quot;path&quot;: &quot;jobs_history/{{job_id}}/available_cross_sales&quot;</code></p>
 
 <h3 id="response-parameters">Response parameters</h3>
@@ -6096,20 +6115,8 @@ curl<span class="se">\</span>
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nt">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How many bedrooms are there?"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 Bedroom"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -6136,18 +6143,8 @@ curl<span class="se">\</span>
 </tr>
 <tr>
 <td><code class="prettyprint">choices</code></td>
-<td><em>array</em></td>
+<td><em>array</em>&lt;<a href="#choices">choices</a>&gt;</td>
 <td>Checklist questions</td>
-</tr>
-<tr>
-<td><code class="prettyprint">choices.id</code></td>
-<td><em>integer</em></td>
-<td>Unique identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">choices.sort</code></td>
-<td><em>integer</em></td>
-<td>Order of item in list</td>
 </tr>
 <tr>
 <td><code class="prettyprint">choices.required</code></td>
@@ -6161,23 +6158,8 @@ curl<span class="se">\</span>
 </tr>
 <tr>
 <td><code class="prettyprint">choices.choice_items</code></td>
-<td><em>array</em></td>
+<td><em>array&lt;<a href="#choice-items">choice_items</a>&gt;</em></td>
 <td>Question answers</td>
-</tr>
-<tr>
-<td><code class="prettyprint">choices.choice_items.id</code></td>
-<td><em>integer</em></td>
-<td>Unique identifier</td>
-</tr>
-<tr>
-<td><code class="prettyprint">choices.choice_items.sort</code></td>
-<td><em>integer</em></td>
-<td>Order of item in list</td>
-</tr>
-<tr>
-<td><code class="prettyprint">choices.choice_items.type</code></td>
-<td><em>integer</em></td>
-<td>Check service.choices.<a href="#choice-items">choice_items</a>.type</td>
 </tr>
 <tr>
 <td><code class="prettyprint">choices.choice_items.title</code></td>
@@ -6206,7 +6188,7 @@ curl<span class="se">\</span>
       </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -8138,6 +8120,7 @@ curl<span class="se">\</span>
   </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"new_version"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.10"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"force_update"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"itunes://gofantastic"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Get the latest version to be able to manage your regular bookings!"</span><span class="w">
@@ -8161,6 +8144,11 @@ curl<span class="se">\</span>
 <td><code class="prettyprint">build</code></td>
 <td><em>integer</em></td>
 <td>Build number of the version</td>
+</tr>
+<tr>
+<td><code class="prettyprint">version</code></td>
+<td><em>string</em></td>
+<td>Version number</td>
 </tr>
 <tr>
 <td><code class="prettyprint">force_update</code></td>
