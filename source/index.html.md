@@ -267,7 +267,6 @@ curl\
  -H "X-Profile: {{PROFILE_ID}}"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
- -d ''\
  "https://{{BASE_URL}}/v2/client/addresses/255"
 ```
 
@@ -1403,12 +1402,12 @@ curl\
       ],
       "customize": {
         "tooltip": "Click here",
-        "search_keywords": "[\"fantastic\", \"cleaning\"]"
+        "search_keywords": "[\"fantastic\", \"cleaning\"]",
+        "logic_js": "function getRequiredActionForState(items) { if (items[0].choice_item_id == \"1092\" && items[0].choice_item_value == 2) { return { \"action\": \"service_redirect\", \"redirect_message_title\": \"This is more like EOT. Wanna go?\", \"redirect_message\": \"This is more like EOT. Wanna go?\", \"OK_title\": \"Go there\", \"cancel_title\": \"Not really\", \"service_id\": 23 }; } else { return null; } }"
       },
       "profile_config": {
         "url": "https://www.fantasticservices.com/cleaning/one-off"
-      },
-      "logic_js": "function getRequiredActionForState(items) { if (items[0].choice_item_id == \"1092\" && items[0].choice_item_value == 2) { return { \"action\": \"service_redirect\", \"redirect_message_title\": \"This is more like EOT. Wanna go?\", \"redirect_message\": \"This is more like EOT. Wanna go?\", \"OK_title\": \"Go there\", \"cancel_title\": \"Not really\", \"service_id\": 23 }; } else { return null; } }"
+      }
     }
   ]
 }
@@ -1441,8 +1440,8 @@ Parameter | Type | Description
 `payment_methods` | *array\<[payment_method](#payment-methods)\>* | List of available payment methods for the service
 `customize` | *object* | Key-value pairs of custom attributes
 `customize.search_keywords` | *string* | Represents array of search keywords for the service
+`customize.logic_js` | *string* | JavaScript containing functions for modification of booking process
 `profile_config` | *object* | Key-value pairs of custom attributes with different values for each Profile
-`logic_js` | *string* | JavaScript containing functions for modification of booking process
 
 ### `params`
 
@@ -1471,7 +1470,8 @@ curl\
     {
       "id": 338,
       "sort": 100,
-      "position": "init",
+      "positions": ["init"],
+      "type": "cross_sell",
       "title": "have the tradesmen left the property?",
       "summary_title": "tradesman _left",
       "required": true,
@@ -1497,7 +1497,8 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `sort` | *integer* | Order of item in list
-`position` | *string* | Determines where the choice should be dislpayed in the booking process:<br/>*<b>init</b> - begining of booking process. Minimum requirement to create a [booking_transaction](#booking-transactions)*<br>*<b>configurator</b> - choices describing service configuration*<br>*<b>before_summary</b> - middle screen before showing the booking summary*<br>*<b>on_summary</b> - choices at the summary screen (e.g. cross sell)*<br>*<b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)*<br>*<b>multiselect</b> - choice with a lot of choice items that has to be displayed with a search field*
+`positions` | *array\<string\>* | Determines where the choice should be dislpayed in the booking process:<br/>*<b>init</b> - begining of booking process. Minimum requirement to create a [booking_transaction](#booking-transactions)*<br>*<b>configurator</b> - choices describing service configuration*<br>*<b>before_summary</b> - middle screen before showing the booking summary*<br>*<b>on_availability</b> - on showing timeslots*<br>*<b>on_summary</b> - choices at the summary screen (e.g. cross sell)*<br>*<b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)*
+`type` | *string* | Determines how the choice and choce items are dislpayed<br/>*<b>defualt</b> - displays choice items based on type*<br>*<b>price_options</b> - variants of the price (e.g. with membership)*<br>*<b>timeslot_options</b> - additional preferences for the slot (e.g. same unit)*<br>*<b>cross_sell</b> - displays choice items based on type and uses display_price*<br>*<b>multiselect</b> - choice with a lot of choice items that has to be displayed with a search field*
 `title` | *string* | Question text
 `summary_title` | *string* | Question short title text in summary
 `required` | *boolean* | Should the question be answered to book
@@ -1532,7 +1533,7 @@ curl\
       "id": 1110,
       "sort": 100,
       "parent_id": 0,
-      "type": 1,
+      "type": "radio",
       "max_value": 0,
       "min_value": 0,
       "value": 0,
@@ -1541,6 +1542,7 @@ curl\
       "summary_title": "",
       "is_in_summary": false,
       "title": "1 bedroom",
+      "display_price": "+£5",
       "choice_items": null,
       "image_url": "http://image.url/here.jpg",
       "customize": null
@@ -1562,7 +1564,7 @@ Parameter | Type | Description
 `id` | *integer* | Object id
 `sort` | *integer* | Order of item in list
 `parent_id` | *integer* | Parent answer (if answer is sub-answer)
-`type` | *integer* | *<b>1</b> - Check*<br>*<b>2</b> - Radio*<br>*<b>3</b> - Stepper (incremental value)*<br>*<b>4</b> - Text field*<br>*<b>5</b> - Hours (total hours for current booking configuration)*<br>*<b>8</b> - Distance*<br>*<b>9</b> - Always Apply*<br>*<b>10</b> - Price per hour*<br>*<b>11</b> - Decimal Text*<br>*<b>12</b> - Photo attachment*<br>*<b>13</b> - Dropdown*<br>*<b>14</b> - Address. Accepts [address](#addresses) object*
+`type` | *string* | *<b>checkbox</b> - Checkbox*<br>*<b>radio</b> - Radio button*<br>*<b>stepper</b> - Stepper (incremental value)*<br>*<b>text_field</b> - Text field*<br>*<b>hours</b> - Hours (total hours for current booking configuration)*<br>*<b>distance</b> - Distance*<br>*<b>always_apply</b> - Always Apply*<br>*<b>price_per_hour</b> - Price per hour*<br>*<b>decimal_text</b> - Decimal Text*<br>*<b>photo_attachment</b> - Photo attachment*<br>*<b>dropdown</b> - Dropdown*<br>*<b>address</b> - Address. Accepts [address](#addresses) object*
 `max_value` | *integer* | Maximum value of answer
 `min_value` | *integer* | Minimum value of answer
 `value` | *integer* | Default value of answer
@@ -1571,6 +1573,7 @@ Parameter | Type | Description
 `summary_title` | *string* | Answer short title text in summary
 `is_in_summary` | *boolean* | Should the answer be included in the summary of booking
 `title` | *string* | Title of answer
+`display_price` | *string* | Details on the price for displaying.
 `choice_items` | *array\<[choice_item](#choice-items)\>* | List of sub-answers for the answers
 `image_url`| *string* | List image for choice item
 `customize` | *object* | Key-value pairs of custom attributes
@@ -2123,6 +2126,7 @@ curl\
       "valid_from": 1433489660,
       "valid_to": 1433489660,
       "can_cancel_until": 1433489660,
+      "can_refund_until": 1433489660,
       "expiration_reminder": 1433489660,
       "cancellation_requested": true,
       "auto_renew_enabled": true
@@ -2373,15 +2377,8 @@ curl\
     "type": "no_price",
     "description": "Maximum price reached",
     "choices": [
-      {
-        "id": 1,
-        "choice_items": [
-          {
-            "id": 1,
-            "value": 1
-          }
-        ]
-      }
+      1,
+      2
     ],
     "price_breakdown": [
       {
@@ -2432,38 +2429,7 @@ curl\
     "phone": "07123456789",
     "domain_url": "fantasticcleaners.com"
   },
-  "service": {
-    "id": 1,
-    "title": "One-off",
-    "choices": [
-      {
-        "id": 338,
-        "sort": 100,
-        "title": "have the tradesmen left the property?",
-        "summary_title": "tradesman _left",
-        "required": true,
-        "choice_items": [
-          {
-            "id": 1110,
-            "sort": 100,
-            "parent_id": 0,
-            "type": 1,
-            "max_value": 0,
-            "min_value": 0,
-            "value": 0,
-            "duration": 0,
-            "summary_title": "",
-            "is_in_summary": false,
-            "title": "1 bedroom",
-            "required": true,
-            "choice_items": null,
-            "image_url": "http://image.url/here.jpg",
-            "customize": null
-          }
-        ]
-      }
-    ]
-  },
+  "service": 1,
   "can_reschedule_until": 1459953968,
   "can_edit_until": 1459953968,
   "can_cancel_until": 1459953968,
@@ -2553,7 +2519,7 @@ Parameter | Type | Description
 `price` | *[object](#price)* | Selected price breakdown
 `price.type` | *string*| Price type:<br/>*<b>no_price</b> - when user reached maximum price and will create a quote*<br>*<b>voucher_applied</b> - when prices are with applied voucher*
 `price.description` | *string* | Description text for the price
-`price.choice_items` | *array\<[choice_item](#choice-items)\>* | Price choice items selected on availability
+`price.choices` | *array\<[choices](#choices)\>* | Price choices and choice items selected on availability
 `price.price_breakdown` | *object* | Breakdown of how price was calculated
 `price.price_breakdown.name` | *string* | Name of field
 `price.price_breakdown.value` | *string* | Value of field
@@ -2719,7 +2685,7 @@ curl\
     "choices": [
       {
         "id": 338,
-        "position": "init",
+        "positions": ["init"],
         "choice_items": [
           {
             "id": 1110,
@@ -2825,7 +2791,7 @@ To set price you need to:
 * Get [avaialbility](#availabilty)
 * Pick time of the service by selecting an object from `availabilities.timeslots`
 * Combine `availabilities.date` with `availabilities.timeslots.time` and set `booking_transaction.timeslot_formatted` matching it`s format
-* From the selected `avilability.timeslots` object pick objects from `chocies.choice_items` and set `booking_transaction.price.choices` matching it`s structure
+* From the selected `avilability.timeslots` object pick objects from `choices.choice_items` and set `booking_transaction.price.choices` matching it`s structure
 
 ### Set paymethod
 
@@ -2888,37 +2854,8 @@ curl\
               "members_only"
             ],
             "choices": [
-              {
-                "id": 1,
-                "choice_items": [
-                  {
-                    "id": 1110,
-                    "sort": 100,
-                    "type": 1,
-                    "max_value": 0,
-                    "min_value": 0,
-                    "value": 0,
-                    "name": "Regular price",
-                    "image_url": "http://image.url/here.jpg",
-                    "customize": {
-                      "price_formatted": "£140"
-                    }
-                  },
-                  {
-                    "id": 1110,
-                    "sort": 100,
-                    "type": 1,
-                    "max_value": 0,
-                    "min_value": 0,
-                    "value": 0,
-                    "name": "Membership price",
-                    "image_url": "http://image.url/here.jpg",
-                    "customize": {
-                      "price_formatted": "£120"
-                    }
-                  }
-                ]
-              }
+              1,
+              2
             ]
           }
         ],
@@ -2957,7 +2894,7 @@ Parameter | Type | Description
 `availabilities.timeslots.time` | *string* | Time of timeslot
 `availabilities.timeslots.available` | *boolean* | Determines weather slot can be booked
 `availabilities.timeslots.tags` | *array\<string\>* | Visual customization of timeslot:<br/>*<b>carbon</b> - carbon slot*<br>*<b>members_only</b> - members only slot*<br>*<b>fully_booked</b> - fully booked*<br>*<b>non_working_day</b> - non working day for service*
-`availabilities.timeslots.choice_items` | *array<[choice_item](#choice-items)>* | Timeslot price options as choice items
+`availabilities.timeslots.choices` | *array<[choices](#choices)>* | Timeslot price options as choices
 `special_timeslots` | *object* | Special timeslots
 `special_timeslots.asap` | *string* | First available slot
 `special_timeslots.best_price` | *string* | Slot with lowest price
@@ -3204,14 +3141,7 @@ curl\
     "team": "Rusat",
     "country_code": "+44",
     "language_code": "en",
-    "phones": [
-      {
-        "id": 1,
-        "value": "07123456789",
-        "default": false,
-        "sort": 100
-      }
-    ],
+    "phone": "07123456789",
     "avatar": {
       "token": "2331xfasf23423rt43fsdfasDAS",
       "url": "https://files.dxr.cloud/PVk0poyRIuRG2"
@@ -3255,11 +3185,7 @@ Parameter | Type | Description
 `team` | *string* | Name of team the unit is assigned to
 `country_code` | *string* | Country code of area the Unit operates in
 `language_code`<br>*editable* | *string* | Language code user chose from Settings in XRM or app. List of languages received at [system_languages](#system-languages)
-`phones`<br>*editable* | *array* | List of phone numbers of unit
-`phones.id` | *int* | Unique identifier
-`phones.value`<br>*editable* | *string* | Phone number
-`phones.default`<br>*editable* | *boolean* | Is the phone the default used by the system for receiving calls and SMS
-`phones.sort`<br>*editable* | *string* | Order in list
+`phone` | *string* | Phone number of unit
 `avatar.token`<br>*editable* | *string* | File server token
 `avatar.url` | *string* | URL to avatar image
 `permissions` | *array* | List of permissions of unit
@@ -3275,6 +3201,89 @@ Parameter | Type | Description
 `created_at` | *integer* | Timestamp of unit registration
 
 
+## Request update phone
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "phone": "+447123456789"
+}'\
+ "https://{{BASE_URL}}/v2/unit/request_update_phone"
+```
+
+> The above request success response is :
+
+```json
+{
+  "success": [
+    {
+      "code": 2000,
+      "message": "Success",
+      "debug_message": null,
+      "debug_id": null
+    }
+  ]
+}
+```
+
+
+Request change of phone number in profile. On the requested phone a validation code is sent via SMS. If code is later sent at [validate phone](#validate-phone) endpoint the phone in [profile](#profile) will be updated to the requested one.
+
+`"path": "request_update_phone"`
+
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`phone`<br>*required* | *string* | Phone number to which a validation code will be send.
+
+
+## Validate phone
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "phone": "+447123456789",
+        "validation_code": "ab12"
+}'\
+ "https://{{BASE_URL}}/v2/unit/validate_phone"
+```
+
+> The above request success response is :
+
+```json
+{
+  "success": [
+    {
+      "code": 2000,
+      "message": "Success",
+      "debug_message": null,
+      "debug_id": null
+    }
+  ]
+}
+```
+
+Validate a phone number previously requested at [request update phone](#request-update-phone). If validated phone in [profile](#profile) will be updated.
+
+`"path": "validate_phone"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`phone`<br>*required* | *string* | Phone number to validate
+`validation_code`<br>*required* | *string* | Validation code received via SMS
 
 
 ## Jobs
@@ -3811,6 +3820,7 @@ Available services to cross sell for a job.
 
 
 `"path": "jobs/{{job_id}}/available_cross_sales"`
+<br/>
 `"path": "jobs_history/{{job_id}}/available_cross_sales"`
 
 ### Response parameters
@@ -4066,20 +4076,8 @@ curl\
     {
       "type": 1,
       "choices": [
-        {
-          "id": 1,
-          "sort": 100,
-          "required": true,
-          "title": "How many bedrooms are there?",
-          "choice_items": [
-            {
-              "id": 2,
-              "sort": 100,
-              "type": 1,
-              "title": "1 Bedroom"
-            }
-          ]
-        }
+        1,
+        2
       ]
     }
   ]
@@ -4095,15 +4093,10 @@ Checklists for performing a job
 Parameter | Type | Description
 -------- | ----- | -------
 `type` | *integer* | *<b>10</b> - After checkin*<br>*<b>20</b> - Before checkout*
-`choices` | *array* | Checklist questions
-`choices.id` | *integer* | Unique identifier
-`choices.sort` | *integer* | Order of item in list
+`choices` | *array*\<[choices](#choices)\> | Checklist questions
 `choices.required` | *boolean* | Should question be answered to send the checklist
 `choices.title` | *string* | Checklist question
-`choices.choice_items` | *array* | Question answers
-`choices.choice_items.id` | *integer* | Unique identifier
-`choices.choice_items.sort` | *integer* | Order of item in list
-`choices.choice_items.type` | *integer* | Check service.choices.[choice_items](#choice-items).type
+`choices.choice_items` | *array\<[choice_items](#choice-items)\>* | Question answers
 `choices.choice_items.title` | *string* | Checklist question answer
 
 
@@ -4131,7 +4124,7 @@ curl\
       "choice_items": [
         {
           "id": 2,
-          "value": "1"
+          "value": 1
         },
         {
           "id": 2,
@@ -5409,6 +5402,7 @@ This endpoint returns:
   "meta": {
     "new_version": {
       "build": 100,
+      "version": "1.2.10",
       "force_update": true,
       "download_url": "itunes://gofantastic",
       "description": "Get the latest version to be able to manage your regular bookings!"
@@ -5424,6 +5418,7 @@ Returns the latest version for the client.
 Parameter | Type | Description
 -------- | ----- | -------
 `build` | *integer* | Build number of the version
+`version` | *string* | Version number
 `force_update` | *boolean* | Determines weather update to this version is optional or required
 `download_url` | *string* | URL to get the latest version (AppStore, PlayStore, Enterprise installation file etc.)
 `description` | *string* | Message containing details for the update
