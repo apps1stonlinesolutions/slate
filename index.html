@@ -4322,15 +4322,12 @@ curl<span class="se">\</span>
 
 <h2 id="availability">Availability</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
- -X POST<span class="se">\</span>
+ -X GET<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
  -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
- -d <span class="s1">'{
-        "transaction_id": "laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"
-}'</span><span class="se">\</span>
- <span class="s2">"https://{{BASE_URL}}/v2/client/availability"</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/availability?transaction_id=laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"</span>
 </code></pre>
 
 <blockquote>
