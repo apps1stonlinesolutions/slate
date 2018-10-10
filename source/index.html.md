@@ -1497,7 +1497,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `sort` | *integer* | Order of item in list
-`position` | *string* | Determines where the choice should be dislpayed in the booking process:<br/>*<b>init</b> - begining of booking process. Minimum requirement to create a [booking_transaction](#booking-transactions)*<br>*<b>configurator</b> - choices describing service configuration*<br>*<b>before_summary</b> - middle screen before showing the booking summary*<br>*<b>on_summary</b> - choices at the summary screen (e.g. cross sell)*<br>*<b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)*
+`position` | *string* | Determines where the choice should be dislpayed in the booking process:<br/>*<b>init</b> - begining of booking process. Minimum requirement to create a [booking_transaction](#booking-transactions)*<br>*<b>configurator</b> - choices describing service configuration*<br>*<b>before_summary</b> - middle screen before showing the booking summary*<br>*<b>on_summary</b> - choices at the summary screen (e.g. cross sell)*<br>*<b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)*<br>*<b>multiselect</b> - choice with a lot of choice items that has to be displayed with a search field*
 `title` | *string* | Question text
 `summary_title` | *string* | Question short title text in summary
 `required` | *boolean* | Should the question be answered to book
@@ -1562,7 +1562,7 @@ Parameter | Type | Description
 `id` | *integer* | Object id
 `sort` | *integer* | Order of item in list
 `parent_id` | *integer* | Parent answer (if answer is sub-answer)
-`type` | *integer* | *<b>1</b> - Check*<br>*<b>2</b> - Radio*<br>*<b>3</b> - Stepper (incremental value)*<br>*<b>4</b> - Text field*<br>*<b>5</b> - Hours (total hours for current booking configuration)*<br>*<b>7</b> - Multi select (autocomplete with quantity)*<br>*<b>8</b> - Distance*<br>*<b>9</b> - Always Apply*<br>*<b>10</b> - Price per hour*<br>*<b>11</b> - Decimal Text*<br>*<b>12</b> - Photo attachment*<br>*<b>13</b> - Dropdown*<br>*<b>14</b> - Address. Accepts [address](#addresses) object*
+`type` | *integer* | *<b>1</b> - Check*<br>*<b>2</b> - Radio*<br>*<b>3</b> - Stepper (incremental value)*<br>*<b>4</b> - Text field*<br>*<b>5</b> - Hours (total hours for current booking configuration)*<br>*<b>8</b> - Distance*<br>*<b>9</b> - Always Apply*<br>*<b>10</b> - Price per hour*<br>*<b>11</b> - Decimal Text*<br>*<b>12</b> - Photo attachment*<br>*<b>13</b> - Dropdown*<br>*<b>14</b> - Address. Accepts [address](#addresses) object*
 `max_value` | *integer* | Maximum value of answer
 `min_value` | *integer* | Minimum value of answer
 `value` | *integer* | Default value of answer
