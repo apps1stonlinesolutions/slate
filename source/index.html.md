@@ -2822,15 +2822,12 @@ This endpoint returns:
 
 ```shell
 curl\
- -X POST\
+ -X GET\
  -H "Content-Type: application/json"\
  -H "X-Profile: {{PROFILE_ID}}"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
- -d '{
-        "transaction_id": "laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"
-}'\
- "https://{{BASE_URL}}/v2/client/availability"
+ "https://{{BASE_URL}}/v2/client/availability?transaction_id=laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"
 ```
 
 > The above request success response is :
