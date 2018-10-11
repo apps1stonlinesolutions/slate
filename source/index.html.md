@@ -2827,7 +2827,7 @@ curl\
  -H "X-Profile: {{PROFILE_ID}}"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
- "https://{{BASE_URL}}/v2/client/availability?transaction_id=laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"
+ "https://{{BASE_URL}}/v2/client/availability?query.transaction_id=laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"
 ```
 
 > The above request success response is :
@@ -2871,13 +2871,6 @@ Returns available slots for performing a service.
 
 `"path": "availability"`
 
-### Request parameters
-
-Parameter | Type | Description
--------- | ----- | -------
-`transaction_id` | *string* | Identifier for transaction to check availability for
-
-
 ### Response parameters
 
 Parameter | Type | Description
@@ -2900,6 +2893,7 @@ Parameter | Type | Description
 
 Parameter | Type | Default | Description
 -------- | ----- | ----- | -------
+`query.transaction_id` | *string* | *none* |Identifier for transaction to check availability for
 `query.from_date` | *string* | *today* | Filter availability from this date on (date string with format 2018-02-25)
 `query.to_date` | *string* | *a week from today* | Filter availability to this date (date string with format 2018-02-25)
 
