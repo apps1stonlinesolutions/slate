@@ -4327,7 +4327,7 @@ curl<span class="se">\</span>
  -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
- <span class="s2">"https://{{BASE_URL}}/v2/client/availability?transaction_id=laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/availability?query.transaction_id=laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"</span>
 </code></pre>
 
 <blockquote>
@@ -4369,22 +4369,6 @@ curl<span class="se">\</span>
 <p>Returns available slots for performing a service.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;availability&quot;</code></p>
-
-<h3 id="request-parameters">Request parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">transaction_id</code></td>
-<td><em>string</em></td>
-<td>Identifier for transaction to check availability for</td>
-</tr>
-</tbody></table>
 
 <h3 id="response-parameters">Response parameters</h3>
 
@@ -4472,6 +4456,12 @@ curl<span class="se">\</span>
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><code class="prettyprint">query.transaction_id</code></td>
+<td><em>string</em></td>
+<td><em>none</em></td>
+<td>Identifier for transaction to check availability for</td>
+</tr>
 <tr>
 <td><code class="prettyprint">query.from_date</code></td>
 <td><em>string</em></td>
