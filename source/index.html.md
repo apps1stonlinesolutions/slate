@@ -4495,6 +4495,96 @@ Parameter | Type | Description
 `name` | *string* | Name of day off reason
 `sort` | *integer* | Order of item in list
 
+## Tasks
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/tasks"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "id": 123,
+      "source": "from_me",
+      "type_id": 123,
+      "job": 123,
+      "notes": [
+        {
+          "text": "My old uniform is looking bad. I need a new one",
+          "created_at": 1539161269,
+          "source": "from_me"
+        }
+      ],
+      "status": "open",
+      "sort": 100
+    }
+  ]
+}
+```
+
+Unit can create tasks to partners and vice versa. Notes can be added from both sides.
+
+`"path": "tasks"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`source` | *string* | Who created the task:<br>*<b>from_me</b> - Creted by unit*<br>*<b>for_me</b> - Created by partner for unit*
+`type_id` | *integer* | Identifier of [task type](#task-types) chosen on task creation
+`job` | *object\<[job](#jobs)\>* | [Job](#jobs) related to task
+`notes` | *array* | List of notes on the task
+`status` | *string* | <br>*<b>open</b> - Task still not resolved*<br>*<b>closed</b> - Task resolved*
+`sort` | *integer* | Order of item in list
+
+
+## Task types
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/task_types"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Distance",
+      "sort": 100
+    }
+  ]
+}
+```
+
+When tasks are craeted they need a type.
+
+`"path": "task_types"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`name` | *string* | Name of the task type
+`sort` | *integer* | Order of item in list
+
+
 
 ## Feedback
 
