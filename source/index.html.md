@@ -2546,6 +2546,12 @@ Parameter | Type | Description
 `documents` | *array* | Documents related to the booking
 `service_summary` | *array* | Summary for processed booking
 
+### `params`
+
+Parameter | Type   | Default | Description
+-------- | ---------- | ---- | -------
+`query.from_date` | *integer* | *today* | UTC time stamp to filter bookings by timeslot after a date
+`query.to_date` | *integer* | *9999999999* | UTC time stamp to filter bookings by timeslot before a date
 
 ## Past bookings
 
@@ -2567,7 +2573,7 @@ Past [bookings](#bookings) for a client in descending order based on appointment
 
 Parameter | Type   | Default | Description
 -------- | ---------- | ---- | -------
-`query.from_date` | *integer* | *one year ago* | UTC time stamp to filter bookings by timeslot after a date
+`query.from_date` | *integer* | *0* | UTC time stamp to filter bookings by timeslot after a date
 `query.to_date` | *integer* | *today* | UTC time stamp to filter bookings by timeslot before a date
 
 
