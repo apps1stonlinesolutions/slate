@@ -4006,6 +4006,30 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">query.from_date</code></td>
+<td><em>integer</em></td>
+<td><em>today</em></td>
+<td>UTC time stamp to filter bookings by timeslot after a date</td>
+</tr>
+<tr>
+<td><code class="prettyprint">query.to_date</code></td>
+<td><em>integer</em></td>
+<td><em>9999999999</em></td>
+<td>UTC time stamp to filter bookings by timeslot before a date</td>
+</tr>
+</tbody></table>
+
 <h2 id="past-bookings">Past bookings</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
@@ -4033,7 +4057,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">query.from_date</code></td>
 <td><em>integer</em></td>
-<td><em>one year ago</em></td>
+<td><em>0</em></td>
 <td>UTC time stamp to filter bookings by timeslot after a date</td>
 </tr>
 <tr>
