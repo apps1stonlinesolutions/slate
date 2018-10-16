@@ -2563,6 +2563,14 @@ Past [bookings](#bookings) for a client in descending order based on appointment
 
 `"path": "past_bookings"`
 
+### `params`
+
+Parameter | Type   | Default | Description
+-------- | ---------- | ---- | -------
+`query.from_date` | *integer* | *one year ago* | UTC time stamp to filter bookings by timeslot after a date
+`query.to_date` | *integer* | *today* | UTC time stamp to filter bookings by timeslot before a date
+
+
 ## Avatar
 
 ```shell

@@ -28,3 +28,7 @@ It can be interger or string. If it is integer it is with prefix `id:` in path (
 ## Resource names
 
 If it's in singular form (e.g. `profile`) it returns one object `data: { }`. If it is in plural form (e.g. `categories`) it will return an array `data: [{ }, { }]`
+
+## Setting child objects
+
+When setting a child object (e.g. `job.payment_method`) pass only the `id` (e.g. `{ payment_metohd: 1}`). Don't write objects with expanded attributes.
