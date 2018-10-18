@@ -428,11 +428,15 @@ Details on specific API behaviours on different actions.
 
 ## Setting child objects
 
-When setting a child object (e.g. `job.payment_method`) pass only the `id` (e.g. `{ payment_metohd: 1}`). Don't write objects with expanded attributes.
+When setting a child object pass only the `id` not the full objects.
+
+For example to update `job`'s child `payment_method` object at `...unit/jobs` path post:
+
+ `{"id": 3, "payment_method": 1}`
 
 ## Updating a booking form
 
-Only changes are passed. Radio button changes should pass the selected value + the previously selected with value:0.
+When updating a booking form only changes are posted. If user ticks a checkbox only the choice item of the checkbox is sent. If user taps a radio button the selected choice item and the one that got unselected is posted.
 
 > Examples booking transaction:
 
