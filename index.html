@@ -625,11 +625,15 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <h2 id="setting-child-objects">Setting child objects</h2>
 
-<p>When setting a child object (e.g. <code class="prettyprint">job.payment_method</code>) pass only the <code class="prettyprint">id</code> (e.g. <code class="prettyprint">{ payment_metohd: 1}</code>). Don&rsquo;t write objects with expanded attributes.</p>
+<p>When setting a child object pass only the <code class="prettyprint">id</code> not the full objects.</p>
+
+<p>For example to update <code class="prettyprint">job</code>&rsquo;s child <code class="prettyprint">payment_method</code> object at <code class="prettyprint">...unit/jobs</code> path post:</p>
+
+<p><code class="prettyprint">{&quot;id&quot;: 3, &quot;payment_method&quot;: 1}</code></p>
 
 <h2 id="updating-a-booking-form">Updating a booking form</h2>
 
-<p>Only changes are passed. Radio button changes should pass the selected value + the previously selected with value:0.</p>
+<p>When updating a booking form only changes are posted. If user ticks a checkbox only the choice item of the checkbox is sent. If user taps a radio button the selected choice item and the one that got unselected is posted.</p>
 
 <blockquote>
 <p>Examples booking transaction:</p>
