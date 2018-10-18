@@ -581,31 +581,43 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <h1 id="conventions">Conventions</h1>
 
-<p>Description of expected API characteristics.</p>
+<p>Description of API characteristics.</p>
 
 <h2 id="resource-names">Resource names</h2>
 
-<p>If it&rsquo;s in singular form (e.g. <code class="prettyprint">profile</code>) it returns one object <code class="prettyprint">data: { }</code>. If it is in plural form (e.g. <code class="prettyprint">categories</code>) it will return an array <code class="prettyprint">data: [{ }, { }]</code></p>
+<p>If last path component name is in singular form (e.g. <code class="prettyprint">profile</code>) response data will be returned in an object <code class="prettyprint">data: { }</code>. If it is in plural form (e.g. <code class="prettyprint">categories</code>) response data will be returned in an array <code class="prettyprint">data: [{ }, { }]</code></p>
 
 <h2 id="attribute-names">Attribute names</h2>
 
-<p>{{resource name}} or {{resource name}}_id.</p>
+<p>All child objects can be expanded or collapsed. By default they are collapsed to and id. For example:</p>
 
-<p>If we don&rsquo;t have expanded version of the object we use only <code class="prettyprint">object_id</code></p>
+<p><code class="prettyprint">job.payment_method: 3</code> - object is collapsed and we see only it&rsquo;s id. It can be expanded to a payment method object.</p>
 
-<p>Example:</p>
+<p>If the child object will be never expanded the name will have <code class="prettyprint">_id</code> suffix and will look like this:</p>
 
-<p><code class="prettyprint">job.payment_method</code> - object is expanded and we use the name of the object</p>
+<p><code class="prettyprint">job.payment_method_id: 3</code></p>
 
-<p><code class="prettyprint">task.type_id</code> - type is never expanded so we use name of the object with <code class="prettyprint">_id</code> suffix</p>
+<p>If we want to set <code class="prettyprint">job.payment_method</code> we always use it&rsquo;s id. Check <a href="#setting-child-objects">setting child objects</a></p>
 
 <h2 id="id">id</h2>
 
-<p>It can be interger or string. If it is integer it is with prefix <code class="prettyprint">id:</code> in path (e.g. &hellip;<code class="prettyprint">v2/client/register_token_infos/id:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&quot;</code>)</p>
+<p>Every object has <code class="prettyprint">id</code>. It can be interger or string. If it is string it is with prefix <code class="prettyprint">id:</code> in path.</p>
+
+<p>Example object:</p>
+
+<p><code class="prettyprint">register_token_info.id: &quot;xVCJ9&quot;</code></p>
+
+<p>To read resource path would be:</p>
+
+<p><code class="prettyprint">...v2/client/register_token_infos/id:xVCJ9&quot;</code></p>
 
 <h2 id="gropuing-params-in-query">Gropuing params in query</h2>
 
-<p>Any endpoint specific parameters are in <code class="prettyprint">query</code> object.</p>
+<p>Any endpoint <code class="prettyprint">params</code> specific to an endpoint are wrapped in a <code class="prettyprint">query</code> object.</p>
+
+<p>For example if we want to pass <code class="prettyprint">from_date</code> parameter to <code class="prettyprint">register_token_infos</code> endpoint it will look like this:</p>
+
+<p><code class="prettyprint">...v2/client/register_token_infos/id:xVCJ9&quot;?query[from_date]=1539862181</code></p>
 
 <h1 id="behaviour">Behaviour</h1>
 
