@@ -384,31 +384,43 @@ Parameter | Type | Description
 
 # Conventions
 
-Description of expected API characteristics.
+Description of API characteristics.
 
 ## Resource names
 
-If it's in singular form (e.g. `profile`) it returns one object `data: { }`. If it is in plural form (e.g. `categories`) it will return an array `data: [{ }, { }]`
+If last path component name is in singular form (e.g. `profile`) response data will be returned in an object `data: { }`. If it is in plural form (e.g. `categories`) response data will be returned in an array `data: [{ }, { }]`
 
 ## Attribute names 
 
-{{resource name}} or {{resource name}}_id.
+All child objects can be expanded or collapsed. By default they are collapsed to and id. For example:
 
-If we don't have expanded version of the object we use only `object_id`
+`job.payment_method: 3` - object is collapsed and we see only it's id. It can be expanded to a payment method object.
 
-Example:
+If the child object will be never expanded the name will have `_id` suffix and will look like this:
 
-`job.payment_method` - object is expanded and we use the name of the object
+`job.payment_method_id: 3`
 
-`task.type_id` - type is never expanded so we use name of the object with `_id` suffix
+If we want to set `job.payment_method` we always use it's id. Check [setting child objects](#setting-child-objects)
 
 ## id
 
-It can be interger or string. If it is integer it is with prefix `id:` in path (e.g. ...`v2/client/register_token_infos/id:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"`)
+Every object has `id`. It can be interger or string. If it is string it is with prefix `id:` in path.
+
+Example object:
+
+`register_token_info.id: "xVCJ9"`
+
+To read resource path would be:
+
+`...v2/client/register_token_infos/id:xVCJ9"`
 
 ## Gropuing params in query
 
-Any endpoint specific parameters are in `query` object.
+Any endpoint `params` specific to an endpoint are wrapped in a `query` object.
+
+For example if we want to pass `from_date` parameter to `register_token_infos` endpoint it will look like this:
+
+`...v2/client/register_token_infos/id:xVCJ9"?query[from_date]=1539862181`
 
 # Behaviour
 
