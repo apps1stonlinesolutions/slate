@@ -3745,7 +3745,7 @@ curl\
           "from": 0,
           "to": 1534993201
         },
-        "can_attach_photo": {
+        "can_add_attachment": {
           "from": 0,
           "to": 1534993201
         },
@@ -3753,7 +3753,7 @@ curl\
           "from": 0,
           "to": 999999999
         },
-        "can_call_cs": {
+        "can_call_office": {
           "from": 0,
           "to": 1534993201
         }
