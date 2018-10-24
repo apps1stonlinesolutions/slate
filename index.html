@@ -1503,6 +1503,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><em>object</em></td>
 <td>Logged in user with expanded avatar, phones, addresses, payment details and last 10 bookings.</td>
 </tr>
+<tr>
+<td><code class="prettyprint">register_details</code></td>
+<td><em>object</em></td>
+<td>If user doesn&rsquo;t exist account details may be returned to pre-fill a registration form. Field names and structure matches <a href="#register">register</a> parameters.</td>
+</tr>
 </tbody></table>
 
 <p>This endpoint returns:</p>
@@ -8884,6 +8889,10 @@ curl<span class="se">\</span>
 <tr>
 <td>5511</td>
 <td>Social account not verified</td>
+</tr>
+<tr>
+<td>5525</td>
+<td>Account doesn&rsquo;t exist</td>
 </tr>
 </tbody></table>
 
