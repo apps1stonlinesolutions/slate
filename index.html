@@ -7070,6 +7070,7 @@ curl<span class="se">\</span>
       </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My old uniform is looking bad. I need a new one"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1539161269</span><span class="p">,</span><span class="w">
           </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"from_me"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -7128,6 +7129,26 @@ curl<span class="se">\</span>
 <td><code class="prettyprint">notes</code></td>
 <td><em>array</em></td>
 <td>List of notes on the task</td>
+</tr>
+<tr>
+<td><code class="prettyprint">notes.text</code></td>
+<td><em>string</em></td>
+<td>Content of note</td>
+</tr>
+<tr>
+<td><code class="prettyprint">notes.sender</code></td>
+<td><em>string</em></td>
+<td>Author of note</td>
+</tr>
+<tr>
+<td><code class="prettyprint">notes.created_at</code></td>
+<td><em>integer</em></td>
+<td>When was note created in UTC timestamp</td>
+</tr>
+<tr>
+<td><code class="prettyprint">notes.source</code></td>
+<td><em>string</em></td>
+<td>Who created the note:<br><em><b>from_me</b> - Creted by unit</em><br><em><b>for_me</b> - Created by partner for unit</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">status</code></td>
