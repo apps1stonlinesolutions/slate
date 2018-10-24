@@ -4778,6 +4778,7 @@ curl\
       "notes": [
         {
           "text": "My old uniform is looking bad. I need a new one",
+          "sender": "John Doe",
           "created_at": 1539161269,
           "source": "from_me"
         }
@@ -4804,6 +4805,10 @@ Parameter | Type | Description
 `type_id` | *integer* | Identifier of [task type](#task-types) chosen on task creation
 `job` | *object\<[job](#jobs)\>* | [Job](#jobs) related to task
 `notes` | *array* | List of notes on the task
+`notes.text` | *string* | Content of note
+`notes.sender` | *string* | Author of note
+`notes.created_at` | *integer* | When was note created in UTC timestamp
+`notes.source` | *string* | Who created the note:<br>*<b>from_me</b> - Creted by unit*<br>*<b>for_me</b> - Created by partner for unit*
 `status` | *string* | <br>*<b>open</b> - Task still not resolved*<br>*<b>closed</b> - Task resolved*
 `sort` | *integer* | Order of item in list
 
