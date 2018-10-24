@@ -4770,6 +4770,8 @@ curl\
   "data": [
     {
       "id": 123,
+      "subject": "I need new uniform",
+      "description": "My old uniform lost color. Can I get a new one? Thank you.",
       "source": "from_me",
       "type_id": 123,
       "job": 123,
@@ -4796,6 +4798,8 @@ Unit can create tasks to partners and vice versa. Notes can be added from both s
 Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
+`subject` | *string* | What is the task about
+`description` | *string* | Details on the task
 `source` | *string* | Who created the task:<br>*<b>from_me</b> - Creted by unit*<br>*<b>for_me</b> - Created by partner for unit*
 `type_id` | *integer* | Identifier of [task type](#task-types) chosen on task creation
 `job` | *object\<[job](#jobs)\>* | [Job](#jobs) related to task
