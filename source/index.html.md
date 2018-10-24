@@ -1056,6 +1056,7 @@ Parameter | Type | Description
 `session.create_time` | *integer* | Session creation time in UTC timestamp
 `session.expire_time` | *integer* | Session expiration time in UTC timestamp
 `user` | *object* | Logged in user with expanded avatar, phones, addresses, payment details and last 10 bookings.
+`register_details` | *object* | If user doesn't exist account details may be returned to pre-fill a registration form. Field names and structure matches [register](#register) parameters.
 
 This endpoint returns:
 

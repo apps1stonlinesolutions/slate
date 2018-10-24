@@ -24,6 +24,7 @@ Error Code | Meaning
 5509 | Invalid social_provider_id
 5510 | Invalid client credentials
 5511 | Social account not verified
+5525 | Account doesn't exist
 
 ## Register errors
 Error Code | Meaning
