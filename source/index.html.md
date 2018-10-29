@@ -4071,7 +4071,7 @@ curl\
     {
       "service_title": "One-Off Cleaning",
       "cross_sale_bonus": "£2",
-      "cross_sale_URL": "www.fantasticservices.com/upsell?serviceId=12&clientId=23512&proRefNumber=32143BST",
+      "cross_sale_url": "www.fantasticservices.com/upsell?serviceId=12&clientId=23512&proRefNumber=32143BST",
       "sort": 100
     }
   ]
@@ -4091,7 +4091,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `service_title` | *string* | Title of service to cross sale
 `cross_sale_bonus` | *string* | Bonus on completion of cross sold service
-`cross_sale_URL` | *string* | URL to start cross selling the service
+`cross_sale_url` | *string* | URL to start cross selling the service
 `sort` | *integer* | Order of item in list
 
 This endpoint returns:
