@@ -212,8 +212,8 @@ curl\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
  -d '{
-  "address_line_1": "9 Apt.",
-  "address_line_2": "24 Red Lion Street",
+  "address_line_one": "9 Apt.",
+  "address_line_two": "24 Red Lion Street",
   "postcode": "SW12 2TN",
   "lat": 51.604903,
   "lng": -0.457022
@@ -5766,7 +5766,7 @@ curl\
   "path": "https://middlepoint-dev.1dxr.com/v2/client/addresses",
   "message": "Invalid path",
   "body": {
-    "address_line_1": "Red Lion Street 24",
+    "address_line_one": "Red Lion Street 24",
     "postcode": "22"
   },
   "external_identifier": "AccountViewController",
