@@ -2560,22 +2560,29 @@ curl\
 
 ```json
 {
-  "id": 1,
-  "description": "Business card",
-  "label": "**** **** **** 1234",
-  "type": "Stripe",
-  "payment_provider_id": 3,
-  "available_for_payment_methods": [1, 2],
-  "data": {
-    "token": "231231jsklfhaksj231§2",
-    "device_data": "shdyjtyruhdfgfsdgfdsgdsf",
-    "brand": "visa",
-    "last_four_digit": "3344",
-    "expiration_year": "2016",
-    "expiration_month": "2"
-  },
-  "default": true,
-  "sort": 100
+  "data": [
+    {
+      "id": 1,
+      "description": "Business card",
+      "label": "**** **** **** 1234",
+      "type": "Stripe",
+      "payment_provider_id": 3,
+      "available_for_payment_methods": [
+        1,
+        2
+      ],
+      "data": {
+        "token": "231231jsklfhaksj231§2",
+        "device_data": "shdyjtyruhdfgfsdgfdsgdsf",
+        "brand": "visa",
+        "last_four_digit": "3344",
+        "expiration_year": "2016",
+        "expiration_month": "2"
+      },
+      "default": true,
+      "sort": 100
+    }
+  ]
 }
 ```
 
@@ -2626,133 +2633,137 @@ curl\
 
 ```json
 {
-  "id": "laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas",
-  "reference_number": "1042MB",
-  "timeslot": 1525343435,
-  "timeslot_formatted": "2015-03-24 10:00",
-  "price": {
-    "type": "no_price",
-    "description": "Maximum price reached",
-    "choices": [
-      1,
-      2
-    ],
-    "price_breakdown": [
-      {
-        "name": "Membership price",
-        "value": "£49",
-        "description": "Yearly fee payed once upon booking",
-        "type": "membership"
+  "data": [
+    {
+      "id": "laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas",
+      "reference_number": "1042MB",
+      "timeslot": 1525343435,
+      "timeslot_formatted": "2015-03-24 10:00",
+      "price": {
+        "type": "no_price",
+        "description": "Maximum price reached",
+        "choices": [
+          1,
+          2
+        ],
+        "price_breakdown": [
+          {
+            "name": "Membership price",
+            "value": "£49",
+            "description": "Yearly fee payed once upon booking",
+            "type": "membership"
+          },
+          {
+            "name": "Service price",
+            "value": "£80",
+            "description": null,
+            "type": "service_price"
+          },
+          {
+            "name": "Voucher discount",
+            "value": "-£5",
+            "description": "Reached minimum for service",
+            "type": "voucher"
+          },
+          {
+            "name": "Credit used",
+            "value": "£25",
+            "description": "All available credit is used for this booking",
+            "type": "credit"
+          },
+          {
+            "name": "Total:",
+            "value": "£99",
+            "description": "All available credit is used for this booking",
+            "type": "total"
+          }
+        ]
       },
-      {
-        "name": "Service price",
-        "value": "£80",
-        "description": null,
-        "type": "service_price"
+      "email": "john.doe@test.test",
+      "phones": [
+        1
+      ],
+      "work_time": 120,
+      "payment_method": 3,
+      "payment_method_title": "Cash",
+      "paymethod": 1,
+      "voucher": "GO10OFF",
+      "feedback_rate": 0,
+      "online": true,
+      "online_status": 20,
+      "source": {
+        "phone": "07123456789",
+        "domain_url": "fantasticcleaners.com"
       },
-      {
-        "name": "Voucher discount",
-        "value": "-£5",
-        "description": "Reached minimum for service",
-        "type": "voucher"
-      },
-      {
-        "name": "Credit used",
-        "value": "£25",
-        "description": "All available credit is used for this booking",
-        "type": "credit"
-      },
-      {
-        "name": "Total:",
-        "value": "£99",
-        "description": "All available credit is used for this booking",
-        "type": "total"
-      }
-    ]
-  },
-  "email": "john.doe@test.test",
-  "phones": [
-    1
-  ],
-  "work_time": 120,
-  "payment_method": 3,
-  "payment_method_title": "Cash",
-  "paymethod": 1,
-  "voucher": "GO10OFF",
-  "feedback_rate": 0,
-  "online": true,
-  "online_status": 20,
-  "source": {
-    "phone": "07123456789",
-    "domain_url": "fantasticcleaners.com"
-  },
-  "service": 1,
-  "can_reschedule_until": 1459953968,
-  "can_edit_until": 1459953968,
-  "can_cancel_until": 1459953968,
-  "address_display_text": "SW12 2TH, Red Lion Street 24",
-  "comments": [
-    {
-      "id": 123,
-      "created_at": 15433454354,
-      "text": "i have a big dog"
-    }
-  ],
-  "client_attached_files": [
-    {
-      "url": "http://image.url.jpg",
-      "token": "_ft5_cfq_o7_t2_r_iq_ywj_h_wq3s_vrp_r_r7f9_yyy85_p8a_pgc_m_y_c5ywke1f_v_pe_btfeys_p",
-      "note": ""
-    },
-    {
-      "url": "http://image.url.jpg",
-      "token": "_ft5_cfq_o7_t2_r_iq_ywj_h_wq3s_vrp_r_r7f9_yyy85_p8a_pgc_m_y_c5ywke1f_v_pe_btfeys_p"
-    }
-  ],
-  "documents": [
-    {
-      "type": 1,
-      "title": "_invoice _s_t_l9099",
-      "num": "_s_t_l9099",
-      "date_formatted": "01.01.2018",
-      "url": "http://doc.url",
-      "mime_type": "application/pdf"
-    },
-    {
-      "type": 2,
-      "title": "_credit note _i_n_v-_s_t_l0316",
-      "num": "_c_n-_s_t_l0316",
-      "url": "http://doc.url",
-      "mime_type": "application/pdf"
-    },
-    {
-      "type": 3,
-      "title": "_proform _p9099",
-      "num": "_p9099",
-      "url": "http://doc.url",
-      "mime_type": "application/pdf"
-    }
-  ],
-  "service_summary": [
-    {
-      "title": "_one-off",
-      "type": "service"
-    },
-    {
-      "title": "1 _bedroom",
-      "type": "property"
-    },
-    {
-      "title": "_hoover and mop floor",
-      "type": "item"
-    },
-    {
-      "title": "_dust tops, lampshades, pictures",
-      "type": "item"
-    },
-    {
-      "title": "_clean and wipe skirting board",
-      "type": "item"
+      "service": 1,
+      "can_reschedule_until": 1459953968,
+      "can_edit_until": 1459953968,
+      "can_cancel_until": 1459953968,
+      "address_display_text": "SW12 2TH, Red Lion Street 24",
+      "comments": [
+        {
+          "id": 123,
+          "created_at": 15433454354,
+          "text": "i have a big dog"
+        }
+      ],
+      "client_attached_files": [
+        {
+          "url": "http://image.url.jpg",
+          "token": "_ft5_cfq_o7_t2_r_iq_ywj_h_wq3s_vrp_r_r7f9_yyy85_p8a_pgc_m_y_c5ywke1f_v_pe_btfeys_p",
+          "note": ""
+        },
+        {
+          "url": "http://image.url.jpg",
+          "token": "_ft5_cfq_o7_t2_r_iq_ywj_h_wq3s_vrp_r_r7f9_yyy85_p8a_pgc_m_y_c5ywke1f_v_pe_btfeys_p"
+        }
+      ],
+      "documents": [
+        {
+          "type": 1,
+          "title": "_invoice _s_t_l9099",
+          "num": "_s_t_l9099",
+          "date_formatted": "01.01.2018",
+          "url": "http://doc.url",
+          "mime_type": "application/pdf"
+        },
+        {
+          "type": 2,
+          "title": "_credit note _i_n_v-_s_t_l0316",
+          "num": "_c_n-_s_t_l0316",
+          "url": "http://doc.url",
+          "mime_type": "application/pdf"
+        },
+        {
+          "type": 3,
+          "title": "_proform _p9099",
+          "num": "_p9099",
+          "url": "http://doc.url",
+          "mime_type": "application/pdf"
+        }
+      ],
+      "service_summary": [
+        {
+          "title": "_one-off",
+          "type": "service"
+        },
+        {
+          "title": "1 _bedroom",
+          "type": "property"
+        },
+        {
+          "title": "_hoover and mop floor",
+          "type": "item"
+        },
+        {
+          "title": "_dust tops, lampshades, pictures",
+          "type": "item"
+        },
+        {
+          "title": "_clean and wipe skirting board",
+          "type": "item"
+        }
+      ]
     }
   ]
 }
@@ -5179,28 +5190,32 @@ curl\
 
 ```json
 {
-  "id": 1,
-  "guid": "98z07v980vbn98790zx7v9c8vx7890xzc8v7",
-  "push_token": "98z07v980vbn98790zx7v9c8vx7890xzc8v7",
-  "build": 231,
-  "version": "1.15.2",
-  "device": "iPhone 6S",
-  "device_resolution": "1915x949",
-  "os": "iOS",
-  "os_version": "8.1.1",
-  "db_size": 25.4,
-  "client_application_size": 25.4,
-  "battery_usage": 25.4,
-  "data_usage": 25.4,
-  "profile": "UnitedKingdom",
-  "browser": "Chrome",
-  "browser_version": "63.0.3239.132",
-  "browser_language": "en-US",
-  "browser_resolution": "1915x949",
-  "application": {
-    "id": 1,
-    "title": "BFantastic iOS"
-  }
+  "data": [
+    {
+      "id": 1,
+      "guid": "98z07v980vbn98790zx7v9c8vx7890xzc8v7",
+      "push_token": "98z07v980vbn98790zx7v9c8vx7890xzc8v7",
+      "build": 231,
+      "version": "1.15.2",
+      "device": "iPhone 6S",
+      "device_resolution": "1915x949",
+      "os": "iOS",
+      "os_version": "8.1.1",
+      "db_size": 25.4,
+      "client_application_size": 25.4,
+      "battery_usage": 25.4,
+      "data_usage": 25.4,
+      "profile": "UnitedKingdom",
+      "browser": "Chrome",
+      "browser_version": "63.0.3239.132",
+      "browser_language": "en-US",
+      "browser_resolution": "1915x949",
+      "application": {
+        "id": 1,
+        "title": "BFantastic iOS"
+      }
+    }
+  ]
 }
 ```
 
