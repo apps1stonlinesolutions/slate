@@ -4789,6 +4789,7 @@ curl\
       "job": 123,
       "notes": [
         {
+          "id": 345,
           "text": "My old uniform is looking bad. I need a new one",
           "author": "John Doe",
           "created_at": 1539161269,
