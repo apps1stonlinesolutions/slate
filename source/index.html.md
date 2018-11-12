@@ -3427,7 +3427,9 @@ curl\
       "has_to_send_summary_on_checkout": true,
       "do_not_track_location": false,
       "do_not_track_geofence": false,
-      "can_set_availability": false
+      "can_set_availability": false,
+      "can_view_tasks": false,
+      "can_create_tasks": false
     },
     "user_applications": [
       1
@@ -3470,6 +3472,8 @@ Parameter | Type | Description
 `permissions.do_not_track_location` | *boolean* | Stops unit from sending updates for current location
 `permissions.do_not_track_geofence` | *boolean* | Stops unit from sending updates for entering and leaving areas around bookings
 `permissions.can_set_availability` | *boolean* | Can unit set it's availability
+`permissions.can_view_tasks` | *boolean* | Can unit view tasks section
+`permissions.can_create_tasks` | *boolean* | Can unit create new tasks
 `available_for_ondemand_jobs` | *boolean*  | Shows weather Pro accepts on-demand jobs
 `created_at` | *integer* | Timestamp of unit registration
 
