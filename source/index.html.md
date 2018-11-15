@@ -2689,7 +2689,6 @@ curl\
       "paymethod": 1,
       "voucher": "GO10OFF",
       "feedback_rate": 0,
-      "online": true,
       "online_status": 20,
       "source": {
         "phone": "07123456789",
@@ -2799,7 +2798,6 @@ Parameter | Type | Description
 `paymethods`<br>*editable* | *[object](#paymethods)* | Selected paymethod for the booking (particular credit card etc.)
 `voucher`<br>*editable* | *string* | Discount voucher code used for booking
 `feedback_rate`<br>*editable* | *integer* | Rating of client for booking service
-`online` | *boolean* | Determines weather booking was made online or via the phone
 `online_status` | *integer* | Status of the booking:<br/>*<b>10</b> - Quote*<br>*<b>20</b> - Booked*<br>*<b>30</b> - Cancelled*
 `source` | object | Tracking source of the booking for marketing campaigns or website. You can create a tracking source after you've purchased your tracking phone number(s) and then assign that new tracking source to specific tracking.
 `source.phone` | string | Tracking source phone of the website or marketing campaigns
