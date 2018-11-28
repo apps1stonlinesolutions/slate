@@ -3107,7 +3107,7 @@ curl\
  -H "X-Profile: {{PROFILE_ID}}"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
- "https://{{BASE_URL}}/v2/client/availability?query.transaction_id=laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"
+ "https://{{BASE_URL}}/v2/client/availability?query[transaction_id]=laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"
 ```
 
 > The above request success response is :
