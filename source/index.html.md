@@ -1800,6 +1800,7 @@ curl\
       "is_in_summary": false,
       "title": "1 bedroom",
       "display_price": "+£5",
+      "tags": ["same_unit", "member_price"],
       "choice_items": null,
       "image_url": "http://image.url/here.jpg",
       "customize": null
@@ -1831,6 +1832,7 @@ Parameter | Type | Description
 `is_in_summary` | *boolean* | Should the answer be included in the summary of booking
 `title` | *string* | Title of answer
 `display_price` | *string* | Details on the price for displaying.
+`tags` | *array\<string\>* | Tags can be used for filtering
 `choice_items` | *array\<[choice_item](#choice-items)\>* | List of sub-answers for the answers
 `image_url`| *string* | List image for choice item
 `customize` | *object* | Key-value pairs of custom attributes
