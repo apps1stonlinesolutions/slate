@@ -1832,7 +1832,7 @@ Parameter | Type | Description
 `is_in_summary` | *boolean* | Should the answer be included in the summary of booking
 `title` | *string* | Title of answer
 `display_price` | *string* | Details on the price for displaying.
-`tags` | *array\<string\>* | Tags can be used for filtering
+`tags` | *array\<string\>* | List of tags allowing functionalities as filtering. Available tags:<br/>*<b>regular_price</b> - standard price*<br>*<b>member_price</b> - price for members*<br>*<b>same_unit</b> - same professional will do the service*<br>*<b>fully_booked</b> - all Pros are booked for this item*<br>*<b>members_only</b> - item available only for members*<br>*<b>discounted</b> - item is discounted*<br>*<b>carbon</b> - item is with reduced carbon footprint*
 `choice_items` | *array\<[choice_item](#choice-items)\>* | List of sub-answers for the answers
 `image_url`| *string* | List image for choice item
 `customize` | *object* | Key-value pairs of custom attributes
