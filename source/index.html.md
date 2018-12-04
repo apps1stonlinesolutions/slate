@@ -5735,6 +5735,52 @@ Parameter | Type | Description
 `utc_time` | *integer* | UTC timestamp
 
 
+## Upload file
+
+```shell
+curl 
+  -X POST \
+  -H 'X-Client-Token: {{APPLICATION_TOKEN}}' \
+  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+  -F file=@/Users/petargezenchov/Desktop/flowers.jpg \
+  "https://{{BASE_URL}}/v2/shared/upload_file"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": {
+    "url": "https://files.dxr.cloud/gAa477rBhibFP9n22QOgJSDfZ7DRIAKc5p19SckNnqXOs6C3atZvy2faOPCY",
+    "token": "gAa477rBhibFP9n22QOgJSDfZ7DRIAKc5p19SckNnqXOs6C3atZvy2faOPCY",
+    "mime_type": "image/jpeg",
+    "uploaded_at": "2018-12-04 10:03:38",
+    "thumbs": [
+      {
+        "url": "https://files.dxr.cloud/3EI31yvAxS0c61m3sim2enRTX7oygtYdzePEdlv78xz7rFkxQQ7ex9sRle2T",
+        "mime_type": "image/jpeg"
+      }
+    ]
+  }
+}
+```
+
+Uploads a file to the server.
+
+`"path": "upload_file"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`url` | *string* | URL to access uploaded the image
+`token` | *string* | Idenfier for uploaded image
+`mime_type` | *string* | File type of uploaded image
+`uploaded_at` | *integer* | Date of upload in UTC timestamp
+`thumbs.url` | *string* | URL to access uploaded image thumbnail
+`thumbs.mime_type` | *string* | File type of uploaded image thumbnail
+
+
 ## Tasks
 
 ```shell
