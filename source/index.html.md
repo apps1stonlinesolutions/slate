@@ -2644,6 +2644,7 @@ curl\
       "price": {
         "type": "no_price",
         "description": "Maximum price reached",
+        "total": 125.5,
         "choices": [
           1,
           2
