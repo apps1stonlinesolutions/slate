@@ -1626,10 +1626,10 @@ Parameter | Type | Description
 `id` | *integer* | Object id
 `sort` | *integer* | Order of item in list
 `parent_id` | *integer* | Parent answer (if answer is sub-answer)
-`type` | *string* | *<b>checkbox</b> - Checkbox*<br>*<b>radio</b> - Radio button*<br>*<b>stepper</b> - Stepper (incremental value)*<br>*<b>text_field</b> - Text field*<br>*<b>hours</b> - Hours (total hours for current booking configuration)*<br>*<b>distance</b> - Distance*<br>*<b>always_apply</b> - Always Apply*<br>*<b>price_per_hour</b> - Price per hour*<br>*<b>decimal_text</b> - Decimal Text*<br>*<b>photo_attachment</b> - Photo attachment*<br>*<b>dropdown</b> - Dropdown*<br>*<b>address</b> - Address. Accepts [address](#addresses) object*
+`type` | *string* | *<b>checkbox</b> - Checkbox*<br>*<b>radio</b> - Radio button*<br>*<b>stepper</b> - Stepper (incremental value)*<br>*<b>text_field</b> - Text field*<br>*<b>hours</b> - Hours (total hours for current booking configuration)*<br>*<b>distance</b> - Distance*<br>*<b>always_apply</b> - Always Apply*<br>*<b>price_per_hour</b> - Price per hour*<br>*<b>decimal_text</b> - Decimal Text*<br>*<b>attachment</b> - File attachment*<br>*<b>dropdown</b> - Dropdown*<br>*<b>address</b> - Address. Accepts [address](#addresses) object*
 `max_value` | *integer* | Maximum value of answer
 `min_value` | *integer* | Minimum value of answer
-`value` | *integer<br>or double<br>or string<br>or array\<string\><br>or object* | Default value of answer.
+`value` | *integer<br>or double<br>or string<br>or array\<string\><br>or object<br>or array\<object\>* | Default value of answer. Photo attachment value is an object with `url`, `token`, `thumbnail_url`, `mime_type` and `file_name`
 `duration` | *integer* | Minutes added to booking estimated time from the answer
 `required` | *boolean* | Determines weather choice item requires child to be selected
 `summary_title` | *string* | Answer short title text in summary
