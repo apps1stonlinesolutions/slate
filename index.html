@@ -2461,7 +2461,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">type</code></td>
 <td><em>string</em></td>
-<td><em><b>checkbox</b> - Checkbox</em><br><em><b>radio</b> - Radio button</em><br><em><b>stepper</b> - Stepper (incremental value)</em><br><em><b>text_field</b> - Text field</em><br><em><b>hours</b> - Hours (total hours for current booking configuration)</em><br><em><b>distance</b> - Distance</em><br><em><b>always_apply</b> - Always Apply</em><br><em><b>price_per_hour</b> - Price per hour</em><br><em><b>decimal_text</b> - Decimal Text</em><br><em><b>photo_attachment</b> - Photo attachment</em><br><em><b>dropdown</b> - Dropdown</em><br><em><b>address</b> - Address. Accepts <a href="#addresses">address</a> object</em></td>
+<td><em><b>checkbox</b> - Checkbox</em><br><em><b>radio</b> - Radio button</em><br><em><b>stepper</b> - Stepper (incremental value)</em><br><em><b>text_field</b> - Text field</em><br><em><b>hours</b> - Hours (total hours for current booking configuration)</em><br><em><b>distance</b> - Distance</em><br><em><b>always_apply</b> - Always Apply</em><br><em><b>price_per_hour</b> - Price per hour</em><br><em><b>decimal_text</b> - Decimal Text</em><br><em><b>attachment</b> - File attachment</em><br><em><b>dropdown</b> - Dropdown</em><br><em><b>address</b> - Address. Accepts <a href="#addresses">address</a> object</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">max_value</code></td>
@@ -2475,8 +2475,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">value</code></td>
-<td><em>integer<br>or double<br>or string<br>or array&lt;string&gt;<br>or object</em></td>
-<td>Default value of answer.</td>
+<td><em>integer<br>or double<br>or string<br>or array&lt;string&gt;<br>or object<br>or array&lt;object&gt;</em></td>
+<td>Default value of answer. Photo attachment value is an object with <code class="prettyprint">url</code>, <code class="prettyprint">token</code>, <code class="prettyprint">thumbnail_url</code>, <code class="prettyprint">mime_type</code> and <code class="prettyprint">file_name</code></td>
 </tr>
 <tr>
 <td><code class="prettyprint">duration</code></td>
