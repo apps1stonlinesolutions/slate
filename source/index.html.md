@@ -1761,6 +1761,7 @@ curl\
       "type": "None",
       "data": null,
       "payment_provider_id": null,
+      "vendor": null,
       "icon_image_url": "http://image.url/here.jpg"
     },
     {
@@ -1770,6 +1771,7 @@ curl\
       "title": "Card",
       "type": "Stripe",
       "payment_provider_id": 3,
+      "vendor": null,
       "data": {
         "stripe_key": "kdj9DSA923131safdfd89a7fklj`cxzc"
       },
@@ -1782,6 +1784,7 @@ curl\
       "title": "Card",
       "type": "Braintree",
       "payment_provider_id": 3,
+      "vendor": null,
       "data": {
         "braintree_key": "kdj9DSA923131safdfd89a7fklj`cxzc"
       },
@@ -1794,11 +1797,25 @@ curl\
       "title": "PayPal",
       "type": "PayPal",
       "payment_provider_id": 15,
+      "vendor": null,
       "data": {
         "paypal_key": "kdj9DSA923131safdfd89a7fklj`cxzc"
       },
       "icon_image_url": "http://image.url/here.jpg"
-    }
+    },
+    {
+      "id": 4,
+      "sort": 400,
+      "default": false,
+      "title": "Apple Pay",
+      "type": "Stripe",
+      "payment_provider_id": 3,
+      "vendor": "apple_pay",
+      "data": {
+        "stripe_key": "kdj9DSA923131safdfd89a7fklj`cxzc"
+      },
+      "icon_image_url": "http://image.url/here.jpg"
+    },
   ]
 }
 ```
@@ -1818,6 +1835,7 @@ Parameter | Type | Description
 `title` | *string* | Display name of payment method
 `type` | *string* | *<b>None</b> - No processing needed (e.g. Cash payment)*<br>*<b>Stripe</b> - Card payment via Stripe*<br>*<b>Braintree</b> - Card payment via Braintree*<br>*<b>PayPal</b> - PayPal via Braintree*
 `payment_provider_id` | *integer* | Identifier for the the account used for the payment method (e.g. Stripe UK, Stripe AUS etc.)
+`vendor` | *string* | Vendor for providing payment details:<br/>*<b>apple_pay</b> - Apple Pay*
 `data`<br>*optional* | *object* | Based on the payment provider different data may be provided (such as keys, tokens etc.)
 `data.stripe_key`<br>*optional* | *string* | Stripe API authorization key
 `data.paypal_key`<br>*optional* | *string* | PayPal Braintree authorization key
