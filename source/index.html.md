@@ -1570,7 +1570,9 @@ curl\
       "tags": ["same_unit", "member_price"],
       "choice_items": null,
       "image_url": "http://image.url/here.jpg",
-      "customize": null
+      "customize": {
+        "initial_value": "1"
+      }
     }
   ]
 }
@@ -1603,6 +1605,7 @@ Parameter | Type | Description
 `choice_items` | *array\<[choice_item](#choice-items)\>* | List of sub-answers for the answers
 `image_url`| *string* | List image for choice item
 `customize` | *object* | Key-value pairs of custom attributes
+`customize.initial_value` | *string* | Quantity steppers initial value when added from multiselect search list.
 
 ## Infos
 
