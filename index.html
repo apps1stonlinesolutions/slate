@@ -2390,7 +2390,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"same_unit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"member_price"</span><span class="p">],</span><span class="w">
       </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"initial_value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2493,6 +2495,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">customize</code></td>
 <td><em>object</em></td>
 <td>Key-value pairs of custom attributes</td>
+</tr>
+<tr>
+<td><code class="prettyprint">customize.initial_value</code></td>
+<td><em>string</em></td>
+<td>Quantity steppers initial value when added from multiselect search list.</td>
 </tr>
 </tbody></table>
 
