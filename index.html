@@ -8503,6 +8503,50 @@ curl<span class="se">\</span>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
+<h2 id="application-feedback">Application feedback</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "text": "I really like this app!",
+        "attachments": [
+          "yXE6NxkgaWtRRH4qGaDYCp78oRKwEG1a6zdyYDavYWDOFeQQQsbQjfsL"
+        ]
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/shared/application_feedback"</span>
+</code></pre>
+
+<p>Users can share feedback on their experience with the application they are using.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;application_feedback&quot;</code></p>
+
+<h3 id="feedback-request-parameters">Feedback request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">text</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>User feedback input text</td>
+</tr>
+<tr>
+<td><code class="prettyprint">attachments</code></td>
+<td><em>array&lt;string&gt;</em></td>
+<td>File attachment tokens</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h2 id="exceptions">Exceptions</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X POST<span class="se">\</span>
