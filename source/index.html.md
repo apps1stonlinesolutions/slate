@@ -5677,9 +5677,6 @@ Parameter | Type | Description
 `text`<br>*required* | *string* | User feedback input text
 `attachments` | *array\<string\>* | File attachment tokens
 
-* [Common errors](#common-errors)
-
-
 
 ## Exceptions
 
