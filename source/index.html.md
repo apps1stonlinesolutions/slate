@@ -5649,6 +5649,37 @@ This endpoint returns:
 
 * [Common errors](#common-errors)
 
+## Application feedback
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "text": "I really like this app!",
+        "attachments": [
+          "yXE6NxkgaWtRRH4qGaDYCp78oRKwEG1a6zdyYDavYWDOFeQQQsbQjfsL"
+        ]
+}'\
+ "https://{{BASE_URL}}/v2/shared/application_feedback"
+```
+
+Users can share feedback on their experience with the application they are using.
+
+`"path": "application_feedback"`
+
+### Feedback request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`text`<br>*required* | *string* | User feedback input text
+`attachments` | *array\<string\>* | File attachment tokens
+
+* [Common errors](#common-errors)
+
+
 ## Exceptions
 
 ```shell
