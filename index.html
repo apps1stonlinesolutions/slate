@@ -8319,7 +8319,7 @@ curl<span class="se">\</span>
 <h2 id="upload-file">Upload file</h2>
 <pre class="highlight shell"><code>curl 
   -X POST <span class="se">\</span>
-  -H <span class="s1">'X-Client-Token: {{APPLICATION_TOKEN}}'</span> <span class="se">\</span>
+  -H <span class="s1">'X-Application: {{APPLICATION_TOKEN}}'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'</span> <span class="se">\</span>
   -F <span class="nv">file</span><span class="o">=</span>@/Users/petargezenchov/Desktop/flowers.jpg <span class="se">\</span>
   <span class="s2">"https://{{BASE_URL}}/v2/shared/upload_file"</span>
