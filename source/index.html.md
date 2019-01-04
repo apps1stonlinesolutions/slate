@@ -5531,7 +5531,7 @@ Parameter | Type | Description
 ```shell
 curl 
   -X POST \
-  -H 'X-Client-Token: {{APPLICATION_TOKEN}}' \
+  -H 'X-Application: {{APPLICATION_TOKEN}}' \
   -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
   -F file=@/Users/petargezenchov/Desktop/flowers.jpg \
   "https://{{BASE_URL}}/v2/shared/upload_file"
