@@ -5546,7 +5546,6 @@ curl
     "token": "gAa477rBhibFP9n22QOgJSDfZ7DRIAKc5p19SckNnqXOs6C3atZvy2faOPCY",
     "file_name": "IMG_1923.JPG",
     "mime_type": "image/jpeg",
-    "uploaded_at": 1546952742,
     "thumbs": [
       {
         "url": "https://files.dxr.cloud/3EI31yvAxS0c61m3sim2enRTX7oygtYdzePEdlv78xz7rFkxQQ7ex9sRle2T",
@@ -5569,7 +5568,6 @@ Parameter | Type | Description
 `token` | *string* | Idenfier for uploaded image
 `file_name` | *string* | Name of file uploaded
 `mime_type` | *string* | File type of uploaded image
-`uploaded_at` | *integer* | Date of upload in UTC timestamp
 `thumbs.url` | *string* | URL to access uploaded image thumbnail
 `thumbs.mime_type` | *string* | File type of uploaded image thumbnail
 
