@@ -8339,7 +8339,8 @@ curl<span class="se">\</span>
         </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://files.dxr.cloud/3EI31yvAxS0c61m3sim2enRTX7oygtYdzePEdlv78xz7rFkxQQ7ex9sRle2T"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"mime_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"uploaded_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1547023031</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -8386,6 +8387,11 @@ curl<span class="se">\</span>
 <td><code class="prettyprint">thumbs.mime_type</code></td>
 <td><em>string</em></td>
 <td>File type of uploaded image thumbnail</td>
+</tr>
+<tr>
+<td><code class="prettyprint">uploaded_at</code></td>
+<td><em>integer</em></td>
+<td>File upload time in UTC timestamp</td>
 </tr>
 </tbody></table>
 
@@ -8699,7 +8705,7 @@ curl<span class="se">\</span>
 
 <h2 id="payment-methods">Payment methods</h2>
 
-<p>Filters payment methods by type</p>
+<p>Filters payment methods by <code class="prettyprint">type</code></p>
 
 <h3 id="modifications">Modifications</h3>
 
@@ -8746,6 +8752,32 @@ curl<span class="se">\</span>
 <td>&lt;=</td>
 <td>647</td>
 <td>Remove object with type <code class="prettyprint">Braintree</code> from response</td>
+</tr>
+</tbody></table>
+
+<p>Filters payment methods based on <code class="prettyprint">vendor</code></p>
+
+<h3 id="modifications">Modifications</h3>
+
+<table><thead>
+<tr>
+<th>Application</th>
+<th>Operator</th>
+<th>Build</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>GoFantastic iOS</em></td>
+<td>&lt;=</td>
+<td>828</td>
+<td>Remove object with <code class="prettyprint">vendor != null</code></td>
+</tr>
+<tr>
+<td><em>GoFantastic Android</em></td>
+<td>&lt;=</td>
+<td>814</td>
+<td>Remove object with <code class="prettyprint">vendor != null</code></td>
 </tr>
 </tbody></table>
 
