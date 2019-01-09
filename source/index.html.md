@@ -5551,7 +5551,8 @@ curl
         "url": "https://files.dxr.cloud/3EI31yvAxS0c61m3sim2enRTX7oygtYdzePEdlv78xz7rFkxQQ7ex9sRle2T",
         "mime_type": "image/jpeg"
       }
-    ]
+    ],
+    "uploaded_at": 1547023031
   }
 }
 ```
@@ -5570,6 +5571,7 @@ Parameter | Type | Description
 `mime_type` | *string* | File type of uploaded image
 `thumbs.url` | *string* | URL to access uploaded image thumbnail
 `thumbs.mime_type` | *string* | File type of uploaded image thumbnail
+`uploaded_at` | *integer* | File upload time in UTC timestamp
 
 
 ## Tasks
@@ -5778,7 +5780,7 @@ Response modifications based on `X-Application-Build`.
 
 ## Payment methods
 
-Filters payment methods by type
+Filters payment methods by `type`
 
 ### Modifications
 
@@ -5791,8 +5793,16 @@ Application | Operator | Build | Description
  *GoFantastic Android* | > | 647 | Remove object with type `Stripe` from response (if `Braintree` is available in response)
  *GoFantastic Android* | <= | 647 | Remove object with type `Braintree` from response
 
+Filters payment methods based on `vendor`
 
-Applied on endpoints:
+### Modifications
+
+Application | Operator | Build | Description
+-------- | ----- | ------- | -------
+ *GoFantastic iOS* | <= | 828 | Remove object with `vendor != null`
+ *GoFantastic Android* | <= | 814 | Remove object with `vendor != null`
+ 
+ Applied on endpoints:
 
 * [Payment methods](#payment-methods)
 * [Configuration payment methods](#configuration)
