@@ -3823,6 +3823,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"can_reschedule_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459953968</span><span class="p">,</span><span class="w">
       </span><span class="nt">"can_edit_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459953968</span><span class="p">,</span><span class="w">
       </span><span class="nt">"can_cancel_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459953968</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"can_rebook_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459953968</span><span class="p">,</span><span class="w">
       </span><span class="nt">"address_display_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SW12 2TH, Red Lion Street 24"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -4044,17 +4045,22 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">can_reschedule_until</code></td>
 <td><em>integer</em></td>
-<td>The time up untilclient can reschedule the service in UTC</td>
+<td>The time up untilclient can reschedule the service in UTC timestampe</td>
 </tr>
 <tr>
 <td><code class="prettyprint">can_edit_until</code></td>
 <td><em>integer</em></td>
-<td>The time up untilclient can edit the booking in UTC</td>
+<td>The time up untilclient can edit the booking in UTC timestampe</td>
 </tr>
 <tr>
 <td><code class="prettyprint">can_cancel_until</code></td>
 <td><em>integer</em></td>
-<td>The time up until the client can cancel the service in UTC</td>
+<td>The time up until the client can cancel the service in UTC timestampe</td>
+</tr>
+<tr>
+<td><code class="prettyprint">can_rebook_until</code></td>
+<td><em>integer</em></td>
+<td>The time up until the client can book the same service in UTC timestampe</td>
 </tr>
 <tr>
 <td><code class="prettyprint">address_display_text</code></td>
