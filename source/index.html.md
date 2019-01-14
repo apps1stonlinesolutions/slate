@@ -2426,6 +2426,7 @@ curl\
   "data": [
     {
       "id": "laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas",
+      "copied_booking_id": "laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas",
       "reference_number": "1042MB",
       "timeslot": 1525343435,
       "timeslot_formatted": "2015-03-24 10:00",
@@ -2570,6 +2571,7 @@ Upcoming bookings for a client in ascending order based on appointment time.
 Parameter | Type | Description
 -------- | ----- | -------
 `id` | *string* | Unique identifier
+`copied_booking_id` | *string* | Unique identifier of booking from which this was created
 `reference_number` | *string* | Unique identifier for processed booking
 `timeslot`<br>*editable* | *integer* | Appointment time in UTC time zone
 `timeslot_formatted`<br>*editable* | *string* | Appointment time in local time zone
@@ -2853,6 +2855,7 @@ Booking transaction can be created in two ways:
 
 * `session`, `service`, all `init` choices for the service - minimum to create a booking transaction for booking a service is logged in user, service and values for all choices with position `init`. `session` is taken from `Authorization` header of the request, `service` value should be object id. Choices should be sent with their filled choice items. Any other fields can be passed in addition if available.
 * `booking_id` - creates booking transaction to edit an existing booking. Any other fields can be passed in addition.
+* `copied_booking_id` - creates booking transaction to create new booking by copying existing booking. Any other fields can be passed in addition.
 
 ### Set addresses
 
