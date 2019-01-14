@@ -3760,6 +3760,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"copied_booking_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1042MB"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"timeslot"</span><span class="p">:</span><span class="w"> </span><span class="mi">1525343435</span><span class="p">,</span><span class="w">
       </span><span class="nt">"timeslot_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-03-24 10:00"</span><span class="p">,</span><span class="w">
@@ -3911,6 +3912,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">id</code></td>
 <td><em>string</em></td>
 <td>Unique identifier</td>
+</tr>
+<tr>
+<td><code class="prettyprint">copied_booking_id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of booking from which this was created</td>
 </tr>
 <tr>
 <td><code class="prettyprint">reference_number</code></td>
@@ -4397,6 +4403,7 @@ curl<span class="se">\</span>
 <ul>
 <li><code class="prettyprint">session</code>, <code class="prettyprint">service</code>, all <code class="prettyprint">init</code> choices for the service - minimum to create a booking transaction for booking a service is logged in user, service and values for all choices with position <code class="prettyprint">init</code>. <code class="prettyprint">session</code> is taken from <code class="prettyprint">Authorization</code> header of the request, <code class="prettyprint">service</code> value should be object id. Choices should be sent with their filled choice items. Any other fields can be passed in addition if available.</li>
 <li><code class="prettyprint">booking_id</code> - creates booking transaction to edit an existing booking. Any other fields can be passed in addition.</li>
+<li><code class="prettyprint">copied_booking_id</code> - creates booking transaction to create new booking by copying existing booking. Any other fields can be passed in addition.</li>
 </ul>
 
 <h3 id="set-addresses">Set addresses</h3>
