@@ -7521,6 +7521,89 @@ curl<span class="se">\</span>
 <li><a href="#reply-job-offer-errors">Reply job offer errors</a></li>
 </ul>
 
+<h2 id="policies">Policies</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/policies"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"agreed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec auctor sem. Fusce et urna at tortor ultrices ultricies. Nullam eget neque ut dolor ullamcorper porttitor. Morbi tempor leo justo. Nunc vulputate nibh odio, id aliquam tortor pretium at."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"read_confirmation_checkbox_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I have read the terms and conditions"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"agree_button_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I agree"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"language_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"available_languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"English"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Български"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>List of company policies. By default the endpoint returns only the policies that unit has not agreed on yet.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;policies&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">agreed</code></td>
+<td><em>boolean</em></td>
+<td>Read and agreed with the policy</td>
+</tr>
+<tr>
+<td><code class="prettyprint">text</code></td>
+<td><em>string</em></td>
+<td>Rich text content of the policy</td>
+</tr>
+<tr>
+<td><code class="prettyprint">read_confirmation_checkbox_title</code></td>
+<td><em>string</em></td>
+<td>Title of checkbox for reading the policy</td>
+</tr>
+<tr>
+<td><code class="prettyprint">agree_button_title</code></td>
+<td><em>string</em></td>
+<td>Title of confirmation button for the policy</td>
+</tr>
+<tr>
+<td><code class="prettyprint">language_code</code></td>
+<td><em>string</em></td>
+<td>Language code of the text language</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h1 id="shared">Shared</h1>
 
 <h2 id="user-applications">User applications</h2>
