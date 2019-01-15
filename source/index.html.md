@@ -5663,6 +5663,7 @@ curl\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
  -d '{
+        "source": "after_booking",
         "text": "I really like this app!",
         "attachments": [
           "yXE6NxkgaWtRRH4qGaDYCp78oRKwEG1a6zdyYDavYWDOFeQQQsbQjfsL"
@@ -5679,6 +5680,7 @@ Users can share feedback on their experience with the application they are using
 
 Parameter | Type | Description
 -------- | ----- | -------
+`source`<br>*required* | *string* | Where feedback was collected:<br>*<b>after_booking</b> - after second booking*<br>*<b>account_tab</b> - in account tab*<br>*<b>watch_booking</b> - representing a watch booking*
 `text`<br>*required* | *string* | User feedback input text
 `attachments` | *array\<string\>* | File attachment tokens
 
