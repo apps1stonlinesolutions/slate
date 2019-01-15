@@ -4974,6 +4974,68 @@ This endpoint returns:
 * [Reply job offer errors](#reply-job-offer-errors)
 
 
+
+## Policies
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/policies"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "id": 42,
+      "agreed": false,
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec auctor sem. Fusce et urna at tortor ultrices ultricies. Nullam eget neque ut dolor ullamcorper porttitor. Morbi tempor leo justo. Nunc vulputate nibh odio, id aliquam tortor pretium at.",
+      "read_confirmation_checkbox_title": "I have read the terms and conditions",
+      "agree_button_title": "I agree",
+      "language_code": "en",
+      "available_languages": [
+        {
+          "name": "English",
+          "code": "en"
+        },
+        {
+          "name": "Български",
+          "code": "bg"
+        }
+      ],
+      "sort": 100
+    }
+  ]
+}
+```
+
+List of company policies. By default the endpoint returns only the policies that unit has not agreed on yet.
+
+`"path": "policies"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`agreed` | *boolean* | Read and agreed with the policy
+`text` | *string* | Rich text content of the policy
+`read_confirmation_checkbox_title` | *string* | Title of checkbox for reading the policy
+`agree_button_title` | *string* | Title of confirmation button for the policy
+`language_code` | *string* | Language code of the text language
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+
+
+
 # Shared
 
 ## User applications
