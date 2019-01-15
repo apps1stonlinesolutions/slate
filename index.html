@@ -8523,6 +8523,7 @@ curl<span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
  -d <span class="s1">'{
+        "source": "after_booking",
         "text": "I really like this app!",
         "attachments": [
           "yXE6NxkgaWtRRH4qGaDYCp78oRKwEG1a6zdyYDavYWDOFeQQQsbQjfsL"
@@ -8544,6 +8545,11 @@ curl<span class="se">\</span>
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><code class="prettyprint">source</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Where feedback was collected:<br><em><b>after_booking</b> - after second booking</em><br><em><b>account_tab</b> - in account tab</em><br><em><b>watch_booking</b> - representing a watch booking</em></td>
+</tr>
 <tr>
 <td><code class="prettyprint">text</code><br><em>required</em></td>
 <td><em>string</em></td>
