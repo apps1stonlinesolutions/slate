@@ -2578,7 +2578,7 @@ Parameter | Type | Description
 `email`<br>*editable* | *string* | Client email collected during booking process
 `phones`<br>*editable* | *array<[phones](#phones)>* | Client phones collected during booking process
 `price` | *[object](#price)* | Selected price breakdown
-`price.type` | *string*| Price type:<br/>*<b>no_price</b> - when user reached maximum price and will create a quote*<br/>*<b>reschedule_no_price</b> - when user reschedules and a price can't be calculated*<br>*<b>voucher_applied</b> - when prices are with applied voucher*
+`price.type` | *string*| Price type:<br/>*<b>no_price</b> - when user reached maximum price and will create a quote*<br>*<b>voucher_applied</b> - when prices are with applied voucher*
 `price.description` | *string* | Description text for the price
 `price.total` | *double* | Total amount as double value
 `price.choices` | *array\<[choices](#choices)\>* | Price choices and choice items selected on availability
