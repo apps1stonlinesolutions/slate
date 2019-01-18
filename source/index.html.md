@@ -442,6 +442,31 @@ When booking_transaction is posted with `service != null` service is overwriten 
 
 This excludes BFantastic upsell feature. There only modofied items can be sent and the rest will remain with their current values. For example if new radio option is selected in a choice the old should be sent a swell with `"value":0` and the new with `"value":1`.
 
+When posting child choice_item.value with parent choice_item.value = 0 the child is ignored (not validated and processed).
+
+## copy/unique object
+
+* *<b>copy object</b>* - updating it updates it only in it's context
+* *<b>unique object</b>* - updating it updates it in all contexts
+
+Examples:
+
+* A service object in booking transaction is a *<b>copy object</b>*. Updating `booking_transaction.service.choice_item.value` updates choice item value only in the booking transaction. The `service.choice_item.value` remains the same if service is read directly.
+* Paymethod is an *<b>unique object</b>*. Updating `user.paymethod.description` updates paymethod description everywhere it appears.
+
+## Multi-level object updating
+
+When an object is posted and one of it's attributes is a child object:
+
+* if child doesn't have `id` object is created
+* if child has `id` and is a *<b>copy object</b>* the object is updated
+* if child has `id` and is an *<b>unique object</b>* it's converted to the `id` value
+
+Examples:
+
+* Posting `booking_transaction.service.choice_item` object with `id` updates whole `booking_transaction.service.choice_item` object.
+* Posting `booking_transaction.paymethod` object with `id` sets the passed object as `booking_transaction.paymethod`, but doesn't update the object itself.
+
 # Profile
 
 
@@ -2746,6 +2771,22 @@ curl\
 "https://{{BASE_URL}}/v2/client/booking_transactions/laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"
 ```
 
+> The above request success response in addition to booking object is:
+
+```json
+{
+  "data": {
+    "...booking fields...": "...booking values...",
+    "confirmed": true,
+    "state": {
+      "position": "init",
+      "choice_id": 23,
+      "choice_item_id": 28
+    }
+  }
+}
+```
+
 ```shell
 Example setting address:
 
@@ -2845,7 +2886,10 @@ curl\
 "https://{{BASE_URL}}/v2/client/booking_transactions/laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"
 ```
 
-Booking transactions are representation of an ongoing booking process. They are similar to a [booking](#bookings) object with additional `confirmed` field. When client confirms their booking it's set to true. Then server validates if all required fields are filled and allows it.
+Booking transactions are representation of an ongoing booking process. They inherit [booking](#bookings) and add:
+
+* `confirmed` - when client confirms their booking it's set to true. All service required choices have to be filled first.
+* `state` - client position in booking process (progress)
 
 `"path": "booking_transactions"`
 
@@ -5000,11 +5044,11 @@ curl\
       "language_code": "en",
       "available_languages": [
         {
-          "name": "English",
+          "title": "English",
           "code": "en"
         },
         {
-          "name": "Български",
+          "title": "Български",
           "code": "bg"
         }
       ],
