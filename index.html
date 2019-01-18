@@ -639,6 +639,39 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <p>This excludes BFantastic upsell feature. There only modofied items can be sent and the rest will remain with their current values. For example if new radio option is selected in a choice the old should be sent a swell with <code class="prettyprint">&quot;value&quot;:0</code> and the new with <code class="prettyprint">&quot;value&quot;:1</code>.</p>
 
+<p>When posting child choice_item.value with parent choice_item.value = 0 the child is ignored (not validated and processed).</p>
+
+<h2 id="copy-unique-object">copy/unique object</h2>
+
+<ul>
+<li><em><b>copy object</b></em> - updating it updates it only in it&rsquo;s context</li>
+<li><em><b>unique object</b></em> - updating it updates it in all contexts</li>
+</ul>
+
+<p>Examples:</p>
+
+<ul>
+<li>A service object in booking transaction is a <em><b>copy object</b></em>. Updating <code class="prettyprint">booking_transaction.service.choice_item.value</code> updates choice item value only in the booking transaction. The <code class="prettyprint">service.choice_item.value</code> remains the same if service is read directly.</li>
+<li>Paymethod is an <em><b>unique object</b></em>. Updating <code class="prettyprint">user.paymethod.description</code> updates paymethod description everywhere it appears.</li>
+</ul>
+
+<h2 id="multi-level-object-updating">Multi-level object updating</h2>
+
+<p>When an object is posted and one of it&rsquo;s attributes is a child object:</p>
+
+<ul>
+<li>if child doesn&rsquo;t have <code class="prettyprint">id</code> object is created</li>
+<li>if child has <code class="prettyprint">id</code> and is a <em><b>copy object</b></em> the object is updated</li>
+<li>if child has <code class="prettyprint">id</code> and is an <em><b>unique object</b></em> it&rsquo;s converted to the <code class="prettyprint">id</code> value</li>
+</ul>
+
+<p>Examples:</p>
+
+<ul>
+<li>Posting <code class="prettyprint">booking_transaction.service.choice_item</code> object with <code class="prettyprint">id</code> updates whole <code class="prettyprint">booking_transaction.service.choice_item</code> object.</li>
+<li>Posting <code class="prettyprint">booking_transaction.paymethod</code> object with <code class="prettyprint">id</code> sets the passed object as <code class="prettyprint">booking_transaction.paymethod</code>, but doesn&rsquo;t update the object itself.</li>
+</ul>
+
 <h1 id="profile">Profile</h1>
 
 <h2 id="profiles">Profiles</h2>
@@ -4301,6 +4334,22 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
 <span class="s2">"https://{{BASE_URL}}/v2/client/booking_transactions/laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"</span>
 </code></pre>
+
+<blockquote>
+<p>The above request success response in addition to booking object is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"...booking fields..."</span><span class="p">:</span><span class="w"> </span><span class="s2">"...booking values..."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"init"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"choice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"choice_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <pre class="highlight shell"><code>Example setting address:
 
 curl<span class="se">\</span>
@@ -4392,7 +4441,12 @@ curl<span class="se">\</span>
 <span class="s2">"https://{{BASE_URL}}/v2/client/booking_transactions/laghfljasdhgfkjgKJHGJKHGKJHGjkgkjhdas"</span>
 </code></pre>
 
-<p>Booking transactions are representation of an ongoing booking process. They are similar to a <a href="#bookings">booking</a> object with additional <code class="prettyprint">confirmed</code> field. When client confirms their booking it&rsquo;s set to true. Then server validates if all required fields are filled and allows it.</p>
+<p>Booking transactions are representation of an ongoing booking process. They inherit <a href="#bookings">booking</a> and add:</p>
+
+<ul>
+<li><code class="prettyprint">confirmed</code> - when client confirms their booking it&rsquo;s set to true. All service required choices have to be filled first.</li>
+<li><code class="prettyprint">state</code> - client position in booking process (progress)</li>
+</ul>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;booking_transactions&quot;</code></p>
 
@@ -7544,11 +7598,11 @@ curl<span class="se">\</span>
       </span><span class="nt">"language_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"available_languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"English"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"English"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Български"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Български"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
