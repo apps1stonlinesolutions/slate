@@ -5072,6 +5072,13 @@ Parameter | Type | Description
 `agree_button_title` | *string* | Title of confirmation button for the policy
 `language_code` | *string* | Language code of the text language
 
+### `params`
+
+Parameter | Type   | Default | Description
+-------- | ---------- | ---- | -------
+`filter.agreed` | *boolean* | *any [true, false]* | Filters policies by `agreed` flag. If no filter is passed all policies are returned.
+`filter.language_code` | *string* | *user defualt language code* | Filters policies by `language_code`. If no filter is passed the default language code for the unit is used.
+
 This endpoint returns:
 
 * [Common errors](#common-errors)
