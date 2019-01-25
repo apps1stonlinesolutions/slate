@@ -4512,6 +4512,130 @@ curl<span class="se">\</span>
 <li><a href="#booking-process-warnings">Booking process warning</a></li>
 </ul>
 
+<h2 id="leave-booking-process">Leave booking process</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "leave_reason_id": 123,
+        "comment": "Don`t need the service anymore"
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/booking_transactions/123/leave"</span>
+</code></pre>
+
+<p>To leave booking process pick &ldquo;<a href="#leave-reasons">leave reasons</a>&rdquo; and pass it with a comment (if required for the reason)</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;bookings/{{booking_transaction_id}}/leave&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">leave_reason_id</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td><a href="#leave-reasons">Leave reason</a> user selected from a list of reasons</td>
+</tr>
+<tr>
+<td><code class="prettyprint">comment</code></td>
+<td><em>string</em></td>
+<td>Comment left by the client (if comment is required for the selected reason)</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
+<h2 id="leave-reasons">Leave reasons</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/leave_reasons"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I don't like the price"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"requires_comment"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"positions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"init"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cofiguraton"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I can't find what I need"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"requires_comment"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"positions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"init"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cofiguraton"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Client chooses the reasons to leave the booking proces from a list of leave reasons</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;leave_reasons&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td><em>string</em></td>
+<td>Leave reason title text</td>
+</tr>
+<tr>
+<td><code class="prettyprint">requires_comment</code></td>
+<td><em>boolean</em></td>
+<td>Determines weather comment is required to leave with this reason</td>
+</tr>
+<tr>
+<td><code class="prettyprint">positions</code></td>
+<td><em>array&lt;string&gt;</em></td>
+<td>Leave reason is shown at those positions</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sort</code></td>
+<td><em>integer</em></td>
+<td>Order of item in list</td>
+</tr>
+</tbody></table>
+
 <h2 id="availability">Availability</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
