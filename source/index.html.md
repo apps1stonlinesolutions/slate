@@ -2938,6 +2938,98 @@ This endpoint returns:
 * [Booking process warning](#booking-process-warnings)
 
 
+## Leave booking process
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "leave_reason_id": 123,
+        "comment": "Don`t need the service anymore"
+}'\
+ "https://{{BASE_URL}}/v2/client/booking_transactions/123/leave"
+```
+
+To leave booking process pick "[leave reasons](#leave-reasons)" and pass it with a comment (if required for the reason)
+
+`"path": "bookings/{{booking_transaction_id}}/leave"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`leave_reason_id`<br>*required* | *integer* | [Leave reason](#leave-reasons) user selected from a list of reasons
+`comment` | *string* | Comment left by the client (if comment is required for the selected reason)
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+
+## Leave reasons
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/leave_reasons"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+      {
+          "id": 1,
+          "name": "I don't like the price",
+          "requires_comment": true,
+          "positions": [
+            "init",
+            "cofiguraton"
+          ],
+          "sort": 100
+      },
+      {
+          "id": 2,
+          "name": "I can't find what I need",
+          "requires_comment": false,
+          "positions": [
+            "init",
+            "cofiguraton"
+          ],
+          "sort": 200
+      }
+
+  ]
+}
+```
+
+Client chooses the reasons to leave the booking proces from a list of leave reasons
+
+`"path": "leave_reasons"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`name` | *string* | Leave reason title text
+`requires_comment` | *boolean* | Determines weather comment is required to leave with this reason
+`positions` | *array\<string\>* | Leave reason is shown at those positions
+`sort` | *integer* | Order of item in list
+
+
+
 ## Availability
 
 
