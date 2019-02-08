@@ -1630,7 +1630,9 @@ Parameter | Type | Description
 `choice_items` | *array\<[choice_item](#choice-items)\>* | List of sub-answers for the answers
 `image_url`| *string* | List image for choice item
 `customize` | *object* | Key-value pairs of custom attributes
+`customize.step` | *double* | Quantity steppers step for changing their value
 `customize.initial_value` | *string* | Quantity steppers initial value when added from multiselect search list.
+`customize.display_type` | *string* | A specific way of displaying the choice item:<br/>*<b>date</b> - string from date picker*
 
 ## Infos
 
