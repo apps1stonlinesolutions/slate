@@ -1596,7 +1596,9 @@ curl\
       "choice_items": null,
       "image_url": "http://image.url/here.jpg",
       "customize": {
-        "initial_value": "1"
+        "step": 0.5,
+        "initial_value": "1",
+        "display_type": "date"
       }
     }
   ]
