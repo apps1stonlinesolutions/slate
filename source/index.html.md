@@ -5891,7 +5891,7 @@ Users can share feedback on their experience with the application they are using
 
 Parameter | Type | Description
 -------- | ----- | -------
-`source`<br>*required* | *string* | Where feedback was collected:<br>*<b>after_booking</b> - after second booking*<br>*<b>account_tab</b> - in account tab*<br>*<b>watch_booking</b> - representing a watch booking*
+`source`<br>*required* | *string* | Where feedback was collected:<br>*<b>after_booking</b> - after second booking*<br>*<b>account_tab</b> - in account tab*<br>*<b>watch_booking</b> - representing a watch booking*<br>*<b>deprecated_chat</b> - feedback from form shown when user has deprecated chat*
 `text`<br>*required* | *string* | User feedback input text
 `attachments` | *array\<string\>* | File attachment tokens
 
