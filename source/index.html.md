@@ -1598,7 +1598,8 @@ curl\
       "customize": {
         "step": 0.5,
         "initial_value": "1",
-        "display_type": "date"
+        "display_type": "date",
+        "redirect_related_choice_item_ids": "[1, 2]"
       }
     }
   ]
@@ -1635,6 +1636,7 @@ Parameter | Type | Description
 `customize.step` | *double* | Quantity steppers step for changing their value
 `customize.initial_value` | *string* | Quantity steppers initial value when added from multiselect search list.
 `customize.display_type` | *string* | A specific way of displaying the choice item:<br/>*<b>date</b> - string from date picker*
+`customize.redirect_related_choice_item_ids` | *string* | A string representing an array of choice item ids to pre-fill value from
 
 ## Infos
 
