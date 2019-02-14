@@ -2426,7 +2426,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"step"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
         </span><span class="nt">"initial_value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"display_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"date"</span><span class="w">
+        </span><span class="nt">"display_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"date"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"redirect_related_choice_item_ids"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[1, 2]"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -2545,6 +2546,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">customize.display_type</code></td>
 <td><em>string</em></td>
 <td>A specific way of displaying the choice item:<br/><em><b>date</b> - string from date picker</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">customize.redirect_related_choice_item_ids</code></td>
+<td><em>string</em></td>
+<td>A string representing an array of choice item ids to pre-fill value from</td>
 </tr>
 </tbody></table>
 
