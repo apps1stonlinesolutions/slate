@@ -1,6 +1,6 @@
 # Errors
 
-The API uses the following success codes:
+The API uses the following error codes:
 
 ## Common errors
 Error Code | Meaning
