@@ -523,31 +523,6 @@ curl\
 "https://{{BASE_URL}}/v2/client/configuration"
 ```
 
-> The above request success response is:
-
-```json
-{
-  "data": {
-    "template_name": "default",
-    "brand_name": "Local Cleaners",
-    "phone": "+442221123123",
-    "default_category_id": 1,
-    "default_service_id": 3,
-    "currency_code": "GBP",
-    "locale": "en_GB",
-    "website_url": "http://domainname.com/",
-    "terms_and_conditions_url": "https://gofantastic.com/terms-and-conditions.html",
-    "privacy_policy_url": "https://gofantastic.com/privacy-policy.html",
-    "show_manage_membership_section": true,
-    "referral_bonus_formatted": "£20",
-    "payment_methods": [
-      1,
-      3,
-      5
-    ]
-}
-```
-
 > The above request app profile success response is:
 
 ```json
@@ -595,6 +570,7 @@ curl\
     "template_name": "default",
     "brand_name": "Local Cleaners",
     "website_url": "http://domainname.com/",
+    "chat_version": 1,
     "payment_methods": [
       1,
       3,
@@ -647,6 +623,7 @@ Parameter | Type | Description
 `register_popup_titles` | *array\<register_popup_title\>* | List of titles for registration popup
 `register_popup_titles.position` | *string* | Position of register popup:<br/>*<b>categories</b> - at categories list*<br>*<b>account_tab</b> - on tapping of account tab*<br>*<b>deal</b> - on tapping a deal*<br>*<b>membership</b> - on tapping membership in account tab*<br>*<b>referral</b> - on tapping referral in account tab*<br>*<b>before_timeslots</b> - before showing timeslots (request_logi_step:4)*<br>*<b>before_summary</b> - before showing summary(request_logi_step:5)*
 `register_popup_titles.title` | *string* | Title of register popup for the position
+`chat_version` | *integer* | Version of chat used:<br>*<b>1</b> - FreshChat*
 
 ### Web profiles additional response parameters
 
