@@ -9165,7 +9165,7 @@ curl<span class="se">\</span>
 
           <h1 id="errors">Errors</h1>
 
-<p>The API uses the following success codes:</p>
+<p>The API uses the following error codes:</p>
 
 <h2 id="common-errors">Common errors</h2>
 
@@ -9647,9 +9647,11 @@ curl<span class="se">\</span>
 
 <p>The API uses the following success codes:</p>
 
+<h2 id="common-2000">Common (2000)</h2>
+
 <table><thead>
 <tr>
-<th>Success Code</th>
+<th>Code</th>
 <th>Meaning</th>
 </tr>
 </thead><tbody>
@@ -9657,17 +9659,97 @@ curl<span class="se">\</span>
 <td>2000</td>
 <td>Success</td>
 </tr>
+</tbody></table>
+
+<h2 id="client-account-2100-2199">Client account (2100-2199)</h2>
+
+<table><thead>
 <tr>
-<td>2010</td>
-<td>Account created &ndash; You can start using it with the session provided</td>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>2145</td>
+<td>Account created</td>
 </tr>
 <tr>
-<td>2210</td>
-<td>The job is yours!</td>
+<td>2147</td>
+<td>Logged out</td>
 </tr>
 <tr>
-<td>2101</td>
+<td>2149</td>
+<td>Client is deleted</td>
+</tr>
+<tr>
+<td>2150</td>
+<td>Message saved successfully (Frontdesk)</td>
+</tr>
+<tr>
+<td>2151</td>
+<td>Answer saved successfully (Frontdesk)</td>
+</tr>
+<tr>
+<td>2155</td>
+<td>Fantastic Club cancellation request received</td>
+</tr>
+<tr>
+<td>2158</td>
+<td>Membership cancelled</td>
+</tr>
+<tr>
+<td>2161</td>
+<td>Card collected</td>
+</tr>
+<tr>
+<td>2166</td>
+<td>Feedback saved</td>
+</tr>
+</tbody></table>
+
+<h2 id="booking-process-2200-2399">Booking process (2200-2399)</h2>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>2205</td>
+<td>Voucher code %s applied successfully</td>
+</tr>
+<tr>
+<td>2208</td>
+<td>Voucher code %s removed successfully</td>
+</tr>
+</tbody></table>
+
+<h2 id="jobs-2600-2650">Jobs (2600-2650)</h2>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<h2 id="on-demand-2700-2750">On-demand (2700-2750)</h2>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>2705</td>
 <td>You successfully declined this job</td>
+</tr>
+<tr>
+<td>2710</td>
+<td>The job is yours!</td>
 </tr>
 </tbody></table>
 
