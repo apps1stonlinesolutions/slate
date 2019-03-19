@@ -1601,7 +1601,7 @@ Parameter | Type | Description
 `min_value` | *integer* | Minimum value of answer
 `value` | *integer<br>or double<br>or string<br>or array\<string\><br>or object<br>or array\<object\>* | Default value of answer.
 `duration` | *integer* | Minutes added to booking estimated time from the answer
-`required` | *boolean* | Determines weather choice item requires child to be selected
+`required` | *boolean* | Determines whether choice item requires child to be selected
 `summary_title` | *string* | Answer short title text in summary
 `is_in_summary` | *boolean* | Should the answer be included in the summary of booking
 `title` | *string* | Title of answer
@@ -1953,7 +1953,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `name` | *string* | Reschedule reason title text
-`requires_comment` | *boolean* | Determines weather comment is required to reschedule with this reason
+`requires_comment` | *boolean* | Determines whether comment is required to reschedule with this reason
 `sort` | *integer* | Order of item in list
 
 ## Cancel reasons
@@ -2000,7 +2000,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `name` | *string* | Reschedule reason title text
-`requires_comment` | *boolean* | Determines weather comment is required to cancel with this reason
+`requires_comment` | *boolean* | Determines whether comment is required to cancel with this reason
 `sort` | *integer* | Order of item in list
 
 
@@ -2048,7 +2048,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `name` | *string* | Edit reason title text
-`requires_comment` | *boolean* | Determines weather comment is required to edit booking with this reason
+`requires_comment` | *boolean* | Determines whether comment is required to edit booking with this reason
 `sort` | *integer* | Order of item in list
 
 ## Edit regular plan reasons
@@ -2095,7 +2095,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `name` | *string* | Edit reason title text
-`requires_comment` | *boolean* | Determines weather comment is required to edit regular plan with this reason
+`requires_comment` | *boolean* | Determines whether comment is required to edit regular plan with this reason
 `sort` | *integer* | Order of item in list
 
 ## Cancel membership reasons
@@ -2142,7 +2142,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `name` | *string* | Reschedule reason title text
-`requires_comment` | *boolean* | Determines weather comment is required to cancel membership with this reason
+`requires_comment` | *boolean* | Determines whether comment is required to cancel membership with this reason
 `sort` | *integer* | Order of item in list
 
 
@@ -3007,7 +3007,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `name` | *string* | Leave reason title text
-`requires_comment` | *boolean* | Determines weather comment is required to leave with this reason
+`requires_comment` | *boolean* | Determines whether comment is required to leave with this reason
 `positions` | *array\<string\>* | Leave reason is shown at those positions
 `sort` | *integer* | Order of item in list
 
@@ -3078,7 +3078,7 @@ Parameter | Type | Description
 `availabilities.date` | *string* | Date of availability
 `availabilities.timeslots` | *array* | List of timeslots for the day
 `availabilities.timeslots.time` | *string* | Time of timeslot
-`availabilities.timeslots.available` | *boolean* | Determines weather slot can be booked
+`availabilities.timeslots.available` | *boolean* | Determines whether slot can be booked
 `availabilities.timeslots.tags` | *array\<string\>* | Visual customization of timeslot:<br/>*<b>carbon</b> - carbon slot*<br>*<b>members_only</b> - members only slot*<br>*<b>fully_booked</b> - fully booked*<br>*<b>non_working_day</b> - non working day for service*
 `availabilities.timeslots.choices` | *array<[choices](#choices)>* | Timeslot price options as choices
 `special_timeslots` | *object* | Special timeslots
@@ -3386,7 +3386,7 @@ Parameter | Type | Description
 `permissions.do_not_track_geofence` | *boolean* | Stops unit from sending updates for entering and leaving areas around bookings
 `permissions.can_set_availability` | *boolean* | Can unit set it's availability
 `permissions.can_view_task_manager` | *boolean* | Can unit view tasks section
-`available_for_ondemand_jobs` | *boolean*  | Shows weather Pro accepts on-demand jobs
+`available_for_ondemand_jobs` | *boolean*  | Shows whether Pro accepts on-demand jobs
 `created_at` | *integer* | Timestamp of unit registration
 
 
@@ -4980,7 +4980,7 @@ Units can modify the price of a job by passing price modifiers with values.
 
 Parameter | Type | Description
 -------- | ----- | -------
-`read_only`<br>*required* | *boolean* | Determines weather the changes are applied on the job or only new price is calculated
+`read_only`<br>*required* | *boolean* | Determines whether the changes are applied on the job or only new price is calculated
 `price_modifications` | *array* | List of price modifiers and values
 `price_modifications.id` | *integer* | Identifier of price modifier (from [job.services_price_modifiers.price_modifier](#jobs))
 `price_modifications.value` | *string* | Value for price modifier (from [job.services_price_modifiers.price_modifier](#jobs))
@@ -5941,7 +5941,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `build` | *integer* | Build number of the version
 `version` | *string* | Version number
-`force_update` | *boolean* | Determines weather update to this version is optional or required
+`force_update` | *boolean* | Determines whether update to this version is optional or required
 `download_url` | *string* | URL to get the latest version (AppStore, PlayStore, Enterprise installation file etc.)
 `description` | *string* | Message containing details for the update
 
