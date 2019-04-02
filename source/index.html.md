@@ -2913,6 +2913,7 @@ Each transaction holds a service object. It contains the choice and choice item 
 Parameter | Type | Description
 -------- | ----- | -------
 `confirmed` | *boolean* | Marks when booking transaction is confirmed by client and accepted by server
+`state.position` | *string* | Client last submitted [choice](#choices) position
 
 This endpoint returns:
 
