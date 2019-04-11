@@ -6011,7 +6011,8 @@ Parameter | Type | Description
     "changes": [
       "profile",
       "jobs",
-      "policies"
+      "policies",
+      "banners"
     ]
   }
 }
