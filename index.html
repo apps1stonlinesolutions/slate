@@ -5887,7 +5887,7 @@ curl<span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Client ratings for the unit.</p>
+<p>Available payment methods for unit to use when editing job.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;payment_methods&quot;</code></p>
 
@@ -5946,7 +5946,7 @@ curl<span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Client ratings for the unit.</p>
+<p>List of reasons a unit can choose when contacting the client</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;call_client_reasons&quot;</code></p>
 
@@ -6015,7 +6015,7 @@ curl<span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Client ratings for the unit.</p>
+<p>List of contacts used accross the application interface.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;system_contacts&quot;</code></p>
 
@@ -6271,6 +6271,102 @@ curl<span class="se">\</span>
 <td><code class="prettyprint">total_formatted</code></td>
 <td><em>string</em></td>
 <td>Total amount for all cross sales with that status</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
+<h2 id="banners">Banners</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/banners"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please fill your morning checklist"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It's an important step to start your day"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://files.dxr.cloud/9P05lMNH3OHjio5qVYeXAHcB1lLBVFFEliUPASTpfvteskmJhhBNjY6a6hkjehw&amp;quot"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"background_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#231232"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1554995117</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deep_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checklists/1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.site.com/path"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"checklist"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A banner shown in jobs list that can lead to different locations in the application or link to websites.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;banners&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">title</code></td>
+<td><em>string</em></td>
+<td>Title text for banner visualisation</td>
+</tr>
+<tr>
+<td><code class="prettyprint">description</code></td>
+<td><em>string</em></td>
+<td>Description text for banner visualisation</td>
+</tr>
+<tr>
+<td><code class="prettyprint">image_url</code></td>
+<td><em>string</em></td>
+<td>Image URL for banner visualisation</td>
+</tr>
+<tr>
+<td><code class="prettyprint">background_color</code></td>
+<td><em>string</em></td>
+<td>Background color in hex format for banner visualisation</td>
+</tr>
+<tr>
+<td><code class="prettyprint">expires_at</code></td>
+<td><em>interger</em></td>
+<td>Until when the banner should be displayed (UTC timestamp)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">deep_link</code></td>
+<td><em>string</em></td>
+<td>Path to location in the application. Used to redirect user when banner is tapped.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">link</code></td>
+<td><em>string</em></td>
+<td>URL to a website. Used to redirect user to a browser when banner is tapped.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload</code></td>
+<td><em>object</em></td>
+<td>Custom object with data corresponding to banner purpose</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payload.checklist</code></td>
+<td><em>object&lt;<a href="#checklists">checklist</a>&gt;</em></td>
+<td>Checklist to open when banner is tapped</td>
 </tr>
 </tbody></table>
 
