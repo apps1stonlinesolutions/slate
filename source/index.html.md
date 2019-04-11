@@ -3863,7 +3863,7 @@ curl\
 }
 ```
 
-Client ratings for the unit.
+Available payment methods for unit to use when editing job.
 
 `"path": "payment_methods"`
 
@@ -3906,7 +3906,7 @@ curl\
 }
 ```
 
-Client ratings for the unit.
+List of reasons a unit can choose when contacting the client
 
 `"path": "call_client_reasons"`
 
@@ -3960,7 +3960,7 @@ curl\
 }
 ```
 
-Client ratings for the unit.
+List of contacts used accross the application interface.
 
 `"path": "system_contacts"`
 
@@ -4130,6 +4130,61 @@ This endpoint returns:
 
 * [Common errors](#common-errors)
 
+
+## Banners
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/banners"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "title": "Please fill your morning checklist",
+      "description": "It's an important step to start your day",
+      "image_url": "https://files.dxr.cloud/9P05lMNH3OHjio5qVYeXAHcB1lLBVFFEliUPASTpfvteskmJhhBNjY6a6hkjehw&quot",
+      "background_color": "#231232",
+      "expires_at": 1554995117,
+      "deep_link": "checklists/1",
+      "link": "http://www.site.com/path",
+      "payload": {
+        "checklist": 1
+      }
+    }
+  ]
+}
+```
+
+A banner shown in jobs list that can lead to different locations in the application or link to websites.
+
+`"path": "banners"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`title` | *string* | Title text for banner visualisation
+`description` | *string* | Description text for banner visualisation
+`image_url` | *string* | Image URL for banner visualisation
+`background_color` | *string* | Background color in hex format for banner visualisation
+`expires_at` | *interger* | Until when the banner should be displayed (UTC timestamp)
+`deep_link` | *string* | Path to location in the application. Used to redirect user when banner is tapped.
+`link` | *string* | URL to a website. Used to redirect user to a browser when banner is tapped.
+`payload` | *object* | Custom object with data corresponding to banner purpose
+`payload.checklist` | *object\<[checklist](#checklists)\>* | Checklist to open when banner is tapped
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
 
 
 
