@@ -2003,9 +2003,16 @@ Parameter | Type | Description
 `requires_comment` | *boolean* | Determines whether comment is required to cancel with this reason
 `sort` | *integer* | Order of item in list
 
+### `params`
+
+Parameter | Type | Default | Description
+-------- | ----- | ----- | -------
+`query.booking_id` | *integer* | *none* | [Booking](#bookings) identifier to filter reasons by service
+
+* [Common errors](#common-errors)
+
 
 ## Edit booking reasons
-
 
 ```shell
 curl\
