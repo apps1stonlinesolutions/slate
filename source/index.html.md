@@ -3020,6 +3020,12 @@ Parameter | Type | Description
 `sort` | *integer* | Order of item in list
 
 
+### `params`
+
+Parameter | Type   | Default | Description
+-------- | ---------- | ---- | -------
+`filter.position` | *string* | *configurator* | Filters leave reasons by `position`. If no filter is passed all leave reasons are returned. To filter leave reasons by more than one position pass an array of positions e.g. `["configurator", "init"]`.
+
 
 ## Availability
 
