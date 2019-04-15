@@ -4346,7 +4346,7 @@ Checklists for performing a job
 
 Parameter | Type | Description
 -------- | ----- | -------
-`type` | *integer* | *<b>10</b> - After checkin*<br>*<b>20</b> - Before checkout*
+`type` | *integer* | *<b>10</b> - After checkin*<br>*<b>20</b> - Before checkout*<b>30</b> - Daily quality check*
 `choices` | *array*\<[choices](#choices)\> | Checklist questions
 `choices.required` | *boolean* | Should question be answered to send the checklist
 `choices.title` | *string* | Checklist question
