@@ -4156,6 +4156,7 @@ curl\
 {
   "data": [
     {
+      "id": 1,
       "title": "Please fill your morning checklist",
       "description": "It's an important step to start your day",
       "image_url": "https://files.dxr.cloud/9P05lMNH3OHjio5qVYeXAHcB1lLBVFFEliUPASTpfvteskmJhhBNjY6a6hkjehw&quot",
@@ -4180,6 +4181,7 @@ A banner shown in jobs list that can lead to different locations in the applicat
 
 Parameter | Type | Description
 -------- | ----- | -------
+`id` | *integer* | Unique identifier
 `title` | *string* | Title text for banner visualisation
 `description` | *string* | Description text for banner visualisation
 `image_url` | *string* | Image URL for banner visualisation
