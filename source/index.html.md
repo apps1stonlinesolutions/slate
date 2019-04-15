@@ -4160,6 +4160,7 @@ curl\
       "description": "It's an important step to start your day",
       "image_url": "https://files.dxr.cloud/9P05lMNH3OHjio5qVYeXAHcB1lLBVFFEliUPASTpfvteskmJhhBNjY6a6hkjehw&quot",
       "background_color": "#231232",
+      "text_color": "#231232",
       "expires_at": 1554995117,
       "deep_link": "checklists/1",
       "link": "http://www.site.com/path",
@@ -4183,6 +4184,7 @@ Parameter | Type | Description
 `description` | *string* | Description text for banner visualisation
 `image_url` | *string* | Image URL for banner visualisation
 `background_color` | *string* | Background color in hex format for banner visualisation
+`text_color` | *string* | Text color in hex format for banner visualisation
 `expires_at` | *interger* | Until when the banner should be displayed (UTC timestamp)
 `deep_link` | *string* | Path to location in the application. Used to redirect user when banner is tapped.
 `link` | *string* | URL to a website. Used to redirect user to a browser when banner is tapped.
