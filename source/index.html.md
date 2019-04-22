@@ -15,9 +15,6 @@ includes:
 search: true
 ---
 
-
-
-
 # Introduction
 
 Welcome to XRM/MP API.
@@ -944,6 +941,7 @@ Parameter | Type | Description
 `social`<br>*optional* | *[object](#facebook-login-request-parameters)* | Social login attributes. Same are used for login (check <b>Facebook login request parameters</b>).
 `type_id`<br>*optional* | *integer* | Type of registration id. Check [user](#user).`type`.
 `preferences.allow_mk_all`<br>*optional* | *boolean* | Sets all preferences to true.
+`register_token`<br>*optional* | *string* | Converts offline user to online.
 
 
 
@@ -1576,7 +1574,9 @@ curl\
         "step": 0.5,
         "initial_value": "1",
         "display_type": "date",
-        "redirect_related_choice_item_ids": "[1, 2]"
+        "redirect_related_choice_item_ids": "[1, 2]",
+        "attachment_type": ["image", "document"],
+        "source": ["front_camera", "rear_camera"]
       }
     }
   ]
@@ -1614,6 +1614,8 @@ Parameter | Type | Description
 `customize.initial_value` | *string* | Quantity steppers initial value when added from multiselect search list.
 `customize.display_type` | *string* | A specific way of displaying the choice item:<br/>*<b>date</b> - string from date picker*
 `customize.redirect_related_choice_item_ids` | *string* | A string representing an array of choice item ids to pre-fill value from
+`customize.attachment_type` | *array\<string\>* | An array with allowed attachment types:<br/> *<b>image</b> - Image in jpg, jpeg and png formats*<br/>  *<b>video</b> - Video in wmv, mov, mp4 and avi formats*<br/>  *<b>document</b> - Document  in pdf format*
+`customize.source` | *array\<string\>* | An array with sources from where the attachment will be re retreived:<br/> *<b>front_camera</b> - Front camera (if not available rear camera used)*<br/>  *<b>rear_camera</b> - Rear camera (if not available front camera used)*<br/>*<b>local_storage</b> - File system (camera roll, gallery, sd card etc.)*
 
 ## Infos
 
@@ -1649,7 +1651,6 @@ curl\
 ```
 
 Information for categories and services.
-
 
 `"path": "infos"`
 
@@ -1733,34 +1734,30 @@ curl\
       "default": true,
       "title": "Cash",
       "type": "None",
-      "data": null,
       "payment_provider_id": null,
       "vendor": null,
+      "security_requirements": null,
+      "data": null,
       "icon_image_url": "http://image.url/here.jpg"
     },
     {
       "id": 2,
       "sort": 200,
       "default": false,
-      "title": "Card",
-      "type": "Stripe",
-      "payment_provider_id": 3,
-      "vendor": null,
-      "data": {
-        "stripe_key": "kdj9DSA923131safdfd89a7fklj`cxzc"
-      },
-      "icon_image_url": "http://image.url/here.jpg"
-    },
-    {
-      "id": 2,
-      "sort": 200,
-      "default": false,
-      "title": "Card",
+      "title": "Apple Pay",
       "type": "Braintree",
       "payment_provider_id": 3,
-      "vendor": null,
+      "vendor": "apple_pay",
+      "security_requirements": {
+        "cvc": null,
+        "three_d_security_two": {
+          "amount": 1,
+          "challenge_token": "b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr",
+          "secured_token": "a4mqYJ9o0MR6S2Uqw2N7hY6TC3uAwlq2"
+        }
+      },
       "data": {
-        "braintree_key": "kdj9DSA923131safdfd89a7fklj`cxzc"
+        "braintree_key": "rRnvEsbDVxbwdtw1BhjntKeYyvn6b96U"
       },
       "icon_image_url": "http://image.url/here.jpg"
     },
@@ -1773,23 +1770,10 @@ curl\
       "payment_provider_id": 15,
       "vendor": null,
       "data": {
-        "paypal_key": "kdj9DSA923131safdfd89a7fklj`cxzc"
+        "paypal_key": "RIx0XeujMAlS8ep3byaN07yImJrYa5M6"
       },
       "icon_image_url": "http://image.url/here.jpg"
-    },
-    {
-      "id": 4,
-      "sort": 400,
-      "default": false,
-      "title": "Apple Pay",
-      "type": "Stripe",
-      "payment_provider_id": 3,
-      "vendor": "apple_pay",
-      "data": {
-        "stripe_key": "kdj9DSA923131safdfd89a7fklj`cxzc"
-      },
-      "icon_image_url": "http://image.url/here.jpg"
-    },
+    }
   ]
 }
 ```
@@ -1810,6 +1794,11 @@ Parameter | Type | Description
 `type` | *string* | *<b>None</b> - No processing needed (e.g. Cash payment)*<br>*<b>Stripe</b> - Card payment via Stripe*<br>*<b>Braintree</b> - Card payment via Braintree*<br>*<b>PayPal</b> - PayPal via Braintree*
 `payment_provider_id` | *integer* | Identifier for the the account used for the payment method (e.g. Stripe UK, Stripe AUS etc.)
 `vendor` | *string* | Vendor for providing payment details:<br/>*<b>apple_pay</b> - Apple Pay*
+`security_requirements` | *object* | Required additional security steps to use a paymethod
+`security_requirements.three_d_security_two` | *object* | 3D Security 2.0 parameters
+`security_requirements.three_d_security_two.amout` | *integer* | Pre-authorization amount
+`security_requirements.three_d_security_two.challenge_token` | *string* | Token to send to payment processor for triggering 3D security challenge
+`security_requirements.three_d_security_two.secured_token` | *string* | Token received after validation from payment processor
 `data`<br>*optional* | *object* | Based on the payment provider different data may be provided (such as keys, tokens etc.)
 `data.stripe_key`<br>*optional* | *string* | Stripe API authorization key
 `data.paypal_key`<br>*optional* | *string* | PayPal Braintree authorization key
@@ -2376,6 +2365,7 @@ curl\
         1,
         2
       ],
+      "security_requirements": null,
       "data": {
         "token": "231231jsklfhaksj231§2",
         "device_data": "shdyjtyruhdfgfsdgfdsgdsf",
@@ -2406,6 +2396,7 @@ Parameter | Type | Description
 `payment_provider_id` | *integer* | Type of payment provider. Check [payment_method](#payment-methods).`payment_provider_id`.
 `available_for_payment_methods` | *array<[payment_method](#payment-methods)>* | Array of [payment_method](#payment-methods) id's that this paymethod can be used with
 `default`<br>*editable* | *boolean* | Client preference for default paymethod
+`security_requirements`<br>*editable* | *object* | Additional security steps required to use paymethod.
 `data` | *object* | Custom data of paymethod.
 `data.token` | *string* | Token from Stripe/PayPal for paymethod creation
 `data.device_data` | *string* | Token from PayPal anti-fraud system
