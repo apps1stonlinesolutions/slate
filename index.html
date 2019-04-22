@@ -1448,6 +1448,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><em>boolean</em></td>
 <td>Sets all preferences to true.</td>
 </tr>
+<tr>
+<td><code class="prettyprint">register_token</code><br><em>optional</em></td>
+<td><em>string</em></td>
+<td>Converts offline user to online.</td>
+</tr>
 </tbody></table>
 
 <h3 id="params"><code class="prettyprint">params</code></h3>
@@ -2408,7 +2413,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
         </span><span class="nt">"step"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
         </span><span class="nt">"initial_value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"display_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"date"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"redirect_related_choice_item_ids"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[1, 2]"</span><span class="w">
+        </span><span class="nt">"redirect_related_choice_item_ids"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[1, 2]"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"attachment_type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"image"</span><span class="p">,</span><span class="w"> </span><span class="s2">"document"</span><span class="p">],</span><span class="w">
+        </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"front_camera"</span><span class="p">,</span><span class="w"> </span><span class="s2">"rear_camera"</span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -2532,6 +2539,16 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">customize.redirect_related_choice_item_ids</code></td>
 <td><em>string</em></td>
 <td>A string representing an array of choice item ids to pre-fill value from</td>
+</tr>
+<tr>
+<td><code class="prettyprint">customize.attachment_type</code></td>
+<td><em>array&lt;string&gt;</em></td>
+<td>An array with allowed attachment types:<br/> <em><b>image</b> - Image in jpg, jpeg and png formats</em><br/>  <em><b>video</b> - Video in wmv, mov, mp4 and avi formats</em><br/>  <em><b>document</b> - Document  in pdf format</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">customize.source</code></td>
+<td><em>array&lt;string&gt;</em></td>
+<td>An array with sources from where the attachment will be re retreived:<br/> <em><b>front_camera</b> - Front camera (if not available rear camera used)</em><br/>  <em><b>rear_camera</b> - Rear camera (if not available front camera used)</em><br/><em><b>local_storage</b> - File system (camera roll, gallery, sd card etc.)</em></td>
 </tr>
 </tbody></table>
 
@@ -2680,34 +2697,30 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cash"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"payment_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"security_requirements"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"icon_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
       </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Card"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stripe"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"payment_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"stripe_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kdj9DSA923131safdfd89a7fklj`cxzc"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"icon_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Card"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple Pay"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Braintree"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"payment_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apple_pay"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"security_requirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"three_d_security_two"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"challenge_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"secured_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a4mqYJ9o0MR6S2Uqw2N7hY6TC3uAwlq2"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"braintree_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kdj9DSA923131safdfd89a7fklj`cxzc"</span><span class="w">
+        </span><span class="nt">"braintree_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rRnvEsbDVxbwdtw1BhjntKeYyvn6b96U"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"icon_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -2720,23 +2733,10 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"payment_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
       </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"paypal_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kdj9DSA923131safdfd89a7fklj`cxzc"</span><span class="w">
+        </span><span class="nt">"paypal_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RIx0XeujMAlS8ep3byaN07yImJrYa5M6"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"icon_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple Pay"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stripe"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"payment_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apple_pay"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"stripe_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kdj9DSA923131safdfd89a7fklj`cxzc"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"icon_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2788,6 +2788,31 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">vendor</code></td>
 <td><em>string</em></td>
 <td>Vendor for providing payment details:<br/><em><b>apple_pay</b> - Apple Pay</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">security_requirements</code></td>
+<td><em>object</em></td>
+<td>Required additional security steps to use a paymethod</td>
+</tr>
+<tr>
+<td><code class="prettyprint">security_requirements.three_d_security_two</code></td>
+<td><em>object</em></td>
+<td>3D Security 2.0 parameters</td>
+</tr>
+<tr>
+<td><code class="prettyprint">security_requirements.three_d_security_two.amout</code></td>
+<td><em>integer</em></td>
+<td>Pre-authorization amount</td>
+</tr>
+<tr>
+<td><code class="prettyprint">security_requirements.three_d_security_two.challenge_token</code></td>
+<td><em>string</em></td>
+<td>Token to send to payment processor for triggering 3D security challenge</td>
+</tr>
+<tr>
+<td><code class="prettyprint">security_requirements.three_d_security_two.secured_token</code></td>
+<td><em>string</em></td>
+<td>Token received after validation from payment processor</td>
 </tr>
 <tr>
 <td><code class="prettyprint">data</code><br><em>optional</em></td>
@@ -3674,6 +3699,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
         </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="mi">2</span><span class="w">
       </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"security_requirements"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"231231jsklfhaksj231§2"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"device_data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shdyjtyruhdfgfsdgfdsgdsf"</span><span class="p">,</span><span class="w">
@@ -3736,6 +3762,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">default</code><br><em>editable</em></td>
 <td><em>boolean</em></td>
 <td>Client preference for default paymethod</td>
+</tr>
+<tr>
+<td><code class="prettyprint">security_requirements</code><br><em>editable</em></td>
+<td><em>object</em></td>
+<td>Additional security steps required to use paymethod.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">data</code></td>
