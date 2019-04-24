@@ -107,6 +107,10 @@ Error Code | Meaning
 6742 | Init choice items are required
 6800 | Something went wrong
 
+## Payment errors
+Error Code | Meaning
+---------- | -------
+4570 | 3D Security required
 
 ## Register voucher errors
 Error Code | Meaning

@@ -1730,20 +1730,18 @@ curl\
   "data": [
     {
       "id": 1,
-      "sort": 100,
-      "default": true,
       "title": "Cash",
       "type": "None",
       "payment_provider_id": null,
       "vendor": null,
       "security_requirements": null,
       "data": null,
-      "icon_image_url": "http://image.url/here.jpg"
+      "icon_image_url": "http://image.url/here.jpg",
+      "default": true,
+      "sort": 100
     },
     {
       "id": 2,
-      "sort": 200,
-      "default": false,
       "title": "Apple Pay",
       "type": "Braintree",
       "payment_provider_id": 3,
@@ -1759,20 +1757,23 @@ curl\
       "data": {
         "braintree_key": "rRnvEsbDVxbwdtw1BhjntKeYyvn6b96U"
       },
-      "icon_image_url": "http://image.url/here.jpg"
+      "icon_image_url": "http://image.url/here.jpg",
+      "default": false,
+      "sort": 200
     },
     {
       "id": 3,
-      "sort": 300,
-      "default": false,
       "title": "PayPal",
       "type": "PayPal",
       "payment_provider_id": 15,
       "vendor": null,
+      "security_requirements": null,
       "data": {
         "paypal_key": "RIx0XeujMAlS8ep3byaN07yImJrYa5M6"
       },
-      "icon_image_url": "http://image.url/here.jpg"
+      "icon_image_url": "http://image.url/here.jpg",
+      "default": false,
+      "sort": 300
     }
   ]
 }
@@ -1788,8 +1789,6 @@ Available payment methods for service
 Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
-`sort` | *integer* | Order of item in list
-`default` | *boolean* | Is this payment method the default
 `title` | *string* | Display name of payment method
 `type` | *string* | *<b>None</b> - No processing needed (e.g. Cash payment)*<br>*<b>Stripe</b> - Card payment via Stripe*<br>*<b>Braintree</b> - Card payment via Braintree*<br>*<b>PayPal</b> - PayPal via Braintree*
 `payment_provider_id` | *integer* | Identifier for the the account used for the payment method (e.g. Stripe UK, Stripe AUS etc.)
@@ -1798,11 +1797,13 @@ Parameter | Type | Description
 `security_requirements.three_d_security_two` | *object* | 3D Security 2.0 parameters
 `security_requirements.three_d_security_two.amout` | *integer* | Pre-authorization amount
 `security_requirements.three_d_security_two.challenge_token` | *string* | Token to send to payment processor for triggering 3D security challenge
-`security_requirements.three_d_security_two.secured_token` | *string* | Token received after validation from payment processor
+`security_requirements.three_d_security_two.secured_token` | *string* | Token received after 3D security validation from payment processor
 `data`<br>*optional* | *object* | Based on the payment provider different data may be provided (such as keys, tokens etc.)
 `data.stripe_key`<br>*optional* | *string* | Stripe API authorization key
 `data.paypal_key`<br>*optional* | *string* | PayPal Braintree authorization key
 `icon_image_url` | *string* | Icon image for payment method
+`default` | *boolean* | Is this payment method the default
+`sort` | *integer* | Order of item in list
 
 
 ## Treats
@@ -1982,6 +1983,8 @@ curl\
 Client chooses the reasons to cancel from a list of cancel reasons
 
 `"path": "cancel_reasons"`
+<br/>
+`"path": "bookings/{{booking_id}}/cancel_reasons"`
 
 ### Response parameters
 
@@ -2396,7 +2399,7 @@ Parameter | Type | Description
 `payment_provider_id` | *integer* | Type of payment provider. Check [payment_method](#payment-methods).`payment_provider_id`.
 `available_for_payment_methods` | *array<[payment_method](#payment-methods)>* | Array of [payment_method](#payment-methods) id's that this paymethod can be used with
 `default`<br>*editable* | *boolean* | Client preference for default paymethod
-`security_requirements`<br>*editable* | *object* | Additional security steps required to use paymethod.
+`security_requirements`<br>*editable* | *object* | Additional security steps required to use paymethod (check [payment_method](#payment-methods) for object structure).
 `data` | *object* | Custom data of paymethod.
 `data.token` | *string* | Token from Stripe/PayPal for paymethod creation
 `data.device_data` | *string* | Token from PayPal anti-fraud system
@@ -2719,6 +2722,7 @@ Parameter | Type | Description
 `source_phone`<br>*optional* | *string* | Source phone number
 
 * [Common errors](#common-errors)
+* [Payment errors](#payment-errors)
 
 
 ## Purchase membership payment methods
@@ -2918,6 +2922,7 @@ This endpoint returns:
 * [Common errors](#common-errors)
 * [Booking process errors](#booking-process-errors)
 * [Booking process warning](#booking-process-warnings)
+* [Payment errors](#payment-errors)
 
 
 ## Leave booking process
