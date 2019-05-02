@@ -589,6 +589,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <h2 id="attribute-names">Attribute names</h2>
 
+<h3 id="expand-collapse">expand/collapse</h3>
+
 <p>All child objects can be expanded or collapsed. By default they are collapsed to and id. For example:</p>
 
 <p><code class="prettyprint">job.payment_method: 3</code> - object is collapsed and we see only it&rsquo;s id. It can be expanded to a payment method object.</p>
@@ -598,6 +600,24 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <p><code class="prettyprint">job.payment_method_id: 3</code></p>
 
 <p>If we want to set <code class="prettyprint">job.payment_method</code> we always use it&rsquo;s id. Check <a href="#setting-child-objects">setting child objects</a></p>
+
+<h3 id="prefix">prefix</h3>
+
+<p>A prefix in a name of attribute is used to differentiate type or variants of the attribute.</p>
+
+<p>For example <code class="prettyprint">price</code> attribute may have different variants as <code class="prettyprint">discounted_price</code>, <code class="prettyprint">member_price</code> etc.</p>
+
+<h3 id="suffix">suffix</h3>
+
+<p>A sufix in a name of attribute is used to differentiate representations of the attribute.</p>
+
+<p>For example integer attribute <code class="prettyprint">work_time</code> holding duration in hours (<code class="prettyprint">2</code>) may have different variant as <code class="prettyprint">work_time_minutes</code> (<code class="prettyprint">120</code>).</p>
+
+<h3 id="suffix-_formatted">suffix _formatted</h3>
+
+<p>If a name has <code class="prettyprint">_formatted</code> suffix it means the attribute holds <code class="prettyprint">string</code> value that is a formatted representation of the attribute.</p>
+
+<p>For example integer attribute <code class="prettyprint">work_time</code> holding duration in hours (<code class="prettyprint">2</code>) when named <code class="prettyprint">work_time_formatted</code> will be returned as a string (<code class="prettyprint">&quot;2 hours&quot;</code>). Integer attribute <code class="prettyprint">work_time_minutes</code> holding duration in minutes (<code class="prettyprint">120</code>) when named <code class="prettyprint">work_time_minutes_formatted</code> will be returned as a string (<code class="prettyprint">&quot;120 minutes&quot;</code>).</p>
 
 <h2 id="id">id</h2>
 
@@ -3913,7 +3933,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"can_edit_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459953968</span><span class="p">,</span><span class="w">
       </span><span class="nt">"can_cancel_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459953968</span><span class="p">,</span><span class="w">
       </span><span class="nt">"can_rebook_until"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459953968</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"address_display_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SW12 2TH, Red Lion Street 24"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SW12 2TH, Red Lion Street 24"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
@@ -4157,7 +4177,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>The time up until the client can book the same service in UTC timestampe</td>
 </tr>
 <tr>
-<td><code class="prettyprint">address_display_text</code></td>
+<td><code class="prettyprint">address_formatted</code></td>
 <td><em>string</em></td>
 <td>Display text of main booking address</td>
 </tr>
@@ -6377,9 +6397,9 @@ curl<span class="se">\</span>
       </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://files.dxr.cloud/9P05lMNH3OHjio5qVYeXAHcB1lLBVFFEliUPASTpfvteskmJhhBNjY6a6hkjehw&amp;quot"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"background_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#231232"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"text_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#231232"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1554995117</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"valid_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">1554995117</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deep_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checklists/1"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.site.com/path"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"external_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.site.com/path"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"checklist"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -6432,7 +6452,7 @@ curl<span class="se">\</span>
 <td>Text color in hex format for banner visualisation</td>
 </tr>
 <tr>
-<td><code class="prettyprint">expires_at</code></td>
+<td><code class="prettyprint">valid_to</code></td>
 <td><em>interger</em></td>
 <td>Until when the banner should be displayed (UTC timestamp)</td>
 </tr>
@@ -6442,7 +6462,7 @@ curl<span class="se">\</span>
 <td>Path to location in the application. Used to redirect user when banner is tapped.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">link</code></td>
+<td><code class="prettyprint">external_link</code></td>
 <td><em>string</em></td>
 <td>URL to a website. Used to redirect user to a browser when banner is tapped.</td>
 </tr>
