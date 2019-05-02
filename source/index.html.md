@@ -389,6 +389,8 @@ If last path component name is in singular form (e.g. `profile`) response data w
 
 ## Attribute names 
 
+### expand/collapse
+
 All child objects can be expanded or collapsed. By default they are collapsed to and id. For example:
 
 `job.payment_method: 3` - object is collapsed and we see only it's id. It can be expanded to a payment method object.
@@ -398,6 +400,24 @@ If the child object will be never expanded the name will have `_id` suffix and w
 `job.payment_method_id: 3`
 
 If we want to set `job.payment_method` we always use it's id. Check [setting child objects](#setting-child-objects)
+
+### prefix
+
+A prefix in a name of attribute is used to differentiate type or variants of the attribute.
+
+For example `price` attribute may have different variants as `discounted_price`, `member_price` etc.
+
+### suffix
+
+A sufix in a name of attribute is used to differentiate representations of the attribute.
+
+For example integer attribute `work_time` holding duration in hours (`2`) may have different variant as `work_time_minutes` (`120`).
+
+### suffix _formatted
+
+If a name has `_formatted` suffix it means the attribute holds `string` value that is a formatted representation of the attribute.
+
+For example integer attribute `work_time` holding duration in hours (`2`) when named `work_time_formatted` will be returned as a string (`"2 hours"`). Integer attribute `work_time_minutes` holding duration in minutes (`120`) when named `work_time_minutes_formatted` will be returned as a string (`"120 minutes"`).
 
 ## id
 
@@ -2500,7 +2520,7 @@ curl\
       "can_edit_until": 1459953968,
       "can_cancel_until": 1459953968,
       "can_rebook_until": 1459953968,
-      "address_display_text": "SW12 2TH, Red Lion Street 24",
+      "address_formatted": "SW12 2TH, Red Lion Street 24",
       "comments": [
         {
           "id": 123,
@@ -2611,7 +2631,7 @@ Parameter | Type | Description
 `can_edit_until` | *integer* | The time up untilclient can edit the booking in UTC timestampe
 `can_cancel_until` | *integer* | The time up until the client can cancel the service in UTC timestampe
 `can_rebook_until` | *integer* | The time up until the client can book the same service in UTC timestampe
-`address_display_text` | *string* | Display text of main booking address
+`address_formatted` | *string* | Display text of main booking address
 `comments`<br>*editable* | *array* | Comments left by the client
 `client_attached_files`<br>*editable* | *array* | Files uploaded from the client
 `documents` | *array* | Documents related to the booking
@@ -4164,9 +4184,9 @@ curl\
       "image_url": "https://files.dxr.cloud/9P05lMNH3OHjio5qVYeXAHcB1lLBVFFEliUPASTpfvteskmJhhBNjY6a6hkjehw&quot",
       "background_color": "#231232",
       "text_color": "#231232",
-      "expires_at": 1554995117,
+      "valid_to": 1554995117,
       "deep_link": "checklists/1",
-      "link": "http://www.site.com/path",
+      "external_link": "http://www.site.com/path",
       "payload": {
         "checklist": 1
       }
@@ -4189,9 +4209,9 @@ Parameter | Type | Description
 `image_url` | *string* | Image URL for banner visualisation
 `background_color` | *string* | Background color in hex format for banner visualisation
 `text_color` | *string* | Text color in hex format for banner visualisation
-`expires_at` | *interger* | Until when the banner should be displayed (UTC timestamp)
+`valid_to` | *interger* | Until when the banner should be displayed (UTC timestamp)
 `deep_link` | *string* | Path to location in the application. Used to redirect user when banner is tapped.
-`link` | *string* | URL to a website. Used to redirect user to a browser when banner is tapped.
+`external_link` | *string* | URL to a website. Used to redirect user to a browser when banner is tapped.
 `payload` | *object* | Custom object with data corresponding to banner purpose
 `payload.checklist` | *object\<[checklist](#checklists)\>* | Checklist to open when banner is tapped
 
