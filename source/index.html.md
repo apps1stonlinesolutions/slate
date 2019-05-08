@@ -3637,7 +3637,8 @@ curl\
           "note": "This is a comment",
           "lat": 23.4324324,
           "lng": 23.4324324,
-          "event_time": 1431936812
+          "event_time": 1431936812,
+          "origin_key": "checklist"
         }
       ],
       "summary": {
@@ -3824,6 +3825,7 @@ Parameter | Type | Description
 `require_summary` | *integer* | *<b>0</b> - No summary required*<br>*<b>1</b> - Should send summary at the end of the day*<br>*<b>2</b> - Should send summary now*<br>*<b>3</b> - Can't proceed until summary sent*<br>*<b>4</b> - Summary sent*
 `work_time` | *integer* | Job duration in minutes
 `valid_to` | *integer* | Time after which job is no more valid and has to be updated in UTC timestamp
+`attachments.origin_key` | *string* | Identifies where the attachment is coming from:<br>*<b>checklist</b> - from answering a question that requires attachment*<br>*<b>job</b> - from job screen*<br>*<b>configurator</b> - from booking process when filling a choice item of type attachment*
 `services_price_modifiers` | *array* | Price modifiers for included services in the job
 `services_price_modifiers.price_modifiers` | *array* | Price modifiers for a service in the job
 `services_price_modifiers.price_modifiers.type` | *integer* | Check service.choices.[choice_items](#choice-items).type
