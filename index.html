@@ -651,7 +651,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <p><code class="prettyprint">{&quot;id&quot;: 3, &quot;payment_method&quot;: 1}</code></p>
 
-<h2 id="updating-a-booking-form">Updating a booking form</h2>
+<h2 id="booking-form-updating">Booking form updating</h2>
 
 <p>When submitting a booking form (booking_transaction.service) whole form should be posted (all choices and choice items, no matter if they are filled by user).</p>
 
@@ -660,6 +660,12 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <p>This excludes BFantastic upsell feature. There only modofied items can be sent and the rest will remain with their current values. For example if new radio option is selected in a choice the old should be sent a swell with <code class="prettyprint">&quot;value&quot;:0</code> and the new with <code class="prettyprint">&quot;value&quot;:1</code>.</p>
 
 <p>When posting child choice_item.value with parent choice_item.value = 0 the child is ignored (not validated and processed).</p>
+
+<h2 id="booking-form-required-fields">Booking form required fields</h2>
+
+<p>When choice is <code class="prettyprint">required:true</code> one of it&rsquo;s first level choice items should be selected (have a value &gt; 0).</p>
+
+<p>If a choice item is <code class="prettyprint">required:true</code> one of it&rsquo;s child choice items should be selected. If a chocie item is not selected then <code class="prettyprint">required:true</code> is ignored.</p>
 
 <h2 id="copy-unique-object">copy/unique object</h2>
 
