@@ -451,7 +451,7 @@ For example to update `job`'s child `payment_method` object at `...unit/jobs` pa
 
  `{"id": 3, "payment_method": 1}`
 
-## Updating a booking form
+## Booking form updating
 
 When submitting a booking form (booking_transaction.service) whole form should be posted (all choices and choice items, no matter if they are filled by user).
 
@@ -460,6 +460,12 @@ When booking_transaction is posted with `service != null` service is overwriten 
 This excludes BFantastic upsell feature. There only modofied items can be sent and the rest will remain with their current values. For example if new radio option is selected in a choice the old should be sent a swell with `"value":0` and the new with `"value":1`.
 
 When posting child choice_item.value with parent choice_item.value = 0 the child is ignored (not validated and processed).
+
+## Booking form required fields
+
+When choice is `required:true` one of it's first level choice items should be selected (have a value > 0).
+
+If a choice item is `required:true` one of it's child choice items should be selected. If a chocie item is not selected then `required:true` is ignored.
 
 ## copy/unique object
 
