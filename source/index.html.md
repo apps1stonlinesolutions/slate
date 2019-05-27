@@ -5734,7 +5734,7 @@ Parameter | Type | Description
 `payload.popup.cta_button.target.screen_id` | *integer* | Determines which screen is opened when tapping the CTA button:<br/>*<b>1</b> - Categories*<br>*<b>2</b> - Category*<br>*<b>3</b> - Service*<br>*<b>4</b> - Deals*<br>*<b>5</b> - Deal*<br>*<b>6</b> - Chat*<br>*<b>7</b> - Referral*<br>*<b>8</b> - Treats*<br>*<b>9</b> - Membership*<br>*<b>10</b> - Privacy policy*
 `payload.popup.cta_button.target.screen_id.item_id` | *integer* | 
 `payload.popup.voucher.voucher_code` | *string* | 
-`payload.popup.voucher.title` | *string* | 
+`payload.popup.voucher.banner_title` | *string* | 
 `payload.popup.voucher.valid_to` | *integer* | 
 
 ### Job offer push response parameters
