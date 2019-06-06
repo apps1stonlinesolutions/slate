@@ -1772,14 +1772,11 @@ curl\
       "type": "Braintree",
       "payment_provider_id": 3,
       "vendor": "apple_pay",
-      "security_requirements": {
-        "cvc": null,
-        "three_d_security_two": {
-          "amount": 1,
-          "challenge_token": "b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr",
-          "secured_token": "a4mqYJ9o0MR6S2Uqw2N7hY6TC3uAwlq2"
-        }
-      },
+      "security_requirements":
+        [
+          "cvc",
+          "three_d_security_two"
+        ],
       "data": {
         "braintree_key": "rRnvEsbDVxbwdtw1BhjntKeYyvn6b96U"
       },
@@ -1819,11 +1816,7 @@ Parameter | Type | Description
 `type` | *string* | *<b>None</b> - No processing needed (e.g. Cash payment)*<br>*<b>Stripe</b> - Card payment via Stripe*<br>*<b>Braintree</b> - Card payment via Braintree*<br>*<b>PayPal</b> - PayPal via Braintree*
 `payment_provider_id` | *integer* | Identifier for the the account used for the payment method (e.g. Stripe UK, Stripe AUS etc.)
 `vendor` | *string* | Vendor for providing payment details:<br/>*<b>apple_pay</b> - Apple Pay*
-`security_requirements` | *object* | Required additional security steps to use a paymethod
-`security_requirements.three_d_security_two` | *object* | 3D Security 2.0 parameters
-`security_requirements.three_d_security_two.amout` | *integer* | Pre-authorization amount
-`security_requirements.three_d_security_two.challenge_token` | *string* | Token to send to payment processor for triggering 3D security challenge
-`security_requirements.three_d_security_two.secured_token` | *string* | Token received after 3D security validation from payment processor
+`security_requirements` | *array\<string\>* | *<b>three_d_security_two</b> - 3D Security 2.0 required to use this payment method*
 `data`<br>*optional* | *object* | Based on the payment provider different data may be provided (such as keys, tokens etc.)
 `data.stripe_key`<br>*optional* | *string* | Stripe API authorization key
 `data.paypal_key`<br>*optional* | *string* | PayPal Braintree authorization key
@@ -2389,12 +2382,11 @@ curl\
       "description": "Business card",
       "label": "**** **** **** 1234",
       "type": "Stripe",
-      "payment_provider_id": 3,
+      "payment_method_id": 3,
       "available_for_payment_methods": [
         1,
         2
       ],
-      "security_requirements": null,
       "data": {
         "token": "231231jsklfhaksj231§2",
         "device_data": "shdyjtyruhdfgfsdgfdsgdsf",
@@ -2422,10 +2414,9 @@ Parameter | Type | Description
 `description`<br>*editable* | *string* | User description for the paymethod
 `label` | *string* | Generated description for the paymethod
 `type` | *string* | Type of paymethod. Check [payment_method](#payment-methods).`type`.
-`payment_provider_id` | *integer* | Type of payment provider. Check [payment_method](#payment-methods).`payment_provider_id`.
+`payment_method_id` | *integer* | [Payment_method](#payment-methods)` identifier used to create paymethod.
 `available_for_payment_methods` | *array<[payment_method](#payment-methods)>* | Array of [payment_method](#payment-methods) id's that this paymethod can be used with
 `default`<br>*editable* | *boolean* | Client preference for default paymethod
-`security_requirements`<br>*editable* | *object* | Additional security steps required to use paymethod (check [payment_method](#payment-methods) for object structure).
 `data` | *object* | Custom data of paymethod.
 `data.token` | *string* | Token from Stripe/PayPal for paymethod creation
 `data.device_data` | *string* | Token from PayPal anti-fraud system
@@ -2767,6 +2758,52 @@ curl\
 [Payment methods](#payment-methods) for puchasing membership.
 
 `"path": "purchase_membership_payment_methods"`
+
+## 3D Security 2.0 Challenge
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/purchase_membership/three_d_security_two_challenge?query[payment_method_id]=2"
+```
+
+> The above request success response is:
+
+```json
+{
+  "amount": 1,
+  "token": "b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr"
+}
+```
+
+Payment provider data needed for 3D security. Can be used on creating a card, purchasing membership or booking.
+
+`"path": "services/{{service_id}}/payment_methods/{{id}}/three_d_security_two_challenge"`<br/>
+`"path": "services/{{service_id}}/purchase_membership/three_d_security_two_challenge"`<br/>
+`"path": "services/{{service_id}}/booking_transactions/{{id}}/three_d_security_two_challenge"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`amount` | *double* | Amount to use when requesting 3D security from payment provider.
+`token` | *string* | Identifier from payment provider to link authorization request with server.
+
+
+### `params`
+
+Parameter | Type | Default | Description
+-------- | ----- | ----- | -------
+`query.payment_method_id` | *integer* | *none* | [Payment method](#payment-methods) identifier to apply 3D Security with for a given operation. Needed when purchasing membership or booking.
+
+* [Common errors](#common-errors)
+
+
+
 
 # Booking process
 
