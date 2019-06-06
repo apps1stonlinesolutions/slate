@@ -2735,14 +2735,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Braintree"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"payment_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
       </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apple_pay"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"security_requirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"three_d_security_two"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"challenge_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"secured_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a4mqYJ9o0MR6S2Uqw2N7hY6TC3uAwlq2"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"security_requirements"</span><span class="p">:</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"cvc"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"three_d_security_two"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
       </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"braintree_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rRnvEsbDVxbwdtw1BhjntKeYyvn6b96U"</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -2808,28 +2805,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 <tr>
 <td><code class="prettyprint">security_requirements</code></td>
-<td><em>object</em></td>
-<td>Required additional security steps to use a paymethod</td>
-</tr>
-<tr>
-<td><code class="prettyprint">security_requirements.three_d_security_two</code></td>
-<td><em>object</em></td>
-<td>3D Security 2.0 parameters</td>
-</tr>
-<tr>
-<td><code class="prettyprint">security_requirements.three_d_security_two.amout</code></td>
-<td><em>integer</em></td>
-<td>Pre-authorization amount</td>
-</tr>
-<tr>
-<td><code class="prettyprint">security_requirements.three_d_security_two.challenge_token</code></td>
-<td><em>string</em></td>
-<td>Token to send to payment processor for triggering 3D security challenge</td>
-</tr>
-<tr>
-<td><code class="prettyprint">security_requirements.three_d_security_two.secured_token</code></td>
-<td><em>string</em></td>
-<td>Token received after 3D security validation from payment processor</td>
+<td><em>array&lt;string&gt;</em></td>
+<td><em><b>three_d_security_two</b> - 3D Security 2.0 required to use this payment method</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">data</code><br><em>optional</em></td>
@@ -3723,12 +3700,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Business card"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"**** **** **** 1234"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stripe"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"payment_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payment_method_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
       </span><span class="nt">"available_for_payment_methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="mi">2</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"security_requirements"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"231231jsklfhaksj231§2"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"device_data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shdyjtyruhdfgfsdgfdsgdsf"</span><span class="p">,</span><span class="w">
@@ -3778,9 +3754,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Type of paymethod. Check <a href="#payment-methods">payment_method</a>.<code class="prettyprint">type</code>.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">payment_provider_id</code></td>
+<td><code class="prettyprint">payment_method_id</code></td>
 <td><em>integer</em></td>
-<td>Type of payment provider. Check <a href="#payment-methods">payment_method</a>.<code class="prettyprint">payment_provider_id</code>.</td>
+<td><a href="#payment-methods">Payment_method</a>` identifier used to create paymethod.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">available_for_payment_methods</code></td>
@@ -3791,11 +3767,6 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">default</code><br><em>editable</em></td>
 <td><em>boolean</em></td>
 <td>Client preference for default paymethod</td>
-</tr>
-<tr>
-<td><code class="prettyprint">security_requirements</code><br><em>editable</em></td>
-<td><em>object</em></td>
-<td>Additional security steps required to use paymethod (check <a href="#payment-methods">payment_method</a> for object structure).</td>
 </tr>
 <tr>
 <td><code class="prettyprint">data</code></td>
@@ -4404,6 +4375,74 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <p><a href="#payment-methods">Payment methods</a> for puchasing membership.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;purchase_membership_payment_methods&quot;</code></p>
+
+<h2 id="3d-security-2-0-challenge">3D Security 2.0 Challenge</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/purchase_membership/three_d_security_two_challenge?query[payment_method_id]=2"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Payment provider data needed for 3D security. Can be used on creating a card, purchasing membership or booking.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;services/{{service_id}}/payment_methods/{{id}}/three_d_security_two_challenge&quot;</code><br/>
+<code class="prettyprint">&quot;path&quot;: &quot;services/{{service_id}}/purchase_membership/three_d_security_two_challenge&quot;</code><br/>
+<code class="prettyprint">&quot;path&quot;: &quot;services/{{service_id}}/booking_transactions/{{id}}/three_d_security_two_challenge&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">amount</code></td>
+<td><em>double</em></td>
+<td>Amount to use when requesting 3D security from payment provider.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">token</code></td>
+<td><em>string</em></td>
+<td>Identifier from payment provider to link authorization request with server.</td>
+</tr>
+</tbody></table>
+
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">query.payment_method_id</code></td>
+<td><em>integer</em></td>
+<td><em>none</em></td>
+<td><a href="#payment-methods">Payment method</a> identifier to apply 3D Security with for a given operation. Needed when purchasing membership or booking.</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
 
 <h1 id="booking-process">Booking process</h1>
 
