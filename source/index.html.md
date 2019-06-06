@@ -2782,9 +2782,9 @@ curl\
 
 Payment provider data needed for 3D security. Can be used on creating a card, purchasing membership or booking.
 
-`"path": "services/{{service_id}}/payment_methods/{{id}}/three_d_security_two_challenge"`<br/>
-`"path": "services/{{service_id}}/purchase_membership/three_d_security_two_challenge"`<br/>
-`"path": "services/{{service_id}}/booking_transactions/{{id}}/three_d_security_two_challenge"`
+`"path": "payment_methods/{{id}}/three_d_security_two_challenge"`<br/>
+`"path": "purchase_membership/three_d_security_two_challenge"`<br/>
+`"path": "booking_transactions/{{id}}/three_d_security_two_challenge"`
 
 ### Response parameters
 
