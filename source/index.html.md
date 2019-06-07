@@ -5424,6 +5424,7 @@ curl\
           "description": "This is awesome, you should try!",
           "cta_button": {
             "title": "Got it!",
+            "deep_link": "GoFantastic://?fs_screen=treats",
             "target": {
               "screen_id": 1,
               "item_id": 1
@@ -5767,7 +5768,8 @@ Parameter | Type | Description
 `payload.popup.image_url` | *string* | 
 `payload.popup.title` | *string* | 
 `payload.popup.description` | *string* | 
-`payload.popup.cta_button.title` | *string* | 
+`payload.popup.cta_button.title` | *string* |
+`payload.popup.cta_button.deep_link` | *string* |
 `payload.popup.cta_button.target.screen_id` | *integer* | Determines which screen is opened when tapping the CTA button:<br/>*<b>1</b> - Categories*<br>*<b>2</b> - Category*<br>*<b>3</b> - Service*<br>*<b>4</b> - Deals*<br>*<b>5</b> - Deal*<br>*<b>6</b> - Chat*<br>*<b>7</b> - Referral*<br>*<b>8</b> - Treats*<br>*<b>9</b> - Membership*<br>*<b>10</b> - Privacy policy*
 `payload.popup.cta_button.target.screen_id.item_id` | *integer* | 
 `payload.popup.voucher.voucher_code` | *string* | 
