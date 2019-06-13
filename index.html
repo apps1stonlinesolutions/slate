@@ -3814,6 +3814,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Expriation year of credit card</td>
 </tr>
 <tr>
+<td><code class="prettyprint">active (pending)</code></td>
+<td><em>boolean</em></td>
+<td>Can card be used for payments. Card can be inactive e.g. if it needs 3D Security 2.0 to be applied.</td>
+</tr>
+<tr>
 <td><code class="prettyprint">sort</code></td>
 <td><em>integer</em></td>
 <td>Order in list</td>
@@ -4386,7 +4391,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;purchase_membership_payment_methods&quot;</code></p>
 
-<h2 id="3d-security-2-0-challenge">3D Security 2.0 Challenge</h2>
+<h2 id="3d-security-2-0-challenge-pending">3D Security 2.0 Challenge (pending)</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
@@ -4447,6 +4452,46 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><em>integer</em></td>
 <td><em>none</em></td>
 <td><a href="#payment-methods">Payment method</a> identifier to apply 3D Security with for a given operation. Needed when purchasing membership or booking.</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
+<h2 id="resolve-3d-security-2-0-pending">Resolve 3D Security 2.0 (pending)</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+      "three_d_secured_token": "b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr"
+  }
+}'</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/paymethod/2/three_d_security_two_challenge/resolve"</span>
+</code></pre>
+
+<p>Payment provider data proving 3D security was applied.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;paymethods/{{id}}/three_d_security_two_challenge/resolve&quot;</code><br/>
+<code class="prettyprint">&quot;path&quot;: &quot;purchase_membership/three_d_security_two_challenge/resolve&quot;</code><br/>
+<code class="prettyprint">&quot;path&quot;: &quot;booking_transactions/{{id}}/three_d_security_two_challenge/resolve&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">three_d_secured_token</code></td>
+<td><em>string</em></td>
+<td>Identifier from payment provider to prove 3D Security passed</td>
 </tr>
 </tbody></table>
 
