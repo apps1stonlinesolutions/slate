@@ -2426,6 +2426,7 @@ Parameter | Type | Description
 `data.last_four_digit` | *string* | Last 4 digits of a credit card
 `data.expiration_month` | *string* | Expriation month of credit card
 `data.expiration_year` | *string* | Expriation year of credit card
+`active (pending)` | *boolean* | Can card be used for payments. Card can be inactive e.g. if it needs 3D Security 2.0 to be applied.
 `sort` | *integer* | Order in list
 
 ### `params`
@@ -2761,7 +2762,7 @@ curl\
 
 `"path": "purchase_membership_payment_methods"`
 
-## 3D Security 2.0 Challenge
+## 3D Security 2.0 Challenge (pending)
 
 ```shell
 curl\
@@ -2805,6 +2806,37 @@ Parameter | Type | Default | Description
 * [Common errors](#common-errors)
 
 
+
+## Resolve 3D Security 2.0 (pending)
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+      "three_d_secured_token": "b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr"
+  }
+}'\
+"https://{{BASE_URL}}/v2/client/paymethod/2/three_d_security_two_challenge/resolve"
+```
+
+Payment provider data proving 3D security was applied.
+
+`"path": "paymethods/{{id}}/three_d_security_two_challenge/resolve"`<br/>
+`"path": "purchase_membership/three_d_security_two_challenge/resolve"`<br/>
+`"path": "booking_transactions/{{id}}/three_d_security_two_challenge/resolve"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`three_d_secured_token` | *string* | Identifier from payment provider to prove 3D Security passed
+
+
+* [Common errors](#common-errors)
 
 
 # Booking process
