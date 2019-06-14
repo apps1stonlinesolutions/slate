@@ -14,6 +14,7 @@ Error Code | Meaning
 5140 | Invalid application
 5141 | Invalid profile
 5142 | Unauthorized
+5144 | Invalid access token
 5500 | Server error (could be anything)
 
 ## Login errors

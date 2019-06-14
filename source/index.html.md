@@ -5327,9 +5327,6 @@ This endpoint returns:
 * [Common errors](#common-errors)
 
 
-
-
-
 # Shared
 
 ## User applications
@@ -6081,6 +6078,62 @@ Parameter | Type | Description
 This endpoint returns:
 
 * [Common errors](#common-errors)
+
+
+# System
+
+## User
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/system/user?private_key=8vx7890xzc&access_token=98790zx7v9c8vx7890xzc"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": {
+      "id": 10072,
+      "username": "bftestpro@gmail.com",
+      "first_name": "BFantastic",
+      "last_name": "TrainingPro",
+      "user_type_id": 39
+    }
+}
+```
+
+Details on a user provided to external systems. Data is accessed via access token aquired in authentication process.
+
+`"path": "user"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id`<br>*read-only* | *integer* | Unique identifier
+`username` | *string* | User credential
+`first_name` | *string* | First name
+`last_name` | *integer* | Last name
+`user_type_id` | *string* | Type of user:<br/>*<b>1</b> - Administrator*<br/>*<b>30</b> - AUS Franchisee*<br/>*<b>6</b> - Office non - operator*<br/>*<b>29</b> - Regular domestic cleaner*<br/>*<b>9</b> - Sales Operator*<br/>*<b>11</b> - UK Pro*<br/>*<b>17</b> - Manager*<br/>*<b>16</b> - Finance *<br/>*<b>27</b> - Affiliate*<br/>*<b>31</b> - Regular partner &amp; Operator UK*<br/>*<b>35</b> - Job Consult Operators*<br/>*<b>38</b> - Customer Services Operator*<br/>*<b>39</b> - UK Franchisee*<br/>*<b>40</b> - Job consult PRO*<br/>*<b>46</b> - Sales/Customer service coordinator*<br/>*<b>51</b> - AUS Customer service operator*<br/>*<b>52</b> - UK Franchise partner*<br/>*<b>54</b> - AUS Pro*<br/>*<b>56</b> - Quality Control Officer*<br/>*<b>59</b> - UK Pro - view jobs 7 days ahead*<br/>*<b>60</b> - UK Franchisee - view jobs 7 days ahead*<br/>*<b>61</b> - Master Franchisee*<br/>*<b>62</b> - UK Franchisee - sees jobs after 5pm*<br/>*<b>63</b> - Sales Trainee*
+
+### `params`
+
+Parameter | Type | Default | Description
+-------- | ----- | ----- | -------
+`query.private_key`<br>*optional* | *string* | *none* | Key to access APi
+`query.access_token` | *string* | *none* | Access token aquired after authorization
+
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
 
 
 # meta
