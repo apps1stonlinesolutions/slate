@@ -9232,6 +9232,100 @@ curl<span class="se">\</span>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
+<h1 id="system">System</h1>
+
+<h2 id="user">User</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/system/user?private_key=8vx7890xzc&amp;access_token=98790zx7v9c8vx7890xzc"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10072</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bftestpro@gmail.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BFantastic"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TrainingPro"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"user_type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Details on a user provided to external systems. Data is accessed via access token aquired in authentication process.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;user&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code><br><em>read-only</em></td>
+<td><em>integer</em></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code class="prettyprint">username</code></td>
+<td><em>string</em></td>
+<td>User credential</td>
+</tr>
+<tr>
+<td><code class="prettyprint">first_name</code></td>
+<td><em>string</em></td>
+<td>First name</td>
+</tr>
+<tr>
+<td><code class="prettyprint">last_name</code></td>
+<td><em>integer</em></td>
+<td>Last name</td>
+</tr>
+<tr>
+<td><code class="prettyprint">user_type_id</code></td>
+<td><em>string</em></td>
+<td>Type of user:<br/><em><b>1</b> - Administrator</em><br/><em><b>30</b> - AUS Franchisee</em><br/><em><b>6</b> - Office non - operator</em><br/><em><b>29</b> - Regular domestic cleaner</em><br/><em><b>9</b> - Sales Operator</em><br/><em><b>11</b> - UK Pro</em><br/><em><b>17</b> - Manager</em><br/><em><b>16</b> - Finance *<br/></em><b>27</b> - Affiliate*<br/><em><b>31</b> - Regular partner &amp; Operator UK</em><br/><em><b>35</b> - Job Consult Operators</em><br/><em><b>38</b> - Customer Services Operator</em><br/><em><b>39</b> - UK Franchisee</em><br/><em><b>40</b> - Job consult PRO</em><br/><em><b>46</b> - Sales/Customer service coordinator</em><br/><em><b>51</b> - AUS Customer service operator</em><br/><em><b>52</b> - UK Franchise partner</em><br/><em><b>54</b> - AUS Pro</em><br/><em><b>56</b> - Quality Control Officer</em><br/><em><b>59</b> - UK Pro - view jobs 7 days ahead</em><br/><em><b>60</b> - UK Franchisee - view jobs 7 days ahead</em><br/><em><b>61</b> - Master Franchisee</em><br/><em><b>62</b> - UK Franchisee - sees jobs after 5pm</em><br/><em><b>63</b> - Sales Trainee</em></td>
+</tr>
+</tbody></table>
+
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">query.private_key</code><br><em>optional</em></td>
+<td><em>string</em></td>
+<td><em>none</em></td>
+<td>Key to access APi</td>
+</tr>
+<tr>
+<td><code class="prettyprint">query.access_token</code></td>
+<td><em>string</em></td>
+<td><em>none</em></td>
+<td>Access token aquired after authorization</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h1 id="meta">meta</h1>
 
 <h2 id="new-version">New version</h2>
@@ -9532,6 +9626,10 @@ curl<span class="se">\</span>
 <tr>
 <td>5142</td>
 <td>Unauthorized</td>
+</tr>
+<tr>
+<td>5144</td>
+<td>Invalid access token</td>
 </tr>
 <tr>
 <td>5500</td>
