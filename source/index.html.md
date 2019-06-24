@@ -1813,7 +1813,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `title` | *string* | Display name of payment method
-`type` | *string* | *<b>None</b> - No processing needed (e.g. Cash payment)*<br>*<b>Stripe</b> - Card payment via Stripe*<br>*<b>Braintree</b> - Card payment via Braintree*<br>*<b>PayPal</b> - PayPal via Braintree*<br>*<b>Checkout</b> - Card payment via Checkout*
+`type` | *string* | *<b>None</b> - No processing needed (e.g. Cash payment)*<br>*<b>Stripe</b> - Card payment via Stripe*<br>*<b>Braintree</b> - Card payment via Braintree*<br>*<b>PayPal</b> - PayPal via Braintree*<br>*<b>Checkoutcom</b> - Card payment via Checkout*
 `payment_provider_id` | *integer* | Identifier for the the account used for the payment method (e.g. Stripe UK, Stripe AUS etc.)
 `vendor` | *string* | Vendor for providing payment details:<br/>*<b>apple_pay</b> - Apple Pay*
 `security_requirements` | *array\<string\>* | *<b>three_d_security_two</b> - 3D Security 2.0 required to use this payment method*
