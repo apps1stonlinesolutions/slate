@@ -1967,6 +1967,49 @@ Parameter | Type | Description
 `requires_comment` | *boolean* | Determines whether comment is required to reschedule with this reason
 `sort` | *integer* | Order of item in list
 
+
+## Cancellation terms
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/bookings/123/cancellation_terms"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": {
+    "description": "You will be charged £10 on cancellation.",
+    "policy": {
+      "title": "Check your cancellation policy",
+      "link": "https://www.cancel.policy"
+    }
+  }
+}
+```
+
+Terms on which a booking can be cancelled.
+
+`"path": "bookings/{{booking_id}}/cancellation_terms"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`description` | *string* | Text describing in short what the cancellation terms will be
+`policy.title` | *string* | Title of link to cancellation policy
+`policy.title` | *string* | Link to cancellation policy
+
+* [Common errors](#common-errors)
+
+
 ## Cancel reasons
 
 
