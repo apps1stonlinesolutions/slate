@@ -3058,6 +3058,64 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<h2 id="cancellation-terms">Cancellation terms</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/bookings/123/cancellation_terms"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You will be charged £10 on cancellation."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"policy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Check your cancellation policy"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.cancel.policy"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Terms on which a booking can be cancelled.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;bookings/{{booking_id}}/cancellation_terms&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">description</code></td>
+<td><em>string</em></td>
+<td>Text describing in short what the cancellation terms will be</td>
+</tr>
+<tr>
+<td><code class="prettyprint">policy.title</code></td>
+<td><em>string</em></td>
+<td>Title of link to cancellation policy</td>
+</tr>
+<tr>
+<td><code class="prettyprint">policy.title</code></td>
+<td><em>string</em></td>
+<td>Link to cancellation policy</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h2 id="cancel-reasons">Cancel reasons</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
