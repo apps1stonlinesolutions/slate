@@ -2307,7 +2307,8 @@ Parameter | Type | Description
 `delete_account_requested`<br>*read-only*  | *boolean* | True if user requested account deletion
 `preferences` | *object* | Flags with user preferences for marketing
 `preferences.preferences_submitted`<br>*read-only*  | *boolean* | True if user has set their initial preferences
-`preferences.allow_mk_all`<br>*write-only* | *object* | When set all preferences are set to true (except preferences_submitted)
+`preferences.allow_mk_all`<br>*write-only* | *boolean* | When set all preferences are set to true (except preferences_submitted)
+`preferences.allow_mk_push_notification`<br>*deprecated* | *boolean* | When true client will receive pushes for deals and offers. This preference is deprecated and is now in [user application](#user-applications) resource.
 `addresses`<br>*editable* | *array<[address](#addresses)>* | Client addresses
 `phones`<br>*editable* | *array<[phone](#phones)>* | Client phones
 `paymethods`<br>*editable* | *array<[paymethod](#paymethods)>* | Client payment methods
@@ -5408,6 +5409,8 @@ curl\
       "browser_version": "63.0.3239.132",
       "browser_language": "en-US",
       "browser_resolution": "1915x949",
+      "allow_push_notifications": true,
+      "allow_mk_push_notifications": true,
       "application": {
         "id": 1,
         "title": "BFantastic iOS"
@@ -5443,6 +5446,8 @@ Parameter | Type | Description
 `browser_version` | *string* | Version of the browser used to access the application
 `browser_language` | *string* | Language of the browser used to access the application
 `browser_resolution` | *string* | Resolution of the window of the browser used to access the application
+`allow_push_notifications` | *boolean* | Allow sending push notifications (including system pushes e.g. booking reminders as well as marketing pushes)
+`allow_mk_push_notifications` | *boolean* | Allow sending marketing push notifications for deals, offers etc.
 `application`<br>*read only* | *integer* | External App application (based on X-Application)
 
 This endpoint returns:
