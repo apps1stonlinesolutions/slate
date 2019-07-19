@@ -2651,7 +2651,7 @@ Parameter | Type | Description
 `email`<br>*editable* | *string* | Client email collected during booking process
 `phones`<br>*editable* | *array<[phones](#phones)>* | Client phones collected during booking process
 `price` | *[object](#price)* | Selected price breakdown
-`price.type` | *string*| Price type:<br/>*<b>no_price</b> - when user reached maximum price and will create a quote*<br>*<b>voucher_applied</b> - when prices are with applied voucher*
+`price.type` | *string* | Price type:<br/>*<b>no_price</b> - when user reached maximum price and will create a quote*<br>*<b>voucher_applied</b> - when prices are with applied voucher*
 `price.description` | *string* | Description text for the price
 `price.total` | *double* | Total amount as double value
 `price.choices` | *array\<[choices](#choices)\>* | Price choices and choice items selected on availability
@@ -2710,6 +2710,105 @@ Parameter | Type   | Default | Description
 -------- | ---------- | ---- | -------
 `query.from_date` | *integer* | *0* | UTC time stamp to filter bookings by timeslot after a date
 `query.to_date` | *integer* | *today* | UTC time stamp to filter bookings by timeslot before a date
+
+
+## Unit status
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/bookings/123/unit_status"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": {
+    "active_from": 1563537905,
+    "progress": [
+      {
+        "type": "on_previous_job",
+        "title": "On a previous job",
+        "icon_url": "https://www.image.com/icon.png",
+        "active": false,
+        "sort": 100
+      },
+      {
+        "type": "on_the_way",
+        "title": "On a previous job",
+        "icon_url": "https://www.image.com/icon.png",
+        "active": true,
+        "sort": 200
+      },
+      {
+        "type": "started",
+        "title": "On a previous job",
+        "icon_url": "https://www.image.com/icon.png",
+        "active": false,
+        "sort": 300
+      },
+      {
+        "type": "finished",
+        "title": "On a previous job",
+        "icon_url": "https://www.image.com/icon.png",
+        "active": false,
+        "sort": 400
+      }
+    ],
+    "team": {
+      "photo": "https://www.image.com/icon.png",
+      "name": "George's people"
+    },
+    "units": [
+      {
+        "name": "Goerge Watson",
+        "photo": "https://www.image.com/icon.png"
+      },
+      {
+        "name": "Steve Datsun",
+        "photo": "https://www.image.com/icon.png"
+      }
+    ],
+    "main_unit_location": {
+      "lat": 41.40338,
+      "lng": 2.17403,
+      "updated_at": 123435435
+    },
+    "booking_address_coordinates": {
+      "lat": 41.40338,
+      "lng": 2.17403
+    },
+    "eta": 1563534905,
+    "actions": [
+      {
+        "endpoint": "/bookings/123/call_unit",
+        "type": "call_unit",
+        "active_to": 1564534905,
+        "deep_link": "action=call_pro",
+        "title": "Call Professional"
+      }
+    ]
+  }
+}
+```
+
+Details on the Pro location and status based on a booking.
+
+`"path": "unit_status"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`active_from` | *integer* | Time after which the data will be available in UTC timestamp
+`progress.type` | *string* |  *<b>on_previous_job</b> - unit has a checked in job that doesn't yet have checkout*<br>*<b>on_the_way</b> - unit is not on a previous job and is traveling to the appointment*<br>*<b>started</b> - unit has checked in current appointment*<br>*<b>finished</b> - unit has checked in current appointment*
+`eta` | *integer* | Estimated time of arrival of unit on appointment address in UTC timestamp
+`actions.type` | *string* |  *<b>call_unit</b> - initaiate call to unit*<br>*<b>call_cs</b> - initaiate call to cs*<br>*<b>rate</b> - rate service*<
 
 
 ## Avatar
