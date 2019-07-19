@@ -2799,7 +2799,7 @@ curl\
 
 Details on the Pro location and status based on a booking.
 
-`"path": "unit_status"`
+`"path": "bookings/{{booking_id}}/unit_status"`
 
 ### Response parameters
 
