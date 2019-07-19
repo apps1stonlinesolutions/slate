@@ -4320,6 +4320,123 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<h2 id="unit-status">Unit status</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/bookings/123/unit_status"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"active_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">1563537905</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"progress"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on_previous_job"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"On a previous job"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.image.com/icon.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on_the_way"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"On a previous job"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.image.com/icon.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"started"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"On a previous job"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.image.com/icon.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finished"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"On a previous job"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.image.com/icon.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"team"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.image.com/icon.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"George's people"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"units"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goerge Watson"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.image.com/icon.png"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve Datsun"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.image.com/icon.png"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"main_unit_location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">41.40338</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.17403</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">123435435</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"booking_address_coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">41.40338</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.17403</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"eta"</span><span class="p">:</span><span class="w"> </span><span class="mi">1563534905</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/bookings/123/call_unit"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"call_unit"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"active_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">1564534905</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"deep_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"action=call_pro"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Call Professional"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Details on the Pro location and status based on a booking.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;unit_status&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">active_from</code></td>
+<td><em>integer</em></td>
+<td>Time after which the data will be available in UTC timestamp</td>
+</tr>
+<tr>
+<td><code class="prettyprint">progress.type</code></td>
+<td><em>string</em></td>
+<td><em><b>on_previous_job</b> - unit has a checked in job that doesn&rsquo;t yet have checkout</em><br><em><b>on_the_way</b> - unit is not on a previous job and is traveling to the appointment</em><br><em><b>started</b> - unit has checked in current appointment</em><br><em><b>finished</b> - unit has checked in current appointment</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">eta</code></td>
+<td><em>integer</em></td>
+<td>Estimated time of arrival of unit on appointment address in UTC timestamp</td>
+</tr>
+<tr>
+<td><code class="prettyprint">actions.type</code></td>
+<td><em>string</em></td>
+<td><em><b>call_unit</b> - initaiate call to unit</em><br><em><b>call_cs</b> - initaiate call to cs</em><br><em><b>rate</b> - rate service</em>&lt;</td>
+</tr>
+</tbody></table>
+
 <h2 id="avatar">Avatar</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
