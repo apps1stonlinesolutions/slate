@@ -4437,6 +4437,55 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<h2 id="call-customer-service">Call customer service</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+      "reason_id": 1,
+      "comment": "Pro delay",
+      "phone_id": 3
+}
+'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/bookings/123/call_cs"</span>
+</code></pre>
+
+<p>Client can call customer service in a relation to a booking</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;bookings/{{booking_id}}/call_cs&quot;</code></p>
+
+<h3 id="call-client-request-parameters">Call client request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">reason_id</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td>Identifier for <a href="#call-customer-service-reasons">call customer service reason</a> client selected for calling</td>
+</tr>
+<tr>
+<td><code class="prettyprint">comment</code></td>
+<td><em>string</em></td>
+<td>Comment left after picking a reason</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phone_id</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td>Phone number to connect to client</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h2 id="call-customer-service-reasons">Call customer service reasons</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
@@ -4464,6 +4513,55 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <p>Client chooses the reasons to call customer service in relation to a booking from a list.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;bookings/{{booking_id}}/call_cs_reasons&quot;</code></p>
+
+<h2 id="call-unit">Call unit</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+      "reason_id": 1,
+      "comment": "Pro delay",
+      "phone_id": 3
+}
+'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/bookings/123/call_unit"</span>
+</code></pre>
+
+<p>Client can call unit in a relation to a booking</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;bookings/{{booking_id}}/call_unit&quot;</code></p>
+
+<h3 id="call-client-request-parameters">Call client request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">reason_id</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td>Identifier for <a href="#call-unit-reasons">call unit reason</a> client selected for calling</td>
+</tr>
+<tr>
+<td><code class="prettyprint">comment</code></td>
+<td><em>string</em></td>
+<td>Comment left after picking a reason</td>
+</tr>
+<tr>
+<td><code class="prettyprint">phone_id</code><br><em>required</em></td>
+<td><em>integer</em></td>
+<td>Phone number to connect to client</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
 
 <h2 id="call-unit-reasons">Call unit reasons</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
