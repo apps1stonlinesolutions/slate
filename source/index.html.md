@@ -2811,6 +2811,70 @@ Parameter | Type | Description
 `actions.type` | *string* |  *<b>call_unit</b> - initaiate call to unit*<br>*<b>call_cs</b> - initaiate call to cs*<br>*<b>rate</b> - rate service*<
 
 
+## Call customer service reasons
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/bookings/123/call_cs_reasons"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+      {
+          "id": 1,
+          "name": "Pro delay",
+          "requires_comment": true,
+          "sort": 100
+      }
+  ]
+}
+```
+
+Client chooses the reasons to call customer service in relation to a booking from a list.
+
+`"path": "bookings/{{booking_id}}/call_cs_reasons"`
+
+
+## Call unit reasons
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/bookings/123/call_unit_reasons"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+      {
+          "id": 1,
+          "name": "Pro delay",
+          "requires_comment": true,
+          "sort": 100
+      }
+  ]
+}
+```
+
+Client chooses the reasons to call unit in relation to a booking from a list.
+
+`"path": "bookings/{{booking_id}}/call_unit_reasons"`
+
+
 ## Avatar
 
 ```shell
