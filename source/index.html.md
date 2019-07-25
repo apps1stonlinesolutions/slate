@@ -2811,6 +2811,38 @@ Parameter | Type | Description
 `actions.type` | *string* |  *<b>call_unit</b> - initaiate call to unit*<br>*<b>call_cs</b> - initaiate call to cs*<br>*<b>rate</b> - rate service*<
 
 
+## Call customer service
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+      "reason_id": 1,
+      "comment": "Pro delay",
+      "phone_id": 3
+}
+'\
+ "https://{{BASE_URL}}/v2/client/bookings/123/call_cs"
+```
+
+Client can call customer service in a relation to a booking
+
+`"path": "bookings/{{booking_id}}/call_cs"`
+
+### Call client request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`reason_id`<br>*required* | *integer* | Identifier for [call customer service reason](#call-customer-service-reasons) client selected for calling
+`comment` | *string* | Comment left after picking a reason
+`phone_id`<br>*required* | *integer* | Phone number to connect to client
+
+* [Common errors](#common-errors)
+
+
 ## Call customer service reasons
 
 
@@ -2841,6 +2873,38 @@ curl\
 Client chooses the reasons to call customer service in relation to a booking from a list.
 
 `"path": "bookings/{{booking_id}}/call_cs_reasons"`
+
+
+## Call unit
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+      "reason_id": 1,
+      "comment": "Pro delay",
+      "phone_id": 3
+}
+'\
+ "https://{{BASE_URL}}/v2/client/bookings/123/call_unit"
+```
+
+Client can call unit in a relation to a booking
+
+`"path": "bookings/{{booking_id}}/call_unit"`
+
+### Call client request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`reason_id`<br>*required* | *integer* | Identifier for [call unit reason](#call-unit-reasons) client selected for calling
+`comment` | *string* | Comment left after picking a reason
+`phone_id`<br>*required* | *integer* | Phone number to connect to client
+
+* [Common errors](#common-errors)
 
 
 ## Call unit reasons
