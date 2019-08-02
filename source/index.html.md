@@ -2789,7 +2789,7 @@ curl\
         "endpoint": "/bookings/123/call_unit",
         "type": "call_unit",
         "active_to": 1564534905,
-        "deep_link": "action=call_pro",
+        "deep_link": "action=call_unit",
         "title": "Call Professional"
       }
     ]
