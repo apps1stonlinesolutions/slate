@@ -2464,7 +2464,7 @@ Parameter | Type | Description
 `available_for_payment_methods` | *array<[payment_method](#payment-methods)>* | Array of [payment_method](#payment-methods) id's that this paymethod can be used with
 `default`<br>*editable* | *boolean* | Client preference for default paymethod
 `data` | *object* | Custom data of paymethod.
-`data.token` | *string* | Token from Stripe/PayPal for paymethod creation
+`data.token` | *string* | Token from Stripe/PayPal for paymethod creation or result of 3D Security
 `data.device_data` | *string* | Token from PayPal anti-fraud system
 `data.brand` | *string* | Brand for the paymethod (e.g. VISA, MasterCard etc.)
 `data.last_four_digit` | *string* | Last 4 digits of a credit card
@@ -2740,21 +2740,21 @@ curl\
       },
       {
         "type": "on_the_way",
-        "title": "On a previous job",
+        "title": "On the way",
         "icon_url": "https://www.image.com/icon.png",
         "active": true,
         "sort": 200
       },
       {
         "type": "started",
-        "title": "On a previous job",
+        "title": "Checked in",
         "icon_url": "https://www.image.com/icon.png",
         "active": false,
         "sort": 300
       },
       {
         "type": "finished",
-        "title": "On a previous job",
+        "title": "Checked out",
         "icon_url": "https://www.image.com/icon.png",
         "active": false,
         "sort": 400
@@ -3073,39 +3073,6 @@ Parameter | Type | Description
 Parameter | Type | Default | Description
 -------- | ----- | ----- | -------
 `query.payment_method_id` | *integer* | *none* | [Payment method](#payment-methods) identifier to apply 3D Security with for a given operation. Needed when purchasing membership or booking.
-
-* [Common errors](#common-errors)
-
-
-
-## Resolve 3D Security 2.0 (pending)
-
-```shell
-curl\
- -X POST\
- -H "Content-Type: application/json"\
- -H "X-Profile: {{PROFILE_ID}}"\
- -H "X-Application: {{APPLICATION_TOKEN}}"\
- -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
- -d '{
-      "three_d_secured_token": "b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr"
-  }
-}'\
-"https://{{BASE_URL}}/v2/client/paymethod/2/three_d_security_two_challenge/resolve"
-```
-
-Payment provider data proving 3D security was applied.
-
-`"path": "paymethods/{{id}}/three_d_security_two_challenge/resolve"`<br/>
-`"path": "purchase_membership/three_d_security_two_challenge/resolve"`<br/>
-`"path": "booking_transactions/{{id}}/three_d_security_two_challenge/resolve"`
-
-### Request parameters
-
-Parameter | Type | Description
--------- | ----- | -------
-`three_d_secured_token` | *string* | Identifier from payment provider to prove 3D Security passed
-
 
 * [Common errors](#common-errors)
 
