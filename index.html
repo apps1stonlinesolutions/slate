@@ -3913,6 +3913,70 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <li><a href="#payment-errors">Payment errors</a></li>
 </ul>
 
+<h2 id="referral-stats">Referral stats</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/referral_stats"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"successful_shares"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"successful_referrals"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"credits_earned_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£12"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"credits_spent_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£18"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Statistics on referral.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;referral_stats&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">successful_shares</code></td>
+<td><em>integer</em></td>
+<td>Registered users with client&rsquo;s referral code</td>
+</tr>
+<tr>
+<td><code class="prettyprint">successful_referrals</code></td>
+<td><em>integer</em></td>
+<td>Registered users with client&rsquo;s referral code who has a finished booking</td>
+</tr>
+<tr>
+<td><code class="prettyprint">credits_earned_formatted</code></td>
+<td><em>integer</em></td>
+<td>Credits earned from referral</td>
+</tr>
+<tr>
+<td><code class="prettyprint">credits_spent_formatted</code></td>
+<td><em>integer</em></td>
+<td>Credits spent</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h2 id="bookings">Bookings</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
