@@ -6445,6 +6445,43 @@ This endpoint returns:
 
 
 
+## Client statistics
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/system/client_statistics"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": {
+    "members": 12,
+    "total": 289
+  }
+}
+```
+
+Statistics on clients.
+
+`"path": "client_statistics"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`members` | *integer* | Count of clients with purchased membership
+`total` | *integer* | Count of overall clients
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
 
 # meta
 
