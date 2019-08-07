@@ -2479,6 +2479,10 @@ Parameter | Type   | Default | Description
 -------- | ---------- | ---- | -------
 `filter.type` | *string* | *Stripe* | Filters paymethods by `type`. If no filter is passed `Stripe` paymethods are returned. To filter paymethods by more than one type pass an array of types e.g. `["Stripe", "PayPal"]`
 
+This endpoint returns:
+
+* [Common errors](#common-errors)
+* [Payment errors](#payment-errors)
 
 ## Bookings
 
@@ -2840,6 +2844,8 @@ Parameter | Type | Description
 `comment` | *string* | Comment left after picking a reason
 `phone_id`<br>*required* | *integer* | Phone number to connect to client
 
+This endpoint returns:
+
 * [Common errors](#common-errors)
 
 
@@ -2903,6 +2909,8 @@ Parameter | Type | Description
 `reason_id`<br>*required* | *integer* | Identifier for [call unit reason](#call-unit-reasons) client selected for calling
 `comment` | *string* | Comment left after picking a reason
 `phone_id`<br>*required* | *integer* | Phone number to connect to client
+
+This endpoint returns:
 
 * [Common errors](#common-errors)
 
@@ -3012,6 +3020,8 @@ Parameter | Type | Description
 `domain_url`<br>*optional* | *string* | Source domain url
 `source_phone`<br>*optional* | *string* | Source phone number
 
+This endpoint returns:
+
 * [Common errors](#common-errors)
 * [Payment errors](#payment-errors)
 
@@ -3033,7 +3043,7 @@ curl\
 
 `"path": "purchase_membership_payment_methods"`
 
-## 3D Security 2.0 Challenge (pending)
+## 3D Security 2.0 Challenge
 
 ```shell
 curl\
@@ -3050,7 +3060,8 @@ curl\
 ```json
 {
   "amount": 1,
-  "token": "b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr"
+  "challenge_token": "b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr",
+  "card_token": "b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr"
 }
 ```
 
@@ -3065,7 +3076,7 @@ Payment provider data needed for 3D security. Can be used on creating a card, pu
 Parameter | Type | Description
 -------- | ----- | -------
 `amount` | *double* | Amount to use when requesting 3D security from payment provider.
-`token` | *string* | Identifier from payment provider to link authorization request with server.
+`challenge_token` | *string* | Identifier from payment provider to link authorization request with server.
 
 
 ### `params`
@@ -3073,6 +3084,8 @@ Parameter | Type | Description
 Parameter | Type | Default | Description
 -------- | ----- | ----- | -------
 `query.payment_method_id` | *integer* | *none* | [Payment method](#payment-methods) identifier to apply 3D Security with for a given operation. Needed when purchasing membership or booking.
+
+This endpoint returns:
 
 * [Common errors](#common-errors)
 
@@ -3437,6 +3450,8 @@ Parameter | Type | Default | Description
 `query.transaction_id` | *string* | *none* |Identifier for transaction to check availability for
 `query.from_date` | *string* | *today* | Filter availability from this date on (date string with format 2018-02-25)
 `query.to_date` | *string* | *a week from today* | Filter availability to this date (date string with format 2018-02-25)
+
+This endpoint returns:
 
 * [Common errors](#common-errors)
 
@@ -5230,6 +5245,8 @@ Parameter | Type | Description
 -------- | ----- | -------
 `text`<br>*required* | *string* | Unit feedback input text
 
+This endpoint returns:
+
 * [Common errors](#common-errors)
 
 ## Send message to client
@@ -5272,6 +5289,9 @@ Parameter | Type | Description
 `lng` | *double* | Longitude where event occured
 `booking_id`<br>*optional* | *integer* | Identifier for job to whose client message will be sent. If endpoint called directly (not trough job) booking id is required.
 
+
+This endpoint returns:
+
 * [Common errors](#common-errors)
 
 
@@ -5308,6 +5328,8 @@ Parameter | Type | Description
 `client_contact_type`<br>*required* | *integer* | Identifier for client [contact](#jobs) type from job
 `booking_id`<br>*optional* | *integer* | Identifier for job unit wants to call client of. If endpoint called directly (not trough job) booking id is required.
 
+This endpoint returns:
+
 * [Common errors](#common-errors)
 
 
@@ -5334,6 +5356,8 @@ Unit can change payment method by writing the payment method id to the job.
 Parameter | Type | Description
 -------- | ----- | -------
 `payment_method`<br>*required* | *integer* | Identifier of payment method to set on the job
+
+This endpoint returns:
 
 * [Common errors](#common-errors)
 
@@ -5434,6 +5458,8 @@ Parameter | Type | Description
 `comment` | *string* | Message template used for the message
 `lat` | *double* | Latitude where event occured
 `lng` | *double* | Longitude where event occured
+
+This endpoint returns:
 
 * [Common errors](#common-errors)
 
