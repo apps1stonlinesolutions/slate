@@ -3906,6 +3906,13 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+<li><a href="#payment-errors">Payment errors</a></li>
+</ul>
+
 <h2 id="bookings">Bookings</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
@@ -4482,6 +4489,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<p>This endpoint returns:</p>
+
 <ul>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
@@ -4558,6 +4567,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Phone number to connect to client</td>
 </tr>
 </tbody></table>
+
+<p>This endpoint returns:</p>
 
 <ul>
 <li><a href="#common-errors">Common errors</a></li>
@@ -4707,6 +4718,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<p>This endpoint returns:</p>
+
 <ul>
 <li><a href="#common-errors">Common errors</a></li>
 <li><a href="#payment-errors">Payment errors</a></li>
@@ -4725,7 +4738,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;purchase_membership_payment_methods&quot;</code></p>
 
-<h2 id="3d-security-2-0-challenge-pending">3D Security 2.0 Challenge (pending)</h2>
+<h2 id="3d-security-2-0-challenge">3D Security 2.0 Challenge</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
@@ -4740,7 +4753,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr"</span><span class="w">
+  </span><span class="nt">"challenge_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"card_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -4765,7 +4779,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Amount to use when requesting 3D security from payment provider.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">token</code></td>
+<td><code class="prettyprint">challenge_token</code></td>
 <td><em>string</em></td>
 <td>Identifier from payment provider to link authorization request with server.</td>
 </tr>
@@ -4788,6 +4802,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><a href="#payment-methods">Payment method</a> identifier to apply 3D Security with for a given operation. Needed when purchasing membership or booking.</td>
 </tr>
 </tbody></table>
+
+<p>This endpoint returns:</p>
 
 <ul>
 <li><a href="#common-errors">Common errors</a></li>
@@ -5285,6 +5301,8 @@ curl<span class="se">\</span>
 <td>Filter availability to this date (date string with format 2018-02-25)</td>
 </tr>
 </tbody></table>
+
+<p>This endpoint returns:</p>
 
 <ul>
 <li><a href="#common-errors">Common errors</a></li>
@@ -7897,6 +7915,8 @@ curl<span class="se">\</span>
 </tr>
 </tbody></table>
 
+<p>This endpoint returns:</p>
+
 <ul>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
@@ -7973,6 +7993,8 @@ curl<span class="se">\</span>
 </tr>
 </tbody></table>
 
+<p>This endpoint returns:</p>
+
 <ul>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
@@ -8029,6 +8051,8 @@ curl<span class="se">\</span>
 </tr>
 </tbody></table>
 
+<p>This endpoint returns:</p>
+
 <ul>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
@@ -8064,6 +8088,8 @@ curl<span class="se">\</span>
 <td>Identifier of payment method to set on the job</td>
 </tr>
 </tbody></table>
+
+<p>This endpoint returns:</p>
 
 <ul>
 <li><a href="#common-errors">Common errors</a></li>
@@ -8216,6 +8242,8 @@ curl<span class="se">\</span>
 <td>Longitude where event occured</td>
 </tr>
 </tbody></table>
+
+<p>This endpoint returns:</p>
 
 <ul>
 <li><a href="#common-errors">Common errors</a></li>
