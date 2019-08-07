@@ -2484,6 +2484,48 @@ This endpoint returns:
 * [Common errors](#common-errors)
 * [Payment errors](#payment-errors)
 
+## Referral stats
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/referral_stats"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": {
+      "successful_shares": 25,
+      "successful_referrals": 15,
+      "credits_earned_formatted": "£12",
+      "credits_spent_formatted": "£18"
+  }
+}
+```
+
+Statistics on referral.
+
+`"path": "referral_stats"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`successful_shares` | *integer* | Registered users with client's referral code
+`successful_referrals` | *integer* | Registered users with client's referral code who has a finished booking
+`credits_earned_formatted` | *integer* | Credits earned from referral
+`credits_spent_formatted` | *integer* | Credits spent
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
 ## Bookings
 
 ```shell
