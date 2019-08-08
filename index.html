@@ -4504,7 +4504,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">actions.type</code></td>
 <td><em>string</em></td>
-<td><em><b>call_unit</b> - initaiate call to unit</em><br><em><b>call_cs</b> - initaiate call to cs</em><br><em><b>rate</b> - rate service</em>&lt;</td>
+<td><em><b>call_unit</b> - initaiate call to unit</em><br><em><b>call_cs</b> - initaiate call to cs</em><br><em><b>rate</b> - rate service</em></td>
 </tr>
 </tbody></table>
 
@@ -4809,7 +4809,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
  -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
-<span class="s2">"https://{{BASE_URL}}/v2/client/purchase_membership/three_d_security_two_challenge?query[payment_method_id]=2"</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/purchase_membership/three_d_security_two_challenge?query[paymethod_id]=2"</span>
 </code></pre>
 
 <blockquote>
@@ -4864,6 +4864,12 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><em>integer</em></td>
 <td><em>none</em></td>
 <td><a href="#payment-methods">Payment method</a> identifier to apply 3D Security with for a given operation. Needed when purchasing membership or booking.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">query.paymethod_id</code></td>
+<td><em>integer</em></td>
+<td><em>none</em></td>
+<td><a href="#paymethods">Paymethod</a> identifier to apply 3D Security with for a given operation. Needed when purchasing membership or booking.</td>
 </tr>
 </tbody></table>
 
