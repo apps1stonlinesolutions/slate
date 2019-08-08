@@ -2854,7 +2854,7 @@ Parameter | Type | Description
 `active_from` | *integer* | Time after which the data will be available in UTC timestamp
 `progress.type` | *string* |  *<b>on_previous_job</b> - unit has a checked in job that doesn't yet have checkout*<br>*<b>on_the_way</b> - unit is not on a previous job and is traveling to the appointment*<br>*<b>started</b> - unit has checked in current appointment*<br>*<b>finished</b> - unit has checked in current appointment*
 `eta` | *integer* | Estimated time of arrival of unit on appointment address in UTC timestamp
-`actions.type` | *string* |  *<b>call_unit</b> - initaiate call to unit*<br>*<b>call_cs</b> - initaiate call to cs*<br>*<b>rate</b> - rate service*<
+`actions.type` | *string* |  *<b>call_unit</b> - initaiate call to unit*<br>*<b>call_cs</b> - initaiate call to cs*<br>*<b>rate</b> - rate service*
 
 
 ## Call customer service
@@ -3094,7 +3094,7 @@ curl\
  -H "X-Profile: {{PROFILE_ID}}"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
-"https://{{BASE_URL}}/v2/client/purchase_membership/three_d_security_two_challenge?query[payment_method_id]=2"
+"https://{{BASE_URL}}/v2/client/purchase_membership/three_d_security_two_challenge?query[paymethod_id]=2"
 ```
 
 > The above request success response is:
@@ -3126,6 +3126,7 @@ Parameter | Type | Description
 Parameter | Type | Default | Description
 -------- | ----- | ----- | -------
 `query.payment_method_id` | *integer* | *none* | [Payment method](#payment-methods) identifier to apply 3D Security with for a given operation. Needed when purchasing membership or booking.
+`query.paymethod_id` | *integer* | *none* | [Paymethod](#paymethods) identifier to apply 3D Security with for a given operation. Needed when purchasing membership or booking.
 
 This endpoint returns:
 
