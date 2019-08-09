@@ -1814,7 +1814,7 @@ Parameter | Type | Description
 `id` | *integer* | Unique identifier
 `title` | *string* | Display name of payment method
 `type` | *string* | *<b>None</b> - No processing needed (e.g. Cash payment)*<br>*<b>Stripe</b> - Card payment via Stripe*<br>*<b>Braintree</b> - Card payment via Braintree*<br>*<b>PayPal</b> - PayPal via Braintree*<br>*<b>Checkoutcom</b> - Card payment via Checkout*
-`payment_provider_id` | *integer* | Identifier for the the account used for the payment method (e.g. Stripe UK, Stripe AUS etc.)
+`payment_provider_id (deprecated)` | *integer* | Identifier for the the account used for the payment method (e.g. Stripe UK, Stripe AUS etc.)
 `vendor` | *string* | Vendor for providing payment details:<br/>*<b>apple_pay</b> - Apple Pay*
 `security_requirements` | *array\<string\>* | *<b>three_d_security_two</b> - 3D Security 2.0 required to use this payment method*
 `data`<br>*optional* | *object* | Based on the payment provider different data may be provided (such as keys, tokens etc.)
@@ -2460,7 +2460,7 @@ Parameter | Type | Description
 `description`<br>*editable* | *string* | User description for the paymethod
 `label` | *string* | Generated description for the paymethod
 `type` | *string* | Type of paymethod. Check [payment_method](#payment-methods).`type`.
-`payment_method_id` | *integer* | [Payment_method](#payment-methods)` identifier used to create paymethod.
+`payment_method_id` | *integer* | [Payment_method](#payment-methods) identifier used to create paymethod.
 `available_for_payment_methods` | *array<[payment_method](#payment-methods)>* | Array of [payment_method](#payment-methods) id's that this paymethod can be used with
 `default`<br>*editable* | *boolean* | Client preference for default paymethod
 `data` | *object* | Custom data of paymethod.
@@ -3036,7 +3036,7 @@ curl\
  -d '{
        "client_paymethod_id": 12345,
        "client_paymethod": {
-          "payment_provider_id": 12,
+          "payment_method_id": 12,
           "token": "hzkchvkuhzgxcvkjhsbdfnaljJGKJbdasnbdLJHDs"
        },
        "source_id": 11426,
@@ -3056,7 +3056,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `client_paymethod_id`<br>*required (if no `client_paymethod`)* | *integer* | Object id of paymethod (card saved as user payment detail)
 `client_paymethod`<br>*required (if no `client_paymethod_id`)* | *object* | Details for creating new paymethod
-`client_paymethod.payment_provider_id`<br>*required* | *integer* | Stripe account id
+`client_paymethod.payment_method_id`<br>*required* | *integer* | Identifier of selected payment method to create the paymethod with
 `client_paymethod.token`<br>*required* | *string* | Card token from Stripe
 `source_id`<br>*optional* | *integer* | Object id of source
 `domain_url`<br>*optional* | *string* | Source domain url
@@ -3237,7 +3237,7 @@ curl\
  -d '{
   "payment_method": 3,
   "paymethod": {
-    "payment_provider_id": 3,
+    "payment_method_id": 3,
     "data": {
       "token": "231231jsklfhaksj231§2"
     }
@@ -3294,7 +3294,7 @@ To set price you need to:
 
 Paymethod can be set by:
 
-* Passing new paymethod details - set at least `payment_provider_id` and `data.token` at `booking_transaction.paymethod` to create new paymethod for the booking transaction. Optionally other fields as `description`, `default` or `sort` can be passed.
+* Passing new paymethod details - set at least `payment_method_id` and `data.token` at `booking_transaction.paymethod` to create new paymethod for the booking transaction. Optionally other fields as `description`, `default` or `sort` can be passed.
 * Passing existing paymethod id - if you want to use existing paymethod set it's `id` at `booking_transaction.paymethod`
 
 ### Booking configuration
