@@ -2794,7 +2794,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><em><b>None</b> - No processing needed (e.g. Cash payment)</em><br><em><b>Stripe</b> - Card payment via Stripe</em><br><em><b>Braintree</b> - Card payment via Braintree</em><br><em><b>PayPal</b> - PayPal via Braintree</em><br><em><b>Checkoutcom</b> - Card payment via Checkout</em></td>
 </tr>
 <tr>
-<td><code class="prettyprint">payment_provider_id</code></td>
+<td><code class="prettyprint">payment_provider_id (deprecated)</code></td>
 <td><em>integer</em></td>
 <td>Identifier for the the account used for the payment method (e.g. Stripe UK, Stripe AUS etc.)</td>
 </tr>
@@ -3829,7 +3829,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">payment_method_id</code></td>
 <td><em>integer</em></td>
-<td><a href="#payment-methods">Payment_method</a>` identifier used to create paymethod.</td>
+<td><a href="#payment-methods">Payment_method</a> identifier used to create paymethod.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">available_for_payment_methods</code></td>
@@ -4722,7 +4722,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
  -d <span class="s1">'{
        "client_paymethod_id": 12345,
        "client_paymethod": {
-          "payment_provider_id": 12,
+          "payment_method_id": 12,
           "token": "hzkchvkuhzgxcvkjhsbdfnaljJGKJbdasnbdLJHDs"
        },
        "source_id": 11426,
@@ -4756,9 +4756,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Details for creating new paymethod</td>
 </tr>
 <tr>
-<td><code class="prettyprint">client_paymethod.payment_provider_id</code><br><em>required</em></td>
+<td><code class="prettyprint">client_paymethod.payment_method_id</code><br><em>required</em></td>
 <td><em>integer</em></td>
-<td>Stripe account id</td>
+<td>Identifier of selected payment method to create the paymethod with</td>
 </tr>
 <tr>
 <td><code class="prettyprint">client_paymethod.token</code><br><em>required</em></td>
@@ -4974,7 +4974,7 @@ curl<span class="se">\</span>
  -d <span class="s1">'{
   "payment_method": 3,
   "paymethod": {
-    "payment_provider_id": 3,
+    "payment_method_id": 3,
     "data": {
       "token": "231231jsklfhaksj231§2"
     }
@@ -5036,7 +5036,7 @@ curl<span class="se">\</span>
 <p>Paymethod can be set by:</p>
 
 <ul>
-<li>Passing new paymethod details - set at least <code class="prettyprint">payment_provider_id</code> and <code class="prettyprint">data.token</code> at <code class="prettyprint">booking_transaction.paymethod</code> to create new paymethod for the booking transaction. Optionally other fields as <code class="prettyprint">description</code>, <code class="prettyprint">default</code> or <code class="prettyprint">sort</code> can be passed.</li>
+<li>Passing new paymethod details - set at least <code class="prettyprint">payment_method_id</code> and <code class="prettyprint">data.token</code> at <code class="prettyprint">booking_transaction.paymethod</code> to create new paymethod for the booking transaction. Optionally other fields as <code class="prettyprint">description</code>, <code class="prettyprint">default</code> or <code class="prettyprint">sort</code> can be passed.</li>
 <li>Passing existing paymethod id - if you want to use existing paymethod set it&rsquo;s <code class="prettyprint">id</code> at <code class="prettyprint">booking_transaction.paymethod</code></li>
 </ul>
 
