@@ -3034,14 +3034,21 @@ curl\
  -H "X-Profile: {{PROFILE_ID}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
  -d '{
-       "client_paymethod_id": 12345,
-       "client_paymethod": {
+        "client_paymethod_id": 12345,
+        "client_paymethod": {
           "payment_method_id": 12,
           "token": "hzkchvkuhzgxcvkjhsbdfnaljJGKJbdasnbdLJHDs"
-       },
-       "source_id": 11426,
-       "domain_url": "fantasticcleaners.com",
-       "source_phone": "02037460906"
+        },
+        "paymethod": {
+          "id": 1,
+          "payment_method_id": 2,
+          "data": {
+            "token": "kjkadshfjkhSAKJHkljHASKJLHKJfdasf"
+          }
+        },
+        "source_id": 11426,
+        "domain_url": "fantasticcleaners.com",
+        "source_phone": "02037460906"
 }'\
  "https://{{BASE_URL}}/v2/client/purchase_membership"
 ```
@@ -3054,10 +3061,11 @@ Clients can purchase membership by providing card details. Card can be created u
 
 Parameter | Type | Description
 -------- | ----- | -------
-`client_paymethod_id`<br>*required (if no `client_paymethod`)* | *integer* | Object id of paymethod (card saved as user payment detail)
-`client_paymethod`<br>*required (if no `client_paymethod_id`)* | *object* | Details for creating new paymethod
+`client_paymethod_id (deprecated)`<br>*required (if no `client_paymethod`)* | *integer* | Object id of paymethod (card saved as user payment detail)
+`client_paymethod (deprecated)`<br>*required (if no `client_paymethod_id`)* | *object* | Details for creating new paymethod
 `client_paymethod.payment_method_id`<br>*required* | *integer* | Identifier of selected payment method to create the paymethod with
 `client_paymethod.token`<br>*required* | *string* | Card token from Stripe
+`paymethod` | *object<[paymethod](#paymethods)>* | Client paymethod to purchase the membership with
 `source_id`<br>*optional* | *integer* | Object id of source
 `domain_url`<br>*optional* | *string* | Source domain url
 `source_phone`<br>*optional* | *string* | Source phone number
