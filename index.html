@@ -4720,14 +4720,21 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
  -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
  -d <span class="s1">'{
-       "client_paymethod_id": 12345,
-       "client_paymethod": {
+        "client_paymethod_id": 12345,
+        "client_paymethod": {
           "payment_method_id": 12,
           "token": "hzkchvkuhzgxcvkjhsbdfnaljJGKJbdasnbdLJHDs"
-       },
-       "source_id": 11426,
-       "domain_url": "fantasticcleaners.com",
-       "source_phone": "02037460906"
+        },
+        "paymethod": {
+          "id": 1,
+          "payment_method_id": 2,
+          "data": {
+            "token": "kjkadshfjkhSAKJHkljHASKJLHKJfdasf"
+          }
+        },
+        "source_id": 11426,
+        "domain_url": "fantasticcleaners.com",
+        "source_phone": "02037460906"
 }'</span><span class="se">\</span>
  <span class="s2">"https://{{BASE_URL}}/v2/client/purchase_membership"</span>
 </code></pre>
@@ -4746,12 +4753,12 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">client_paymethod_id</code><br><em>required (if no <code class="prettyprint">client_paymethod</code>)</em></td>
+<td><code class="prettyprint">client_paymethod_id (deprecated)</code><br><em>required (if no <code class="prettyprint">client_paymethod</code>)</em></td>
 <td><em>integer</em></td>
 <td>Object id of paymethod (card saved as user payment detail)</td>
 </tr>
 <tr>
-<td><code class="prettyprint">client_paymethod</code><br><em>required (if no <code class="prettyprint">client_paymethod_id</code>)</em></td>
+<td><code class="prettyprint">client_paymethod (deprecated)</code><br><em>required (if no <code class="prettyprint">client_paymethod_id</code>)</em></td>
 <td><em>object</em></td>
 <td>Details for creating new paymethod</td>
 </tr>
@@ -4764,6 +4771,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">client_paymethod.token</code><br><em>required</em></td>
 <td><em>string</em></td>
 <td>Card token from Stripe</td>
+</tr>
+<tr>
+<td><code class="prettyprint">paymethod</code></td>
+<td><em>object&lt;<a href="#paymethods">paymethod</a>&gt;</em></td>
+<td>Client paymethod to purchase the membership with</td>
 </tr>
 <tr>
 <td><code class="prettyprint">source_id</code><br><em>optional</em></td>
