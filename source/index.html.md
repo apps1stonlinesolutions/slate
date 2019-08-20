@@ -2779,7 +2779,7 @@ curl\
     "progress": [
       {
         "type": "on_previous_job",
-        "title": "On a previous job",
+        "title": "At another job",
         "icon_url": "https://www.image.com/icon.png",
         "active": false,
         "sort": 100
@@ -2793,14 +2793,14 @@ curl\
       },
       {
         "type": "started",
-        "title": "Checked in",
+        "title": "On the job",
         "icon_url": "https://www.image.com/icon.png",
         "active": false,
         "sort": 300
       },
       {
         "type": "finished",
-        "title": "Checked out",
+        "title": "Job done",
         "icon_url": "https://www.image.com/icon.png",
         "active": false,
         "sort": 400
