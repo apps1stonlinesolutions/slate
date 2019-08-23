@@ -2597,6 +2597,7 @@ curl\
       "work_time": 120,
       "payment_method": 3,
       "payment_method_title": "Cash",
+      "payment_method_description": "Cash will be collected after completing the service on site.",
       "paymethod": 1,
       "voucher": "GO10OFF",
       "feedback_rate": 0,
@@ -2709,6 +2710,7 @@ Parameter | Type | Description
 `work_time` | *integer* | Service duration in minutes
 `payment_method`<br>*editable* | *[object](#payment-methods)* | Selected payment method for the booking
 `payment_method_title` | *string* | Display text for payment method
+`payment_method_description` | *string* | Display text for payment method description. Used to show additional information e.g. if payment method is Bank Transfer and client has no options to change it on reschedule.
 `paymethods`<br>*editable* | *[object](#paymethods)* | Selected paymethod for the booking (particular credit card etc.)
 `voucher`<br>*editable* | *string* | Discount voucher code used for booking
 `feedback_rate`<br>*editable* | *integer* | Rating of client for booking service
