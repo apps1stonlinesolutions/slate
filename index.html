@@ -4046,6 +4046,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"work_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
       </span><span class="nt">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
       </span><span class="nt">"payment_method_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cash"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payment_method_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cash will be collected after completing the service on site."</span><span class="p">,</span><span class="w">
       </span><span class="nt">"paymethod"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nt">"voucher"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GO10OFF"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"feedback_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4241,6 +4242,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">payment_method_title</code></td>
 <td><em>string</em></td>
 <td>Display text for payment method</td>
+</tr>
+<tr>
+<td><code class="prettyprint">payment_method_description</code></td>
+<td><em>string</em></td>
+<td>Display text for payment method description. Used to show additional information e.g. if payment method is Bank Transfer and client has no options to change it on reschedule.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">paymethods</code><br><em>editable</em></td>
