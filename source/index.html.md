@@ -952,6 +952,7 @@ curl\
 
 To create account all required fields must be sent (except anonymous accounts which need only the right `type_id`). For social sign in set the correct `type_id` and fields in `social` object (they vary for different social medias). Missing details from social sign in must be collected from user to satisfy required fields.
 
+
 `"path": "register"`
 
 ### Request parameters
