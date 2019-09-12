@@ -19,6 +19,8 @@ search: true
 
 Welcome to XRM/MP API.
 
+Version 2.1
+
 ## Environments
 
 * *LIVE - <b>api.fantasticservices.com*</b>
