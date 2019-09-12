@@ -3915,7 +3915,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <li><a href="#payment-errors">Payment errors</a></li>
 </ul>
 
-<h2 id="verify-paymethod">Verify paymethod</h2>
+<h2 id="check-security-requirements">Check security requirements</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X POST<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
@@ -3930,7 +3930,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
           }
         }
 }'</span><span class="se">\</span>
- <span class="s2">"https://{{BASE_URL}}/v2/client/verify_paymethod"</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/check_security_requirements"</span>
 </code></pre>
 
 <blockquote>
@@ -3938,7 +3938,6 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"security_requirements"</span><span class="p">:</span><span class="w">
       </span><span class="p">[</span><span class="w">
         </span><span class="s2">"cvc"</span><span class="p">,</span><span class="w">
@@ -3948,9 +3947,9 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Checks if paymethod is supported.</p>
+<p>Checks security requirements for a paymethod to be created.</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;verify_paymethod&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;check_security_requirements&quot;</code></p>
 
 <h3 id="request-parameters">Request parameters</h3>
 
@@ -3962,11 +3961,6 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">paymethod</code></td>
-<td><em>object&lt;<a href="#paymethods">paymethod</a>&gt;</em></td>
-<td>Paymethod about to be created if verified</td>
-</tr>
-<tr>
 <td><code class="prettyprint">security_requirements</code></td>
 <td><em>array&lt;string&gt;</em></td>
 <td>Security steps which needs to be applied to the paymethod (check <a href="payment-methods">payment_method</a><code class="prettyprint">.security_requirements</code>)</td>
@@ -3976,6 +3970,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <p>This endpoint returns:</p>
 
 <ul>
+<li><a href="#payment-errors">Payment errors</a></li>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
