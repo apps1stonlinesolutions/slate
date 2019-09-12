@@ -2484,6 +2484,60 @@ This endpoint returns:
 * [Common errors](#common-errors)
 * [Payment errors](#payment-errors)
 
+
+## Verify paymethod
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "paymethod": {
+          "payment_method_id": 2,
+          "data": {
+            "token": "kjkadshfjkhSAKJHkljHASKJLHKJfdasf"
+          }
+        }
+}'\
+ "https://{{BASE_URL}}/v2/client/verify_paymethod"
+```
+
+
+> The above request success response is:
+
+```json
+{
+  "data": {
+    "supported": true,
+    "security_requirements":
+      [
+        "cvc",
+        "three_d_security_two"
+      ]
+  }
+}
+```
+
+
+Checks if paymethod is supported.
+
+`"path": "verify_paymethod"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`paymethod` | *object<[paymethod](#paymethods)>* | Paymethod about to be created if verified
+`security_requirements` | *array\<string\>* | Security steps which needs to be applied to the paymethod (check [payment_method](payment-methods)`.security_requirements`)
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
 ## Referral stats
 
 ```shell
@@ -6368,6 +6422,7 @@ curl\
  -X POST\
  -H "Content-Type: application/json"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
  -d '{
   "path": "https://middlepoint-dev.1dxr.com/v2/client/addresses",
