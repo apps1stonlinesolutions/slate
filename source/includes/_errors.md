@@ -111,7 +111,8 @@ Error Code | Meaning
 ## Payment errors
 Error Code | Meaning
 ---------- | -------
-4570 | 3D Security required
+4570 | 3D Security required\
+7020 | Amex not supported
 
 ## Register voucher errors
 Error Code | Meaning
