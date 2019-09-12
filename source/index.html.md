@@ -61,7 +61,7 @@ To access profile specific data request should include identifying profile heade
 `X-Profile: {{PROFILE_ID}}`
 
 <aside class="notice">
-You must replace <code>{{PROFILE_ID}}</code> with your personal profile id.
+You must replace <code>{{PROFILE_ID}}</code> with your personal profile keyword.
 </aside>
 
 
