@@ -2487,7 +2487,7 @@ This endpoint returns:
 * [Payment errors](#payment-errors)
 
 
-## Verify paymethod
+## Check security requirements
 
 ```shell
 curl\
@@ -2504,7 +2504,7 @@ curl\
           }
         }
 }'\
- "https://{{BASE_URL}}/v2/client/verify_paymethod"
+ "https://{{BASE_URL}}/v2/client/check_security_requirements"
 ```
 
 
@@ -2513,7 +2513,6 @@ curl\
 ```json
 {
   "data": {
-    "supported": true,
     "security_requirements":
       [
         "cvc",
@@ -2524,19 +2523,19 @@ curl\
 ```
 
 
-Checks if paymethod is supported.
+Checks security requirements for a paymethod to be created.
 
-`"path": "verify_paymethod"`
+`"path": "check_security_requirements"`
 
 ### Request parameters
 
 Parameter | Type | Description
 -------- | ----- | -------
-`paymethod` | *object<[paymethod](#paymethods)>* | Paymethod about to be created if verified
 `security_requirements` | *array\<string\>* | Security steps which needs to be applied to the paymethod (check [payment_method](payment-methods)`.security_requirements`)
 
 This endpoint returns:
 
+* [Payment errors](#payment-errors)
 * [Common errors](#common-errors)
 
 
