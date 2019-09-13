@@ -1780,7 +1780,8 @@ curl\
           "three_d_security_two"
         ],
       "data": {
-        "braintree_key": "rRnvEsbDVxbwdtw1BhjntKeYyvn6b96U"
+        "braintree_key": "rRnvEsbDVxbwdtw1BhjntKeYyvn6b96U",
+        "braintree_merchant_id": "hdalsdflkjdfhksdjhfskadjfhldsjh"
       },
       "icon_image_url": "http://image.url/here.jpg",
       "default": false,
@@ -1822,7 +1823,8 @@ Parameter | Type | Description
 `data`<br>*optional* | *object* | Based on the payment provider different data may be provided (such as keys, tokens etc.)
 `data.stripe_key`<br>*optional* | *string* | Stripe API authorization key
 `data.paypal_key`<br>*optional* | *string* | PayPal Braintree authorization key
-`data.braintree_key`<br>*optional* | *string* | Stripe API authorization key
+`data.braintree_key`<br>*optional* | *string* | Braintree API authorization key
+`data.braintree_merchant_id`<br>*optional* | *string* | Braintree API merchant id used for setting up data collector to get `paymethod.data.device_data`
 `data.checkout_key`<br>*optional* | *string* | Stripe API authorization key
 `icon_image_url` | *string* | Icon image for payment method
 `default` | *boolean* | Is this payment method the default
