@@ -2743,7 +2743,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
           </span><span class="s2">"three_d_security_two"</span><span class="w">
         </span><span class="p">],</span><span class="w">
       </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"braintree_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rRnvEsbDVxbwdtw1BhjntKeYyvn6b96U"</span><span class="w">
+        </span><span class="nt">"braintree_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rRnvEsbDVxbwdtw1BhjntKeYyvn6b96U"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"braintree_merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hdalsdflkjdfhksdjhfskadjfhldsjh"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"icon_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -2828,7 +2829,12 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">data.braintree_key</code><br><em>optional</em></td>
 <td><em>string</em></td>
-<td>Stripe API authorization key</td>
+<td>Braintree API authorization key</td>
+</tr>
+<tr>
+<td><code class="prettyprint">data.braintree_merchant_id</code><br><em>optional</em></td>
+<td><em>string</em></td>
+<td>Braintree API merchant id used for setting up data collector to get <code class="prettyprint">paymethod.data.device_data</code></td>
 </tr>
 <tr>
 <td><code class="prettyprint">data.checkout_key</code><br><em>optional</em></td>
