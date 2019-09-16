@@ -1531,7 +1531,10 @@ curl\
         24,
         54,
         94
-      ]
+      ],
+      "customize": {
+        "description": "More info here..."
+      }
     }
   ]
 }
@@ -1555,6 +1558,7 @@ Parameter | Type | Description
 `summary_title` | *string* | Question short title text in summary
 `required` | *boolean* | Should the question be answered to book
 `choice_items` | *array\<[choice_item](#choice-items)\>* | List of answers for the question
+`customize` | *object* | Key-value pairs of custom attributes
 
 
 ### `params`
@@ -1598,6 +1602,11 @@ curl\
       "tags": ["same_unit", "member_price"],
       "choice_items": null,
       "image_url": "http://image.url/here.jpg",
+      "infos": [
+        3,
+        4,
+        5
+      ],
       "customize": {
         "step": 0.5,
         "initial_value": "1",
@@ -1637,6 +1646,7 @@ Parameter | Type | Description
 `tags` | *array\<string\>* | List of tags allowing functionalities as filtering. Available tags:<br/>*<b>regular_price</b> - standard price*<br>*<b>member_price</b> - price for members*<br>*<b>same_unit</b> - same professional will do the service*<br>*<b>fully_booked</b> - all Pros are booked for this item*<br>*<b>members_only</b> - item available only for members*<br>*<b>discounted</b> - item is discounted*<br>*<b>carbon</b> - item is with reduced carbon footprint*
 `choice_items` | *array\<[choice_item](#choice-items)\>* | List of sub-answers for the answers
 `image_url`| *string* | List image for choice item
+`infos` | *array\<[info](#infos)\>* | List of infos for the choice item
 `customize` | *object* | Key-value pairs of custom attributes
 `customize.step` | *double* | Quantity steppers step for changing their value
 `customize.initial_value` | *string* | Quantity steppers initial value when added from multiselect search list.
