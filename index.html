@@ -2327,7 +2327,10 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
         </span><span class="mi">24</span><span class="p">,</span><span class="w">
         </span><span class="mi">54</span><span class="p">,</span><span class="w">
         </span><span class="mi">94</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"More info here..."</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2386,6 +2389,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><em>array&lt;<a href="#choice-items">choice_item</a>&gt;</em></td>
 <td>List of answers for the question</td>
 </tr>
+<tr>
+<td><code class="prettyprint">customize</code></td>
+<td><em>object</em></td>
+<td>Key-value pairs of custom attributes</td>
+</tr>
 </tbody></table>
 
 <h3 id="params"><code class="prettyprint">params</code></h3>
@@ -2437,6 +2445,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"same_unit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"member_price"</span><span class="p">],</span><span class="w">
       </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"infos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="mi">5</span><span class="w">
+      </span><span class="p">],</span><span class="w">
       </span><span class="nt">"customize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"step"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
         </span><span class="nt">"initial_value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
@@ -2542,6 +2555,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">image_url</code></td>
 <td><em>string</em></td>
 <td>List image for choice item</td>
+</tr>
+<tr>
+<td><code class="prettyprint">infos</code></td>
+<td><em>array&lt;<a href="#infos">info</a>&gt;</em></td>
+<td>List of infos for the choice item</td>
 </tr>
 <tr>
 <td><code class="prettyprint">customize</code></td>
