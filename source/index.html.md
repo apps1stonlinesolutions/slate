@@ -3180,7 +3180,8 @@ curl\
 {
   "amount": 1,
   "challenge_token": "b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr",
-  "card_token": "b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr"
+  "card_token": "b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr",
+  "bin": "5000"
 }
 ```
 
@@ -3196,6 +3197,8 @@ Parameter | Type | Description
 -------- | ----- | -------
 `amount` | *double* | Amount to use when requesting 3D security from payment provider.
 `challenge_token` | *string* | Identifier from payment provider to link authorization request with server.
+`card_token` | *string* | Re-generated card token to use for 3D Security 2.0
+`bin` | *string* | Card details after re-generating token
 
 
 ### `params`
