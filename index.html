@@ -4921,7 +4921,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nt">"challenge_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"card_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr"</span><span class="w">
+  </span><span class="nt">"card_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1Lp6z6Ui3PRfgA30EoM3uOZYR5PXUgr"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"bin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -4949,6 +4950,16 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">challenge_token</code></td>
 <td><em>string</em></td>
 <td>Identifier from payment provider to link authorization request with server.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">card_token</code></td>
+<td><em>string</em></td>
+<td>Re-generated card token to use for 3D Security 2.0</td>
+</tr>
+<tr>
+<td><code class="prettyprint">bin</code></td>
+<td><em>string</em></td>
+<td>Card details after re-generating token</td>
 </tr>
 </tbody></table>
 
