@@ -873,6 +873,13 @@ Parameter | Type | Description
 `social.oauth_id`<br>*required* | *string* | Obtained facebook user access token 
 `social.social_provider_id`<br>*optional* | *integer* | Social login provider id. Check [social providers](#social-providers).
 
+### Auto login request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`auto_login_token`<br>*required* | *string* | System generated token that logins automatically and creates new session.
+
+
 ### `params`
 
 Parameter | Type | Description
