@@ -111,7 +111,8 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
-            <li>20 Sep 2019 - /treats, added header </br>{{AUTHORIZATION_TOKEN}}</li>
+            <li>24 Sep 2019 - /login, added</br>keep_me_signed_in</li>
+            <li>20 Sep 2019 - /treats, added header</br>{{AUTHORIZATION_TOKEN}}</li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -1334,6 +1335,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">query.return_user</code><br><em>optional, default <b>false</b></em></td>
 <td><em>boolean</em></td>
 <td>Return user object with expanded avatar, phones, addresses, payment details and last 10 bookings.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">query.keep_me_signed_in</code><br><em>optional, default <b>true</b></em></td>
+<td><em>boolean</em></td>
+<td>Create a long session.</td>
 </tr>
 </tbody></table>
 
