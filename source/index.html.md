@@ -6,7 +6,8 @@ language_tabs:
 
 toc_footers:
   - Change log
-  - 20 Sep 2019 - /treats, added header </br>{{AUTHORIZATION_TOKEN}}
+  - 24 Sep 2019 - /login, added</br>keep_me_signed_in
+  - 20 Sep 2019 - /treats, added header</br>{{AUTHORIZATION_TOKEN}}
 
 includes:
   - errors
@@ -886,6 +887,8 @@ Parameter | Type | Description
 Parameter | Type | Description
 -------- | ----- | -------
 `query.return_user`<br>*optional, default <b>false</b>* | *boolean* | Return user object with expanded avatar, phones, addresses, payment details and last 10 bookings.
+`query.keep_me_signed_in`<br>*optional, default <b>true</b>* | *boolean* | Create a long session.
+
 
 ### Response parameters
 
