@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 24 Sep 2019 - Headers, added</br>REQUEST_TOKEN for retry
   - 24 Sep 2019 - /client/user</br>added type_id:4 (offline)
   - 24 Sep 2019 - /login, added</br>keep_me_signed_in
   - 20 Sep 2019 - /treats, added header</br>{{AUTHORIZATION_TOKEN}}
@@ -73,6 +74,12 @@ You must replace <code>{{PROFILE_ID}}</code> with your personal profile keyword.
 To access user specific data request should include authorization header field.
 
 `Authorization: {{AUTHORIZATION_TOKEN}}`
+
+## Request token (retry)
+
+To retry a request put request token in the headers (unique string). When sent the server saves the response for this request. Later if client sends the same request token the server will return the saved response without executing any backend logic again. This is useful on client time outs.
+
+`X-Request-Token: {{REQUEST_TOKEN}}`
 
 <aside class="notice">
 You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authorization token.
