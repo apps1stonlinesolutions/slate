@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 24 Sep 2019 - /client/user</br>added type_id:4 (offline)
   - 24 Sep 2019 - /login, added</br>keep_me_signed_in
   - 20 Sep 2019 - /treats, added header</br>{{AUTHORIZATION_TOKEN}}
 
@@ -2321,7 +2322,7 @@ Parameter | Type | Description
 `last_name`<br>*editable* | *string* | Client first name
 `username` | *string* | Client email used for login
 `social_provider` | *[object](#social-providers)* | Social provider client used to register.
-`type_id` | *integer* | *<b>1</b> - Anonymous*<br>*<b>2</b> - Generic (register form)*<br>*<b>3</b> - Social (Facebook)*
+`type_id` | *integer* | *<b>1</b> - Anonymous*<br>*<b>2</b> - Generic (register form)*<br>*<b>3</b> - Social (Facebook)*<br>*<b>4</b> - Offline*
 `social_key` | *string* | Social identifier used on registration (e.g. @joe for Twitter or 23253414234 for Facebook)
 `credit` | *double* | Client credit amount in the region
 `credit_formatted` | *string* | Client credit amount formatted in the region currency
