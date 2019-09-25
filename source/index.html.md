@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 25 Sep 2019 - /login, changed</br>keep_me_signed_in default
   - 24 Sep 2019 - Headers, added</br>REQUEST_TOKEN for retry
   - 24 Sep 2019 - /client/user</br>added type_id:4 (offline)
   - 24 Sep 2019 - /login, added</br>keep_me_signed_in
@@ -895,7 +896,7 @@ Parameter | Type | Description
 Parameter | Type | Description
 -------- | ----- | -------
 `query.return_user`<br>*optional, default <b>false</b>* | *boolean* | Return user object with expanded avatar, phones, addresses, payment details and last 10 bookings.
-`query.keep_me_signed_in`<br>*optional, default <b>true</b>* | *boolean* | Create a long session.
+`query.keep_me_signed_in`<br>*optional, default <b>false</b>* | *boolean* | Create an infinite session.
 
 
 ### Response parameters
