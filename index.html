@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>7 Oct 2019 - /booking_transactions</br>/append_tags, /rate</br> added tags</br>/rate_tags, added resource</li>
             <li>25 Sep 2019 - /login, changed</br>keep_me_signed_in default</li>
             <li>24 Sep 2019 - Headers, added</br>REQUEST_TOKEN for retry</li>
             <li>24 Sep 2019 - /client/user</br>added type_id:4 (offline)</li>
@@ -5363,6 +5364,60 @@ curl<span class="se">\</span>
 </tr>
 </tbody></table>
 
+<h2 id="append-tags">Append tags</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "tags": [
+          {
+            "id": 1,
+            "name": "membership"
+          }
+        ]
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/booking_transactions/123/append_tags"</span>
+</code></pre>
+
+<p>Mark booking transaction with a tag based on user interactions.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;booking_transactions/{{booking_transaction_id}}/append_tags&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">tags</code></td>
+<td><em>array&lt;tag&gt;</em></td>
+<td>List of tags</td>
+</tr>
+<tr>
+<td><code class="prettyprint">tags.id</code></td>
+<td><em>integer</em></td>
+<td>Identifier of tag</td>
+</tr>
+<tr>
+<td><code class="prettyprint">tags.name</code></td>
+<td><em>integer</em></td>
+<td>Name of tag</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h2 id="availability">Availability</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
@@ -5579,7 +5634,8 @@ curl<span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
  -d <span class="s1">'{
         "rating": 3,
-        "comment": "The apartment is still dirty"
+        "comment": "The apartment is still dirty",
+        "tags": [1, 5]
 }'</span><span class="se">\</span>
  <span class="s2">"https://{{BASE_URL}}/v2/client/bookings/123/rate"</span>
 </code></pre>
@@ -5606,6 +5662,90 @@ curl<span class="se">\</span>
 <td><code class="prettyprint">comment</code></td>
 <td><em>string</em></td>
 <td>Comment left by the client</td>
+</tr>
+<tr>
+<td><code class="prettyprint">tags</code></td>
+<td><em>array&lt;integer&gt;</em></td>
+<td>Identifier of tags client selected on rating the service</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
+<h2 id="rate-tags">Rate tags</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/bookings/123/rate_tags"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bad pro"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"applies_for_ratings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="mi">3</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dirty room"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"applies_for_ratings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="mi">5</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre>
+
+<p>List of tags to choose from upon leaving a rating</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;bookings/{{booking_id}}/rate_tags&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td><em>string</em></td>
+<td>Tag title text</td>
+</tr>
+<tr>
+<td><code class="prettyprint">applies_for_ratings</code></td>
+<td><em>array&lt;integer&gt;</em></td>
+<td>List of ratings the tag applies for</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sort</code></td>
+<td><em>integer</em></td>
+<td>Order of item in list</td>
 </tr>
 </tbody></table>
 
