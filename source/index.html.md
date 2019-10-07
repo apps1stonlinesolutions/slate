@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 7 Oct 2019 - /booking_transactions</br>/append_tags, /rate</br> added tags</br>/rate_tags, added resource
   - 25 Sep 2019 - /login, changed</br>keep_me_signed_in default
   - 24 Sep 2019 - Headers, added</br>REQUEST_TOKEN for retry
   - 24 Sep 2019 - /client/user</br>added type_id:4 (offline)
@@ -3515,6 +3516,45 @@ Parameter | Type   | Default | Description
 `filter.position` | *string* | *configurator* | Filters leave reasons by `position`. If no filter is passed all leave reasons are returned. To filter leave reasons by more than one position pass an array of positions e.g. `["configurator", "init"]`.
 
 
+## Append tags
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "tags": [
+          {
+            "id": 1,
+            "name": "membership"
+          }
+        ]
+}'\
+ "https://{{BASE_URL}}/v2/client/booking_transactions/123/append_tags"
+```
+
+Mark booking transaction with a tag based on user interactions.
+
+`"path": "booking_transactions/{{booking_transaction_id}}/append_tags"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`tags` | *array\<tag\>* | List of tags
+`tags.id` | *integer* | Identifier of tag
+`tags.name` | *integer* | Name of tag
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+
 ## Availability
 
 
@@ -3647,7 +3687,8 @@ curl\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
  -d '{
         "rating": 3,
-        "comment": "The apartment is still dirty"
+        "comment": "The apartment is still dirty",
+        "tags": [1, 5]
 }'\
  "https://{{BASE_URL}}/v2/client/bookings/123/rate"
 ```
@@ -3662,6 +3703,68 @@ Parameter | Type | Description
 -------- | ----- | -------
 `rating`<br>*required* | *integer* | 1-5 stars rating of the service
 `comment` | *string* | Comment left by the client
+`tags` | *array\<integer\>* | Identifier of tags client selected on rating the service
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+
+
+## Rate tags
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/bookings/123/rate_tags"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "bad pro",
+      "applies_for_ratings": [
+        1,
+        3
+      ],
+      "sort": 100
+    },
+    {
+      "id": 2,
+      "name": "dirty room",
+      "applies_for_ratings": [
+        1,
+        2,
+        5
+      ],
+      "sort": 200
+    }
+  ]
+}
+}
+```
+
+List of tags to choose from upon leaving a rating
+
+`"path": "bookings/{{booking_id}}/rate_tags"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Unique identifier
+`name` | *string* | Tag title text
+`applies_for_ratings` | *array\<integer\>* | List of ratings the tag applies for
+`sort` | *integer* | Order of item in list
 
 This endpoint returns:
 
