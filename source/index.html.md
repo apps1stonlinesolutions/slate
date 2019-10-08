@@ -3528,10 +3528,7 @@ curl\
  -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
  -d '{
         "tags": [
-          {
-            "id": 1,
-            "name": "membership"
-          }
+            "membership"
         ]
 }'\
  "https://{{BASE_URL}}/v2/client/booking_transactions/123/append_tags"
@@ -3545,9 +3542,7 @@ Mark booking transaction with a tag based on user interactions.
 
 Parameter | Type | Description
 -------- | ----- | -------
-`tags` | *array\<tag\>* | List of tags
-`tags.id` | *integer* | Identifier of tag
-`tags.name` | *integer* | Name of tag
+`tags` | *array\<string\>* | List of tags
 
 This endpoint returns:
 
