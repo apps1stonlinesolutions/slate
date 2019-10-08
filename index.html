@@ -5373,10 +5373,7 @@ curl<span class="se">\</span>
  -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
  -d <span class="s1">'{
         "tags": [
-          {
-            "id": 1,
-            "name": "membership"
-          }
+            "membership"
         ]
 }'</span><span class="se">\</span>
  <span class="s2">"https://{{BASE_URL}}/v2/client/booking_transactions/123/append_tags"</span>
@@ -5397,18 +5394,8 @@ curl<span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">tags</code></td>
-<td><em>array&lt;tag&gt;</em></td>
+<td><em>array&lt;string&gt;</em></td>
 <td>List of tags</td>
-</tr>
-<tr>
-<td><code class="prettyprint">tags.id</code></td>
-<td><em>integer</em></td>
-<td>Identifier of tag</td>
-</tr>
-<tr>
-<td><code class="prettyprint">tags.name</code></td>
-<td><em>integer</em></td>
-<td>Name of tag</td>
 </tr>
 </tbody></table>
 
