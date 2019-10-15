@@ -5939,7 +5939,7 @@ curl\
       "status": 3000,
       "action": 1,
       "message": "Text from push notification",
-      "sound": "default.mp3",
+      "sound": "default",
       "payload": null,
       "created_at": 1497859985
     }
@@ -5957,7 +5957,7 @@ curl\
       "status": 3000,
       "action": 2,
       "message": "Checkout our fresh deal!",
-      "sound": "default.mp3",
+      "sound": "default",
       "payload": {
         "popup": {
           "image_url": "http://images.com/photo.jpg",
@@ -5994,7 +5994,7 @@ curl\
       "status": 3000,
       "action": 3,
       "message": "The dog is tied.",
-      "sound": "default.mp3",
+      "sound": "default",
       "payload": {
         "message": {
           "job_id": 1,
@@ -6019,7 +6019,7 @@ curl\
       "status": 3000,
       "action": 7,
       "message": "Checkout our fresh deal!",
-      "sound": "default.mp3",
+      "sound": "default",
       "payload": {
         "job_offer": {
           "id": 123,
@@ -6043,7 +6043,7 @@ curl\
       "status": 3000,
       "action": 8,
       "message": "Checkout our fresh deal!",
-      "sound": "default.mp3",
+      "sound": "default",
       "payload": {
         "target": {
           "screen_id": 1,
@@ -6153,7 +6153,7 @@ curl\
       "status": 3000,
       "action": 16,
       "message": "Hey, SW12 2TH 10:00 has been changed to 12:00.",
-      "sound": "default.mp3",
+      "sound": "default",
       "payload": {
           "booking_id": 123
       },
@@ -6173,7 +6173,7 @@ curl\
       "status": 3000,
       "action": 17,
       "message": "Hey, SW12 2TH at 10:00 total has been changed from £120 to £180.",
-      "sound": "default.mp3",
+      "sound": "default",
       "payload": {
           "booking_id": 123
       },
@@ -6194,7 +6194,7 @@ curl\
       "status": 3000,
       "action": 18,
       "message": "Hey, SW12 2TH at 10:00 has been changed from Cash to Card.",
-      "sound": "default.mp3",
+      "sound": "default",
       "payload": {
           "booking_id": 123
       },
@@ -6214,7 +6214,7 @@ curl\
       "status": 3000,
       "action": 19,
       "message": "Hey, SW12 2TH at 10:00 has been changed from Unpaid to Paid.",
-      "sound": "default.mp3",
+      "sound": "default",
       "payload": {
           "booking_id": 123
       },
@@ -6234,7 +6234,7 @@ curl\
       "status": 3000,
       "action": 20,
       "message": "Hey, you have %d new comment for SW12 2TH at 10:00.",
-      "sound": "default.mp3",
+      "sound": "default",
       "payload": {
           "booking_id": 123
       },
@@ -6254,7 +6254,7 @@ curl\
       "status": 3000,
       "action": 25,
       "message": "Hey, you have a new task \"{{TASK_NAME}}\"",
-      "sound": "default.mp3",
+      "sound": "default",
       "payload": {
           "task_id": 123,
           "note_id": 345
@@ -6275,7 +6275,7 @@ curl\
       "status": 3000,
       "action": 26,
       "message": "Hey, you have a new message on task \"{{TASK_NAME}}\"",
-      "sound": "default.mp3",
+      "sound": "default",
       "payload": {
           "task_id": 123,
           "note_id": 345
