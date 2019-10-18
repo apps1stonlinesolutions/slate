@@ -3745,7 +3745,6 @@ curl\
     }
   ]
 }
-}
 ```
 
 List of tags to choose from upon leaving a rating
