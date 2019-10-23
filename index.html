@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>23 Oct 2019 - /bookings added rate</br>property</li>
             <li>7 Oct 2019 - /booking_transactions</br>/append_tags, /rate</br> added tags</br>/rate_tags, added resource</li>
             <li>25 Sep 2019 - /login, changed</br>keep_me_signed_in default</li>
             <li>24 Sep 2019 - Headers, added</br>REQUEST_TOKEN for retry</li>
@@ -4169,6 +4170,14 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"paymethod"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nt">"voucher"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GO10OFF"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"feedback_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Great service"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="mi">5</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="nt">"online_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
       </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07123456789"</span><span class="p">,</span><span class="w">
@@ -4380,7 +4389,12 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">feedback_rate</code><br><em>editable</em></td>
 <td><em>integer</em></td>
-<td>Rating of client for booking service</td>
+<td>Rating value (1-5) of client for booking service</td>
+</tr>
+<tr>
+<td><code class="prettyprint">rate</code><br><em>editable</em></td>
+<td><em><a href="#rate-booking">object</a></em></td>
+<td>Rating object of client for booking service</td>
 </tr>
 <tr>
 <td><code class="prettyprint">online_status</code></td>
