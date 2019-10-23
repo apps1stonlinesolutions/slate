@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 23 Oct 2019 - /bookings added rate</br>property
   - 7 Oct 2019 - /booking_transactions</br>/append_tags, /rate</br> added tags</br>/rate_tags, added resource
   - 25 Sep 2019 - /login, changed</br>keep_me_signed_in default
   - 24 Sep 2019 - Headers, added</br>REQUEST_TOKEN for retry
@@ -2690,6 +2691,14 @@ curl\
       "paymethod": 1,
       "voucher": "GO10OFF",
       "feedback_rate": 0,
+      "rate": {
+        "rating": 5,
+        "comment": "Great service",
+        "tags": [
+          1,
+          5
+        ]
+      },
       "online_status": 20,
       "source": {
         "phone": "07123456789",
@@ -2802,7 +2811,8 @@ Parameter | Type | Description
 `payment_method_description` | *string* | Display text for payment method description. Used to show additional information e.g. if payment method is Bank Transfer and client has no options to change it on reschedule.
 `paymethods`<br>*editable* | *[object](#paymethods)* | Selected paymethod for the booking (particular credit card etc.)
 `voucher`<br>*editable* | *string* | Discount voucher code used for booking
-`feedback_rate`<br>*editable* | *integer* | Rating of client for booking service
+`feedback_rate`<br>*editable* | *integer* | Rating value (1-5) of client for booking service
+`rate`<br>*editable* | *[object](#rate-booking)* | Rating object of client for booking service
 `online_status` | *integer* | Status of the booking:<br/>*<b>10</b> - Quote*<br>*<b>20</b> - Booked*<br>*<b>30</b> - Cancelled*
 `source` | object | Tracking source of the booking for marketing campaigns or website. You can create a tracking source after you've purchased your tracking phone number(s) and then assign that new tracking source to specific tracking.
 `source.phone` | string | Tracking source phone of the website or marketing campaigns
