@@ -6,7 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
-  - 6 Nov 2019 - /logout moved from</br>shared to client</br>and unit
+  - 6 Nov 2019 - /logout moved from</br>shared to client and unit
   - 23 Oct 2019 - /bookings added rate</br>property
   - 7 Oct 2019 - /booking_transactions</br>/append_tags, /rate</br> added tags</br>/rate_tags, added resource
   - 25 Sep 2019 - /login, changed</br>keep_me_signed_in default
