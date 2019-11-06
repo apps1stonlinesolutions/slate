@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 6 Nov 2019 - /logout moved from</br>shared to client</br>and unit
   - 23 Oct 2019 - /bookings added rate</br>property
   - 7 Oct 2019 - /booking_transactions</br>/append_tags, /rate</br> added tags</br>/rate_tags, added resource
   - 25 Sep 2019 - /login, changed</br>keep_me_signed_in default
@@ -1014,6 +1015,7 @@ This endpoint returns:
 * [Registration errors](#register-errors)
 
 
+
 ## Request reset password
 
 
@@ -1059,6 +1061,43 @@ This endpoint returns:
 
 * [Common errors](#common-errors)
 * [Request reset password](#request-reset-password-errors)
+
+
+## Logout
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ "https://{{BASE_URL}}/v2/client/logout"
+```
+
+> The above request success response is :
+
+```json
+{
+  "success": [
+    {
+      "code": 2000,
+      "message": "Success",
+      "debug_message": null,
+      "debug_id": null
+    }
+  ]
+}
+```
+
+Deletes user session.
+
+`"path": "logout"`
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
 
 ## Read user details on password reset
 
@@ -3911,6 +3950,45 @@ This endpoint returns:
 * [Login errors](#login-errors)
 
 
+
+## Logout
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ "https://{{BASE_URL}}/v2/unit/logout"
+```
+
+> The above request success response is :
+
+```json
+{
+  "success": [
+    {
+      "code": 2000,
+      "message": "Success",
+      "debug_message": null,
+      "debug_id": null
+    }
+  ]
+}
+```
+
+Deletes user session.
+
+`"path": "logout"`
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+
+
 ## Profile
 
 
@@ -6493,40 +6571,6 @@ This endpoint returns:
 
 * [Common errors](#common-errors)
 
-## Logout
-
-
-```shell
-curl\
- -X POST\
- -H "Content-Type: application/json"\
- -H "X-Application: {{APPLICATION_TOKEN}}"\
- -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
- "https://{{BASE_URL}}/v2/shared/logout"
-```
-
-> The above request success response is :
-
-```json
-{
-  "success": [
-    {
-      "code": 2000,
-      "message": "Success",
-      "debug_message": null,
-      "debug_id": null
-    }
-  ]
-}
-```
-
-Deletes user session.
-
-`"path": "logout"`
-
-This endpoint returns:
-
-* [Common errors](#common-errors)
 
 ## Application feedback
 
