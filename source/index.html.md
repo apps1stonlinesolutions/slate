@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 8 Nov 2019 - /choice_items added</br>best_price tag
   - 6 Nov 2019 - /logout moved from</br>shared to client and unit
   - 23 Oct 2019 - /bookings added rate</br>property
   - 7 Oct 2019 - /booking_transactions</br>/append_tags, /rate</br> added tags</br>/rate_tags, added resource
@@ -1704,7 +1705,7 @@ Parameter | Type | Description
 `is_in_summary` | *boolean* | Should the answer be included in the summary of booking
 `title` | *string* | Title of answer
 `display_price` | *string* | Details on the price for displaying.
-`tags` | *array\<string\>* | List of tags allowing functionalities as filtering. Available tags:<br/>*<b>regular_price</b> - standard price*<br>*<b>member_price</b> - price for members*<br>*<b>same_unit</b> - same professional will do the service*<br>*<b>fully_booked</b> - all Pros are booked for this item*<br>*<b>members_only</b> - item available only for members*<br>*<b>discounted</b> - item is discounted*<br>*<b>carbon</b> - item is with reduced carbon footprint*
+`tags` | *array\<string\>* | List of tags allowing functionalities as filtering. Available tags:<br/>*<b>regular_price</b> - standard price*<br>*<b>member_price</b> - price for members*<br>*<b>same_unit</b> - same professional will do the service*<br>*<b>fully_booked</b> - all Pros are booked for this item*<br>*<b>members_only</b> - item available only for members*<br>*<b>discounted</b> - item is discounted*<br>*<b>carbon</b> - item is with reduced carbon footprint*<br>*<b>best_price</b> - item is with the lowest price (e.g. cheapest timeslot for a given day)*
 `choice_items` | *array\<[choice_item](#choice-items)\>* | List of sub-answers for the answers
 `image_url`| *string* | List image for choice item
 `infos` | *array\<[info](#infos)\>* | List of infos for the choice item
