@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 13 Nov 2019 - /choice_items added</br>customize.obfTooltipDesc
   - 8 Nov 2019 - /choice_items added</br>best_price tag
   - 6 Nov 2019 - /logout moved from</br>shared to client and unit
   - 23 Oct 2019 - /bookings added rate</br>property
@@ -1673,6 +1674,7 @@ curl\
         "step": 0.5,
         "initial_value": "1",
         "display_type": "date",
+        "obfTooltipDesc": "Professional carpet cleaning at an extra charge. Please specify below the number of carpets.",
         "redirect_related_choice_item_ids": "[1, 2]",
         "attachment_type": ["image", "document"],
         "source": ["front_camera", "rear_camera"]
@@ -1713,6 +1715,7 @@ Parameter | Type | Description
 `customize.step` | *double* | Quantity steppers step for changing their value
 `customize.initial_value` | *string* | Quantity steppers initial value when added from multiselect search list.
 `customize.display_type` | *string* | A specific way of displaying the choice item:<br/>*<b>date</b> - string from date picker*
+`customize.obfTooltipDesc` | *string* | Details for the choice item
 `customize.redirect_related_choice_item_ids` | *string* | A string representing an array of choice item ids to pre-fill value from
 `customize.attachment_type` | *array\<string\>* | An array with allowed attachment types:<br/> *<b>image</b> - Image in jpg, jpeg and png formats*<br/>  *<b>video</b> - Video in wmv, mov, mp4 and avi formats*<br/>  *<b>document</b> - Document  in pdf format*
 `customize.source` | *array\<string\>* | An array with sources from where the attachment will be re retreived:<br/> *<b>front_camera</b> - Front camera (if not available rear camera used)*<br/>  *<b>rear_camera</b> - Rear camera (if not available front camera used)*<br/>*<b>local_storage</b> - File system (camera roll, gallery, sd card etc.)*
