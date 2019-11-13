@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>13 Nov 2019 - /choice_items added</br>customize.obfTooltipDesc</li>
             <li>8 Nov 2019 - /choice_items added</br>best_price tag</li>
             <li>6 Nov 2019 - /logout moved from</br>shared to client and unit</li>
             <li>23 Oct 2019 - /bookings added rate</br>property</li>
@@ -2524,6 +2525,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
         </span><span class="nt">"step"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
         </span><span class="nt">"initial_value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"display_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"date"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"obfTooltipDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Professional carpet cleaning at an extra charge. Please specify below the number of carpets."</span><span class="p">,</span><span class="w">
         </span><span class="nt">"redirect_related_choice_item_ids"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[1, 2]"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"attachment_type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"image"</span><span class="p">,</span><span class="w"> </span><span class="s2">"document"</span><span class="p">],</span><span class="w">
         </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"front_camera"</span><span class="p">,</span><span class="w"> </span><span class="s2">"rear_camera"</span><span class="p">]</span><span class="w">
@@ -2650,6 +2652,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">customize.display_type</code></td>
 <td><em>string</em></td>
 <td>A specific way of displaying the choice item:<br/><em><b>date</b> - string from date picker</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">customize.obfTooltipDesc</code></td>
+<td><em>string</em></td>
+<td>Details for the choice item</td>
 </tr>
 <tr>
 <td><code class="prettyprint">customize.redirect_related_choice_item_ids</code></td>
