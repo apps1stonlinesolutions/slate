@@ -6,7 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
-  - 14 Nov 2019 - /append_tags added</br>tag seen_join_the_club *
+  - 14 Nov 2019 - /append_tags added</br>tag seen_join_the_club
   - 13 Nov 2019 - /choice_items added</br>customize.obfTooltipDesc
   - 8 Nov 2019 - /choice_items added</br>best_price tag
   - 6 Nov 2019 - /logout moved from</br>shared to client and unit
