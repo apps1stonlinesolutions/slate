@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 14 Nov 2019 - /append_tags added</br>tag seen_join_the_club
   - 13 Nov 2019 - /choice_items added</br>customize.obfTooltipDesc
   - 8 Nov 2019 - /choice_items added</br>best_price tag
   - 6 Nov 2019 - /logout moved from</br>shared to client and unit
@@ -3595,7 +3596,7 @@ Mark booking transaction with a tag based on user interactions.
 
 Parameter | Type | Description
 -------- | ----- | -------
-`tags` | *array\<string\>* | List of tags
+`tags` | *array\<string\>* | List of tags. Available tags:<br/>*<b>seen_join_the_club</b> - client have picked member price and membership screen was shown to ask for agreeing to become a member*
 
 This endpoint returns:
 
