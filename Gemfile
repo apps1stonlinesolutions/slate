@@ -10,3 +10,4 @@ gem 'rouge', '~> 1.10.1'
 gem 'redcarpet', '~> 3.3.2'
 gem 'nokogiri', '~> 1.10.4'
 gem 'json', '>= 1.8'
+gem "haml", ">= 5.0.0"
