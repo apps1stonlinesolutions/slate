@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 19 Nov 2019 - /choice_items added</br>customize.days_offset and</br>customize.obfTextAreaPlaceholder
   - 14 Nov 2019 - /append_tags added</br>tag seen_join_the_club
   - 13 Nov 2019 - /choice_items added</br>customize.obfTooltipDesc
   - 8 Nov 2019 - /choice_items added</br>best_price tag
@@ -1675,7 +1676,9 @@ curl\
         "step": 0.5,
         "initial_value": "1",
         "display_type": "date",
+        "days_offset": 2,
         "obfTooltipDesc": "Professional carpet cleaning at an extra charge. Please specify below the number of carpets.",
+        "obfTextAreaPlaceholder": "Enter your postcode...",
         "redirect_related_choice_item_ids": "[1, 2]",
         "attachment_type": ["image", "document"],
         "source": ["front_camera", "rear_camera"]
@@ -1716,7 +1719,9 @@ Parameter | Type | Description
 `customize.step` | *double* | Quantity steppers step for changing their value
 `customize.initial_value` | *string* | Quantity steppers initial value when added from multiselect search list.
 `customize.display_type` | *string* | A specific way of displaying the choice item:<br/>*<b>date</b> - string from date picker*
+`customize.days_offset` | *integer* | Date picker first available date configuration. Value is in days e.g. 3 means date picker allow selecting dates after 3 days onwards.
 `customize.obfTooltipDesc` | *string* | Details for the choice item
+`customize.obfTextAreaPlaceholder` | *string* | Text field placeholder text
 `customize.redirect_related_choice_item_ids` | *string* | A string representing an array of choice item ids to pre-fill value from
 `customize.attachment_type` | *array\<string\>* | An array with allowed attachment types:<br/> *<b>image</b> - Image in jpg, jpeg and png formats*<br/>  *<b>video</b> - Video in wmv, mov, mp4 and avi formats*<br/>  *<b>document</b> - Document  in pdf format*
 `customize.source` | *array\<string\>* | An array with sources from where the attachment will be re retreived:<br/> *<b>front_camera</b> - Front camera (if not available rear camera used)*<br/>  *<b>rear_camera</b> - Rear camera (if not available front camera used)*<br/>*<b>local_storage</b> - File system (camera roll, gallery, sd card etc.)*
