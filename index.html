@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>3 Dec 2019 - /choice added</br>position `before_availability`,</br>`submit` field and type:</br>pick_pro Added /professionals and</br>/teams endpoints.</li>
             <li>19 Nov 2019 - /choice_items added</br>customize.days_offset and</br>customize.obfTextAreaPlaceholder</li>
             <li>14 Nov 2019 - /append_tags added</br>tag seen_join_the_club</li>
             <li>13 Nov 2019 - /choice_items added</br>customize.obfTooltipDesc</li>
@@ -2393,6 +2394,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
       </span><span class="nt">"positions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"init"</span><span class="p">],</span><span class="w">
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cross_sell"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"submit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"when_last"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"have the tradesmen left the property?"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"summary_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tradesman _left"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -2435,12 +2437,17 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">positions</code></td>
 <td><em>array&lt;string&gt;</em></td>
-<td>Determines where the choice should be dislpayed in the booking process:<br/><em><b>init</b> - begining of booking process. Minimum requirement to create a <a href="#booking-transactions">booking_transaction</a></em><br><em><b>configurator</b> - choices describing service configuration</em><br><em><b>before_summary</b> - middle screen before showing the booking summary</em><br><em><b>on_availability</b> - on showing timeslots</em><br><em><b>on_summary</b> - choices at the summary screen (e.g. cross sell)</em><br><em><b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)</em></td>
+<td>Determines where the choice should be dislpayed in the booking process:<br/><em><b>init</b> - begining of booking process. Minimum requirement to create a <a href="#booking-transactions">booking_transaction</a></em><br><em><b>configurator</b> - choices describing service configuration</em><br><em><b>before_availability</b> - before showing timeslots</em><br><em><b>on_availability</b> - on showing timeslots</em><br><em><b>before_summary</b> - middle screen before showing the booking summary</em><br><em><b>on_summary</b> - choices at the summary screen (e.g. cross sell)</em><br><em><b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">type</code></td>
 <td><em>string</em></td>
-<td>Determines how the choice and choce items are dislpayed<br/><em><b>default</b> - displays choice items based on type</em><br><em><b>price_options</b> - variants of the price (e.g. with membership)</em><br><em><b>timeslot_options</b> - additional preferences for the slot (e.g. same unit)</em><br><em><b>cross_sell</b> - displays choice items based on type and uses display_price</em><br><em><b>multiselect</b> - choice with a lot of choice items that has to be displayed with a search field</em></td>
+<td>Determines how the choice and choce items are dislpayed<br/><em><b>default</b> - displays choice items based on type</em><br><em><b>price_options</b> - variants of the price (e.g. with membership)</em><br><em><b>timeslot_options</b> - additional preferences for the slot (e.g. same unit)</em><br><em><b>cross_sell</b> - displays choice items based on type and uses display_price</em><br><em><b>multiselect</b> - choice with a lot of choice items that has to be displayed with a search field</em><br><em><b>pick_pro</b> - choice with options to pick a proffesional for the job</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">submit</code></td>
+<td><em>string</em></td>
+<td>When choice data should be posted<br/><em><b>when_last</b> - if last element on a position</em><br><em><b>on_change</b> - on value change of <a href="#choice-item">choice_item</a></em><br><em><b>on_completion</b> - when completed by client (tapped Proceed/Next)</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">title</code></td>
@@ -2515,7 +2522,10 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="nt">"is_in_summary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 bedroom"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"display_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+£5"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"same_unit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"member_price"</span><span class="p">],</span><span class="w">
+      </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"same_unit"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"member_price"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
       </span><span class="nt">"choice_items"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://image.url/here.jpg"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"infos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2531,8 +2541,26 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
         </span><span class="nt">"obfTooltipDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Professional carpet cleaning at an extra charge. Please specify below the number of carpets."</span><span class="p">,</span><span class="w">
         </span><span class="nt">"obfTextAreaPlaceholder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter your postcode..."</span><span class="p">,</span><span class="w">
         </span><span class="nt">"redirect_related_choice_item_ids"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[1, 2]"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"attachment_type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"image"</span><span class="p">,</span><span class="w"> </span><span class="s2">"document"</span><span class="p">],</span><span class="w">
-        </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"front_camera"</span><span class="p">,</span><span class="w"> </span><span class="s2">"rear_camera"</span><span class="p">]</span><span class="w">
+        </span><span class="nt">"attachment_type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"image"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"document"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"front_camera"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rear_camera"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"total_ratings"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"proffesionals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://image.url"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -2686,6 +2714,148 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">customize.source</code></td>
 <td><em>array&lt;string&gt;</em></td>
 <td>An array with sources from where the attachment will be re retreived:<br/> <em><b>front_camera</b> - Front camera (if not available rear camera used)</em><br/>  <em><b>rear_camera</b> - Rear camera (if not available front camera used)</em><br/><em><b>local_storage</b> - File system (camera roll, gallery, sd card etc.)</em></td>
+</tr>
+</tbody></table>
+
+<h2 id="professionals">Professionals</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/professionals"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">137</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://image.url"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"total_ratings"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_bookings"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"years_experience"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ratings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Very friendly"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bg"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"certificate"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Plumber Plus"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://document.url"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"short_bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I am a highschool graduate with enthusiasm for work."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Details for a Pro.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;professionals&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Object id</td>
+</tr>
+</tbody></table>
+
+<h2 id="teams">Teams</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/teams"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">137</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John's people"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://image.url"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"total_ratings"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_bookings"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"years_experience"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ratings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Very friendly"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"total_bookings"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"years_experience"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bg"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"certificate"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Plumber Plus"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://document.url"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"ratings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Very friendly"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"proffesionals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="mi">3</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Details for a Team.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;teams&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code></td>
+<td><em>integer</em></td>
+<td>Object id</td>
 </tr>
 </tbody></table>
 
