@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 3 Dec 2019 - /choice added</br>position `before_availability`,</br>`submit` field and type:</br>pick_pro Added /professionals and</br>/teams endpoints.
   - 19 Nov 2019 - /choice_items added</br>customize.days_offset and</br>customize.obfTextAreaPlaceholder
   - 14 Nov 2019 - /append_tags added</br>tag seen_join_the_club
   - 13 Nov 2019 - /choice_items added</br>customize.obfTooltipDesc
@@ -1589,6 +1590,7 @@ curl\
       "sort": 100,
       "positions": ["init"],
       "type": "cross_sell",
+      "submit": "when_last",
       "title": "have the tradesmen left the property?",
       "summary_title": "tradesman _left",
       "required": true,
@@ -1617,8 +1619,9 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `sort` | *integer* | Order of item in list
-`positions` | *array\<string\>* | Determines where the choice should be dislpayed in the booking process:<br/>*<b>init</b> - begining of booking process. Minimum requirement to create a [booking_transaction](#booking-transactions)*<br>*<b>configurator</b> - choices describing service configuration*<br>*<b>before_summary</b> - middle screen before showing the booking summary*<br>*<b>on_availability</b> - on showing timeslots*<br>*<b>on_summary</b> - choices at the summary screen (e.g. cross sell)*<br>*<b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)*
-`type` | *string* | Determines how the choice and choce items are dislpayed<br/>*<b>default</b> - displays choice items based on type*<br>*<b>price_options</b> - variants of the price (e.g. with membership)*<br>*<b>timeslot_options</b> - additional preferences for the slot (e.g. same unit)*<br>*<b>cross_sell</b> - displays choice items based on type and uses display_price*<br>*<b>multiselect</b> - choice with a lot of choice items that has to be displayed with a search field*
+`positions` | *array\<string\>* | Determines where the choice should be dislpayed in the booking process:<br/>*<b>init</b> - begining of booking process. Minimum requirement to create a [booking_transaction](#booking-transactions)*<br>*<b>configurator</b> - choices describing service configuration*<br>*<b>before_availability</b> - before showing timeslots*<br>*<b>on_availability</b> - on showing timeslots*<br>*<b>before_summary</b> - middle screen before showing the booking summary*<br>*<b>on_summary</b> - choices at the summary screen (e.g. cross sell)*<br>*<b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)*
+`type` | *string* | Determines how the choice and choce items are dislpayed<br/>*<b>default</b> - displays choice items based on type*<br>*<b>price_options</b> - variants of the price (e.g. with membership)*<br>*<b>timeslot_options</b> - additional preferences for the slot (e.g. same unit)*<br>*<b>cross_sell</b> - displays choice items based on type and uses display_price*<br>*<b>multiselect</b> - choice with a lot of choice items that has to be displayed with a search field*<br>*<b>pick_pro</b> - choice with options to pick a proffesional for the job*
+`submit` | *string* | When choice data should be posted<br/>*<b>when_last</b> - if last element on a position*<br>*<b>on_change</b> - on value change of [choice_item](#choice-item)*<br>*<b>on_completion</b> - when completed by client (tapped Proceed/Next)*
 `title` | *string* | Question text
 `summary_title` | *string* | Question short title text in summary
 `required` | *boolean* | Should the question be answered to book
@@ -1664,7 +1667,10 @@ curl\
       "is_in_summary": false,
       "title": "1 bedroom",
       "display_price": "+£5",
-      "tags": ["same_unit", "member_price"],
+      "tags": [
+        "same_unit",
+        "member_price"
+      ],
       "choice_items": null,
       "image_url": "http://image.url/here.jpg",
       "infos": [
@@ -1680,8 +1686,26 @@ curl\
         "obfTooltipDesc": "Professional carpet cleaning at an extra charge. Please specify below the number of carpets.",
         "obfTextAreaPlaceholder": "Enter your postcode...",
         "redirect_related_choice_item_ids": "[1, 2]",
-        "attachment_type": ["image", "document"],
-        "source": ["front_camera", "rear_camera"]
+        "attachment_type": [
+          "image",
+          "document"
+        ],
+        "source": [
+          "front_camera",
+          "rear_camera"
+        ]
+      },
+      "payload": {
+        "stats": {
+          "total_ratings": 5,
+          "rating": 4.5
+        },
+        "proffesionals": [
+          {
+            "name": "John",
+            "image_url": "https://image.url"
+          }
+        ]
       }
     }
   ]
@@ -1725,6 +1749,144 @@ Parameter | Type | Description
 `customize.redirect_related_choice_item_ids` | *string* | A string representing an array of choice item ids to pre-fill value from
 `customize.attachment_type` | *array\<string\>* | An array with allowed attachment types:<br/> *<b>image</b> - Image in jpg, jpeg and png formats*<br/>  *<b>video</b> - Video in wmv, mov, mp4 and avi formats*<br/>  *<b>document</b> - Document  in pdf format*
 `customize.source` | *array\<string\>* | An array with sources from where the attachment will be re retreived:<br/> *<b>front_camera</b> - Front camera (if not available rear camera used)*<br/>  *<b>rear_camera</b> - Rear camera (if not available front camera used)*<br/>*<b>local_storage</b> - File system (camera roll, gallery, sd card etc.)*
+
+
+
+
+## Professionals
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/professionals"
+```
+
+> The above request success response is:
+
+```json
+{
+  "id": 137,
+  "name": "John",
+  "image_url": "https://image.url",
+  "stats": {
+    "total_ratings": 5,
+    "rating": 4.5,
+    "total_bookings": 16,
+    "years_experience": 5,
+    "ratings": [
+      {
+        "rating": 4,
+        "comment": "Very friendly"
+      }
+    ]
+  },
+  "details": {
+    "languages": [
+      "en",
+      "bg"
+    ],
+    "documents": [
+      {
+        "type": "certificate",
+        "name": "Plumber Plus",
+        "url": "http://document.url"
+      }
+    ],
+    "short_bio": "I am a highschool graduate with enthusiasm for work.",
+    "gender": "male"
+  }
+}
+```
+
+
+Details for a Pro.
+
+
+`"path": "professionals"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Object id
+
+
+## Teams
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/teams"
+```
+
+> The above request success response is:
+
+```json
+{
+  "id": 137,
+  "name": "John's people",
+  "image_url": "https://image.url",
+  "stats": {
+    "total_ratings": 5,
+    "rating": 4.5,
+    "total_bookings": 16,
+    "years_experience": 5,
+    "ratings": [
+      {
+        "rating": 4,
+        "comment": "Very friendly"
+      }
+    ]
+  },
+  "details": {
+    "total_bookings": 16,
+    "years_experience": 5,
+    "languages": [
+      "en",
+      "bg"
+    ],
+    "documents": [
+      {
+        "type": "certificate",
+        "name": "Plumber Plus",
+        "url": "http://document.url"
+      }
+    ],
+    "ratings": [
+      {
+        "rating": 4,
+        "comment": "Very friendly"
+      }
+    ]
+  },
+  "proffesionals": [
+    1,
+    3
+  ]
+}
+```
+
+
+Details for a Team.
+
+
+`"path": "teams"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`id` | *integer* | Object id
+
+
 
 ## Infos
 
