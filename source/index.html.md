@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 4 Dec 2019 - /bookings added</br>`professional`and `team`
   - 3 Dec 2019 - /choice added</br>position `before_availability`,</br>`submit` field and type:</br>pick_pro Added /professionals and</br>/teams endpoints.
   - 19 Nov 2019 - /choice_items added</br>customize.days_offset and</br>customize.obfTextAreaPlaceholder
   - 14 Nov 2019 - /append_tags added</br>tag seen_join_the_club
@@ -1620,7 +1621,7 @@ Parameter | Type | Description
 `id` | *integer* | Unique identifier
 `sort` | *integer* | Order of item in list
 `positions` | *array\<string\>* | Determines where the choice should be dislpayed in the booking process:<br/>*<b>init</b> - begining of booking process. Minimum requirement to create a [booking_transaction](#booking-transactions)*<br>*<b>configurator</b> - choices describing service configuration*<br>*<b>before_availability</b> - before showing timeslots*<br>*<b>on_availability</b> - on showing timeslots*<br>*<b>before_summary</b> - middle screen before showing the booking summary*<br>*<b>on_summary</b> - choices at the summary screen (e.g. cross sell)*<br>*<b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)*
-`type` | *string* | Determines how the choice and choce items are dislpayed<br/>*<b>default</b> - displays choice items based on type*<br>*<b>price_options</b> - variants of the price (e.g. with membership)*<br>*<b>timeslot_options</b> - additional preferences for the slot (e.g. same unit)*<br>*<b>cross_sell</b> - displays choice items based on type and uses display_price*<br>*<b>multiselect</b> - choice with a lot of choice items that has to be displayed with a search field*<br>*<b>pick_pro</b> - choice with options to pick a proffesional for the job*
+`type` | *string* | Determines how the choice and choce items are dislpayed<br/>*<b>default</b> - displays choice items based on type*<br>*<b>price_options</b> - variants of the price (e.g. with membership)*<br>*<b>timeslot_options</b> - additional preferences for the slot (e.g. same unit)*<br>*<b>cross_sell</b> - displays choice items based on type and uses display_price*<br>*<b>multiselect</b> - choice with a lot of choice items that has to be displayed with a search field*<br>*<b>pick_pro</b> - choice with options to pick a professional for the job*
 `submit` | *string* | When choice data should be posted<br/>*<b>when_last</b> - if last element on a position*<br>*<b>on_change</b> - on value change of [choice_item](#choice-item)*<br>*<b>on_completion</b> - when completed by client (tapped Proceed/Next)*
 `title` | *string* | Question text
 `summary_title` | *string* | Question short title text in summary
@@ -1700,7 +1701,7 @@ curl\
           "total_ratings": 5,
           "rating": 4.5
         },
-        "proffesionals": [
+        "professionals": [
           {
             "name": "John",
             "image_url": "https://image.url"
@@ -1867,7 +1868,7 @@ curl\
       }
     ]
   },
-  "proffesionals": [
+  "professionals": [
     1,
     3
   ]
@@ -2910,6 +2911,30 @@ curl\
           5
         ]
       },
+      "professional": {
+        "id": 137,
+        "name": "John",
+        "image_url": "https://image.url",
+        "stats": {
+          "total_ratings": 5,
+          "rating": 4.5
+        }
+      },
+      "team": {
+        "id": 137,
+        "name": "John's people",
+        "image_url": "https://image.url",
+        "stats": {
+          "total_ratings": 5,
+          "rating": 4.5
+        },
+        "professionals": [
+          {
+            "name": "John",
+            "image_url": "https://image.url"
+          }
+        ]
+      },
       "online_status": 20,
       "source": {
         "phone": "07123456789",
@@ -3024,6 +3049,8 @@ Parameter | Type | Description
 `voucher`<br>*editable* | *string* | Discount voucher code used for booking
 `feedback_rate`<br>*editable* | *integer* | Rating value (1-5) of client for booking service
 `rate`<br>*editable* | *[object](#rate-booking)* | Rating object of client for booking service
+`professional` | *[object](#professionals)* | Pro assigned to the booking
+`team` | *[object](#teams)* | Team assigned to the booking
 `online_status` | *integer* | Status of the booking:<br/>*<b>10</b> - Quote*<br>*<b>20</b> - Booked*<br>*<b>30</b> - Cancelled*
 `source` | object | Tracking source of the booking for marketing campaigns or website. You can create a tracking source after you've purchased your tracking phone number(s) and then assign that new tracking source to specific tracking.
 `source.phone` | string | Tracking source phone of the website or marketing campaigns
