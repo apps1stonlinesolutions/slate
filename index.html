@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>4 Dec 2019 - /bookings added</br>`professional`and `team`</li>
             <li>3 Dec 2019 - /choice added</br>position `before_availability`,</br>`submit` field and type:</br>pick_pro Added /professionals and</br>/teams endpoints.</li>
             <li>19 Nov 2019 - /choice_items added</br>customize.days_offset and</br>customize.obfTextAreaPlaceholder</li>
             <li>14 Nov 2019 - /append_tags added</br>tag seen_join_the_club</li>
@@ -2442,7 +2443,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">type</code></td>
 <td><em>string</em></td>
-<td>Determines how the choice and choce items are dislpayed<br/><em><b>default</b> - displays choice items based on type</em><br><em><b>price_options</b> - variants of the price (e.g. with membership)</em><br><em><b>timeslot_options</b> - additional preferences for the slot (e.g. same unit)</em><br><em><b>cross_sell</b> - displays choice items based on type and uses display_price</em><br><em><b>multiselect</b> - choice with a lot of choice items that has to be displayed with a search field</em><br><em><b>pick_pro</b> - choice with options to pick a proffesional for the job</em></td>
+<td>Determines how the choice and choce items are dislpayed<br/><em><b>default</b> - displays choice items based on type</em><br><em><b>price_options</b> - variants of the price (e.g. with membership)</em><br><em><b>timeslot_options</b> - additional preferences for the slot (e.g. same unit)</em><br><em><b>cross_sell</b> - displays choice items based on type and uses display_price</em><br><em><b>multiselect</b> - choice with a lot of choice items that has to be displayed with a search field</em><br><em><b>pick_pro</b> - choice with options to pick a professional for the job</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">submit</code></td>
@@ -2555,7 +2556,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
           </span><span class="nt">"total_ratings"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
           </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"proffesionals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="nt">"professionals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://image.url"</span><span class="w">
@@ -2832,7 +2833,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"proffesionals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nt">"professionals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="mi">3</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -4405,6 +4406,30 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
           </span><span class="mi">5</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"professional"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">137</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://image.url"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"total_ratings"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"team"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">137</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John's people"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://image.url"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"total_ratings"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"professionals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://image.url"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="nt">"online_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
       </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07123456789"</span><span class="p">,</span><span class="w">
@@ -4622,6 +4647,16 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">rate</code><br><em>editable</em></td>
 <td><em><a href="#rate-booking">object</a></em></td>
 <td>Rating object of client for booking service</td>
+</tr>
+<tr>
+<td><code class="prettyprint">professional</code></td>
+<td><em><a href="#professionals">object</a></em></td>
+<td>Pro assigned to the booking</td>
+</tr>
+<tr>
+<td><code class="prettyprint">team</code></td>
+<td><em><a href="#teams">object</a></em></td>
+<td>Team assigned to the booking</td>
 </tr>
 <tr>
 <td><code class="prettyprint">online_status</code></td>
