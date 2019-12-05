@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>5 Dec 2019 - /professionals, /teams</br>added query.booking_id</br>booking_transaction_id</li>
             <li>4 Dec 2019 - /bookings added</br>`professional`and `team`</li>
             <li>3 Dec 2019 - /choice added</br>position `before_availability`,</br>`submit` field and type:</br>pick_pro Added /professionals and</br>/teams endpoints.</li>
             <li>19 Nov 2019 - /choice_items added</br>customize.days_offset and</br>customize.obfTextAreaPlaceholder</li>
@@ -2784,6 +2785,30 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">query.booking_transaction_id</code></td>
+<td><em>integer</em></td>
+<td><em>none</em></td>
+<td><a href="#booking-transactions">Booking transaction</a> identifier to filter pros available for booking</td>
+</tr>
+<tr>
+<td><code class="prettyprint">query.booking_id</code></td>
+<td><em>integer</em></td>
+<td><em>none</em></td>
+<td><a href="#bookings">Booking</a> identifier to filter pros available for reschedule</td>
+</tr>
+</tbody></table>
+
 <h2 id="teams">Teams</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
@@ -2857,6 +2882,30 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">id</code></td>
 <td><em>integer</em></td>
 <td>Object id</td>
+</tr>
+</tbody></table>
+
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">query.booking_transaction_id</code></td>
+<td><em>integer</em></td>
+<td><em>none</em></td>
+<td><a href="#booking-transactions">Booking transaction</a> identifier to filter teams available for booking</td>
+</tr>
+<tr>
+<td><code class="prettyprint">query.booking_id</code></td>
+<td><em>integer</em></td>
+<td><em>none</em></td>
+<td><a href="#bookings">Booking</a> identifier to filter teams available for reschedule</td>
 </tr>
 </tbody></table>
 
