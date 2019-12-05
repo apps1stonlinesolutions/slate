@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 5 Dec 2019 - /professionals, /teams</br>added query.booking_id</br>booking_transaction_id
   - 4 Dec 2019 - /bookings added</br>`professional`and `team`
   - 3 Dec 2019 - /choice added</br>position `before_availability`,</br>`submit` field and type:</br>pick_pro Added /professionals and</br>/teams endpoints.
   - 19 Nov 2019 - /choice_items added</br>customize.days_offset and</br>customize.obfTextAreaPlaceholder
@@ -1816,6 +1817,15 @@ Parameter | Type | Description
 `id` | *integer* | Object id
 
 
+
+### `params`
+
+Parameter | Type | Default | Description
+-------- | ----- | ----- | -------
+`query.booking_transaction_id` | *integer* | *none* | [Booking transaction](#booking-transactions) identifier to filter pros available for booking
+`query.booking_id` | *integer* | *none* | [Booking](#bookings) identifier to filter pros available for reschedule
+
+
 ## Teams
 
 
@@ -1887,6 +1897,13 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Object id
 
+
+### `params`
+
+Parameter | Type | Default | Description
+-------- | ----- | ----- | -------
+`query.booking_transaction_id` | *integer* | *none* | [Booking transaction](#booking-transactions) identifier to filter teams available for booking
+`query.booking_id` | *integer* | *none* | [Booking](#bookings) identifier to filter teams available for reschedule
 
 
 ## Infos
