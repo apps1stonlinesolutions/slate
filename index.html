@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>6 Dec 2019 - renamed pro/</br>professional to unit</li>
             <li>5 Dec 2019 - /professionals, /teams</br>added query.booking_id</br>booking_transaction_id</li>
             <li>4 Dec 2019 - /bookings added</br>`professional`and `team`</li>
             <li>3 Dec 2019 - /choice added</br>position `before_availability`,</br>`submit` field and type:</br>pick_pro Added /professionals and</br>/teams endpoints.</li>
@@ -2444,7 +2445,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">type</code></td>
 <td><em>string</em></td>
-<td>Determines how the choice and choce items are dislpayed<br/><em><b>default</b> - displays choice items based on type</em><br><em><b>price_options</b> - variants of the price (e.g. with membership)</em><br><em><b>timeslot_options</b> - additional preferences for the slot (e.g. same unit)</em><br><em><b>cross_sell</b> - displays choice items based on type and uses display_price</em><br><em><b>multiselect</b> - choice with a lot of choice items that has to be displayed with a search field</em><br><em><b>pick_pro</b> - choice with options to pick a professional for the job</em></td>
+<td>Determines how the choice and choce items are dislpayed<br/><em><b>default</b> - displays choice items based on type</em><br><em><b>price_options</b> - variants of the price (e.g. with membership)</em><br><em><b>timeslot_options</b> - additional preferences for the slot (e.g. same unit)</em><br><em><b>cross_sell</b> - displays choice items based on type and uses display_price</em><br><em><b>multiselect</b> - choice with a lot of choice items that has to be displayed with a search field</em><br><em><b>pick_unit</b> - choice with options to pick a professional or team of proffesionals for the job</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">submit</code></td>
@@ -2557,7 +2558,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
           </span><span class="nt">"total_ratings"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
           </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"professionals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="nt">"units"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://image.url"</span><span class="w">
@@ -2719,13 +2720,13 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 </tr>
 </tbody></table>
 
-<h2 id="professionals">Professionals</h2>
+<h2 id="units">Units</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
  -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
  -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
-<span class="s2">"https://{{BASE_URL}}/v2/client/professionals"</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/units"</span>
 </code></pre>
 
 <blockquote>
@@ -2767,7 +2768,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 
 <p>Details for a Pro.</p>
 
-<p><code class="prettyprint">&quot;path&quot;: &quot;professionals&quot;</code></p>
+<p><code class="prettyprint">&quot;path&quot;: &quot;units&quot;</code></p>
 
 <h3 id="response-parameters">Response parameters</h3>
 
@@ -2858,7 +2859,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"professionals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nt">"units"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="mi">3</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -4455,7 +4456,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
           </span><span class="mi">5</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"professional"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">137</span><span class="p">,</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://image.url"</span><span class="p">,</span><span class="w">
@@ -4472,7 +4473,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
           </span><span class="nt">"total_ratings"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
           </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"professionals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="nt">"units"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://image.url"</span><span class="w">
@@ -4698,8 +4699,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td>Rating object of client for booking service</td>
 </tr>
 <tr>
-<td><code class="prettyprint">professional</code></td>
-<td><em><a href="#professionals">object</a></em></td>
+<td><code class="prettyprint">unit</code></td>
+<td><em><a href="#units">object</a></em></td>
 <td>Pro assigned to the booking</td>
 </tr>
 <tr>
