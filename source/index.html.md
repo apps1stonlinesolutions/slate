@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 11 Dec 2019 - /teams removed</br>duplicate fields in</br>details
   - 6 Dec 2019 - renamed pro/</br>professional to unit
   - 5 Dec 2019 - /professionals, /teams</br>added query.booking_id</br>booking_transaction_id
   - 4 Dec 2019 - /bookings added</br>`professional`and `team`
@@ -1859,8 +1860,6 @@ curl\
     ]
   },
   "details": {
-    "total_bookings": 16,
-    "years_experience": 5,
     "languages": [
       "en",
       "bg"
