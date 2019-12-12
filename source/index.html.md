@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 12 Dec 2019 - /units and /teams</br>renamed booking_transaction_id</br>to transaction_id
   - 11 Dec 2019 - /teams removed</br>duplicate fields in</br>details
   - 6 Dec 2019 - renamed pro/</br>professional to unit
   - 5 Dec 2019 - /professionals, /teams</br>added query.booking_id</br>booking_transaction_id
@@ -1824,7 +1825,7 @@ Parameter | Type | Description
 
 Parameter | Type | Default | Description
 -------- | ----- | ----- | -------
-`query.booking_transaction_id` | *integer* | *none* | [Booking transaction](#booking-transactions) identifier to filter pros available for booking
+`query.transaction_id` | *integer* | *none* | [Booking transaction](#booking-transactions) identifier to filter pros available for booking
 `query.booking_id` | *integer* | *none* | [Booking](#bookings) identifier to filter pros available for reschedule
 
 
@@ -1870,12 +1871,6 @@ curl\
         "name": "Plumber Plus",
         "url": "http://document.url"
       }
-    ],
-    "ratings": [
-      {
-        "rating": 4,
-        "comment": "Very friendly"
-      }
     ]
   },
   "units": [
@@ -1902,7 +1897,7 @@ Parameter | Type | Description
 
 Parameter | Type | Default | Description
 -------- | ----- | ----- | -------
-`query.booking_transaction_id` | *integer* | *none* | [Booking transaction](#booking-transactions) identifier to filter teams available for booking
+`query.transaction_id` | *integer* | *none* | [Booking transaction](#booking-transactions) identifier to filter teams available for booking
 `query.booking_id` | *integer* | *none* | [Booking](#bookings) identifier to filter teams available for reschedule
 
 
