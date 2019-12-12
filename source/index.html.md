@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 12 Dec 2019 - changed </br>years_experience (int) to</br>experience (string)
   - 12 Dec 2019 - /units and /teams</br>renamed booking_transaction_id</br>to transaction_id
   - 11 Dec 2019 - /teams removed</br>duplicate fields in</br>details
   - 6 Dec 2019 - renamed pro/</br>professional to unit
@@ -1781,7 +1782,7 @@ curl\
     "total_ratings": 5,
     "rating": 4.5,
     "total_bookings": 16,
-    "years_experience": 5,
+    "experience": "2 years",
     "ratings": [
       {
         "rating": 4,
@@ -1852,7 +1853,7 @@ curl\
     "total_ratings": 5,
     "rating": 4.5,
     "total_bookings": 16,
-    "years_experience": 5,
+    "experience": "2 years",
     "ratings": [
       {
         "rating": 4,
