@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>19 Dec 2019 - changed </br>request_login_step values</li>
             <li>12 Dec 2019 - changed </br>years_experience (int) to</br>experience (string)</li>
             <li>12 Dec 2019 - /units and /teams</br>renamed booking_transaction_id</br>to transaction_id</li>
             <li>11 Dec 2019 - /teams removed</br>duplicate fields in</br>details</li>
@@ -971,7 +972,7 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <tr>
 <td><code class="prettyprint">request_login_step</code></td>
 <td><em>integer</em></td>
-<td>Determines where user has to login to continue:<br><em><b>1</b> - on welcome screen</em><br><em><b>2</b> - after welcome screen</em><br><em><b>3</b> - after coverage</em><br><em><b>4</b> - before timeslots</em><br><em><b>5</b> - after timeslots</em><br></td>
+<td>Determines where user has to login to continue:<br><em><b>1</b> (on_welcome)</em> - On welcome screen (legacy)<br><em><b>2</b> (after_welcome)</em>  - After welcome screen (legacy)<br><em><b>3</b> (init)</em>  - After coverage (legacy). Upon submittion of last init choice<br><em><b>10</b> (configurator)</em>  - Upon submittion of last  <code class="prettyprint">choice.position:configurator</code> choice<br><em><b>4</b> (before_availability)</em>  - Before timeslots (legacy). Upon submittion of last <code class="prettyprint">choice.position:before_availability</code> (if no <code class="prettyprint">choice.position:before_availability</code> then <code class="prettyprint">choice.position:configurator</code>)<br><em><b>5</b> (availability)</em>  - After timeslots (legacy). Upon submittion of last <code class="prettyprint">choice.position:after_availablity</code> (if no <code class="prettyprint">choice.position:after_availablity</code> then <code class="prettyprint">choice.position:availability</code>)<br><em><b>20</b> (before_summary)</em>  - Upon submittion of last  <code class="prettyprint">choice.position:before_summary</code> choice<br><em><b>30</b> (on_summary)</em>  - Upon submittion of last  <code class="prettyprint">choice.position: on_summary</code> choice<br><em><b>40</b> (before_confirmation)</em>  - Upon submittion of last  <code class="prettyprint">choice.position: before_confirmation</code> choice<br><em><b>50</b> (confirmation)</em>  - Upon submittion of last  <code class="prettyprint">choice.position: confirmation</code> choice</td>
 </tr>
 <tr>
 <td><code class="prettyprint">banners</code></td>
