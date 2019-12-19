@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 19 Dec 2019 - changed </br>request_login_step values
   - 12 Dec 2019 - changed </br>years_experience (int) to</br>experience (string)
   - 12 Dec 2019 - /units and /teams</br>renamed booking_transaction_id</br>to transaction_id
   - 11 Dec 2019 - /teams removed</br>duplicate fields in</br>details
@@ -664,7 +665,7 @@ Parameter | Type | Description
 `show_service_search` | *boolean* | Configuration for hiding or showing search servide field
 `show_membership_reminder_always` | *boolean* | Configuration for membership reminder behaviour
 `most_booked_search_section` | *array\<integer\>* | List of service/deals ids
-`request_login_step` | *integer* | Determines where user has to login to continue:<br>*<b>1</b> - on welcome screen*<br>*<b>2</b> - after welcome screen*<br>*<b>3</b> - after coverage*<br>*<b>4</b> - before timeslots*<br>*<b>5</b> - after timeslots*<br>
+`request_login_step` | *integer* | Determines where user has to login to continue:<br>*<b>1</b> (on_welcome)* - On welcome screen (legacy)<br>*<b>2</b> (after_welcome)*  - After welcome screen (legacy)<br>*<b>3</b> (init)*  - After coverage (legacy). Upon submittion of last init choice<br>*<b>10</b> (configurator)*  - Upon submittion of last  `choice.position:configurator` choice<br>*<b>4</b> (before_availability)*  - Before timeslots (legacy). Upon submittion of last `choice.position:before_availability` (if no `choice.position:before_availability` then `choice.position:configurator`)<br>*<b>5</b> (availability)*  - After timeslots (legacy). Upon submittion of last `choice.position:after_availablity` (if no `choice.position:after_availablity` then `choice.position:availability`)<br>*<b>20</b> (before_summary)*  - Upon submittion of last  `choice.position:before_summary` choice<br>*<b>30</b> (on_summary)*  - Upon submittion of last  `choice.position: on_summary ` choice<br>*<b>40</b> (before_confirmation)*  - Upon submittion of last  `choice.position: before_confirmation ` choice<br>*<b>50</b> (confirmation)*  - Upon submittion of last  `choice.position: confirmation` choice
 `banners` | *array\<banner\>* | List of banners for the application
 `banners.type` | *integer* | Determines where to show the banner:<br>*<b>1</b> - categories list*<br>*<b>2</b> - services list*<br>
 `banners.category_id` | *integer* | Category in which to show the banner
