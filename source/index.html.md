@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 15 Jan 2019 - added </br>payload.id in </br>choice_item.payload
   - 15 Jan 2019 - added </br>supplementary_field in </br>choice_item.customize
   - 19 Dec 2019 - changed </br>request_login_step values
   - 12 Dec 2019 - changed </br>years_experience (int) to</br>experience (string)
@@ -1705,6 +1706,7 @@ curl\
         "supplementary_field": "address.address_line_1"
       },
       "payload": {
+        "id": 1,
         "stats": {
           "total_ratings": 5,
           "rating": 4.5
