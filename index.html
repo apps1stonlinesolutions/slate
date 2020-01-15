@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>15 Jan 2019 - added </br>supplementary_field in </br>choice_item.customize</li>
             <li>19 Dec 2019 - changed </br>request_login_step values</li>
             <li>12 Dec 2019 - changed </br>years_experience (int) to</br>experience (string)</li>
             <li>12 Dec 2019 - /units and /teams</br>renamed booking_transaction_id</br>to transaction_id</li>
@@ -2555,7 +2556,8 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
         </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="s2">"front_camera"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"rear_camera"</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"supplementary_field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"address.address_line_1"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2721,6 +2723,11 @@ You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authori
 <td><code class="prettyprint">customize.source</code></td>
 <td><em>array&lt;string&gt;</em></td>
 <td>An array with sources from where the attachment will be re retreived:<br/> <em><b>front_camera</b> - Front camera (if not available rear camera used)</em><br/>  <em><b>rear_camera</b> - Rear camera (if not available front camera used)</em><br/><em><b>local_storage</b> - File system (camera roll, gallery, sd card etc.)</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">customize.supplementary_field</code></td>
+<td><em>string</em></td>
+<td>Computed value. The <code class="prettyprint">value</code> of this choice item will update an object. e.g. <code class="prettyprint">address.address_line_1</code> means the <code class="prettyprint">choice_item.value</code> will be set to <code class="prettyprint">address_line_1</code> of an <code class="prettyprint">address</code> object by the server.</td>
 </tr>
 </tbody></table>
 
