@@ -111,6 +111,8 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>22 Jan 2020 - /unit/profile, added</br>edit_request_status</li>
+            <li>22 Jan 2020 - Headers, added</br>X-Device</li>
             <li>15 Jan 2019 - added </br>payload.id in </br>choice_item.payload</li>
             <li>15 Jan 2019 - added </br>supplementary_field in </br>choice_item.customize</li>
             <li>19 Dec 2019 - changed </br>request_login_step values</li>
@@ -205,6 +207,25 @@ You must replace <code>{{PROFILE_ID}}</code> with your personal profile keyword.
 <aside class="notice">
 You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authorization token.
 </aside>
+
+<h2 id="device-details">Device details</h2>
+
+<p>Information about the client device like brand, screen size, os version etc. May also include client application details as build, version etc.
+</br>
+</br>
+Header value consists of key-value pairs delimited by <code class="prettyprint">,</code> (comma and space). Key can contain letters and dashes (kebap-case). Value should not contain spaces.
+</br>
+</br>
+Example:
+</br>
+<code class="prettyprint">X-Device: screen-size=small, type=web</code>
+</br>
+</br>
+Accepted params:
+</br>
+* <code class="prettyprint">screen-size</code> - <code class="prettyprint">extra-small</code>, <code class="prettyprint">small</code>, <code class="prettyprint">medium</code>, <code class="prettyprint">large</code>, <code class="prettyprint">extra-large</code>
+</br>
+* <code class="prettyprint">type</code> - <code class="prettyprint">ios-app</code>, <code class="prettyprint">android-app</code>, <code class="prettyprint">app</code>, <code class="prettyprint">web-mobile</code>, <code class="prettyprint">web-desktop</code>, <code class="prettyprint">web</code></p>
 
 <h1 id="communication-protocol">Communication Protocol</h1>
 
@@ -6343,6 +6364,12 @@ curl<span class="se">\</span>
       </span><span class="mi">1</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"available_for_ondemand_jobs"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"edit_request_status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1504857514</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The changes were rejected!"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"seen"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1504857514</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -6485,6 +6512,21 @@ curl<span class="se">\</span>
 <td><code class="prettyprint">available_for_ondemand_jobs</code></td>
 <td><em>boolean</em></td>
 <td>Shows whether Pro accepts on-demand jobs</td>
+</tr>
+<tr>
+<td><code class="prettyprint">edit_request_status</code></td>
+<td><em>object</em></td>
+<td>Status of the last profile change. Changes go trough a review, before they are applied.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">edit_request_status.type</code></td>
+<td><em>string</em></td>
+<td><br/><em><b>pending</b> - change is not reviewed yet</em><br><em><b>approved</b> - change is approved and applied to the profile</em><br><em><b>rejected</b> - change was deleted</em></td>
+</tr>
+<tr>
+<td><code class="prettyprint">edit_request_status.seen</code></td>
+<td><em>boolean</em></td>
+<td>Flag indicating if user has seen and acknowledged the change (has dismissed the notification)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">created_at</code></td>
