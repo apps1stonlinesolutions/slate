@@ -6,6 +6,8 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 22 Jan 2020 - /unit/profile, added</br>edit_request_status
+  - 22 Jan 2020 - Headers, added</br>X-Device
   - 15 Jan 2019 - added </br>payload.id in </br>choice_item.payload
   - 15 Jan 2019 - added </br>supplementary_field in </br>choice_item.customize
   - 19 Dec 2019 - changed </br>request_login_step values
@@ -102,6 +104,26 @@ To retry a request put request token in the headers (unique string). When sent t
 <aside class="notice">
 You must replace <code>{{AUTHORIZATION_TOKEN}}</code> with your personal authorization token.
 </aside>
+
+## Device details
+
+Information about the client device like brand, screen size, os version etc. May also include client application details as build, version etc.
+</br>
+</br>
+Header value consists of key-value pairs delimited by `, ` (comma and space). Key can contain letters and dashes (kebap-case). Value should not contain spaces.
+</br>
+</br>
+Example:
+</br>
+`X-Device: screen-size=small, type=web`
+</br>
+</br>
+Accepted params:
+</br>
+* `screen-size` - `extra-small`, `small`, `medium`, `large`, `extra-large`
+</br>
+* `type` - `ios-app`, `android-app`, `app`, `web-mobile`, `web-desktop`, `web`
+
 
 
 
@@ -4255,6 +4277,12 @@ curl\
       1
     ],
     "available_for_ondemand_jobs": false,
+    "edit_request_status": {
+      "type": "pending",
+      "updated_at": 1504857514,
+      "message": "The changes were rejected!",
+      "seen": false
+    },
     "created_at": 1504857514
   }
 }
@@ -4294,6 +4322,9 @@ Parameter | Type | Description
 `permissions.can_set_availability` | *boolean* | Can unit set it's availability
 `permissions.can_view_task_manager` | *boolean* | Can unit view tasks section
 `available_for_ondemand_jobs` | *boolean*  | Shows whether Pro accepts on-demand jobs
+`edit_request_status` | *object* | Status of the last profile change. Changes go trough a review, before they are applied.
+`edit_request_status.type` | *string* | <br/>*<b>pending</b> - change is not reviewed yet*<br>*<b>approved</b> - change is approved and applied to the profile*<br>*<b>rejected</b> - change was deleted*
+`edit_request_status.seen` | *boolean* | Flag indicating if user has seen and acknowledged the change (has dismissed the notification)
 `created_at` | *integer* | Timestamp of unit registration
 
 
