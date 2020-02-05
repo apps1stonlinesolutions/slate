@@ -4266,7 +4266,7 @@ curl\
 }
 ```
 
-Duplicate request available in `unit` as well. Couldn't be moved in `shared` section due to technical issues (new shared folder needed in XRM for this particular endpoint). Initiate sending an email with link for resetting password
+Duplicate request available in `client` as well. Couldn't be moved in `shared` section due to technical issues (new shared folder needed in XRM for this particular endpoint). Initiate sending an email with link for resetting password
 
 `"path": "request_reset_password"`
 
@@ -4318,7 +4318,7 @@ curl\
 }
 ```
 
-Duplicate request available in `unit` as well. Couldn't be moved in `shared` section due to technical issues (new shared folder needed in XRM for this particular endpoint). Reset password of user.
+Duplicate request available in `client` as well. Couldn't be moved in `shared` section due to technical issues (new shared folder needed in XRM for this particular endpoint). Reset password of user.
 
 `"path": "reset_password"`
 
