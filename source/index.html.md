@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 5 Feb 2020 - moved</br>request_reset_password and</br>reset_password to</br>client and unit
   - 4 Feb 2020 - moved</br>request_reset_password and</br>reset_password to</br>shared
   - 22 Jan 2020 - /unit/profile, added</br>edit_request_status
   - 22 Jan 2020 - Headers, added</br>X-Device
@@ -1088,6 +1089,117 @@ Deletes user session.
 This endpoint returns:
 
 * [Common errors](#common-errors)
+
+
+
+
+## Request reset password (duplicate)
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -d '{
+        "email": "test@test.com"
+}'\
+ "https://{{BASE_URL}}/v2/client/request_reset_password"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": null,
+  "success": [
+    {
+      "code": 2000,
+      "message": "Success",
+      "debug_message": null,
+      "debug_id": null
+    }
+  ]
+}
+```
+
+Duplicate request available in `unit` as well. Couldn't be moved in `shared` section due to technical issues (new shared folder needed in XRM for this particular endpoint). Initiate sending an email with link for resetting password
+
+`"path": "request_reset_password"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`email`<br>*required* | *string* | Email address to which a link for reset password will be sent
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+* [Request reset password](#request-reset-password-errors)
+
+
+
+
+## Reset password (duplicate)
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -d '{
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+        "password": "jamie",
+        "confirm_password": "jamie",
+}'\
+ "https://{{BASE_URL}}/v2/client/reset_password"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": {
+    "username": "john_doe@test.test"
+  },
+  "success": [
+    {
+      "code": 2000,
+      "message": "Success",
+      "debug_message": null,
+      "debug_id": null
+    }
+  ]
+}
+```
+
+Duplicate request available in `unit` as well. Couldn't be moved in `shared` section due to technical issues (new shared folder needed in XRM for this particular endpoint). Reset password of user.
+
+`"path": "reset_password"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`token `<br>*required* | *string* | Token for resetting password received via email
+`password`<br>*required* | *string* | User new password
+`confirm_password`<br>*optional* | *string* | Password confirmation check
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`username ` | *string* | Login email address of user who resetted their password
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+* [Reset password](#reset-password-errors)
+
+
+
 
 
 ## Read user details on password reset
@@ -4124,6 +4236,114 @@ This endpoint returns:
 
 
 
+## Request reset password (duplicate)
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -d '{
+        "email": "test@test.com"
+}'\
+ "https://{{BASE_URL}}/v2/unit/request_reset_password"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": null,
+  "success": [
+    {
+      "code": 2000,
+      "message": "Success",
+      "debug_message": null,
+      "debug_id": null
+    }
+  ]
+}
+```
+
+Duplicate request available in `unit` as well. Couldn't be moved in `shared` section due to technical issues (new shared folder needed in XRM for this particular endpoint). Initiate sending an email with link for resetting password
+
+`"path": "request_reset_password"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`email`<br>*required* | *string* | Email address to which a link for reset password will be sent
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+* [Request reset password](#request-reset-password-errors)
+
+
+
+
+## Reset password (duplicate)
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -d '{
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+        "password": "jamie",
+        "confirm_password": "jamie",
+}'\
+ "https://{{BASE_URL}}/v2/unit/reset_password"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": {
+    "username": "john_doe@test.test"
+  },
+  "success": [
+    {
+      "code": 2000,
+      "message": "Success",
+      "debug_message": null,
+      "debug_id": null
+    }
+  ]
+}
+```
+
+Duplicate request available in `unit` as well. Couldn't be moved in `shared` section due to technical issues (new shared folder needed in XRM for this particular endpoint). Reset password of user.
+
+`"path": "reset_password"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`token `<br>*required* | *string* | Token for resetting password received via email
+`password`<br>*required* | *string* | User new password
+`confirm_password`<br>*optional* | *string* | Password confirmation check
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`username ` | *string* | Login email address of user who resetted their password
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+* [Reset password](#reset-password-errors)
+
+
+
+
 
 ## Profile
 
@@ -6066,114 +6286,6 @@ This endpoint returns:
 
 
 # Shared
-
-
-## Request reset password
-
-
-```shell
-curl\
- -X POST\
- -H "Content-Type: application/json"\
- -H "X-Application: {{APPLICATION_TOKEN}}"\
- -d '{
-        "email": "test@test.com"
-}'\
- "https://{{BASE_URL}}/v2/client/request_reset_password"
-```
-
-> The above request success response is:
-
-```json
-{
-  "data": null,
-  "success": [
-    {
-      "code": 2000,
-      "message": "Success",
-      "debug_message": null,
-      "debug_id": null
-    }
-  ]
-}
-```
-
-Initiate sending an email with link for resetting password
-
-`"path": "request_reset_password"`
-
-### Request parameters
-
-Parameter | Type | Description
--------- | ----- | -------
-`email`<br>*required* | *string* | Email address to which a link for reset password will be sent
-
-This endpoint returns:
-
-* [Common errors](#common-errors)
-* [Request reset password](#request-reset-password-errors)
-
-
-
-
-## Reset password
-
-
-```shell
-curl\
- -X POST\
- -H "Content-Type: application/json"\
- -H "X-Application: {{APPLICATION_TOKEN}}"\
- -d '{
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
-        "password": "jamie",
-        "confirm_password": "jamie",
-}'\
- "https://{{BASE_URL}}/v2/client/reset_password"
-```
-
-> The above request success response is:
-
-```json
-{
-  "data": {
-    "username": "john_doe@test.test"
-  },
-  "success": [
-    {
-      "code": 2000,
-      "message": "Success",
-      "debug_message": null,
-      "debug_id": null
-    }
-  ]
-}
-```
-
-Reset password of user.
-
-`"path": "reset_password"`
-
-### Request parameters
-
-Parameter | Type | Description
--------- | ----- | -------
-`token `<br>*required* | *string* | Token for resetting password received via email
-`password`<br>*required* | *string* | User new password
-`confirm_password`<br>*optional* | *string* | Password confirmation check
-
-### Response parameters
-
-Parameter | Type | Description
--------- | ----- | -------
-`username ` | *string* | Login email address of user who resetted their password
-
-This endpoint returns:
-
-* [Common errors](#common-errors)
-* [Reset password](#reset-password-errors)
-
-
 
 
 
