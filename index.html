@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>5 Feb 2020 - moved</br>request_reset_password and</br>reset_password to</br>client and unit</li>
             <li>4 Feb 2020 - moved</br>request_reset_password and</br>reset_password to</br>shared</li>
             <li>22 Jan 2020 - /unit/profile, added</br>edit_request_status</li>
             <li>22 Jan 2020 - Headers, added</br>X-Device</li>
@@ -1630,6 +1631,144 @@ Accepted params:
 
 <ul>
 <li><a href="#common-errors">Common errors</a></li>
+</ul>
+
+<h2 id="request-reset-password-duplicate">Request reset password (duplicate)</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "email": "test@test.com"
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/request_reset_password"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Duplicate request available in <code class="prettyprint">unit</code> as well. Couldn&rsquo;t be moved in <code class="prettyprint">shared</code> section due to technical issues (new shared folder needed in XRM for this particular endpoint). Initiate sending an email with link for resetting password</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;request_reset_password&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">email</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Email address to which a link for reset password will be sent</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+<li><a href="#request-reset-password-errors">Request reset password</a></li>
+</ul>
+
+<h2 id="reset-password-duplicate">Reset password (duplicate)</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+        "password": "jamie",
+        "confirm_password": "jamie",
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/reset_password"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john_doe@test.test"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Duplicate request available in <code class="prettyprint">unit</code> as well. Couldn&rsquo;t be moved in <code class="prettyprint">shared</code> section due to technical issues (new shared folder needed in XRM for this particular endpoint). Reset password of user.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;reset_password&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">token</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Token for resetting password received via email</td>
+</tr>
+<tr>
+<td><code class="prettyprint">password</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>User new password</td>
+</tr>
+<tr>
+<td><code class="prettyprint">confirm_password</code><br><em>optional</em></td>
+<td><em>string</em></td>
+<td>Password confirmation check</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">username</code></td>
+<td><em>string</em></td>
+<td>Login email address of user who resetted their password</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+<li><a href="#reset-password-errors">Reset password</a></li>
 </ul>
 
 <h2 id="read-user-details-on-password-reset">Read user details on password reset</h2>
@@ -6180,6 +6319,144 @@ curl<span class="se">\</span>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
+<h2 id="request-reset-password-duplicate">Request reset password (duplicate)</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "email": "test@test.com"
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/unit/request_reset_password"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Duplicate request available in <code class="prettyprint">unit</code> as well. Couldn&rsquo;t be moved in <code class="prettyprint">shared</code> section due to technical issues (new shared folder needed in XRM for this particular endpoint). Initiate sending an email with link for resetting password</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;request_reset_password&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">email</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Email address to which a link for reset password will be sent</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+<li><a href="#request-reset-password-errors">Request reset password</a></li>
+</ul>
+
+<h2 id="reset-password-duplicate">Reset password (duplicate)</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+        "password": "jamie",
+        "confirm_password": "jamie",
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/unit/reset_password"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john_doe@test.test"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Duplicate request available in <code class="prettyprint">unit</code> as well. Couldn&rsquo;t be moved in <code class="prettyprint">shared</code> section due to technical issues (new shared folder needed in XRM for this particular endpoint). Reset password of user.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;reset_password&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">token</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Token for resetting password received via email</td>
+</tr>
+<tr>
+<td><code class="prettyprint">password</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>User new password</td>
+</tr>
+<tr>
+<td><code class="prettyprint">confirm_password</code><br><em>optional</em></td>
+<td><em>string</em></td>
+<td>Password confirmation check</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">username</code></td>
+<td><em>string</em></td>
+<td>Login email address of user who resetted their password</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+<li><a href="#reset-password-errors">Reset password</a></li>
+</ul>
+
 <h2 id="profile">Profile</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
@@ -9054,144 +9331,6 @@ curl<span class="se">\</span>
 </ul>
 
 <h1 id="shared">Shared</h1>
-
-<h2 id="request-reset-password">Request reset password</h2>
-<pre class="highlight shell"><code>curl<span class="se">\</span>
- -X POST<span class="se">\</span>
- -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
- -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
- -d <span class="s1">'{
-        "email": "test@test.com"
-}'</span><span class="se">\</span>
- <span class="s2">"https://{{BASE_URL}}/v2/client/request_reset_password"</span>
-</code></pre>
-
-<blockquote>
-<p>The above request success response is:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Initiate sending an email with link for resetting password</p>
-
-<p><code class="prettyprint">&quot;path&quot;: &quot;request_reset_password&quot;</code></p>
-
-<h3 id="request-parameters">Request parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">email</code><br><em>required</em></td>
-<td><em>string</em></td>
-<td>Email address to which a link for reset password will be sent</td>
-</tr>
-</tbody></table>
-
-<p>This endpoint returns:</p>
-
-<ul>
-<li><a href="#common-errors">Common errors</a></li>
-<li><a href="#request-reset-password-errors">Request reset password</a></li>
-</ul>
-
-<h2 id="reset-password">Reset password</h2>
-<pre class="highlight shell"><code>curl<span class="se">\</span>
- -X POST<span class="se">\</span>
- -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
- -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
- -d <span class="s1">'{
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
-        "password": "jamie",
-        "confirm_password": "jamie",
-}'</span><span class="se">\</span>
- <span class="s2">"https://{{BASE_URL}}/v2/client/reset_password"</span>
-</code></pre>
-
-<blockquote>
-<p>The above request success response is:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john_doe@test.test"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Reset password of user.</p>
-
-<p><code class="prettyprint">&quot;path&quot;: &quot;reset_password&quot;</code></p>
-
-<h3 id="request-parameters">Request parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">token</code><br><em>required</em></td>
-<td><em>string</em></td>
-<td>Token for resetting password received via email</td>
-</tr>
-<tr>
-<td><code class="prettyprint">password</code><br><em>required</em></td>
-<td><em>string</em></td>
-<td>User new password</td>
-</tr>
-<tr>
-<td><code class="prettyprint">confirm_password</code><br><em>optional</em></td>
-<td><em>string</em></td>
-<td>Password confirmation check</td>
-</tr>
-</tbody></table>
-
-<h3 id="response-parameters">Response parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">username</code></td>
-<td><em>string</em></td>
-<td>Login email address of user who resetted their password</td>
-</tr>
-</tbody></table>
-
-<p>This endpoint returns:</p>
-
-<ul>
-<li><a href="#common-errors">Common errors</a></li>
-<li><a href="#reset-password-errors">Reset password</a></li>
-</ul>
 
 <h2 id="user-applications">User applications</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
