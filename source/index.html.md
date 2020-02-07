@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 7 Feb 2020 - added</br>unit/profile.bio
   - 5 Feb 2020 - moved</br>request_reset_password and</br>reset_password to</br>client and unit
   - 4 Feb 2020 - moved</br>request_reset_password and</br>reset_password to</br>shared
   - 22 Jan 2020 - /unit/profile, added</br>edit_request_status
@@ -4374,6 +4375,8 @@ curl\
     "country_code": "+44",
     "language_code": "en",
     "phone": "07123456789",
+    "available_for_ondemand_jobs": false,
+    "bio": "Short bio text",
     "avatar": {
       "token": "2331xfasf23423rt43fsdfasDAS",
       "url": "https://files.dxr.cloud/PVk0poyRIuRG2"
@@ -4392,7 +4395,6 @@ curl\
     "user_applications": [
       1
     ],
-    "available_for_ondemand_jobs": false,
     "edit_request_status": {
       "type": "pending",
       "updated_at": 1504857514,
