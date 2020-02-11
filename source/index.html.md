@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 11 Feb 2020 - added</br>chice_item.payload.gender
   - 7 Feb 2020 - added</br>unit/profile.bio
   - 5 Feb 2020 - moved</br>request_reset_password and</br>reset_password to</br>client and unit
   - 4 Feb 2020 - moved</br>request_reset_password and</br>reset_password to</br>shared
@@ -1738,6 +1739,7 @@ curl\
       },
       "payload": {
         "id": 1,
+        "gender": "male",
         "stats": {
           "total_ratings": 5,
           "rating": 4.5
@@ -1792,7 +1794,7 @@ Parameter | Type | Description
 `customize.attachment_type` | *array\<string\>* | An array with allowed attachment types:<br/> *<b>image</b> - Image in jpg, jpeg and png formats*<br/>  *<b>video</b> - Video in wmv, mov, mp4 and avi formats*<br/>  *<b>document</b> - Document  in pdf format*
 `customize.source` | *array\<string\>* | An array with sources from where the attachment will be re retreived:<br/> *<b>front_camera</b> - Front camera (if not available rear camera used)*<br/>  *<b>rear_camera</b> - Rear camera (if not available front camera used)*<br/>*<b>local_storage</b> - File system (camera roll, gallery, sd card etc.)*
 `customize.supplementary_field` | *string* | Computed value. The `value` of this choice item will update an object. e.g. `address.address_line_1` means the `choice_item.value` will be set to `address_line_1` of an `address` object by the server.
-
+`payload.gender` | *string* | Unit gender:<br/> *<b>male</b><br/>**<b>female</b>*
 
 
 
