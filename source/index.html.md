@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 20 Feb 2020 - Headers, changed</br>X-Device
   - 11 Feb 2020 - added</br>chice_item.payload.gender
   - 7 Feb 2020 - added</br>unit/profile.short_bio
   - 5 Feb 2020 - moved</br>request_reset_password and</br>reset_password to</br>client and unit
@@ -119,7 +120,7 @@ Header value consists of key-value pairs delimited by `, ` (comma and space). Ke
 </br>
 Example:
 </br>
-`X-Device: screen-size=small, type=web`
+`X-Device: screen-size=small,extra-small; type=ios-app,app`
 </br>
 </br>
 Accepted params:
