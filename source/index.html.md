@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 21 Feb 2020 - Added note</br>to client address
   - 20 Feb 2020 - Headers, changed</br>X-Device
   - 11 Feb 2020 - added</br>chice_item.payload.gender
   - 7 Feb 2020 - added</br>unit/profile.short_bio
@@ -2642,6 +2643,7 @@ curl\
       "postcode": "SW12 2TH",
       "city": "London",
       "country": "United Kingdom",
+      "note": "I have and alarm",
       "default": true,
       "sort": 100
     }
