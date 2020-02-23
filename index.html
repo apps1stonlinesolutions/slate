@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>23 Feb 2020 - Added </br>hourly_availability</li>
             <li>21 Feb 2020 - Added note</br>to client address</li>
             <li>20 Feb 2020 - Headers, changed</br>X-Device</li>
             <li>11 Feb 2020 - added</br>chice_item.payload.gender</li>
@@ -8214,7 +8215,7 @@ curl<span class="se">\</span>
 <li><a href="#tracked-locations-errors">Tracked locations errors</a></li>
 </ul>
 
-<h2 id="work-time">Work time</h2>
+<h2 id="work-time-shifts">Work time (shifts)</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
  -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
@@ -8316,7 +8317,7 @@ curl<span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Unit availability (shifts).</p>
+<p>Unit availability after applying days off/time off.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;availability&quot;</code></p>
 
@@ -8529,6 +8530,113 @@ curl<span class="se">\</span>
 <td><em>string</em></td>
 <td><em>all statuses</em></td>
 <td>Filters availability requests by <code class="prettyprint">status</code>. If no filter is passed all availability requests are returned. To filter availability requests by more than one status pass an array of statuses e.g. <code class="prettyprint">[&quot;pending&quot;, &quot;approved&quot;]</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="hourly-availability">Hourly Availability</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/hourly_availability"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21-02-2018"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Working"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not working"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Working"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not working"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Unit availability in pre-defined time intervals (e.g. 10:00 - 10:30, 10:30 - 11:00 etc.). It is a result of work time (shifts) + applying days off/time off + applying hourly availability modifications.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;hourly_availability&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">date</code></td>
+<td><em>string</em></td>
+<td>Date of availability (date string with format 2018-02-25)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">intervals</code></td>
+<td><em>array&lt;interval&gt;</em></td>
+<td>List of intervals for the day</td>
+</tr>
+<tr>
+<td><code class="prettyprint">intervals.types</code></td>
+<td><em>array&lt;type&gt;</em></td>
+<td>List of available interval types</td>
+</tr>
+</tbody></table>
+
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">query.from_date</code></td>
+<td><em>integer</em></td>
+<td><em>Monday</em></td>
+<td>UTC time stamp to filter results from a date</td>
+</tr>
+<tr>
+<td><code class="prettyprint">query.to_date</code></td>
+<td><em>integer</em></td>
+<td><em>Sunday</em></td>
+<td>UTC time stamp to filter results to a date</td>
 </tr>
 </tbody></table>
 
