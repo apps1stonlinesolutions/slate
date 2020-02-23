@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 23 Feb 2020 - Added </br>hourly_availability
   - 21 Feb 2020 - Added note</br>to client address
   - 20 Feb 2020 - Headers, changed</br>X-Device
   - 11 Feb 2020 - added</br>chice_item.payload.gender
@@ -5561,7 +5562,7 @@ This endpoint returns:
 * [Tracked locations errors](#tracked-locations-errors)
 
 
-## Work time
+## Work time (shifts)
 
 ```shell
 curl\
@@ -5646,7 +5647,7 @@ curl\
 }
 ```
 
-Unit availability (shifts).
+Unit availability after applying days off/time off.
 
 `"path": "availability"`
 
@@ -5762,6 +5763,83 @@ Parameter | Type | Description
 Parameter | Type | Default | Description
 -------- | ----- | ----- | -------
 `filter.status`<br>*optional* | *string* | *all statuses*  | Filters availability requests by `status`. If no filter is passed all availability requests are returned. To filter availability requests by more than one status pass an array of statuses e.g. `["pending", "approved"]`
+
+
+
+## Hourly Availability
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/hourly_availability"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "date": "21-02-2018",
+      "intervals": [
+        {
+          "id": 1,
+          "name": "10:00",
+          "type_id": 1,
+          "types": [
+            {
+              "id": 1,
+              "name": "Working"
+            },
+            {
+              "id": 2,
+              "name": "Not working"
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "name": "15:00",
+          "type_id": 2,
+          "types": [
+            {
+              "id": 1,
+              "name": "Working"
+            },
+            {
+              "id": 2,
+              "name": "Not working"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Unit availability in pre-defined time intervals (e.g. 10:00 - 10:30, 10:30 - 11:00 etc.). It is a result of work time (shifts) + applying days off/time off + applying hourly availability modifications.
+
+`"path": "hourly_availability"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`date` | *string* | Date of availability (date string with format 2018-02-25)
+`intervals` | *array\<interval\>* | List of intervals for the day
+`intervals.types` | *array\<type\>* | List of available interval types
+
+### `params`
+
+Parameter | Type   | Default | Description
+-------- | ---------- | ---- | -------
+`query.from_date` | *integer* | *Monday* | UTC time stamp to filter results from a date
+`query.to_date` | *integer* | *Sunday* | UTC time stamp to filter results to a date
+
 
 
 ## Day off types
