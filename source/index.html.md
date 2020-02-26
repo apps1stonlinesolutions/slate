@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 26 Feb 2020 - Updated</br>hourly_availability and added</br>hourly_availability_configuration
   - 23 Feb 2020 - Added </br>hourly_availability
   - 21 Feb 2020 - Added note</br>to client address
   - 20 Feb 2020 - Headers, changed</br>X-Device
@@ -5786,33 +5787,24 @@ curl\
       "date": "2018-02-21",
       "intervals": [
         {
-          "id": 1,
-          "name": "10:00",
+          "id": 20180221300,
+          "title": "10:00",
+          "description": "In the morning",
+          "duration": 300,
           "type_id": 1,
-          "types": [
-            {
-              "id": 1,
-              "name": "Working"
-            },
-            {
-              "id": 2,
-              "name": "Not working"
-            }
+          "available_types": [
+            1,
+            2
           ]
         },
         {
-          "id": 24,
-          "name": "15:00",
-          "type_id": 2,
-          "types": [
-            {
-              "id": 1,
-              "name": "Working"
-            },
-            {
-              "id": 2,
-              "name": "Not working"
-            }
+          "id": 20180221600,
+          "title": "10:00 One-Off Cleaning",
+          "description": "SW12 2TH",
+          "duration": 600,
+          "type_id": 3,
+          "available_types": [
+            3
           ]
         }
       ]
@@ -5821,7 +5813,7 @@ curl\
 }
 ```
 
-Unit availability in pre-defined time intervals (e.g. 10:00 - 10:30, 10:30 - 11:00 etc.). It is a result of work time (shifts) + applying days off/time off + applying hourly availability modifications.
+Unit availability in pre-defined time intervals (e.g. 10:00 - 10:30, 10:30 - 11:00 etc.). It is a result of work time (shifts) + applying days off/time off + applying hourly availability modifications. Interval duration may vary - if unit has appointment the interval accompasses the appointment duration.
 
 `"path": "hourly_availability"`
 
@@ -5829,9 +5821,11 @@ Unit availability in pre-defined time intervals (e.g. 10:00 - 10:30, 10:30 - 11:
 
 Parameter | Type | Description
 -------- | ----- | -------
-`date` | *string* | Date of availability (date string with format 2018-02-25)
+`date` | *string* | Date of availability (date string with format `YYYY-MM-DD`)
 `intervals` | *array\<interval\>* | List of intervals for the day
-`intervals.types` | *array\<type\>* | List of available interval types
+`intervals.duration` | *integer* | Interval duration in minutes
+`intervals.type_id` | *integer* | Selected interval [type](#hourly-availability-configuration) id
+`intervals.available_types` | *array\<[type](#hourly-availability-configuration)\>* | List of available interval types to toggle
 
 ### `params`
 
@@ -5839,6 +5833,62 @@ Parameter | Type   | Default | Description
 -------- | ---------- | ---- | -------
 `query.from_date` | *integer* | *Monday* | UTC time stamp to filter results from a date
 `query.to_date` | *integer* | *Sunday* | UTC time stamp to filter results to a date
+
+
+
+
+## Hourly Availability Configuration
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/hourly_availability_configuration"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": {
+    "duration_scale": 300,
+    "types": [
+      {
+        "id": 1,
+        "name": "Working",
+        "color_name": "HourlyAvailabilityAvailable",
+        "sort": 100
+      },
+      {
+        "id": 2,
+        "name": "Not working",
+        "color_name": "HourlyAvailabilityNotAvailable",
+        "sort": 100
+      },
+      {
+        "id": 3,
+        "name": "Occupied",
+        "color_name": "HourlyAvailabilityNotOccupied",
+        "sort": 100
+      }
+    ]
+  }
+}
+```
+
+Unit hourly availability configurations.
+
+`"path": "hourly_availability_configuration"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`duration_scale` | *integer* | Duration of one row in the UI
+`types` | *array\<type>* | List of all types available for the unit
+`types.color_name` | *string* | Key of corresponding color in the UI
 
 
 
