@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>26 Feb 2020 - Updated</br>hourly_availability and added</br>hourly_availability_configuration</li>
             <li>23 Feb 2020 - Added </br>hourly_availability</li>
             <li>21 Feb 2020 - Added note</br>to client address</li>
             <li>20 Feb 2020 - Headers, changed</br>X-Device</li>
@@ -8551,33 +8552,24 @@ curl<span class="se">\</span>
       </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-21"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20180221300</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"In the morning"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
           </span><span class="nt">"type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Working"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not working"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+          </span><span class="nt">"available_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="mi">2</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Working"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not working"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20180221600</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:00 One-Off Cleaning"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SW12 2TH"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"available_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">3</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
@@ -8586,7 +8578,7 @@ curl<span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Unit availability in pre-defined time intervals (e.g. 10:00 - 10:30, 10:30 - 11:00 etc.). It is a result of work time (shifts) + applying days off/time off + applying hourly availability modifications.</p>
+<p>Unit availability in pre-defined time intervals (e.g. 10:00 - 10:30, 10:30 - 11:00 etc.). It is a result of work time (shifts) + applying days off/time off + applying hourly availability modifications. Interval duration may vary - if unit has appointment the interval accompasses the appointment duration.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;hourly_availability&quot;</code></p>
 
@@ -8602,7 +8594,7 @@ curl<span class="se">\</span>
 <tr>
 <td><code class="prettyprint">date</code></td>
 <td><em>string</em></td>
-<td>Date of availability (date string with format 2018-02-25)</td>
+<td>Date of availability (date string with format <code class="prettyprint">YYYY-MM-DD</code>)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">intervals</code></td>
@@ -8610,9 +8602,19 @@ curl<span class="se">\</span>
 <td>List of intervals for the day</td>
 </tr>
 <tr>
-<td><code class="prettyprint">intervals.types</code></td>
-<td><em>array&lt;type&gt;</em></td>
-<td>List of available interval types</td>
+<td><code class="prettyprint">intervals.duration</code></td>
+<td><em>integer</em></td>
+<td>Interval duration in minutes</td>
+</tr>
+<tr>
+<td><code class="prettyprint">intervals.type_id</code></td>
+<td><em>integer</em></td>
+<td>Selected interval <a href="#hourly-availability-configuration">type</a> id</td>
+</tr>
+<tr>
+<td><code class="prettyprint">intervals.available_types</code></td>
+<td><em>array&lt;<a href="#hourly-availability-configuration">type</a>&gt;</em></td>
+<td>List of available interval types to toggle</td>
 </tr>
 </tbody></table>
 
@@ -8637,6 +8639,75 @@ curl<span class="se">\</span>
 <td><em>integer</em></td>
 <td><em>Sunday</em></td>
 <td>UTC time stamp to filter results to a date</td>
+</tr>
+</tbody></table>
+
+<h2 id="hourly-availability-configuration">Hourly Availability Configuration</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/hourly_availability_configuration"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"duration_scale"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Working"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"color_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HourlyAvailabilityAvailable"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not working"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"color_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HourlyAvailabilityNotAvailable"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Occupied"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"color_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HourlyAvailabilityNotOccupied"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Unit hourly availability configurations.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;hourly_availability_configuration&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">duration_scale</code></td>
+<td><em>integer</em></td>
+<td>Duration of one row in the UI</td>
+</tr>
+<tr>
+<td><code class="prettyprint">types</code></td>
+<td><em>array&lt;type&gt;</em></td>
+<td>List of all types available for the unit</td>
+</tr>
+<tr>
+<td><code class="prettyprint">types.color_name</code></td>
+<td><em>string</em></td>
+<td>Key of corresponding color in the UI</td>
 </tr>
 </tbody></table>
 
