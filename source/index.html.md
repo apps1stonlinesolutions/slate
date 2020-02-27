@@ -4376,7 +4376,7 @@ curl\
     "address": "SW12 2TH Tooley Street",
     "postcode": "SW12 2TH",
     "rating": 4.5,
-    "birthdate": 1504857514,
+    "birth_date": 1504857514,
     "gender": "Male",
     "team": "Rusat",
     "country_code": "+44",
@@ -4428,7 +4428,7 @@ Parameter | Type | Description
 `address`<br>*editable* | *string* | Full address of unit (e.g. street name, building number etc.)
 `postcode`<br>*editable* | *string* | Postcode of the unit
 `rating` | *double* | Performance score of Unit (1-5)
-`birthdate`<br>*editable* | *integer* | Timestamp of unit date of birth
+`birth_date`<br>*editable* | *integer* | Timestamp of unit date of birth
 `gender`<br>*editable* | *string* | Gender of the unit
 `team` | *string* | Name of team the unit is assigned to
 `country_code` | *string* | Country code of area the Unit operates in
