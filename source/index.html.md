@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 27 Feb 2020 - Updated</br>choice_item.payload and added</br>add_favorite, remove_favorite
   - 26 Feb 2020 - Updated</br>hourly_availability and added</br>hourly_availability_configuration
   - 23 Feb 2020 - Added </br>hourly_availability
   - 21 Feb 2020 - Added note</br>to client address
@@ -1744,6 +1745,7 @@ curl\
       "payload": {
         "id": 1,
         "gender": "male",
+        "favorite": false,
         "stats": {
           "total_ratings": 5,
           "rating": 4.5
@@ -1799,6 +1801,7 @@ Parameter | Type | Description
 `customize.source` | *array\<string\>* | An array with sources from where the attachment will be re retreived:<br/> *<b>front_camera</b> - Front camera (if not available rear camera used)*<br/>  *<b>rear_camera</b> - Rear camera (if not available front camera used)*<br/>*<b>local_storage</b> - File system (camera roll, gallery, sd card etc.)*
 `customize.supplementary_field` | *string* | Computed value. The `value` of this choice item will update an object. e.g. `address.address_line_1` means the `choice_item.value` will be set to `address_line_1` of an `address` object by the server.
 `payload.gender` | *string* | Unit gender:<br/> *<b>male</b><br/>**<b>female</b>*
+`payload.favorite` | *boolean* | Unit is favorite. If not present in response hide the favorite option.
 
 
 
@@ -1872,6 +1875,13 @@ Parameter | Type | Default | Description
 `query.transaction_id` | *integer* | *none* | [Booking transaction](#booking-transactions) identifier to filter pros available for booking
 `query.booking_id` | *integer* | *none* | [Booking](#bookings) identifier to filter pros available for reschedule
 
+### `actions`
+
+Action | Description
+-------- | -----
+`add_favorite` | Add unit as a favorites
+`remove_favorite` | Remove unit from favorites
+
 
 ## Teams
 
@@ -1943,6 +1953,15 @@ Parameter | Type | Default | Description
 -------- | ----- | ----- | -------
 `query.transaction_id` | *integer* | *none* | [Booking transaction](#booking-transactions) identifier to filter teams available for booking
 `query.booking_id` | *integer* | *none* | [Booking](#bookings) identifier to filter teams available for reschedule
+
+### `actions`
+
+Action | Description
+-------- | -----
+`add_favorite` | Add team as a favorites
+`remove_favorite` | Remove team from favorites
+
+
 
 
 ## Infos
