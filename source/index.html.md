@@ -5788,9 +5788,10 @@ curl\
       "intervals": [
         {
           "id": 20180221300,
-          "title": "10:00",
-          "description": "In the morning",
-          "duration": 300,
+          "title": null,
+          "description": null,
+          "from": 66000,
+          "to": 66300,
           "type_id": 1,
           "available_types": [
             1,
@@ -5799,9 +5800,10 @@ curl\
         },
         {
           "id": 20180221600,
-          "title": "10:00 One-Off Cleaning",
+          "title": "One-Off Cleaning",
           "description": "SW12 2TH",
-          "duration": 600,
+          "from": 6000,
+          "to": 6300,
           "type_id": 3,
           "available_types": [
             3
@@ -5823,7 +5825,8 @@ Parameter | Type | Description
 -------- | ----- | -------
 `date` | *string* | Date of availability (date string with format `YYYY-MM-DD`)
 `intervals` | *array\<interval\>* | List of intervals for the day
-`intervals.duration` | *integer* | Interval duration in minutes
+`intervals.from` | *integer* | Interval starts (seconds since mindnight)
+`intervals.to` | *integer* | Interval ends (seconds since mindnight)
 `intervals.type_id` | *integer* | Selected interval [type](#hourly-availability-configuration) id
 `intervals.available_types` | *array\<[type](#hourly-availability-configuration)\>* | List of available interval types to toggle
 
