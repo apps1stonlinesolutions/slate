@@ -8553,9 +8553,10 @@ curl<span class="se">\</span>
       </span><span class="nt">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20180221300</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"In the morning"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="mi">66000</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">66300</span><span class="p">,</span><span class="w">
           </span><span class="nt">"type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"available_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -8564,9 +8565,10 @@ curl<span class="se">\</span>
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20180221600</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:00 One-Off Cleaning"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One-Off Cleaning"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SW12 2TH"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="mi">6000</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">6300</span><span class="p">,</span><span class="w">
           </span><span class="nt">"type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
           </span><span class="nt">"available_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">3</span><span class="w">
@@ -8602,9 +8604,14 @@ curl<span class="se">\</span>
 <td>List of intervals for the day</td>
 </tr>
 <tr>
-<td><code class="prettyprint">intervals.duration</code></td>
+<td><code class="prettyprint">intervals.from</code></td>
 <td><em>integer</em></td>
-<td>Interval duration in minutes</td>
+<td>Interval starts (seconds since mindnight)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">intervals.to</code></td>
+<td><em>integer</em></td>
+<td>Interval ends (seconds since mindnight)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">intervals.type_id</code></td>
