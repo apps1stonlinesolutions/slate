@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 2 Mar 2020 - Added</br>birth_date_formatted in</br>client/register
   - 27 Feb 2020 - Updated</br>choice_item.payload and added</br>add_favorite, remove_favorite
   - 26 Feb 2020 - Updated</br>hourly_availability and added</br>hourly_availability_configuration
   - 23 Feb 2020 - Added </br>hourly_availability
@@ -979,6 +980,7 @@ curl\
         "email": "test@test.com",
         "password": "1234",
         "referrer_code": "JOHND1234B",
+        "birth_date_formatted": "1980-12-30",
         "social": {
           "oauth_id": "EAAEo0IpvAQcBAK1gy3VjCJPZCp6vidasdvEvEtxmO0gjFFjtz3jd8omEuhVhg3Y3ZAzIjSLQVMMZBaWwIZBRY9U8B7XZCFvGpledf38DPUTfeHNA2PCZALtPFTjXYFD1aPeB6IK4oo8dJWAIMAcpKPmFATTtXABljEA02jIDExTAp5brMUuNLMQlQr48ISRhbNy4hbKyI6plbO6ZCd1iHJ9kxd09PfpiwcZD",
           "social_provider_id": 1
@@ -1033,6 +1035,7 @@ Parameter | Type | Description
 `last_name`<br>*required* | *string* | User's last name (no special characters allowed)
 `phone`<br>*required* | *integer* | User's phone number validated for the region (UK/AUS/USA etc.)
 `email`<br>*required* | *string* | User's email with validated structure (e.g. xxxx@xxx.xxx)
+`birth_date_formatted`<br>*optional* | *string* | Birth date in YYYY-dd-mm (e.g. 1980-12-30)
 `referrer_code`<br>*optional* | *string* | Referral code from another user
 `social`<br>*optional* | *[object](#facebook-login-request-parameters)* | Social login attributes. Same are used for login (check <b>Facebook login request parameters</b>).
 `type_id`<br>*optional* | *integer* | Type of registration id. Check [user](#user).`type`.
