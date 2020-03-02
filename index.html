@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>2 Mar 2020 - Added</br>birth_date_formatted in</br>client/register</li>
             <li>27 Feb 2020 - Updated</br>choice_item.payload and added</br>add_favorite, remove_favorite</li>
             <li>26 Feb 2020 - Updated</br>hourly_availability and added</br>hourly_availability_configuration</li>
             <li>23 Feb 2020 - Added </br>hourly_availability</li>
@@ -1456,6 +1457,7 @@ Accepted params:
         "email": "test@test.com",
         "password": "1234",
         "referrer_code": "JOHND1234B",
+        "birth_date_formatted": "1980-12-30",
         "social": {
           "oauth_id": "EAAEo0IpvAQcBAK1gy3VjCJPZCp6vidasdvEvEtxmO0gjFFjtz3jd8omEuhVhg3Y3ZAzIjSLQVMMZBaWwIZBRY9U8B7XZCFvGpledf38DPUTfeHNA2PCZALtPFTjXYFD1aPeB6IK4oo8dJWAIMAcpKPmFATTtXABljEA02jIDExTAp5brMUuNLMQlQr48ISRhbNy4hbKyI6plbO6ZCd1iHJ9kxd09PfpiwcZD",
           "social_provider_id": 1
@@ -1534,6 +1536,11 @@ Accepted params:
 <td><code class="prettyprint">email</code><br><em>required</em></td>
 <td><em>string</em></td>
 <td>User&rsquo;s email with validated structure (e.g. xxxx@xxx.xxx)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">birth_date_formatted</code><br><em>optional</em></td>
+<td><em>string</em></td>
+<td>Birth date in YYYY-dd-mm (e.g. 1980-12-30)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">referrer_code</code><br><em>optional</em></td>
