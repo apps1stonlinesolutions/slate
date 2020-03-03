@@ -6471,6 +6471,7 @@ curl\
       "guid": "98z07v980vbn98790zx7v9c8vx7890xzc8v7",
       "push_token": "98z07v980vbn98790zx7v9c8vx7890xzc8v7",
       "build": 231,
+      "react_bundle_version": 2,
       "version": "1.15.2",
       "device": "iPhone 6S",
       "device_resolution": "1915x949",
@@ -6508,6 +6509,7 @@ Parameter | Type | Description
 `guid` | *string* | Unique device identifier
 `push_token` | *string* | Unique identifier for sending push notifications
 `build` | *integer* | Application build number
+`react_bundle_version` | *integer* | Application build number
 `version` | *string* | Application version
 `device` | *string* | Device model
 `device_resolution` | *string* | Device screen resolution
