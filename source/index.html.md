@@ -5911,7 +5911,7 @@ Unit hourly availability configurations.
 
 Parameter | Type | Description
 -------- | ----- | -------
-`duration_scale` | *integer* | Duration of one row in the UI
+`duration_scale` | *integer* | Duration of one row in the UI in seconds
 `types` | *array\<type>* | List of all types available for the unit
 `types.color_name` | *string* | Key of corresponding color in the UI
 
