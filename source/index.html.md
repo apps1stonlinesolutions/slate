@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 2 Mar 2020 - Added</br>birth_date_formatted in</br>client/user
   - 2 Mar 2020 - Added</br>birth_date_formatted in</br>client/register
   - 27 Feb 2020 - Updated</br>choice_item.payload and added</br>add_favorite, remove_favorite
   - 26 Feb 2020 - Updated</br>hourly_availability and added</br>hourly_availability_configuration
@@ -2559,6 +2560,7 @@ curl\
     "id": 1,
     "first_name": "John",
     "last_name": "Doe",
+    "birth_date_formatted": "1980-12-30",
     "username": "johndoe@mail.com",
     "social_provider": 1,
     "type_id": 2,
@@ -2620,6 +2622,7 @@ Parameter | Type | Description
 `id` | *integer* | Unique identifier
 `first_name`<br>*editable* | *string* | Client first name
 `last_name`<br>*editable* | *string* | Client first name
+`birth_date_formatted`<br>*optional* | *string* | Birth date in YYYY-dd-mm (e.g. 1980-12-30)
 `username` | *string* | Client email used for login
 `social_provider` | *[object](#social-providers)* | Social provider client used to register.
 `type_id` | *integer* | *<b>1</b> - Anonymous*<br>*<b>2</b> - Generic (register form)*<br>*<b>3</b> - Social (Facebook)*<br>*<b>4</b> - Offline*
