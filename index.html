@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>2 Mar 2020 - Added</br>birth_date_formatted in</br>client/user</li>
             <li>2 Mar 2020 - Added</br>birth_date_formatted in</br>client/register</li>
             <li>27 Feb 2020 - Updated</br>choice_item.payload and added</br>add_favorite, remove_favorite</li>
             <li>26 Feb 2020 - Updated</br>hourly_availability and added</br>hourly_availability_configuration</li>
@@ -3851,6 +3852,7 @@ Accepted params:
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"birth_date_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-12-30"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@mail.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"social_provider"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nt">"type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -3928,6 +3930,11 @@ Accepted params:
 <td><code class="prettyprint">last_name</code><br><em>editable</em></td>
 <td><em>string</em></td>
 <td>Client first name</td>
+</tr>
+<tr>
+<td><code class="prettyprint">birth_date_formatted</code><br><em>optional</em></td>
+<td><em>string</em></td>
+<td>Birth date in YYYY-dd-mm (e.g. 1980-12-30)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">username</code></td>
