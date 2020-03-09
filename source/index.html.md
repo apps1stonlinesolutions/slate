@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 9 Mar 2020 - Added</br>payload in</br>response message</br>and new error codes
   - 2 Mar 2020 - Added</br>birth_date_formatted in</br>client/user
   - 2 Mar 2020 - Added</br>birth_date_formatted in</br>client/register
   - 27 Feb 2020 - Updated</br>choice_item.payload and added</br>add_favorite, remove_favorite
@@ -189,7 +190,11 @@ Parameter | Type   | Default | Description
       "code": 1020,
       "message": "Address created.",
       "debug_message": "postal_code missing.",
-      "debug_id": 213124
+      "debug_id": 213124,
+      "payload": {
+        "position": "on_availability",
+        "choice_id": null
+      }
     }
   ],
   "meta": {
@@ -212,6 +217,7 @@ Parameter | Type | Description
 `paging`<br>*optional* | *object* | Information about paged result as requested
 `paging.total` | *integer* | Total elements count
 `success`, `warning`, `error`<br>*optional* | *array* | Messages with information for the request. More than one type of message can be returned in a response. `success` and `error` can't come in the same response. `warning` can be combined with `success` or `error`.
+`success.payload`, `warning.payload`, `error.payload`<br>*optional* | *object* | Object containing contextual data.
 `meta`<br>*optional*  | *object* | Object containing system information. Data is returned by the system when action is needed.
 
 
