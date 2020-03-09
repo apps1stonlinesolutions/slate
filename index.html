@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>9 Mar 2020 - Added</br>payload in</br>response message</br>and new error codes</li>
             <li>2 Mar 2020 - Added</br>birth_date_formatted in</br>client/user</li>
             <li>2 Mar 2020 - Added</br>birth_date_formatted in</br>client/register</li>
             <li>27 Feb 2020 - Updated</br>choice_item.payload and added</br>add_favorite, remove_favorite</li>
@@ -339,7 +340,11 @@ Accepted params:
       </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1020</span><span class="p">,</span><span class="w">
       </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address created."</span><span class="p">,</span><span class="w">
       </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postal_code missing."</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">213124</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">213124</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on_availability"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"choice_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -381,6 +386,11 @@ Accepted params:
 <td><code class="prettyprint">success</code>, <code class="prettyprint">warning</code>, <code class="prettyprint">error</code><br><em>optional</em></td>
 <td><em>array</em></td>
 <td>Messages with information for the request. More than one type of message can be returned in a response. <code class="prettyprint">success</code> and <code class="prettyprint">error</code> can&rsquo;t come in the same response. <code class="prettyprint">warning</code> can be combined with <code class="prettyprint">success</code> or <code class="prettyprint">error</code>.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">success.payload</code>, <code class="prettyprint">warning.payload</code>, <code class="prettyprint">error.payload</code><br><em>optional</em></td>
+<td><em>object</em></td>
+<td>Object containing contextual data.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">meta</code><br><em>optional</em></td>
@@ -11320,6 +11330,18 @@ curl<span class="se">\</span>
 <tr>
 <td>6502</td>
 <td>timeslot or timeslot_formatted are required</td>
+</tr>
+<tr>
+<td>6503</td>
+<td>Unit is not available anymore, pick another one.</td>
+</tr>
+<tr>
+<td>6550</td>
+<td>Unit is not available anymore</td>
+</tr>
+<tr>
+<td>7025</td>
+<td>Time slot is not available anymore</td>
 </tr>
 <tr>
 <td>6710</td>
