@@ -72,10 +72,11 @@ Error Code | Meaning
 ---------- | -------
 6500 | Time slot is unavailable
 6501 | Time slots for this service tend to get booked very quickly and this one is no longer available. Don\'t worry, just pick another one and try again.
-6502 | timeslot or timeslot_formatted are required
+6502 | Timeslot or timeslot_formatted are required
 6503 | Unit is not available anymore, pick another one.
 6550 | Unit is not available anymore
-7025 | Time slot is not available anymore
+6745 | Slot is no longer available
+7025 | Time slot is for members only
 6710 | Invalid transaction token
 6711 | Invalid service
 6712 | Invalid address
