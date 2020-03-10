@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 10 Mar 2020 - Added</br>favorite in</br>units and teams
   - 9 Mar 2020 - Added</br>payload in</br>response message</br>and new error codes
   - 2 Mar 2020 - Added</br>birth_date_formatted in</br>client/user
   - 2 Mar 2020 - Added</br>birth_date_formatted in</br>client/register
@@ -1834,6 +1835,7 @@ curl\
   "id": 137,
   "name": "John",
   "image_url": "https://image.url",
+  "favorite": true,
   "stats": {
     "total_ratings": 5,
     "rating": 4.5,
@@ -1875,6 +1877,7 @@ Details for a Pro.
 Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Object id
+`favorite` | *boolean* | Unit is favorite. If not present in response hide the favorite option.
 
 
 
@@ -1912,6 +1915,7 @@ curl\
   "id": 137,
   "name": "John's people",
   "image_url": "https://image.url",
+  "favorite": true,
   "stats": {
     "total_ratings": 5,
     "rating": 4.5,
@@ -1955,6 +1959,7 @@ Details for a Team.
 Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Object id
+`favorite` | *boolean* | Team is favorite. If not present in response hide the favorite option.
 
 
 ### `params`
