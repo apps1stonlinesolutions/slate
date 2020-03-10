@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>10 Mar 2020 - Added</br>favorite in</br>units and teams</li>
             <li>9 Mar 2020 - Added</br>payload in</br>response message</br>and new error codes</li>
             <li>2 Mar 2020 - Added</br>birth_date_formatted in</br>client/user</li>
             <li>2 Mar 2020 - Added</br>birth_date_formatted in</br>client/register</li>
@@ -2807,6 +2808,7 @@ Accepted params:
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">137</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://image.url"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"favorite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"total_ratings"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
     </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
@@ -2854,6 +2856,11 @@ Accepted params:
 <td><code class="prettyprint">id</code></td>
 <td><em>integer</em></td>
 <td>Object id</td>
+</tr>
+<tr>
+<td><code class="prettyprint">favorite</code></td>
+<td><em>boolean</em></td>
+<td>Unit is favorite. If not present in response hide the favorite option.</td>
 </tr>
 </tbody></table>
 
@@ -2915,6 +2922,7 @@ Accepted params:
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">137</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John's people"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://image.url"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"favorite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"total_ratings"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
     </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
@@ -2964,6 +2972,11 @@ Accepted params:
 <td><code class="prettyprint">id</code></td>
 <td><em>integer</em></td>
 <td>Object id</td>
+</tr>
+<tr>
+<td><code class="prettyprint">favorite</code></td>
+<td><em>boolean</em></td>
+<td>Team is favorite. If not present in response hide the favorite option.</td>
 </tr>
 </tbody></table>
 
