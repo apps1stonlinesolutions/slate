@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>18 Mar 2020 - Added</br>BT validation</li>
             <li>18 Mar 2020 - Added</br>after_availability</li>
             <li>10 Mar 2020 - Added</br>favorite in</br>units and teams</li>
             <li>9 Mar 2020 - Added</br>payload in</br>response message</br>and new error codes</li>
@@ -734,6 +735,24 @@ Accepted params:
 <p>This excludes BFantastic upsell feature. There only modofied items can be sent and the rest will remain with their current values. For example if new radio option is selected in a choice the old should be sent a swell with <code class="prettyprint">&quot;value&quot;:0</code> and the new with <code class="prettyprint">&quot;value&quot;:1</code>.</p>
 
 <p>When posting child choice_item.value with parent choice_item.value = 0 the child is ignored (not validated and processed).</p>
+
+<h2 id="booking-form-validation">Booking form validation</h2>
+
+<p>On booking transaction submit all fields are validated. If there are issues, but:</p>
+
+<ul>
+<li>user can continue - server returns <code class="prettyprint">warning</code></li>
+<li>user can NOT continue - server returns <code class="prettyprint">error</code></li>
+</ul>
+
+<p>Both <code class="prettyprint">warning</code> and <code class="prettyprint">error</code>:</p>
+
+<ul>
+<li>may contain <code class="prettyprint">state</code> in their payload with the location of the invalid input field</li>
+<li>can reset invalid field input (and input of all related fields)</li>
+</ul>
+
+<p>In case of reset <code class="prettyprint">payload.state</code> is the location of the first affected field.</p>
 
 <h2 id="booking-form-required-fields">Booking form required fields</h2>
 
@@ -10967,7 +10986,7 @@ curl<span class="se">\</span>
 </tr>
 <tr>
 <td><em>GoFantastic iOS</em></td>
-<td>785 &lt; BUID &lt; 1102</td>
+<td>785 &lt; BUID &lt; 1114</td>
 <td>Remove object with type <code class="prettyprint">Stripe</code> from response (if <code class="prettyprint">Braintree</code> is available in response)</td>
 </tr>
 <tr>
@@ -10982,7 +11001,7 @@ curl<span class="se">\</span>
 </tr>
 <tr>
 <td><em>GoFantastic Android</em></td>
-<td>647 &lt; BUID &lt; 1280</td>
+<td>647 &lt; BUID &lt; 1288</td>
 <td>Remove object with type <code class="prettyprint">Stripe</code> from response (if <code class="prettyprint">Braintree</code> is available in response)</td>
 </tr>
 <tr>
