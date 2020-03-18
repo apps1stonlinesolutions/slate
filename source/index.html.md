@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 18 Mar 2020 - Added</br>after_availability
   - 10 Mar 2020 - Added</br>favorite in</br>units and teams
   - 9 Mar 2020 - Added</br>payload in</br>response message</br>and new error codes
   - 2 Mar 2020 - Added</br>birth_date_formatted in</br>client/user
@@ -707,7 +708,7 @@ Parameter | Type | Description
 `show_service_search` | *boolean* | Configuration for hiding or showing search servide field
 `show_membership_reminder_always` | *boolean* | Configuration for membership reminder behaviour
 `most_booked_search_section` | *array\<integer\>* | List of service/deals ids
-`request_login_step` | *integer* | Determines where user has to login to continue:<br>*<b>1</b> (on_welcome)* - On welcome screen (legacy)<br>*<b>2</b> (after_welcome)*  - After welcome screen (legacy)<br>*<b>3</b> (init)*  - After coverage (legacy). Upon submittion of last init choice<br>*<b>10</b> (configurator)*  - Upon submittion of last  `choice.position:configurator` choice<br>*<b>4</b> (before_availability)*  - Before timeslots (legacy). Upon submittion of last `choice.position:before_availability` (if no `choice.position:before_availability` then `choice.position:configurator`)<br>*<b>5</b> (availability)*  - After timeslots (legacy). Upon submittion of last `choice.position:after_availablity` (if no `choice.position:after_availablity` then `choice.position:availability`)<br>*<b>20</b> (before_summary)*  - Upon submittion of last  `choice.position:before_summary` choice<br>*<b>30</b> (on_summary)*  - Upon submittion of last  `choice.position: on_summary ` choice<br>*<b>40</b> (before_confirmation)*  - Upon submittion of last  `choice.position: before_confirmation ` choice<br>*<b>50</b> (confirmation)*  - Upon submittion of last  `choice.position: confirmation` choice
+`request_login_step` | *integer* | Determines where user has to login to continue:<br>*<b>1</b> (on_welcome)* - On welcome screen (legacy)<br>*<b>2</b> (after_welcome)*  - After welcome screen (legacy)<br>*<b>3</b> (init)*  - After coverage (legacy). Upon submittion of last init choice<br>*<b>10</b> (configurator)*  - Upon submittion of last  `choice.position:configurator` choice<br>*<b>4</b> (before_availability)*  - Before timeslots (legacy). Upon submittion of last `choice.position:before_availability` (if no `choice.position:before_availability` then `choice.position:configurator`)<br>*<b>5</b> (availability)*  - After timeslots (legacy). Upon submittion of last `choice.position:after_availability` (if no `choice.position:after_availability` then `choice.position:availability`)<br>*<b>20</b> (before_summary)*  - Upon submittion of last  `choice.position:before_summary` choice<br>*<b>30</b> (on_summary)*  - Upon submittion of last  `choice.position: on_summary ` choice<br>*<b>40</b> (before_confirmation)*  - Upon submittion of last  `choice.position: before_confirmation ` choice<br>*<b>50</b> (confirmation)*  - Upon submittion of last  `choice.position: confirmation` choice
 `banners` | *array\<banner\>* | List of banners for the application
 `banners.type` | *integer* | Determines where to show the banner:<br>*<b>1</b> - categories list*<br>*<b>2</b> - services list*<br>
 `banners.category_id` | *integer* | Category in which to show the banner
@@ -1676,7 +1677,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `sort` | *integer* | Order of item in list
-`positions` | *array\<string\>* | Determines where the choice should be dislpayed in the booking process:<br/>*<b>init</b> - begining of booking process. Minimum requirement to create a [booking_transaction](#booking-transactions)*<br>*<b>configurator</b> - choices describing service configuration*<br>*<b>before_availability</b> - before showing timeslots*<br>*<b>on_availability</b> - on showing timeslots*<br>*<b>before_summary</b> - middle screen before showing the booking summary*<br>*<b>on_summary</b> - choices at the summary screen (e.g. cross sell)*<br>*<b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)*
+`positions` | *array\<string\>* | Determines where the choice should be dislpayed in the booking process:<br/>*<b>init</b> - begining of booking process. Minimum requirement to create a [booking_transaction](#booking-transactions)*<br>*<b>configurator</b> - choices describing service configuration*<br>*<b>before_availability</b> - before showing timeslots*<br>*<b>on_availability</b> - on showing timeslots*<br>*<b>after_availability</b> - choices after slots*<br>*<b>before_summary</b> - middle screen before showing the booking summary (may be on booking summary on different UI)*<br>*<b>on_summary</b> - choices at the summary screen (e.g. cross sell)*<br>*<b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)*
 `type` | *string* | Determines how the choice and choce items are dislpayed<br/>*<b>default</b> - displays choice items based on type*<br>*<b>price_options</b> - variants of the price (e.g. with membership)*<br>*<b>timeslot_options</b> - additional preferences for the slot (e.g. same unit)*<br>*<b>cross_sell</b> - displays choice items based on type and uses display_price*<br>*<b>multiselect</b> - choice with a lot of choice items that has to be displayed with a search field*<br>*<b>pick_unit</b> - choice with options to pick a professional or team of proffesionals for the job*
 `submit` | *string* | When choice data should be posted<br/>*<b>when_last</b> - if last element on a position*<br>*<b>on_change</b> - on value change of [choice_item](#choice-item)*<br>*<b>on_completion</b> - when completed by client (tapped Proceed/Next)*
 `title` | *string* | Question text
@@ -7351,7 +7352,7 @@ Filters payment methods by `type`
 Application | Condition | Description
 -------- | ----- | -------
  *GoFantastic iOS* |  BUID < 747  | Remove object with type `PayPal` from response
- *GoFantastic iOS* | 785 < BUID < 1100 | Remove object with type `Stripe` from response (if `Braintree` is available in response)
+ *GoFantastic iOS* | 785 < BUID < 1102 | Remove object with type `Stripe` from response (if `Braintree` is available in response)
  *GoFantastic iOS* | BUID <= 785 | Remove object with type `Braintree` from response
  *GoFantastic Android* | BUID < 460 | Remove object with type `PayPal` from response
  *GoFantastic Android* | 647 < BUID < 1280 | Remove object with type `Stripe` from response (if `Braintree` is available in response)
