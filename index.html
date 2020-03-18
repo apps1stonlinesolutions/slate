@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>18 Mar 2020 - Added</br>after_availability</li>
             <li>10 Mar 2020 - Added</br>favorite in</br>units and teams</li>
             <li>9 Mar 2020 - Added</br>payload in</br>response message</br>and new error codes</li>
             <li>2 Mar 2020 - Added</br>birth_date_formatted in</br>client/user</li>
@@ -1017,7 +1018,7 @@ Accepted params:
 <tr>
 <td><code class="prettyprint">request_login_step</code></td>
 <td><em>integer</em></td>
-<td>Determines where user has to login to continue:<br><em><b>1</b> (on_welcome)</em> - On welcome screen (legacy)<br><em><b>2</b> (after_welcome)</em>  - After welcome screen (legacy)<br><em><b>3</b> (init)</em>  - After coverage (legacy). Upon submittion of last init choice<br><em><b>10</b> (configurator)</em>  - Upon submittion of last  <code class="prettyprint">choice.position:configurator</code> choice<br><em><b>4</b> (before_availability)</em>  - Before timeslots (legacy). Upon submittion of last <code class="prettyprint">choice.position:before_availability</code> (if no <code class="prettyprint">choice.position:before_availability</code> then <code class="prettyprint">choice.position:configurator</code>)<br><em><b>5</b> (availability)</em>  - After timeslots (legacy). Upon submittion of last <code class="prettyprint">choice.position:after_availablity</code> (if no <code class="prettyprint">choice.position:after_availablity</code> then <code class="prettyprint">choice.position:availability</code>)<br><em><b>20</b> (before_summary)</em>  - Upon submittion of last  <code class="prettyprint">choice.position:before_summary</code> choice<br><em><b>30</b> (on_summary)</em>  - Upon submittion of last  <code class="prettyprint">choice.position: on_summary</code> choice<br><em><b>40</b> (before_confirmation)</em>  - Upon submittion of last  <code class="prettyprint">choice.position: before_confirmation</code> choice<br><em><b>50</b> (confirmation)</em>  - Upon submittion of last  <code class="prettyprint">choice.position: confirmation</code> choice</td>
+<td>Determines where user has to login to continue:<br><em><b>1</b> (on_welcome)</em> - On welcome screen (legacy)<br><em><b>2</b> (after_welcome)</em>  - After welcome screen (legacy)<br><em><b>3</b> (init)</em>  - After coverage (legacy). Upon submittion of last init choice<br><em><b>10</b> (configurator)</em>  - Upon submittion of last  <code class="prettyprint">choice.position:configurator</code> choice<br><em><b>4</b> (before_availability)</em>  - Before timeslots (legacy). Upon submittion of last <code class="prettyprint">choice.position:before_availability</code> (if no <code class="prettyprint">choice.position:before_availability</code> then <code class="prettyprint">choice.position:configurator</code>)<br><em><b>5</b> (availability)</em>  - After timeslots (legacy). Upon submittion of last <code class="prettyprint">choice.position:after_availability</code> (if no <code class="prettyprint">choice.position:after_availability</code> then <code class="prettyprint">choice.position:availability</code>)<br><em><b>20</b> (before_summary)</em>  - Upon submittion of last  <code class="prettyprint">choice.position:before_summary</code> choice<br><em><b>30</b> (on_summary)</em>  - Upon submittion of last  <code class="prettyprint">choice.position: on_summary</code> choice<br><em><b>40</b> (before_confirmation)</em>  - Upon submittion of last  <code class="prettyprint">choice.position: before_confirmation</code> choice<br><em><b>50</b> (confirmation)</em>  - Upon submittion of last  <code class="prettyprint">choice.position: confirmation</code> choice</td>
 </tr>
 <tr>
 <td><code class="prettyprint">banners</code></td>
@@ -2493,7 +2494,7 @@ Accepted params:
 <tr>
 <td><code class="prettyprint">positions</code></td>
 <td><em>array&lt;string&gt;</em></td>
-<td>Determines where the choice should be dislpayed in the booking process:<br/><em><b>init</b> - begining of booking process. Minimum requirement to create a <a href="#booking-transactions">booking_transaction</a></em><br><em><b>configurator</b> - choices describing service configuration</em><br><em><b>before_availability</b> - before showing timeslots</em><br><em><b>on_availability</b> - on showing timeslots</em><br><em><b>before_summary</b> - middle screen before showing the booking summary</em><br><em><b>on_summary</b> - choices at the summary screen (e.g. cross sell)</em><br><em><b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)</em></td>
+<td>Determines where the choice should be dislpayed in the booking process:<br/><em><b>init</b> - begining of booking process. Minimum requirement to create a <a href="#booking-transactions">booking_transaction</a></em><br><em><b>configurator</b> - choices describing service configuration</em><br><em><b>before_availability</b> - before showing timeslots</em><br><em><b>on_availability</b> - on showing timeslots</em><br><em><b>after_availability</b> - choices after slots</em><br><em><b>before_summary</b> - middle screen before showing the booking summary (may be on booking summary on different UI)</em><br><em><b>on_summary</b> - choices at the summary screen (e.g. cross sell)</em><br><em><b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">type</code></td>
@@ -10966,7 +10967,7 @@ curl<span class="se">\</span>
 </tr>
 <tr>
 <td><em>GoFantastic iOS</em></td>
-<td>785 &lt; BUID &lt; 1100</td>
+<td>785 &lt; BUID &lt; 1102</td>
 <td>Remove object with type <code class="prettyprint">Stripe</code> from response (if <code class="prettyprint">Braintree</code> is available in response)</td>
 </tr>
 <tr>
