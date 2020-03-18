@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 18 Mar 2020 - Added</br>BT validation
   - 18 Mar 2020 - Added</br>after_availability
   - 10 Mar 2020 - Added</br>favorite in</br>units and teams
   - 9 Mar 2020 - Added</br>payload in</br>response message</br>and new error codes
@@ -531,6 +532,20 @@ When booking_transaction is posted with `service != null` service is overwriten 
 This excludes BFantastic upsell feature. There only modofied items can be sent and the rest will remain with their current values. For example if new radio option is selected in a choice the old should be sent a swell with `"value":0` and the new with `"value":1`.
 
 When posting child choice_item.value with parent choice_item.value = 0 the child is ignored (not validated and processed).
+
+## Booking form validation
+
+On booking transaction submit all fields are validated. If there are issues, but:
+
+* user can continue - server returns `warning`
+* user can NOT continue - server returns `error`
+
+Both `warning` and `error`:
+
+* may contain `state` in their payload with the location of the invalid input field
+* can reset invalid field input (and input of all related fields)
+
+In case of reset `payload.state` is the location of the first affected field.
 
 ## Booking form required fields
 
@@ -7352,10 +7367,10 @@ Filters payment methods by `type`
 Application | Condition | Description
 -------- | ----- | -------
  *GoFantastic iOS* |  BUID < 747  | Remove object with type `PayPal` from response
- *GoFantastic iOS* | 785 < BUID < 1102 | Remove object with type `Stripe` from response (if `Braintree` is available in response)
+ *GoFantastic iOS* | 785 < BUID < 1114 | Remove object with type `Stripe` from response (if `Braintree` is available in response)
  *GoFantastic iOS* | BUID <= 785 | Remove object with type `Braintree` from response
  *GoFantastic Android* | BUID < 460 | Remove object with type `PayPal` from response
- *GoFantastic Android* | 647 < BUID < 1280 | Remove object with type `Stripe` from response (if `Braintree` is available in response)
+ *GoFantastic Android* | 647 < BUID < 1288 | Remove object with type `Stripe` from response (if `Braintree` is available in response)
  *GoFantastic Android* | BUID <= 647 | Remove object with type `Braintree` from response
 
 Filters payment methods based on `vendor`
