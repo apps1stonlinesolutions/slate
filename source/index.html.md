@@ -7367,10 +7367,10 @@ Filters payment methods by `type`
 Application | Condition | Description
 -------- | ----- | -------
  *GoFantastic iOS* |  BUID < 747  | Remove object with type `PayPal` from response
- *GoFantastic iOS* | 785 < BUID < 1114 | Remove object with type `Stripe` from response (if `Braintree` is available in response)
+ *GoFantastic iOS* | 785 < BUID < 1300 | Remove object with type `Stripe` from response (if `Braintree` is available in response)
  *GoFantastic iOS* | BUID <= 785 | Remove object with type `Braintree` from response
  *GoFantastic Android* | BUID < 460 | Remove object with type `PayPal` from response
- *GoFantastic Android* | 647 < BUID < 1288 | Remove object with type `Stripe` from response (if `Braintree` is available in response)
+ *GoFantastic Android* | 647 < BUID < 1400 | Remove object with type `Stripe` from response (if `Braintree` is available in response)
  *GoFantastic Android* | BUID <= 647 | Remove object with type `Braintree` from response
 
 Filters payment methods based on `vendor`
