@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 14 Apr 2020 - Added</br>jobs.base_price_formatted
   - 18 Mar 2020 - Added</br>BT validation
   - 18 Mar 2020 - Added</br>after_availability
   - 10 Mar 2020 - Added</br>favorite in</br>units and teams
@@ -4619,6 +4620,7 @@ curl\
       "flexible_to": null,
       "insufficient_travel_time_warning_time": 1504616400,
       "total_formatted": "£97",
+      "base_total_formatted": "£97",
       "price_notes": [
         "Credit applied",
         "Compensation included"
@@ -4905,7 +4907,8 @@ Parameter | Type | Description
 `flexible_from` | *integer* | Start of timeframe to execute the job in UTC timestamp
 `flexible_to` | *integer* | End of timeframe to execute the job in UTC timestamp
 `insufficient_travel_time_warning_time` | *integer* | Time up until Pro should leave previous job in order to get to this job in time in UTC timestamp
-`total_formatted` | *string* | Price of the service
+`total_formatted` | *string* | Price of the service after discounts
+`base_total_formatted` | *string* | Price of the service before discounts
 `price_notes` | *array<string>* | Description notes for the price of the services.
 `require_summary` | *integer* | *<b>0</b> - No summary required*<br>*<b>1</b> - Should send summary at the end of the day*<br>*<b>2</b> - Should send summary now*<br>*<b>3</b> - Can't proceed until summary sent*<br>*<b>4</b> - Summary sent*
 `work_time` | *integer* | Job duration in minutes
