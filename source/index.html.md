@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 23 Apr 2020 - Added</br>request_auto_login_token
   - 14 Apr 2020 - Added</br>jobs.base_price_formatted
   - 18 Mar 2020 - Added</br>BT validation
   - 18 Mar 2020 - Added</br>after_availability
@@ -1234,6 +1235,53 @@ This endpoint returns:
 * [Reset password](#reset-password-errors)
 
 
+
+
+
+## Request auto login token
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -d '{
+        "email": "test@test.com"
+}'\
+ "https://{{BASE_URL}}/v2/client/request_auto_login_token"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": null,
+  "success": [
+    {
+      "code": 2000,
+      "message": "Success",
+      "debug_message": null,
+      "debug_id": null
+    }
+  ]
+}
+```
+
+Requests generation of a login token. It is send via email to the one provided in the request.
+
+`"path": "request_auto_login_token"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`email`<br>*required* | *string* | Email address to which a link for auto login will be sent
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
 
 
 
