@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 8 May 2020 - Added</br>descripton to choice</br>and choice_item. Added</br>note to booking.price
   - 23 Apr 2020 - Added</br>request_auto_login_token
   - 14 Apr 2020 - Added</br>jobs.base_price_formatted
   - 18 Mar 2020 - Added</br>BT validation
@@ -1714,6 +1715,7 @@ curl\
       "type": "cross_sell",
       "submit": "when_last",
       "title": "have the tradesmen left the property?",
+      "description": "have the tradesmen left the property?",
       "summary_title": "tradesman _left",
       "required": true,
       "choice_items": [
@@ -1744,7 +1746,8 @@ Parameter | Type | Description
 `positions` | *array\<string\>* | Determines where the choice should be dislpayed in the booking process:<br/>*<b>init</b> - begining of booking process. Minimum requirement to create a [booking_transaction](#booking-transactions)*<br>*<b>configurator</b> - choices describing service configuration*<br>*<b>before_availability</b> - before showing timeslots*<br>*<b>on_availability</b> - on showing timeslots*<br>*<b>after_availability</b> - choices after slots*<br>*<b>before_summary</b> - middle screen before showing the booking summary (may be on booking summary on different UI)*<br>*<b>on_summary</b> - choices at the summary screen (e.g. cross sell)*<br>*<b>before_confirmation</b> - before user confirms the booking (e.g. last minute upsells)*
 `type` | *string* | Determines how the choice and choce items are dislpayed<br/>*<b>default</b> - displays choice items based on type*<br>*<b>price_options</b> - variants of the price (e.g. with membership)*<br>*<b>timeslot_options</b> - additional preferences for the slot (e.g. same unit)*<br>*<b>cross_sell</b> - displays choice items based on type and uses display_price*<br>*<b>multiselect</b> - choice with a lot of choice items that has to be displayed with a search field*<br>*<b>pick_unit</b> - choice with options to pick a professional or team of proffesionals for the job*
 `submit` | *string* | When choice data should be posted<br/>*<b>when_last</b> - if last element on a position*<br>*<b>on_change</b> - on value change of [choice_item](#choice-item)*<br>*<b>on_completion</b> - when completed by client (tapped Proceed/Next)*
-`title` | *string* | Question text
+`title` | *string* | Question
+`description` | *string* | Question details
 `summary_title` | *string* | Question short title text in summary
 `required` | *boolean* | Should the question be answered to book
 `choice_items` | *array\<[choice_item](#choice-items)\>* | List of answers for the question
@@ -1788,6 +1791,7 @@ curl\
       "summary_title": "",
       "is_in_summary": false,
       "title": "1 bedroom",
+      "description": "Large bedrooms are considered 2 bedrooms",
       "display_price": "+£5",
       "tags": [
         "same_unit",
@@ -1859,7 +1863,8 @@ Parameter | Type | Description
 `required` | *boolean* | Determines whether choice item requires child to be selected
 `summary_title` | *string* | Answer short title text in summary
 `is_in_summary` | *boolean* | Should the answer be included in the summary of booking
-`title` | *string* | Title of answer
+`title` | *string* | Answer
+`description` | *string* | Answer description
 `display_price` | *string* | Details on the price for displaying.
 `tags` | *array\<string\>* | List of tags allowing functionalities as filtering. Available tags:<br/>*<b>regular_price</b> - standard price*<br>*<b>member_price</b> - price for members*<br>*<b>same_unit</b> - same professional will do the service*<br>*<b>fully_booked</b> - all Pros are booked for this item*<br>*<b>members_only</b> - item available only for members*<br>*<b>discounted</b> - item is discounted*<br>*<b>carbon</b> - item is with reduced carbon footprint*<br>*<b>best_price</b> - item is with the lowest price (e.g. cheapest timeslot for a given day)*
 `choice_items` | *array\<[choice_item](#choice-items)\>* | List of sub-answers for the answers
@@ -3012,6 +3017,7 @@ curl\
       "price": {
         "type": "no_price",
         "description": "Maximum price reached",
+        "note": "You will get up to 15% back in the form of credits.",
         "total": 125.5,
         "choices": [
           1,
@@ -3192,6 +3198,7 @@ Parameter | Type | Description
 `price` | *[object](#price)* | Selected price breakdown
 `price.type` | *string* | Price type:<br/>*<b>no_price</b> - when user reached maximum price and will create a quote*<br>*<b>voucher_applied</b> - when prices are with applied voucher*
 `price.description` | *string* | Description text for the price
+`price.note` | *string* | Note text for the price
 `price.total` | *double* | Total amount as double value
 `price.choices` | *array\<[choices](#choices)\>* | Price choices and choice items selected on availability
 `price.price_breakdown` | *object* | Breakdown of how price was calculated
