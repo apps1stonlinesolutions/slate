@@ -111,6 +111,11 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>15 June 2020 - Added</br>call_events</li>
+            <li>15 June 2020 - Added</br>call push notifications</li>
+            <li>15 June 2020 - Added</br>can_vide_call in</br>job</li>
+            <li>15 June 2020 - Added</br>voip_push_token in</br>user application</li>
+            <li>15 June 2020 - Added</br>video_call for client</br> and unit</li>
             <li>8 May 2020 - Added</br>descripton to choice</br>and choice_item. Added</br>note to booking.price</li>
             <li>23 Apr 2020 - Added</br>request_auto_login_token</li>
             <li>14 Apr 2020 - Added</br>jobs.base_price_formatted</li>
@@ -5331,6 +5336,26 @@ Accepted params:
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;bookings/{{booking_id}}/call_unit_reasons&quot;</code></p>
 
+<h2 id="video-call-unit">Video call unit</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/bookings/123/video_call"</span>
+</code></pre>
+
+<p>Clients can video call units.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;bookings/{{booking_id}}/video_call&quot;</code></p>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h2 id="avatar">Avatar</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X GET<span class="se">\</span>
@@ -7168,6 +7193,10 @@ curl<span class="se">\</span>
           </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">999999999</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"can_call_office"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">1534993201</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"can_video_call"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">1534993201</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -9324,6 +9353,25 @@ curl<span class="se">\</span>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
+<h2 id="video-call-client">Video call client</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/unit/jobs/123/video_call"</span>
+</code></pre>
+
+<p>Units can video call clients.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;jobs/{{job_id}}/video_call&quot;</code></p>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h2 id="change-payment-method">Change payment method</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X POST<span class="se">\</span>
@@ -9729,6 +9777,7 @@ curl<span class="se">\</span>
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nt">"guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98z07v980vbn98790zx7v9c8vx7890xzc8v7"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"push_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98z07v980vbn98790zx7v9c8vx7890xzc8v7"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"voip_push_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hkjhsdkjHJ980vbn98790zx7v9c8vx7890xzc8v7"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="mi">231</span><span class="p">,</span><span class="w">
       </span><span class="nt">"react_bundle_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.15.2"</span><span class="p">,</span><span class="w">
@@ -9783,6 +9832,11 @@ curl<span class="se">\</span>
 <td><code class="prettyprint">push_token</code></td>
 <td><em>string</em></td>
 <td>Unique identifier for sending push notifications</td>
+</tr>
+<tr>
+<td><code class="prettyprint">voip_push_token</code></td>
+<td><em>string</em></td>
+<td>Unique identifier for sending VoIP push notifications</td>
 </tr>
 <tr>
 <td><code class="prettyprint">build</code></td>
@@ -10251,6 +10305,160 @@ curl<span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
+<blockquote>
+<p>The above request success response for ring call event is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sound"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"action"</span><span class="p">:</span><span class="mi">210</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"call_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"caller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://image.url"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1497859985</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above request success response for ringing call event is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sound"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"action"</span><span class="p">:</span><span class="mi">220</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"call_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1497859985</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above request success response for pick up call event is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="mi">230</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sound"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"action"</span><span class="p">:</span><span class="mi">230</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"call_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1497859985</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above request success response for hang up call event is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="mi">240</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sound"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"action"</span><span class="p">:</span><span class="mi">240</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"call_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1497859985</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above request success response for room created call event is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sound"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"action"</span><span class="p">:</span><span class="mi">250</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"call_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"room_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#123123SYS"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"participant_identyt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@doe.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"auth_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fjsdlfkjasdkfahsdfkljdhsafkljsfksdjfhajklsdhf"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1497859985</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above request success response for connected call event is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="mi">260</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sound"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"action"</span><span class="p">:</span><span class="mi">260</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"call_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1497859985</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above request success response for disconnected call event is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="mi">270</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sound"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"action"</span><span class="p">:</span><span class="mi">270</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"call_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1497859985</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
 <p>History of all pushes sent to unit.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;push_notifications&quot;</code></p>
@@ -10277,7 +10485,7 @@ curl<span class="se">\</span>
 <tr>
 <td><code class="prettyprint">action</code></td>
 <td><em>integer</em></td>
-<td>Describes what action should be triggered on the unit. Pushes can be regular (with sound and message) or silent (waking up the app, no sound or message)<br><br><em><b>1</b> - Update jobs (silent)</em><br><em><b>2</b> - Popup message (regular)</em><br><em><b>3</b> - Inbox message (regular)</em><br><em><b>5</b> - Update location (silent)</em><br><em><b>6</b> - New job (silent)</em><br><em><b>7</b> - New job (regular)</em><br><em><b>8</b> - Open service (regular)</em><br><em><b>9</b> - Open chat (regular)</em><br><em><b>10</b> - New rating (regular)</em><br><em><b>11</b> - Offer with promo code (regular)</em><br><em><b>12</b> - Custom</em><br><em><b>13</b> - New bonus (regular)</em><br><em><b>14</b> - Added new job to schedule (regular)</em><br><em><b>15</b> - Removed job from schedule (regular)</em><br><em><b>16</b> - Job appointment time changed (regular)</em><br><em><b>17</b> - Job price changed (regular)</em><br><em><b>18</b> - Job payment method changed (regular)</em><br><em><b>19</b> - Job payment status changed (regular)</em><br><em><b>20</b> - Job new comment (regular)</em><br><em><b>25</b> - New task (regular)</em><br><em><b>26</b> - New note on a task (regular)</em><br><em><b>100</b> - Upload database to server (silent)</em></td>
+<td>Describes what action should be triggered on the unit. Pushes can be regular (with sound and message) or silent (waking up the app, no sound or message)<br><br><em><b>1</b> - Update jobs (silent)</em><br><em><b>2</b> - Popup message (regular)</em><br><em><b>3</b> - Inbox message (regular)</em><br><em><b>5</b> - Update location (silent)</em><br><em><b>6</b> - New job (silent)</em><br><em><b>7</b> - New job (regular)</em><br><em><b>8</b> - Open service (regular)</em><br><em><b>9</b> - Open chat (regular)</em><br><em><b>10</b> - New rating (regular)</em><br><em><b>11</b> - Offer with promo code (regular)</em><br><em><b>12</b> - Custom</em><br><em><b>13</b> - New bonus (regular)</em><br><em><b>14</b> - Added new job to schedule (regular)</em><br><em><b>15</b> - Removed job from schedule (regular)</em><br><em><b>16</b> - Job appointment time changed (regular)</em><br><em><b>17</b> - Job price changed (regular)</em><br><em><b>18</b> - Job payment method changed (regular)</em><br><em><b>19</b> - Job payment status changed (regular)</em><br><em><b>20</b> - Job new comment (regular)</em><br><em><b>25</b> - New task (regular)</em><br><em><b>26</b> - New note on a task (regular)</em><br><em><b>100</b> - Upload database to server (silent)</em><br><em><b>210</b> - Call event ring</em><br><em><b>220</b> - Call event ringing</em><br><em><b>230</b> - Call event pick up</em><br><em><b>240</b> - Call event hang up</em><br><em><b>250</b> - Call event room created</em><br><em><b>260</b> - Call event connected</em><br><em><b>270</b> - Call event disconnected</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">message</code></td>
@@ -10492,6 +10700,50 @@ curl<span class="se">\</span>
 <td><em>integer</em></td>
 <td><em>all actions</em></td>
 <td>Filters push notifications by <code class="prettyprint">action</code>. If no filter is passed all push notifications are returned. To filter push notifications by more than one action pass an array of actions e.g. <code class="prettyprint">[1, 2]</code></td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
+<h2 id="call-events">Call events</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "call_id": 123,
+        "action": 210
+}'</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/shared/call_events"</span>
+</code></pre>
+
+<p>Actions performed in a result of a call. Posted data matches call push notifications payload.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;call_events&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">call_id</code></td>
+<td><em>integer</em></td>
+<td>Unique identifier of the call</td>
+</tr>
+<tr>
+<td><code class="prettyprint">action</code></td>
+<td><em>integer</em></td>
+<td>(Push notification)[#push-notifications] call action</td>
 </tr>
 </tbody></table>
 
