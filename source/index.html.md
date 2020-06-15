@@ -7147,7 +7147,7 @@ curl\
         "action":250,
         "call_id": 123,
         "room_name": "#123123SYS",
-        "participant_identyt": "john@doe.com",
+        "participant_identity": "john@doe.com",
         "auth_token": "fjsdlfkjasdkfahsdfkljdhsafkljsfksdjfhajklsdhf"
       },
       "created_at": 1497859985
