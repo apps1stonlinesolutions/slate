@@ -6,6 +6,11 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 15 June 2020 - Added</br>call_events
+  - 15 June 2020 - Added</br>call push notifications
+  - 15 June 2020 - Added</br>can_vide_call in</br>job
+  - 15 June 2020 - Added</br>voip_push_token in</br>user application
+  - 15 June 2020 - Added</br>video_call for client</br> and unit
   - 8 May 2020 - Added</br>descripton to choice</br>and choice_item. Added</br>note to booking.price
   - 23 Apr 2020 - Added</br>request_auto_login_token
   - 14 Apr 2020 - Added</br>jobs.base_price_formatted
@@ -3492,6 +3497,26 @@ Client chooses the reasons to call unit in relation to a booking from a list.
 
 `"path": "bookings/{{booking_id}}/call_unit_reasons"`
 
+## Video call unit
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ "https://{{BASE_URL}}/v2/client/bookings/123/video_call"
+```
+
+Clients can video call units.
+
+`"path": "bookings/{{booking_id}}/video_call"`
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
 
 ## Avatar
 
@@ -4855,6 +4880,10 @@ curl\
           "to": 999999999
         },
         "can_call_office": {
+          "from": 0,
+          "to": 1534993201
+        },
+        "can_video_call": {
           "from": 0,
           "to": 1534993201
         }
@@ -6275,6 +6304,28 @@ This endpoint returns:
 * [Common errors](#common-errors)
 
 
+
+## Video call client
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ "https://{{BASE_URL}}/v2/unit/jobs/123/video_call"
+```
+
+Units can video call clients.
+
+`"path": "jobs/{{job_id}}/video_call"`
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+
 ## Change payment method
 
 ```shell
@@ -6558,6 +6609,7 @@ curl\
       "id": 1,
       "guid": "98z07v980vbn98790zx7v9c8vx7890xzc8v7",
       "push_token": "98z07v980vbn98790zx7v9c8vx7890xzc8v7",
+      "voip_push_token": "hkjhsdkjHJ980vbn98790zx7v9c8vx7890xzc8v7",
       "build": 231,
       "react_bundle_version": 2,
       "version": "1.15.2",
@@ -6596,6 +6648,7 @@ Parameter | Type | Description
 `id`<br>*read-only* | *integer* | Unique identifier
 `guid` | *string* | Unique device identifier
 `push_token` | *string* | Unique identifier for sending push notifications
+`voip_push_token` | *string* | Unique identifier for sending VoIP push notifications
 `build` | *integer* | Application build number
 `react_bundle_version` | *integer* | Application build number
 `version` | *string* | Application version
@@ -6990,6 +7043,162 @@ curl\
 }
 ```
 
+
+> The above request success response for ring call event is:
+
+```json
+{
+  "data": [
+    {
+      "id": 32,
+      "status": 1000,
+      "action": 210,
+      "message": null,
+      "sound": "default",
+      "payload": {
+        "action":210,
+        "call_id": 123,
+        "caller": {
+          "name": "John Doe",
+          "avatar_url": "https://image.url"
+        }
+      },
+      "created_at": 1497859985
+    }
+  ]
+}
+```
+
+> The above request success response for ringing call event is:
+
+```json
+{
+  "data": [
+    {
+      "id": 33,
+      "status": 1000,
+      "action": 220,
+      "message": null,
+      "sound": "default",
+      "payload": {
+        "action":220,
+        "call_id": 123
+      },
+      "created_at": 1497859985
+    }
+  ]
+}
+```
+
+> The above request success response for pick up call event is:
+
+```json
+{
+  "data": [
+    {
+      "id": 34,
+      "status": 1000,
+      "action": 230,
+      "message": null,
+      "sound": "default",
+      "payload": {
+        "action":230,
+        "call_id": 123
+      },
+      "created_at": 1497859985
+    }
+  ]
+}
+```
+
+> The above request success response for hang up call event is:
+
+```json
+{
+  "data": [
+    {
+      "id": 35,
+      "status": 1000,
+      "action": 240,
+      "message": null,
+      "sound": "default",
+      "payload": {
+        "action":240,
+        "call_id": 123
+      },
+      "created_at": 1497859985
+    }
+  ]
+}
+```
+
+> The above request success response for room created call event is:
+
+```json
+{
+  "data": [
+    {
+      "id": 36,
+      "status": 1000,
+      "action": 250,
+      "message": null,
+      "sound": "default",
+      "payload": {
+        "action":250,
+        "call_id": 123,
+        "room_name": "#123123SYS",
+        "participant_identyt": "john@doe.com",
+        "auth_token": "fjsdlfkjasdkfahsdfkljdhsafkljsfksdjfhajklsdhf"
+      },
+      "created_at": 1497859985
+    }
+  ]
+}
+```
+
+> The above request success response for connected call event is:
+
+```json
+{
+  "data": [
+    {
+      "id": 37,
+      "status": 1000,
+      "action": 260,
+      "message": null,
+      "sound": "default",
+      "payload": {
+        "action":260,
+        "call_id": 123
+      },
+      "created_at": 1497859985
+    }
+  ]
+}
+```
+
+> The above request success response for disconnected call event is:
+
+```json
+{
+  "data": [
+    {
+      "id": 38,
+      "status": 1000,
+      "action": 270,
+      "message": null,
+      "sound": "default",
+      "payload": {
+        "action":270,
+        "call_id": 123
+      },
+      "created_at": 1497859985
+    }
+  ]
+}
+```
+
+
 History of all pushes sent to unit.
 
 `"path": "push_notifications"`
@@ -7000,7 +7209,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `status` | *integer* | *<b>500</b> - Pending*<br>*<b>1000</b> - Sent*<br>*<b>1500</b> - Failed*<br>*<b>2000</b> - Delivered*<br>*<b>3000</b> - Seen*
-`action` | *integer* | Describes what action should be triggered on the unit. Pushes can be regular (with sound and message) or silent (waking up the app, no sound or message)<br><br>*<b>1</b> - Update jobs (silent)*<br>*<b>2</b> - Popup message (regular)*<br>*<b>3</b> - Inbox message (regular)*<br>*<b>5</b> - Update location (silent)*<br>*<b>6</b> - New job (silent)*<br>*<b>7</b> - New job (regular)*<br>*<b>8</b> - Open service (regular)*<br>*<b>9</b> - Open chat (regular)*<br>*<b>10</b> - New rating (regular)*<br>*<b>11</b> - Offer with promo code (regular)*<br>*<b>12</b> - Custom*<br>*<b>13</b> - New bonus (regular)*<br>*<b>14</b> - Added new job to schedule (regular)*<br>*<b>15</b> - Removed job from schedule (regular)*<br>*<b>16</b> - Job appointment time changed (regular)*<br>*<b>17</b> - Job price changed (regular)*<br>*<b>18</b> - Job payment method changed (regular)*<br>*<b>19</b> - Job payment status changed (regular)*<br>*<b>20</b> - Job new comment (regular)*<br>*<b>25</b> - New task (regular)*<br>*<b>26</b> - New note on a task (regular)*<br>*<b>100</b> - Upload database to server (silent)*
+`action` | *integer* | Describes what action should be triggered on the unit. Pushes can be regular (with sound and message) or silent (waking up the app, no sound or message)<br><br>*<b>1</b> - Update jobs (silent)*<br>*<b>2</b> - Popup message (regular)*<br>*<b>3</b> - Inbox message (regular)*<br>*<b>5</b> - Update location (silent)*<br>*<b>6</b> - New job (silent)*<br>*<b>7</b> - New job (regular)*<br>*<b>8</b> - Open service (regular)*<br>*<b>9</b> - Open chat (regular)*<br>*<b>10</b> - New rating (regular)*<br>*<b>11</b> - Offer with promo code (regular)*<br>*<b>12</b> - Custom*<br>*<b>13</b> - New bonus (regular)*<br>*<b>14</b> - Added new job to schedule (regular)*<br>*<b>15</b> - Removed job from schedule (regular)*<br>*<b>16</b> - Job appointment time changed (regular)*<br>*<b>17</b> - Job price changed (regular)*<br>*<b>18</b> - Job payment method changed (regular)*<br>*<b>19</b> - Job payment status changed (regular)*<br>*<b>20</b> - Job new comment (regular)*<br>*<b>25</b> - New task (regular)*<br>*<b>26</b> - New note on a task (regular)*<br>*<b>100</b> - Upload database to server (silent)*<br>*<b>210</b> - Call event ring*<br>*<b>220</b> - Call event ringing*<br>*<b>230</b> - Call event pick up*<br>*<b>240</b> - Call event hang up*<br>*<b>250</b> - Call event room created*<br>*<b>260</b> - Call event connected*<br>*<b>270</b> - Call event disconnected*
 `message` | *string* | Push notification text
 `sound` | *string* | Push notification sound file name
 `payload` <br>*dynamic* | *object* | Custom data based on action
@@ -7064,6 +7273,43 @@ Parameter | Type | Default | Description
 This endpoint returns:
 
 * [Common errors](#common-errors)
+
+
+
+## Call events
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+ -d '{
+        "call_id": 123,
+        "action": 210
+}'\
+"https://{{BASE_URL}}/v2/shared/call_events"
+```
+
+
+Actions performed in a result of a call. Posted data matches call push notifications payload.
+
+`"path": "call_events"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`call_id` | *integer* | Unique identifier of the call
+`action` | *integer* | (Push notification)[#push-notifications] call action
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
+
 
 
 ## Server time
