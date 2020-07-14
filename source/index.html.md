@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 13 July 2020 - Added</br>key_value_store
   - 15 June 2020 - Added</br>call_events
   - 15 June 2020 - Added</br>call push notifications
   - 15 June 2020 - Added</br>can_vide_call in</br>job
@@ -7507,6 +7508,59 @@ This endpoint returns:
 * [Common errors](#common-errors)
 
 
+
+## Key-value store
+
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/shared/key_value_store?query[key]=aaa"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": {
+      "key": "foo",
+      "value": "bar",
+      "ttl": 120,
+      "created_at": 1594639152,
+      "access": "application"
+  }
+}
+```
+
+Key-value storage that allows persisting any JSON value, for a set period of time in a limited access scope.
+
+`"path": "key_value_store"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`key` | *string* | Unique identifier tied to a value. If a value for the key already exists the new value overrides it.
+`value` | *any* | Stored value of any valid JSON type (bool, number, string, object, array or null).
+`ttl`<br>*default <b>7200</b>* | *integer* | Life time of the record in seconds.
+`created_at` | *integer* | UTC timestamp of record creation.
+`access`<br>*default <b>application</b>* | *string* | Scope of access for the stored value:<br>*<b>all</b> - accessible for all applications and users*<br>*<b>user</b> - accessible for the user who created it*<br>*<b>session</b> - accessible for the session that created it*<br>*<b>application</b> - accessible for the application that created it*
+
+### `params`
+
+Parameter | Type | Default | Description
+-------- | ----- | ----- | -------
+`query.key` | *string* | *none* | Key associated with a value
+
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
+
+
 # System
 
 ## User
@@ -7552,7 +7606,7 @@ Parameter | Type | Description
 
 Parameter | Type | Default | Description
 -------- | ----- | ----- | -------
-`query.private_key`<br>*optional* | *string* | *none* | Key to access APi
+`query.private_key`<br>*optional* | *string* | *none* | Key to access API
 `query.access_token` | *string* | *none* | Access token aquired after authorization
 
 
