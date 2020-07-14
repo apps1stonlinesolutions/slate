@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>13 July 2020 - Added</br>key_value_store</li>
             <li>15 June 2020 - Added</br>call_events</li>
             <li>15 June 2020 - Added</br>call push notifications</li>
             <li>15 June 2020 - Added</br>can_vide_call in</br>job</li>
@@ -11058,6 +11059,93 @@ curl<span class="se">\</span>
 <li><a href="#common-errors">Common errors</a></li>
 </ul>
 
+<h2 id="key-value-store">Key-value store</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/shared/key_value_store?query[key]=aaa"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ttl"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1594639152</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Key-value storage that allows persisting any JSON value, for a set period of time in a limited access scope.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;key_value_store&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">key</code></td>
+<td><em>string</em></td>
+<td>Unique identifier tied to a value. If a value for the key already exists the new value overrides it.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">value</code></td>
+<td><em>any</em></td>
+<td>Stored value of any valid JSON type (bool, number, string, object, array or null).</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ttl</code><br><em>default <b>7200</b></em></td>
+<td><em>integer</em></td>
+<td>Life time of the record in seconds.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">created_at</code></td>
+<td><em>integer</em></td>
+<td>UTC timestamp of record creation.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">access</code><br><em>default <b>application</b></em></td>
+<td><em>string</em></td>
+<td>Scope of access for the stored value:<br><em><b>all</b> - accessible for all applications and users</em><br><em><b>user</b> - accessible for the user who created it</em><br><em><b>session</b> - accessible for the session that created it</em><br><em><b>application</b> - accessible for the application that created it</em></td>
+</tr>
+</tbody></table>
+
+<h3 id="params"><code class="prettyprint">params</code></h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">query.key</code></td>
+<td><em>string</em></td>
+<td><em>none</em></td>
+<td>Key associated with a value</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
+</ul>
+
 <h1 id="system">System</h1>
 
 <h2 id="user">User</h2>
@@ -11136,7 +11224,7 @@ curl<span class="se">\</span>
 <td><code class="prettyprint">query.private_key</code><br><em>optional</em></td>
 <td><em>string</em></td>
 <td><em>none</em></td>
-<td>Key to access APi</td>
+<td>Key to access API</td>
 </tr>
 <tr>
 <td><code class="prettyprint">query.access_token</code></td>
