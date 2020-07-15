@@ -7529,8 +7529,7 @@ curl\
       "key": "foo",
       "value": "bar",
       "ttl": 120,
-      "created_at": 1594639152,
-      "access": "application"
+      "created_at": 1594639152
   }
 }
 ```
@@ -7547,7 +7546,6 @@ Parameter | Type | Description
 `value` | *any* | Stored value of any valid JSON type (bool, number, string, object, array or null).
 `ttl`<br>*default <b>7200</b>* | *integer* | Life time of the record in seconds.
 `created_at` | *integer* | UTC timestamp of record creation.
-`access`<br>*default <b>application</b>* | *string* | Scope of access for the stored value:<br>*<b>all</b> - accessible for all applications and users*<br>*<b>user</b> - accessible for the user who created it*<br>*<b>session</b> - accessible for the session that created it*<br>*<b>application</b> - accessible for the application that created it*
 
 ### `params`
 
