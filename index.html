@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>15 July 2020 - Added</br>social_provider Apple</br>and login/register</br>social.id_token</li>
             <li>13 July 2020 - Added</br>key_value_store</li>
             <li>15 June 2020 - Added</br>call_events</li>
             <li>15 June 2020 - Added</br>call push notifications</li>
@@ -1152,6 +1153,15 @@ Accepted params:
         </span><span class="nt">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kljfadafdsfsdf.fantastic.com"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kljfadafdsfsdf.fantastic.com"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1178,7 +1188,7 @@ Accepted params:
 <tr>
 <td><code class="prettyprint">type</code></td>
 <td><em>string</em></td>
-<td>Type of social provider:<br/><em><b>Facebook</b> - Facebook</em><br/><em><b>Google</b> - Google</em></td>
+<td>Type of social provider:<br/><em><b>Facebook</b> - Facebook</em><br/><em><b>Google</b> - Google</em><br/><em><b>Apple</b> - Apple</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">name</code></td>
@@ -1383,7 +1393,7 @@ Accepted params:
 </tr>
 </tbody></table>
 
-<h3 id="facebook-login-request-parameters">Facebook login request parameters</h3>
+<h3 id="social-login-request-parameters">Social login request parameters</h3>
 
 <table><thead>
 <tr>
@@ -1395,7 +1405,12 @@ Accepted params:
 <tr>
 <td><code class="prettyprint">social.oauth_id</code><br><em>required</em></td>
 <td><em>string</em></td>
-<td>Obtained facebook user access token</td>
+<td>Obtained social user access token</td>
+</tr>
+<tr>
+<td><code class="prettyprint">social.id_token</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Token for recreating expired server side access token. Used for Sign In with Apple (refresh token).</td>
 </tr>
 <tr>
 <td><code class="prettyprint">social.social_provider_id</code><br><em>optional</em></td>
@@ -1501,6 +1516,7 @@ Accepted params:
         "birth_date_formatted": "1980-12-30",
         "social": {
           "oauth_id": "EAAEo0IpvAQcBAK1gy3VjCJPZCp6vidasdvEvEtxmO0gjFFjtz3jd8omEuhVhg3Y3ZAzIjSLQVMMZBaWwIZBRY9U8B7XZCFvGpledf38DPUTfeHNA2PCZALtPFTjXYFD1aPeB6IK4oo8dJWAIMAcpKPmFATTtXABljEA02jIDExTAp5brMUuNLMQlQr48ISRhbNy4hbKyI6plbO6ZCd1iHJ9kxd09PfpiwcZD",
+          "id_token": "dsjfalksdflksadjhfljsdf",
           "social_provider_id": 1
         },
         "type_id": 1,
@@ -1590,8 +1606,8 @@ Accepted params:
 </tr>
 <tr>
 <td><code class="prettyprint">social</code><br><em>optional</em></td>
-<td><em><a href="#facebook-login-request-parameters">object</a></em></td>
-<td>Social login attributes. Same are used for login (check <b>Facebook login request parameters</b>).</td>
+<td><em><a href="#social-login-request-parameters">object</a></em></td>
+<td>Social login attributes. Same are used for login (check <b>Social login request parameters</b>).</td>
 </tr>
 <tr>
 <td><code class="prettyprint">type_id</code><br><em>optional</em></td>
