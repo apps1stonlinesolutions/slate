@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 15 July 2020 - Added</br>social_provider Apple</br>and login/register</br>social.id_token
   - 13 July 2020 - Added</br>key_value_store
   - 15 June 2020 - Added</br>call_events
   - 15 June 2020 - Added</br>call push notifications
@@ -786,6 +787,15 @@ curl\
         "client_id": "kljfadafdsfsdf.fantastic.com"
       },
       "sort": 200
+    },
+    {
+      "id": 3,
+      "type": "Apple",
+      "name": "Apple",
+      "data": {
+        "client_id": "kljfadafdsfsdf.fantastic.com"
+      },
+      "sort": 200
     }
   ]
 }
@@ -800,7 +810,7 @@ Social providers for client registering and logging in.
 Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
-`type` | *string* | Type of social provider:<br/>*<b>Facebook</b> - Facebook*<br/>*<b>Google</b> - Google*
+`type` | *string* | Type of social provider:<br/>*<b>Facebook</b> - Facebook*<br/>*<b>Google</b> - Google*<br/>*<b>Apple</b> - Apple*
 `name` | *string* | Name of social provider
 `data` | *object* | Keys to identify with the social provider
 `sort` | *integer* | Order of item in list
@@ -959,11 +969,12 @@ Parameter | Type | Description
 `username`<br>*required* | *string* | Username of the account to login
 `password`<br>*required* | *string* | Password of the account to login
 
-### Facebook login request parameters
+### Social login request parameters
 
 Parameter | Type | Description
 -------- | ----- | -------
-`social.oauth_id`<br>*required* | *string* | Obtained facebook user access token 
+`social.oauth_id`<br>*required* | *string* | Obtained social user access token
+`social.id_token`<br>*required* | *string* | Token for recreating expired server side access token. Used for Sign In with Apple (refresh token).
 `social.social_provider_id`<br>*optional* | *integer* | Social login provider id. Check [social providers](#social-providers).
 
 ### Auto login request parameters
@@ -1016,6 +1027,7 @@ curl\
         "birth_date_formatted": "1980-12-30",
         "social": {
           "oauth_id": "EAAEo0IpvAQcBAK1gy3VjCJPZCp6vidasdvEvEtxmO0gjFFjtz3jd8omEuhVhg3Y3ZAzIjSLQVMMZBaWwIZBRY9U8B7XZCFvGpledf38DPUTfeHNA2PCZALtPFTjXYFD1aPeB6IK4oo8dJWAIMAcpKPmFATTtXABljEA02jIDExTAp5brMUuNLMQlQr48ISRhbNy4hbKyI6plbO6ZCd1iHJ9kxd09PfpiwcZD",
+          "id_token": "dsjfalksdflksadjhfljsdf",
           "social_provider_id": 1
         },
         "type_id": 1,
@@ -1070,7 +1082,7 @@ Parameter | Type | Description
 `email`<br>*required* | *string* | User's email with validated structure (e.g. xxxx@xxx.xxx)
 `birth_date_formatted`<br>*optional* | *string* | Birth date in YYYY-dd-mm (e.g. 1980-12-30)
 `referrer_code`<br>*optional* | *string* | Referral code from another user
-`social`<br>*optional* | *[object](#facebook-login-request-parameters)* | Social login attributes. Same are used for login (check <b>Facebook login request parameters</b>).
+`social`<br>*optional* | *[object](#social-login-request-parameters)* | Social login attributes. Same are used for login (check <b>Social login request parameters</b>).
 `type_id`<br>*optional* | *integer* | Type of registration id. Check [user](#user).`type`.
 `preferences.allow_mk_all`<br>*optional* | *boolean* | Sets all preferences to true.
 `register_token`<br>*optional* | *string* | Converts offline user to online.
