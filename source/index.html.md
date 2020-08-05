@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 5 Aug 2020 - Updated</br>Compatibility. Remove</br>Braintree for new builds
   - 15 July 2020 - Added</br>social_provider Apple</br>and login/register</br>social.id_token
   - 13 July 2020 - Added</br>key_value_store
   - 15 June 2020 - Added</br>call_events
@@ -7736,9 +7737,11 @@ Application | Condition | Description
 -------- | ----- | -------
  *GoFantastic iOS* |  BUID < 747  | Remove object with type `PayPal` from response
  *GoFantastic iOS* | 785 < BUID < 1300 | Remove object with type `Stripe` from response (if `Braintree` is available in response)
+ *GoFantastic iOS* | BUID >= 1300 | Remove object with type `Braintree` from response (if `Stripe` is available in response)
  *GoFantastic iOS* | BUID <= 785 | Remove object with type `Braintree` from response
  *GoFantastic Android* | BUID < 460 | Remove object with type `PayPal` from response
  *GoFantastic Android* | 647 < BUID < 1400 | Remove object with type `Stripe` from response (if `Braintree` is available in response)
+ *GoFantastic Android* | BUID >= 1400 | Remove object with type `Braintree` from response (if `Stripe` is available in response)
  *GoFantastic Android* | BUID <= 647 | Remove object with type `Braintree` from response
 
 Filters payment methods based on `vendor`
