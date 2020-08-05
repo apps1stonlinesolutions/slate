@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>5 Aug 2020 - Updated</br>Compatibility. Remove</br>Braintree for new builds</li>
             <li>15 July 2020 - Added</br>social_provider Apple</br>and login/register</br>social.id_token</li>
             <li>13 July 2020 - Added</br>key_value_store</li>
             <li>15 June 2020 - Added</br>call_events</li>
@@ -11422,6 +11423,11 @@ curl<span class="se">\</span>
 </tr>
 <tr>
 <td><em>GoFantastic iOS</em></td>
+<td>BUID &gt;= 1300</td>
+<td>Remove object with type <code class="prettyprint">Braintree</code> from response (if <code class="prettyprint">Stripe</code> is available in response)</td>
+</tr>
+<tr>
+<td><em>GoFantastic iOS</em></td>
 <td>BUID &lt;= 785</td>
 <td>Remove object with type <code class="prettyprint">Braintree</code> from response</td>
 </tr>
@@ -11434,6 +11440,11 @@ curl<span class="se">\</span>
 <td><em>GoFantastic Android</em></td>
 <td>647 &lt; BUID &lt; 1400</td>
 <td>Remove object with type <code class="prettyprint">Stripe</code> from response (if <code class="prettyprint">Braintree</code> is available in response)</td>
+</tr>
+<tr>
+<td><em>GoFantastic Android</em></td>
+<td>BUID &gt;= 1400</td>
+<td>Remove object with type <code class="prettyprint">Braintree</code> from response (if <code class="prettyprint">Stripe</code> is available in response)</td>
 </tr>
 <tr>
 <td><em>GoFantastic Android</em></td>
