@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>7 Aug 2020 - Add</br>claim_account</li>
             <li>5 Aug 2020 - Updated</br>Compatibility. Remove</br>Braintree for new builds</li>
             <li>15 July 2020 - Added</br>social_provider Apple</br>and login/register</br>social.id_token</li>
             <li>13 July 2020 - Added</br>key_value_store</li>
@@ -2104,6 +2105,59 @@ Accepted params:
 <ul>
 <li><a href="#common-errors">Common errors</a></li>
 <li><a href="#register-token-infos-errors">Register token info errors</a></li>
+</ul>
+
+<h2 id="claim-your-account">Claim your account</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X POST<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -d <span class="s1">'{
+        "email": "test@test.com"
+}'</span><span class="se">\</span>
+ <span class="s2">"https://{{BASE_URL}}/v2/client/claim_account"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Request credentials for an offline account. Email will be sent if account exists.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;claim_account&quot;</code></p>
+
+<h3 id="request-parameters">Request parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">email</code><br><em>required</em></td>
+<td><em>string</em></td>
+<td>Email address to which a link for registration setting password will be sent</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:</p>
+
+<ul>
+<li><a href="#common-errors">Common errors</a></li>
 </ul>
 
 <h2 id="request-delete-account">Request delete account</h2>
