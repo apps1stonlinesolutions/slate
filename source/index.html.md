@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 7 Aug 2020 - Add</br>claim_account
   - 5 Aug 2020 - Updated</br>Compatibility. Remove</br>Braintree for new builds
   - 15 July 2020 - Added</br>social_provider Apple</br>and login/register</br>social.id_token
   - 13 July 2020 - Added</br>key_value_store
@@ -1453,6 +1454,51 @@ This endpoint returns:
 
 * [Common errors](#common-errors)
 * [Register token info errors](#register-token-infos-errors)
+
+
+## Claim your account
+
+
+```shell
+curl\
+ -X POST\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -d '{
+        "email": "test@test.com"
+}'\
+ "https://{{BASE_URL}}/v2/client/claim_account"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": null,
+  "success": [
+    {
+      "code": 2000,
+      "message": "Success",
+      "debug_message": null,
+      "debug_id": null
+    }
+  ]
+}
+```
+
+Request credentials for an offline account. Email will be sent if account exists.
+
+`"path": "claim_account"`
+
+### Request parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`email`<br>*required* | *string* | Email address to which a link for registration setting password will be sent
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
 
 
 ## Request delete account
