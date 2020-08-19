@@ -1464,6 +1464,7 @@ curl\
  -X POST\
  -H "Content-Type: application/json"\
  -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
  -d '{
         "email": "test@test.com"
 }'\
