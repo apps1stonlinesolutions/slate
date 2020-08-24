@@ -6,7 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
-  - 24 Aug 2020 - Added</br>credit_activity
+  - 24 Aug 2020 - Added</br>credit_activity and</br>updated referral_stats
   - 7 Aug 2020 - Add</br>claim_account
   - 5 Aug 2020 - Updated</br>Compatibility. Remove</br>Braintree for new builds
   - 15 July 2020 - Added</br>social_provider Apple</br>and login/register</br>social.id_token
@@ -3102,16 +3102,24 @@ curl\
 
 ```json
 {
-  "data": {
-      "successful_shares": 25,
-      "successful_referrals": 15,
-      "credits_earned_formatted": "£12",
-      "credits_spent_formatted": "£18"
+  "data": [
+  {
+    "title": "Friend Referrals",
+    "description": "The total amount of friends that created an account via your referral link.",
+    "amount_formatted": "10",
+    "sort": 100
+  },
+  {
+    "title": "Successful invites",
+    "description": "The total amount of friends that booking a service via your referral link.",
+    "amount_formatted": "5",
+    "sort": 100
   }
+]
 }
 ```
 
-Statistics on referral.
+Dynamic list with statistics on referral invites and bookings. Currently returns registrations with referral code and bookings afterwards.
 
 `"path": "referral_stats"`
 
@@ -3119,14 +3127,14 @@ Statistics on referral.
 
 Parameter | Type | Description
 -------- | ----- | -------
-`successful_shares` | *integer* | Registered users with client's referral code
-`successful_referrals` | *integer* | Registered users with client's referral code who has a finished booking
-`credits_earned_formatted` | *integer* | Credits earned from referral
-`credits_spent_formatted` | *integer* | Credits spent
+`title` | *string* | Title
+`description` | *string* | Description
+`amount_formatted` | *string* | Stat value (count, amount etc.)
 
 This endpoint returns:
 
 * [Common errors](#common-errors)
+
 
 ## Bookings
 
