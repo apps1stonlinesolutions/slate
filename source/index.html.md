@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 24 Aug 2020 - Added</br>credit_activity
   - 7 Aug 2020 - Add</br>claim_account
   - 5 Aug 2020 - Updated</br>Compatibility. Remove</br>Braintree for new builds
   - 15 July 2020 - Added</br>social_provider Apple</br>and login/register</br>social.id_token
@@ -3012,6 +3013,76 @@ Parameter | Type | Description
 This endpoint returns:
 
 * [Payment errors](#payment-errors)
+* [Common errors](#common-errors)
+
+
+## Credit activity
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/client/credit_activity"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+  {
+    "title": "Fantastic Club Credit",
+    "description": "Oven Cleaning, #1948028SYS",
+    "amount_formatted": "+ £15.00",
+    "created_at_formatted": "16/04/2020",
+    "type": "earned",
+    "sort": 100
+  },
+  {
+    "title": "Referral Credit",
+    "description": "Referral bonus received",
+    "amount_formatted": "+ £15.00",
+    "created_at_formatted": "16/04/2020",
+    "type": "spent",
+    "sort": 200
+  },
+  {
+    "title": "Used credit",
+    "description": "Referral bonus received",
+    "amount_formatted": "- £20.00",
+    "created_at_formatted": "16/04/2020",
+    "type": "pending",
+    "sort": 300
+  }
+ ],
+ "paging": {
+    "offset": 0,
+    "limit": 3,
+    "total": 23
+  }
+}
+```
+
+Credit earning and usage activity log. Oredered by `created_at_formatted` DESC. Has paging for results. Returns last 3 activities by default.
+
+`"path": "credit_activity"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`title` | *string* | Earned credit source (e.g. "Fantastic Club Credit" or "Referral Credit") or activity type (e.g. "Earned credit")
+`description` | *string* | Details on the activity (e.g. booking details)
+`amount_formatted` | *string* | Credit amount
+`created_at_formatted` | *string* | When the activity occured
+`type` | *string* | *<b>earned</b> - earned credit*<br>*<b>spent</b> - used credit*<br>*<b>pending</b> - credit to be earned*
+
+
+This endpoint returns:
+
 * [Common errors](#common-errors)
 
 
