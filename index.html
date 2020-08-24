@@ -111,7 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
-            <li>24 Aug 2020 - Added</br>credit_activity</li>
+            <li>24 Aug 2020 - Added</br>credit_activity and</br>updated referral_stats</li>
             <li>7 Aug 2020 - Add</br>claim_account</li>
             <li>5 Aug 2020 - Updated</br>Compatibility. Remove</br>Braintree for new builds</li>
             <li>15 July 2020 - Added</br>social_provider Apple</br>and login/register</br>social.id_token</li>
@@ -4706,16 +4706,24 @@ Accepted params:
 <p>The above request success response is:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"successful_shares"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"successful_referrals"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"credits_earned_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£12"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"credits_spent_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£18"</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Friend Referrals"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The total amount of friends that created an account via your referral link."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"amount_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful invites"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The total amount of friends that booking a service via your referral link."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"amount_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
   </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Statistics on referral.</p>
+<p>Dynamic list with statistics on referral invites and bookings. Currently returns registrations with referral code and bookings afterwards.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;referral_stats&quot;</code></p>
 
@@ -4729,24 +4737,19 @@ Accepted params:
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">successful_shares</code></td>
-<td><em>integer</em></td>
-<td>Registered users with client&rsquo;s referral code</td>
+<td><code class="prettyprint">title</code></td>
+<td><em>string</em></td>
+<td>Title</td>
 </tr>
 <tr>
-<td><code class="prettyprint">successful_referrals</code></td>
-<td><em>integer</em></td>
-<td>Registered users with client&rsquo;s referral code who has a finished booking</td>
+<td><code class="prettyprint">description</code></td>
+<td><em>string</em></td>
+<td>Description</td>
 </tr>
 <tr>
-<td><code class="prettyprint">credits_earned_formatted</code></td>
-<td><em>integer</em></td>
-<td>Credits earned from referral</td>
-</tr>
-<tr>
-<td><code class="prettyprint">credits_spent_formatted</code></td>
-<td><em>integer</em></td>
-<td>Credits spent</td>
+<td><code class="prettyprint">amount_formatted</code></td>
+<td><em>string</em></td>
+<td>Stat value (count, amount etc.)</td>
 </tr>
 </tbody></table>
 
