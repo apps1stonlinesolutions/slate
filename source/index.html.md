@@ -3037,7 +3037,7 @@ curl\
     "title": "Fantastic Club Credit",
     "description": "Oven Cleaning, #1948028SYS",
     "amount_formatted": "+ £15.00",
-    "created_at_formatted": "16/04/2020",
+    "created_at_formatted": "27 Aug 2020",
     "type": "earned",
     "sort": 100
   },
@@ -3045,17 +3045,25 @@ curl\
     "title": "Referral Credit",
     "description": "Referral bonus received",
     "amount_formatted": "+ £15.00",
-    "created_at_formatted": "16/04/2020",
-    "type": "spent",
+    "created_at_formatted": "27 Aug 2020",
+    "type": "pending",
     "sort": 200
   },
   {
     "title": "Used credit",
-    "description": "Referral bonus received",
+    "description": "One-Off Cleaning, Oven Cleaning, #1948028SYS",
     "amount_formatted": "- £20.00",
-    "created_at_formatted": "16/04/2020",
-    "type": "pending",
+    "created_at_formatted": "27 Aug 2020",
+    "type": "spent",
     "sort": 300
+  },
+  {
+    "title": "Customer Service Credit",
+    "description": null,
+    "amount_formatted": "£20.00",
+    "created_at_formatted": "27 Aug 2020",
+    "type": "earned",
+    "sort": 400
   }
  ],
  "paging": {
