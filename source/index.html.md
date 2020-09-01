@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 1 Sep 2020 - Added</br>purchase_order_number
   - 24 Aug 2020 - Added</br>credit_activity and</br>updated referral_stats
   - 7 Aug 2020 - Add</br>claim_account
   - 5 Aug 2020 - Updated</br>Compatibility. Remove</br>Braintree for new builds
@@ -4856,6 +4857,8 @@ curl\
       "require_summary": 4,
       "work_time": 120,
       "valid_to": 1504620000,
+      "reference_number": "20082602SYS",
+      "purchase_order_number": "12-13-14-15-16",
       "contacts": [
         {
           "id": 203,
