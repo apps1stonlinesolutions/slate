@@ -3122,7 +3122,7 @@ curl\
     "title": "Successful invites",
     "description": "The total amount of friends that booking a service via your referral link.",
     "amount_formatted": "5",
-    "sort": 100
+    "sort": 200
   }
 ]
 }
