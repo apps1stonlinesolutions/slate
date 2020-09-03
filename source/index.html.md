@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 3 Sep 2020 - Added</br>Configurations section
   - 1 Sep 2020 - Added</br>purchase_order_number
   - 24 Aug 2020 - Added</br>credit_activity and</br>updated referral_stats
   - 7 Aug 2020 - Add</br>claim_account
@@ -7800,6 +7801,319 @@ Parameter | Type | Description
 This endpoint returns:
 
 * [Common errors](#common-errors)
+
+
+# Configurations
+
+Static JSON content attached to various resources.
+
+## Membership content (old)
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+"https://{{BASE_URL}}/v2/client/configurations"
+```
+
+> An attribute of the above request success response is:
+
+```json
+{
+  "membership_section_content": {
+    "join_the_club_screen": {
+      "title": "Your Fantastic Life Awaits",
+      "description": "Join the club and let us do the dirty work while you enjoy the following perks for a whole year: ",
+      "modal": {
+        "title": "This preferential price is available to the Fantastic Club members",
+        "description": "You can become a member for £79 and enjoy the following perks for a whole year:"
+      },
+      "club_member_benefits": {
+        "member": {
+          "title": "Your member benefits"
+        },
+        "modal_title": "Modal title",
+        "member_title": "Member title",
+        "benefits": [
+          {
+            "image_url": "https://files.dxr.cloud/jnx3tx9YvN7xBqLci1cZqmdw5VxjGtL6q6nHC7bs2af6OlLhE7X6kkWNcjs1",
+            "title": "Welcome 15% OFF your first booking.",
+            "description": ""
+          },
+          {
+            "image_url": "https://files.dxr.cloud/j3uxM7qqlHTxh25ooRYxkorTlU4IV9yxgqkL3TSHkCYMnl9GRSM6Ql4nzpHK",
+            "title": "Up to 15% cash back for non-hourly based services",
+            "description": "Welcome-to-the-club-15%-OFF your first booking."
+          },
+          {
+            "image_url": "https://files.dxr.cloud/mQdKym7nhDXkE2Q7Y7fMZHmemtoiUA3WT03WbuBv6bF2Mu1SIRppSb3xGICl",
+            "title": "Domestic cleaning at <strike>£16</strike> £13/h",
+            "description": "Save over £400 a year with our preferential domestic cleaning rates."
+          },
+          {
+            "image_url": "https://files.dxr.cloud/OIyzNVWHGDzTPPog89FxmYe8UkcIH5lBmfibnsEu5SWgEkuzs0KMZtIlDwEI",
+            "title": "Premium booking slots & case handle",
+            "description": "Booking slots reserved only for the members of the Fantastic Club."
+          },
+          {
+            "image_url": "https://files.dxr.cloud/0beLnV4964jXVhcPi6C9ZtBylV9IAeE7YEJ50vq8g7POTyTCEA2g6RV16DfQ",
+            "title": "On-time arrival guarantee",
+            "description": "In case your professional is 1h late for service, you get £20 in credits."
+          },
+          {
+            "image_url": "https://files.dxr.cloud/cwbFHjZa5qMKzOCDyleUHPKt8hqUm4h7tZvF83SgKq28UojaMxnV1qrPMX4G",
+            "title": "Real-time arrival tracker",
+            "description": "When your professional is on the way, you can see their location in your account."
+          },
+          {
+            "image_url": "https://files.dxr.cloud/9CKcgT5D1RoKrhFrgMCr1rrNRUEpDthwnGoYsxuekgV1x98sFiEYZEtP8fxj",
+            "title": "Book for any property with full benefits",
+            "description": "Your member benefits apply for all booking to any address."
+          },
+          {
+            "image_url": "https://files.dxr.cloud/ra9hnwCjh4FnH59vpBCf00YuwSVycewnjSGUNiTL7FjUiRMqSMP0I7KKcgkL",
+            "title": "Extra referral credits",
+            "description": "You get £20 for any friend you refer, they get £20 credit as well."
+          },
+          {
+            "image_url": "https://files.dxr.cloud/hoeymbak09fQJDHktL6OJxMnVCKzKe5ZLxsWGGTDoiT37uttUgnoZVkVw9ia",
+            "title": "Exclusive seasonal deals",
+            "description": "Black Friday Week, Cyber Monday, holiday specials & seasonal bundles!"
+          },
+          {
+            "image_url": "https://files.dxr.cloud/Bc6IlAz1jb01ZpfwXkV2iMOdKphXx4wuJYNrWdWSEVuhU73EhwG8o7hRaNTD",
+            "title": "Fantastic Treats",
+            "description": "Take advantage of our exclusive selection of partner offer."
+          }
+        ],
+        "title": "Club Member Benefits",
+        "description_text": "* Minimum charges per service, slot and area apply. Does not apply to already existing bookings and quotes."
+      },
+      "join_button_title": "JOIN THE CLUB FOR £79/year",
+      "how_to_title": "How to join?",
+      "button_description_text": "The Fantastic Club is a yearly subscription. You can have your Fantastic Club fully or partially refunded within 14 days based on the reduced price totals you have booked at."
+    },
+    "how_to_join_screen": {
+      "description": "Becoming a Fantastic Club member is really easy! Simply select the button at the bottom of this page. We’ll send you an email with more information regarding your membership fee payment.\n \n You can also become a member by following these four steps:",
+      "steps": [
+        "Choose the service you want to book and pick your desired time slot.",
+        "Select the discounted prices for members by tapping the switch at the top of the screen.",
+        "Press proceed and select Join the Club to add the annual £79 Fantastic Club membership fee to your booking. The price of the service will then be automatically updated with the discounted price for members.",
+        "Finish your booking by completing your payment by credit card. The next time you book a service, you will automatically see your discounted member price."
+      ],
+      "join_button_title": "JOIN THE CLUB FOR £79/year",
+      "button_description_text": "100% money-back guarantee on your membership within 14 days of purchase"
+    },
+    "become_a_member_section": {
+      "title": "Become a Member for only £79",
+      "description": "Join now to continue booking at the discounted rates for members. Your annual membership will be added to the total of your booking and valid for one year from the time of purchase."
+    },
+    "membership_info_section": {
+      "next_billing_date_description": "You will be charged £79"
+    },
+    "renew_membership_section": {
+      "description": "If your membership is still active when you decide to renew, your next membership period starts as soon as your current one expires. Keep in mind the £79 charge takes place when you confirm your membership renewal.",
+      "renew_button_title": "Renew Membership For £79/year",
+      "button_details": "The Fantastic Club is a yearly subscription. You can have your Fantastic Club fully or partially refunded within 14 days based on the reduced price totals you have booked at."
+    },
+    "redesign_content": null
+  }
+}
+```
+
+Membership screens content for old design (prior v3.0).
+
+`"path": "configurations.membership_section_content"`
+
+
+## Membership content
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+"https://{{BASE_URL}}/v2/client/configurations"
+```
+
+> An attribute of the above request success response is:
+
+```json
+{
+  "membership_section_content": {
+    "redesign_content": {
+      "join_fantastic_club_modal_screen": {
+        "title": "This premium price is available to the Fantastic Club members",
+        "description_text": "You can become a member for <b>£79</b> and enjoy the following perks for a whole year:",
+        "subtitle": "Would you like to book this service at the Fantastic Club member rate?",
+        "subtitle_note": "£79 will be added to your total.*",
+        "subtitle_note_description": "*The Fantastic Club is a yearly subscription. You can have your Fantastic Club fully or partially refunded within 14 days based on the reduced price totals you have booked at.",
+        "cancel_button_title": "NOT NOW",
+        "ok_button_title": "YES, PLEASE!",
+        "privacy_policy_and_tc_text": "<strong>I agree</strong> with Fantastic Services'<br> <a href=\"https://gofantastic.com/privacy-policy.html\">Privacy Policy</a> and <a href=\"https://gofantastic.com/terms-and-conditions.html\">Terms and Conditions</a>"
+      },
+      "join_fantastic_club_screen": {
+        "title": "Your Fantastic Life Awaits",
+        "description_text": "Join the club and let us do the dirty work Just <b>£79/year</b> to enjoy preferential booking slots & rates",
+        "qna": {
+          "title": "Right now you might be wondering...",
+          "items": [
+            {
+              "question": "What is priority booking?",
+              "answer": "There are booking slots reserved for the members of the Fantastic Club only."
+            },
+            {
+              "question": "Can I let somebody else take advantage of my membership perks?",
+              "answer": "Well, you can book a service for another member of your household. However, the membership itself cannot be transferred to another person."
+            },
+            {
+              "question": "Can I have my membership refunded?",
+              "answer": "This can be done within two weeks of purchase. Based on the discounts you have used, you may receive partial or full refund."
+            },
+            {
+              "question": "Are there any other membership plans?",
+              "answer": "No, we have only an annual membership for now. It's a single payment of £79."
+            }
+          ]
+        },
+        "button_title": "BECOME A MEMBER",
+        "privacy_policy_and_tc_text": "<strong>I agree</strong> with Fantastic Services'<br> <a href=\"https://gofantastic.com/privacy-policy.html\">Privacy Policy</a> and <a href=\"https://gofantastic.com/terms-and-conditions.html\">Terms and Conditions</a>"
+      },
+      "membership_details_screen": {
+        "title": "Membership info",
+        "card": {
+          "member_since_title": "Member since:",
+          "next_billing_date_title": "Next billing date:",
+          "membership_expiration_date_title": "Expiration date:",
+          "member": {
+            "auto_renew_enabled": {
+              "description_text": "You will be charged <b>£79</b> for another year of Fantastic Club",
+              "note": null
+            },
+            "auto_renew_disabled": {
+              "description_text": null,
+              "note": null
+            }
+          },
+          "cancel_requested": {
+            "auto_renew_enabled": {
+              "description_text": null,
+              "note": "Your membership cancellation request is being processed. Once your membership is cancelled, you will receive a confirmation via e-mail."
+            },
+            "auto_renew_disabled": {
+              "description_text": null,
+              "note": "Your membership cancellation request is being processed. Once your membership is cancelled, you will receive a confirmation via e-mail."
+            }
+          },
+          "cancelled": {
+            "auto_renew_enabled": {
+              "description_text": null,
+              "note": null
+            },
+            "auto_renew_disabled": {
+              "description_text": null,
+              "note": null
+            }
+          },
+          "expired": {
+            "auto_renew_enabled": {
+              "description_text": null,
+              "note": "To secure your Fantastic Club Perks for another year, please finalise your annual payment."
+            },
+            "auto_renew_disabled": {
+              "description_text": null,
+              "note": "Your membership has expired. To keep enjoying the Fantastic Club member benefits, please renew your membership."
+            }
+          }
+        },
+        "credits": {
+          "title": "Fantastic Club Credits:",
+          "description": "As a Fantastic Club member, any non-hourly based service that you book will automatically generate 15% of its total value back in Fantastic Credits. You can then pay up to 50% of your next service using your credits.<a href=\"https://gofantastic.com/terms-and-conditions.html\">Learn more.</a>",
+          "button": {
+            "title": "VIEW CREDITS",
+            "deep_link": "GoFantastic://?credit_activity"
+          }
+        },
+        "renew_membership_button_title": "RENEW MEMBERSHIP",
+        "cancel_membership_button_title": "CANCEL MEMBERSHIP",
+        "privacy_policy_and_tc_text": "<a href=\"https://gofantastic.com/fantastic-club-membership-terms-and-conditions\"> Fantastic Club Terms and Conditions.</a>"
+      },
+      "renew_membership_screen": {
+        "card_text": "If your membership is still active when you decide to renew, your next membership period starts as soon as your current one expires. Keep in mind that the <b>£79</b> charge takes place when you confirm your payment.",
+        "renew_membership_button_title": "RENEW MEMBERSHIP",
+        "note": "*The Fantastic Club is a yearly subscription. You can have your Fantastic Club fully or partially refunded within 14 days based on the reduced price totals you have booked at.",
+        "privacy_policy_and_tc_text": "I agree with Fantastic Services'<br> <a href=\"https://gofantastic.com/privacy-policy.html\">Privacy Policy</a> and <a href=\"https://gofantastic.com/terms-and-conditions.html\">Terms and Conditions</a>"
+      },
+      "benefits": {
+        "title": "The perks you enjoy for a whole year",
+        "benefits": [
+          {
+            "image_url": "https://files.dxr.cloud/jnx3tx9YvN7xBqLci1cZqmdw5VxjGtL6q6nHC7bs2af6OlLhE7X6kkWNcjs1",
+            "title": "Welcome 15% OFF your first booking.",
+            "description": ""
+          },
+          {
+            "image_url": "https://files.dxr.cloud/j3uxM7qqlHTxh25ooRYxkorTlU4IV9yxgqkL3TSHkCYMnl9GRSM6Ql4nzpHK",
+            "title": "Up to 15% cash back for non-hourly based services",
+            "description": "Welcome-to-the-club-15%-OFF your first booking."
+          },
+          {
+            "image_url": "https://files.dxr.cloud/mQdKym7nhDXkE2Q7Y7fMZHmemtoiUA3WT03WbuBv6bF2Mu1SIRppSb3xGICl",
+            "title": "Domestic cleaning at <strike>£16</strike> £13/h",
+            "description": "Save over £400 a year with our preferential domestic cleaning rates."
+          },
+          {
+            "image_url": "https://files.dxr.cloud/OIyzNVWHGDzTPPog89FxmYe8UkcIH5lBmfibnsEu5SWgEkuzs0KMZtIlDwEI",
+            "title": "Premium booking slots & case handle",
+            "description": "Booking slots reserved only for the members of the Fantastic Club."
+          },
+          {
+            "image_url": "https://files.dxr.cloud/0beLnV4964jXVhcPi6C9ZtBylV9IAeE7YEJ50vq8g7POTyTCEA2g6RV16DfQ",
+            "title": "On-time arrival guarantee",
+            "description": "In case your professional is 1h late for service, you get £20 in credits."
+          },
+          {
+            "image_url": "https://files.dxr.cloud/cwbFHjZa5qMKzOCDyleUHPKt8hqUm4h7tZvF83SgKq28UojaMxnV1qrPMX4G",
+            "title": "Real-time arrival tracker",
+            "description": "When your professional is on the way, you can see their location in your account."
+          },
+          {
+            "image_url": "https://files.dxr.cloud/9CKcgT5D1RoKrhFrgMCr1rrNRUEpDthwnGoYsxuekgV1x98sFiEYZEtP8fxj",
+            "title": "Book for any property with full benefits",
+            "description": "Your member benefits apply for all booking to any address."
+          },
+          {
+            "image_url": "https://files.dxr.cloud/ra9hnwCjh4FnH59vpBCf00YuwSVycewnjSGUNiTL7FjUiRMqSMP0I7KKcgkL",
+            "title": "Extra referral credits",
+            "description": "You get £20 for any friend you refer, they get £20 credit as well."
+          },
+          {
+            "image_url": "https://files.dxr.cloud/hoeymbak09fQJDHktL6OJxMnVCKzKe5ZLxsWGGTDoiT37uttUgnoZVkVw9ia",
+            "title": "Exclusive seasonal deals",
+            "description": "Black Friday Week, Cyber Monday, holiday specials & seasonal bundles!"
+          },
+          {
+            "image_url": "https://files.dxr.cloud/Bc6IlAz1jb01ZpfwXkV2iMOdKphXx4wuJYNrWdWSEVuhU73EhwG8o7hRaNTD",
+            "title": "Fantastic Treats",
+            "description": "Take advantage of our exclusive selection of partner offer."
+          }
+        ]
+      },
+      "links": {
+        "termsAndConditions": "https://gofantastic.com/terms-and-conditions.html",
+        "privacyPolicy": "https://gofantastic.com/privacy-policy.html"
+      }
+    }
+  }
+}
+```
+
+Membership screens content.
+
+`"path": "configurations.membership_section_content.redesign_content"`
 
 
 # meta
