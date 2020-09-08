@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 8 Sep 2020 - Added</br>credit_on_boarding
   - 3 Sep 2020 - Added</br>Configurations section
   - 1 Sep 2020 - Added</br>purchase_order_number
   - 24 Aug 2020 - Added</br>credit_activity and</br>updated referral_stats
@@ -8114,6 +8115,71 @@ curl\
 Membership screens content.
 
 `"path": "configurations.membership_section_content.redesign_content"`
+
+
+## My Credits On-boarding
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+"https://{{BASE_URL}}/v2/client/configurations"
+```
+
+> An attribute of the above request success response is:
+
+```json
+{
+  "credit_on_boarding": {
+    "ios": [
+      {
+        "title": "Welcome to My Credits",
+        "description": "Track credits earned through Fantastic Services and spend them too!",
+        "image_url": "https://files.dxr.cloud/gXiuKqgo0fIijw4mRwTdb2ldqclCwbsl2E2vWHR0NnModjIql65R15WGO2L7",
+        "sort": 100
+      },
+      {
+        "title": "Fantastic Club Credits",
+        "description": "All Fantastic Club members earn up to 15% of the value of selected services back. The more you book, the more you save!",
+        "image_url": "https://files.dxr.cloud/lpZZN2dvbqUwEbGD1g0FRfJKsVLjgkSBDnB4kQhgiYrBVSCzX7sx0k3bQxDG",
+        "sort": 110
+      },
+      {
+        "title": "Send Invites and Earn",
+        "description": "Invite friends to use Fantastic Services. This gives them £10 OFF their first booking. You also get £10 credited to your account after your friend's appointment.",
+        "image_url": "https://files.dxr.cloud/Owg95ctriebhW8Gjwv02fXoVjAqFN0uxtXJcN6MsBdIzMkEfXmLGGAr5yNQL",
+        "sort": 120
+      }
+    ],
+    "android": [
+      {
+        "title": "Welcome to My Credits",
+        "description": "Track credits earned through Fantastic Services and spend them too!",
+        "image_url": "https://files.dxr.cloud/gXiuKqgo0fIijw4mRwTdb2ldqclCwbsl2E2vWHR0NnModjIql65R15WGO2L7",
+        "sort": 100
+      },
+      {
+        "title": "Fantastic Club Credits",
+        "description": "All Fantastic Club members earn up to 15% of the value of selected services back. The more you book, the more you save!",
+        "image_url": "https://files.dxr.cloud/lpZZN2dvbqUwEbGD1g0FRfJKsVLjgkSBDnB4kQhgiYrBVSCzX7sx0k3bQxDG",
+        "sort": 110
+      },
+      {
+        "title": "Send Invites and Earn",
+        "description": "Invite friends to use Fantastic Services. This gives them £10 OFF their first booking. You also get £10 credited to your account after your friend's appointment.",
+        "image_url": "https://files.dxr.cloud/Owg95ctriebhW8Gjwv02fXoVjAqFN0uxtXJcN6MsBdIzMkEfXmLGGAr5yNQL",
+        "sort": 120
+      }
+    ]
+  }
+}
+```
+
+On-boarding screens content in "My Credits" section in "Account" tab.
+
+`"path": "configurations.credit_on_boarding"`
 
 
 # meta
