@@ -6,7 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
-  - 8 Sep 2020 - Added</br>credit_on_boarding
+  - 8 Sep 2020 - Added</br>credit_on_boarding and</br>my_credits_screen
   - 3 Sep 2020 - Added</br>Configurations section
   - 1 Sep 2020 - Added</br>purchase_order_number
   - 24 Aug 2020 - Added</br>credit_activity and</br>updated referral_stats
@@ -8115,6 +8115,47 @@ curl\
 Membership screens content.
 
 `"path": "configurations.membership_section_content.redesign_content"`
+
+
+## My Credits screen
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+"https://{{BASE_URL}}/v2/client/configurations"
+```
+
+> An attribute of the above request success response is:
+
+```json
+{
+  "my_credits_screen": {
+    "title": "Credits",
+    "credits_section": {
+      "title": "Available Credits:",
+      "description": "You can pay up to 50% of your next service using Fantastic Credits."
+    },
+    "credits_activity": {
+      "section_title": "CREDIT ACTIVITY",
+      "more_title": "VIEW MORE"
+    },
+    "on_boarding_card": {
+      "title": "Earn Fantastic Credits",
+      "description": "Learn more about Fantastic Credits and ways you can earn them.",
+      "cta_title": "TAKE THE TOUR",
+      "image_url": "https://files.dxr.cloud/3ldtMEM6sthyOFa0met9Imty9OeVZWo6i3jgOUC3orozGJArJwyfggTU4ILI"
+    }
+  }
+}
+```
+
+"My Credits" section content in "Account" tab.
+
+`"path": "configurations.my_credits_screen"`
+
 
 
 ## My Credits On-boarding
