@@ -111,7 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
-            <li>8 Sep 2020 - Added</br>credit_on_boarding</li>
+            <li>8 Sep 2020 - Added</br>credit_on_boarding and</br>my_credits_screen</li>
             <li>3 Sep 2020 - Added</br>Configurations section</li>
             <li>1 Sep 2020 - Added</br>purchase_order_number</li>
             <li>24 Aug 2020 - Added</br>credit_activity and</br>updated referral_stats</li>
@@ -11773,6 +11773,43 @@ curl<span class="se">\</span>
 <p>Membership screens content.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;configurations.membership_section_content.redesign_content&quot;</code></p>
+
+<h2 id="my-credits-screen">My Credits screen</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/configurations"</span>
+</code></pre>
+
+<blockquote>
+<p>An attribute of the above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"my_credits_screen"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Credits"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"credits_section"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Available Credits:"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You can pay up to 50% of your next service using Fantastic Credits."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"credits_activity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"section_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDIT ACTIVITY"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"more_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VIEW MORE"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"on_boarding_card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Earn Fantastic Credits"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Learn more about Fantastic Credits and ways you can earn them."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"cta_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAKE THE TOUR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://files.dxr.cloud/3ldtMEM6sthyOFa0met9Imty9OeVZWo6i3jgOUC3orozGJArJwyfggTU4ILI"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>&ldquo;My Credits&rdquo; section content in &ldquo;Account&rdquo; tab.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;configurations.my_credits_screen&quot;</code></p>
 
 <h2 id="my-credits-on-boarding">My Credits On-boarding</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
