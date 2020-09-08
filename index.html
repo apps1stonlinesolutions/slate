@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>8 Sep 2020 - Added</br>credit_on_boarding</li>
             <li>3 Sep 2020 - Added</br>Configurations section</li>
             <li>1 Sep 2020 - Added</br>purchase_order_number</li>
             <li>24 Aug 2020 - Added</br>credit_activity and</br>updated referral_stats</li>
@@ -11772,6 +11773,68 @@ curl<span class="se">\</span>
 <p>Membership screens content.</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;configurations.membership_section_content.redesign_content&quot;</code></p>
+
+<h2 id="my-credits-on-boarding">My Credits On-boarding</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"X-Profile: {{PROFILE_ID}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/client/configurations"</span>
+</code></pre>
+
+<blockquote>
+<p>An attribute of the above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"credit_on_boarding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"ios"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to My Credits"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Track credits earned through Fantastic Services and spend them too!"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://files.dxr.cloud/gXiuKqgo0fIijw4mRwTdb2ldqclCwbsl2E2vWHR0NnModjIql65R15WGO2L7"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fantastic Club Credits"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All Fantastic Club members earn up to 15% of the value of selected services back. The more you book, the more you save!"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://files.dxr.cloud/lpZZN2dvbqUwEbGD1g0FRfJKsVLjgkSBDnB4kQhgiYrBVSCzX7sx0k3bQxDG"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Send Invites and Earn"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invite friends to use Fantastic Services. This gives them £10 OFF their first booking. You also get £10 credited to your account after your friend's appointment."</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://files.dxr.cloud/Owg95ctriebhW8Gjwv02fXoVjAqFN0uxtXJcN6MsBdIzMkEfXmLGGAr5yNQL"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"android"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to My Credits"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Track credits earned through Fantastic Services and spend them too!"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://files.dxr.cloud/gXiuKqgo0fIijw4mRwTdb2ldqclCwbsl2E2vWHR0NnModjIql65R15WGO2L7"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fantastic Club Credits"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All Fantastic Club members earn up to 15% of the value of selected services back. The more you book, the more you save!"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://files.dxr.cloud/lpZZN2dvbqUwEbGD1g0FRfJKsVLjgkSBDnB4kQhgiYrBVSCzX7sx0k3bQxDG"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Send Invites and Earn"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invite friends to use Fantastic Services. This gives them £10 OFF their first booking. You also get £10 credited to your account after your friend's appointment."</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://files.dxr.cloud/Owg95ctriebhW8Gjwv02fXoVjAqFN0uxtXJcN6MsBdIzMkEfXmLGGAr5yNQL"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>On-boarding screens content in &ldquo;My Credits&rdquo; section in &ldquo;Account&rdquo; tab.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;configurations.credit_on_boarding&quot;</code></p>
 
 <h1 id="meta">meta</h1>
 
