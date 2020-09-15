@@ -4951,10 +4951,10 @@ curl\
       "attachments": [
         {
           "mime_type": "image/jpeg",
-          "app_token": "231312rfjsa;dkfjsldkjf",
-          "thumbnail_url": "http://file.com/31231298301289",
-          "url": "http://file.com/31231298301289",
-          "note": "This is a comment",
+          "app_token": "YgAznLLDEDZhOzkmyTI7RwDy2pnC9RiXFu9sXFOtLsdqbSJVuud9avjlsDzF",
+          "thumbnail_url": "https://files.dxr.cloud/YgAznLLDEDZhOzkmyTI7RwDy2pnC9RiXFu9sXFOtLsdqbSJVuud9avjldwAP",
+          "url": "https://files.dxr.cloud/YgAznLLDEDZhOzkmyTI7RwDy2pnC9RiXFu9sXFOtLsdqbSJVuud9avjlsDzF",
+          "note": "Front view of garden after work is done.",
           "lat": 23.4324324,
           "lng": 23.4324324,
           "event_time": 1431936812,
