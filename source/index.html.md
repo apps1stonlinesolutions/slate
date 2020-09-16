@@ -3273,17 +3273,6 @@ curl\
           "text": "i have a big dog"
         }
       ],
-      "client_attached_files": [
-        {
-          "url": "http://image.url.jpg",
-          "token": "_ft5_cfq_o7_t2_r_iq_ywj_h_wq3s_vrp_r_r7f9_yyy85_p8a_pgc_m_y_c5ywke1f_v_pe_btfeys_p",
-          "note": ""
-        },
-        {
-          "url": "http://image.url.jpg",
-          "token": "_ft5_cfq_o7_t2_r_iq_ywj_h_wq3s_vrp_r_r7f9_yyy85_p8a_pgc_m_y_c5ywke1f_v_pe_btfeys_p"
-        }
-      ],
       "documents": [
         {
           "type": 1,
@@ -3416,6 +3405,42 @@ Parameter | Type   | Default | Description
 -------- | ---------- | ---- | -------
 `query.from_date` | *integer* | *0* | UTC time stamp to filter bookings by timeslot after a date
 `query.to_date` | *integer* | *today* | UTC time stamp to filter bookings by timeslot before a date
+
+
+## Booking Events
+
+
+```shell
+curl\
+ -X POST\
+  -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "X-Profile: {{PROFILE_ID}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+-d '{
+      "type": 210,
+      "lng": 23.4324335,
+      "lng": 23.4324324,
+      "event_time": 1431936812
+}
+'\
+ "https://{{BASE_URL}}/v2/client/bookings/123/events"
+```
+
+
+Events related to a booking.
+
+`"path": "bookings/{{booking_id}}/events"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`type` | *integer* | Check unit job [events](#jobs)
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
 
 
 ## Unit status
@@ -5160,7 +5185,7 @@ Parameter | Type | Description
 `permissions.can_confirm.from` | *integer* | Time from which the permission is `true`
 `permissions.can_confirm.to` | *integer* | Time to which the permission is `true`
 `client_contacts` | *array client_contacts* | Phone numbers client provided for contact
-`events.type` | *integer* | *<b>1</b> - Checkin*<br>*<b>2</b> - Checkout*<br>*<b>7</b> - View*<br>*<b>8</b> - Confirm*<br>*<b>12</b> - Arrive*<br>*<b>13</b> - Depart*<br>*<b>110</b> - Arrival timeframe*
+`events.type` | *integer* | *<b>1</b> - Checkin*<br>*<b>2</b> - Checkout*<br>*<b>7</b> - View*<br>*<b>8</b> - Confirm*<br>*<b>12</b> - Arrive*<br>*<b>13</b> - Depart*<br>*<b>110</b> - Arrival timeframe*<br>*<b>200</b> - Request screenshot*<br>*<b>210</b> - Screenshot taken*
 `performed` | *integer* | *<b>0</b> - No checkout or auto performed*<br>*<b>1</b> - Checked out*<br>*<b>2</b> - Auto performed (24h passed)*
 `client` | *object* | Client details
 `paid` | *boolean* | Flag indicating if client is charged
@@ -7351,6 +7376,58 @@ curl\
 }
 ```
 
+> The above request success response for DTO with request is:
+
+```json
+{
+  "data": [
+    {
+      "id": 38,
+      "status": 1000,
+      "action": 1000,
+      "message": null,
+      "sound": "default",
+      "payload": {
+        "type": "request",
+        "object": {
+          "path" : "bookings/123/comments",
+          "method" : "POST",
+          "data" : {
+            "text": "Hello"
+          }
+        }
+      },
+      "created_at": 1497859985
+    }
+  ]
+}
+```
+
+> The above request success response for DTO with resource is:
+
+```json
+{
+  "data": [
+    {
+      "id": 38,
+      "status": 1000,
+      "action": 1000,
+      "message": null,
+      "sound": "default",
+      "payload": {
+        "type": "resource",
+        "object": {
+          "path": "jobs/123/events",
+            "data": {
+              "type": "210"
+            }
+        },
+      "created_at": 1497859985
+      }
+    }
+  ]
+}
+```
 
 History of all pushes sent to unit.
 
@@ -7362,7 +7439,7 @@ Parameter | Type | Description
 -------- | ----- | -------
 `id` | *integer* | Unique identifier
 `status` | *integer* | *<b>500</b> - Pending*<br>*<b>1000</b> - Sent*<br>*<b>1500</b> - Failed*<br>*<b>2000</b> - Delivered*<br>*<b>3000</b> - Seen*
-`action` | *integer* | Describes what action should be triggered on the unit. Pushes can be regular (with sound and message) or silent (waking up the app, no sound or message)<br><br>*<b>1</b> - Update jobs (silent)*<br>*<b>2</b> - Popup message (regular)*<br>*<b>3</b> - Inbox message (regular)*<br>*<b>5</b> - Update location (silent)*<br>*<b>6</b> - New job (silent)*<br>*<b>7</b> - New job (regular)*<br>*<b>8</b> - Open service (regular)*<br>*<b>9</b> - Open chat (regular)*<br>*<b>10</b> - New rating (regular)*<br>*<b>11</b> - Offer with promo code (regular)*<br>*<b>12</b> - Custom*<br>*<b>13</b> - New bonus (regular)*<br>*<b>14</b> - Added new job to schedule (regular)*<br>*<b>15</b> - Removed job from schedule (regular)*<br>*<b>16</b> - Job appointment time changed (regular)*<br>*<b>17</b> - Job price changed (regular)*<br>*<b>18</b> - Job payment method changed (regular)*<br>*<b>19</b> - Job payment status changed (regular)*<br>*<b>20</b> - Job new comment (regular)*<br>*<b>25</b> - New task (regular)*<br>*<b>26</b> - New note on a task (regular)*<br>*<b>100</b> - Upload database to server (silent)*<br>*<b>210</b> - Call event ring*<br>*<b>220</b> - Call event ringing*<br>*<b>230</b> - Call event pick up*<br>*<b>240</b> - Call event hang up*<br>*<b>250</b> - Call event room created*<br>*<b>260</b> - Call event connected*<br>*<b>270</b> - Call event disconnected*
+`action` | *integer* | Describes what action should be triggered on the unit. Pushes can be regular (with sound and message) or silent (waking up the app, no sound or message)<br><br>*<b>1</b> - Update jobs (silent)*<br>*<b>2</b> - Popup message (regular)*<br>*<b>3</b> - Inbox message (regular)*<br>*<b>5</b> - Update location (silent)*<br>*<b>6</b> - New job (silent)*<br>*<b>7</b> - New job (regular)*<br>*<b>8</b> - Open service (regular)*<br>*<b>9</b> - Open chat (regular)*<br>*<b>10</b> - New rating (regular)*<br>*<b>11</b> - Offer with promo code (regular)*<br>*<b>12</b> - Custom*<br>*<b>13</b> - New bonus (regular)*<br>*<b>14</b> - Added new job to schedule (regular)*<br>*<b>15</b> - Removed job from schedule (regular)*<br>*<b>16</b> - Job appointment time changed (regular)*<br>*<b>17</b> - Job price changed (regular)*<br>*<b>18</b> - Job payment method changed (regular)*<br>*<b>19</b> - Job payment status changed (regular)*<br>*<b>20</b> - Job new comment (regular)*<br>*<b>25</b> - New task (regular)*<br>*<b>26</b> - New note on a task (regular)*<br>*<b>100</b> - Upload database to server (silent)*<br>*<b>210</b> - Call event ring*<br>*<b>220</b> - Call event ringing*<br>*<b>230</b> - Call event pick up*<br>*<b>240</b> - Call event hang up*<br>*<b>250</b> - Call event room created*<br>*<b>260</b> - Call event connected*<br>*<b>270</b> - Call event disconnected*<br>*<b>1000</b> - Data Transfer Object (DTO)*
 `message` | *string* | Push notification text
 `sound` | *string* | Push notification sound file name
 `payload` <br>*dynamic* | *object* | Custom data based on action
