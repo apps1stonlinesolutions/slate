@@ -8435,3 +8435,20 @@ Applied on endpoints:
 * [Booking service](#bookings)
 * [Booking transaction service](#booking-transacations)
 
+
+## Price Modifiers
+
+Return number value for text fields (type:4)
+
+### Modifications
+
+Application | Operator | Build | Description
+-------- | ----- | ------- | -------
+ *BFantastic iOS* | <= | 676 | Return int instead of string
+ *BFantastic Android* | <= | 888 | Return int instead of string
+ 
+
+Applied on endpoints:
+
+* [job.services_price_modifiers.price_modifiers](#jobs)
+
