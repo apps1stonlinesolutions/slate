@@ -8462,7 +8462,7 @@ Removes warnings that contain `payload`.
 Application | Operator | Build | Description
 -------- | ----- | ------- | -------
  *GoFantastic iOS* | <= | 1449 | Removes the warning from the response
- *USPAAH iOS* | <= | 1447 | Removes the warning from the response
+ *USPAAH iOS* | <= | 1449 | Removes the warning from the response
  
 
 Applied on endpoints:
