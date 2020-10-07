@@ -4762,6 +4762,67 @@ Parameter | Type | Description
 `created_at` | *integer* | Timestamp of unit registration
 
 
+
+## Virtual badge
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/unit/virtual_badge"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": {
+    "front_background_image_url": "www.image.url",
+    "rear_background_image_url": "www.image.url",
+    "avatar_image_url": "www.image.bg",
+    "full_name": "John Doe",
+    "main_skill": "DOMESTIC CLEANER",
+    "rating": 4.23,
+    "additional_skills": [
+      {
+        "icon_url": "www.icon.url",
+        "name": "Oven Cleaning",
+        "sort": 100
+      }
+    ],
+    "compliments": [
+      {
+        "name": "Polite",
+        "count_formatted": "10"
+      }
+    ],
+    "qr_code_image_url": "www.image.url"
+  }
+}
+```
+
+
+Virtual badge identifying the pro and showing basic stats.
+
+`"path": "virtual_badge"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`front_background_image_url` | *string* | Image with front of the plastic badge, loop and logo
+`rear_background_image_url` | *string* | Image with back of the plastic badge, loop and logo
+`avatar_image_url` | *string* | Pro image
+`full_name` | *string* | Pro first name and last name
+`main_skill` | *string* | Pro main profile (Gardener, Handyman, Oven Cleaner etc.)
+`rating` | *double* | Rating between 4.0 and 5.0
+`additional_skills` | *array\<skill\>* | Pro skills
+`compliments` | *array\<compliment\>* | Compliments left from client upon rating a service
+`qr_code_image_url` | *string* | QR code for booking with Pro voucher
+
+
 ## Request update phone
 
 
