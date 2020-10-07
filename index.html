@@ -7101,6 +7101,104 @@ curl<span class="se">\</span>
 </tr>
 </tbody></table>
 
+<h2 id="virtual-badge">Virtual badge</h2>
+<pre class="highlight shell"><code>curl<span class="se">\</span>
+ -X GET<span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span><span class="se">\</span>
+ -H <span class="s2">"X-Application: {{APPLICATION_TOKEN}}"</span><span class="se">\</span>
+ -H <span class="s2">"Authorization: {{AUTHORIZATION_TOKEN}}"</span><span class="se">\</span>
+<span class="s2">"https://{{BASE_URL}}/v2/unit/virtual_badge"</span>
+</code></pre>
+
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"front_background_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.image.url"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"rear_background_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.image.url"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"avatar_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.image.bg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"main_skill"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOMESTIC CLEANER"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.23</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_skills"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.icon.url"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oven Cleaning"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"compliments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Polite"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"count_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"qr_code_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.image.url"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Virtual badge identifying the pro and showing basic stats.</p>
+
+<p><code class="prettyprint">&quot;path&quot;: &quot;virtual_badge&quot;</code></p>
+
+<h3 id="response-parameters">Response parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">front_background_image_url</code></td>
+<td><em>string</em></td>
+<td>Image with front of the plastic badge, loop and logo</td>
+</tr>
+<tr>
+<td><code class="prettyprint">rear_background_image_url</code></td>
+<td><em>string</em></td>
+<td>Image with back of the plastic badge, loop and logo</td>
+</tr>
+<tr>
+<td><code class="prettyprint">avatar_image_url</code></td>
+<td><em>string</em></td>
+<td>Pro image</td>
+</tr>
+<tr>
+<td><code class="prettyprint">full_name</code></td>
+<td><em>string</em></td>
+<td>Pro first name and last name</td>
+</tr>
+<tr>
+<td><code class="prettyprint">main_skill</code></td>
+<td><em>string</em></td>
+<td>Pro main profile (Gardener, Handyman, Oven Cleaner etc.)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">rating</code></td>
+<td><em>double</em></td>
+<td>Rating between 4.0 and 5.0</td>
+</tr>
+<tr>
+<td><code class="prettyprint">additional_skills</code></td>
+<td><em>array&lt;skill&gt;</em></td>
+<td>Pro skills</td>
+</tr>
+<tr>
+<td><code class="prettyprint">compliments</code></td>
+<td><em>array&lt;compliment&gt;</em></td>
+<td>Compliments left from client upon rating a service</td>
+</tr>
+<tr>
+<td><code class="prettyprint">qr_code_image_url</code></td>
+<td><em>string</em></td>
+<td>QR code for booking with Pro voucher</td>
+</tr>
+</tbody></table>
+
 <h2 id="request-update-phone">Request update phone</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
  -X POST<span class="se">\</span>
