@@ -4779,11 +4779,8 @@ curl\
 ```json
 {
   "data": {
-    "front_background_image_url": "www.image.url",
-    "rear_background_image_url": "www.image.url",
-    "avatar_image_url": "www.image.bg",
-    "full_name": "John Doe",
-    "main_skill": "DOMESTIC CLEANER",
+    "name": "John Doe",
+    "contractor_unit_type_id": "DOMESTIC CLEANER",
     "rating": 4.23,
     "additional_skills": [
       {
@@ -4798,7 +4795,12 @@ curl\
         "count_formatted": "10"
       }
     ],
-    "qr_code_image_url": "www.image.url"
+    "image_urls": {
+      "front": "www.image.url",
+      "rear": "www.image.url",
+      "avatar": "www.image.bg",
+      "qr_code": "www.image.url"
+    }
   }
 }
 ```
@@ -4812,15 +4814,15 @@ Virtual badge identifying the pro and showing basic stats.
 
 Parameter | Type | Description
 -------- | ----- | -------
-`front_background_image_url` | *string* | Image with front of the plastic badge, loop and logo
-`rear_background_image_url` | *string* | Image with back of the plastic badge, loop and logo
-`avatar_image_url` | *string* | Pro image
-`full_name` | *string* | Pro first name and last name
-`main_skill` | *string* | Pro main profile (Gardener, Handyman, Oven Cleaner etc.)
+`name` | *string* | Pro first name and last name
+`contractor_unit_type_id` | *string* | Pro main profile (Gardener, Handyman, Oven Cleaner etc.)
 `rating` | *double* | Rating between 4.0 and 5.0
 `additional_skills` | *array\<skill\>* | Pro skills
 `compliments` | *array\<compliment\>* | Compliments left from client upon rating a service
-`qr_code_image_url` | *string* | QR code for booking with Pro voucher
+`image_urls.front` | *string* | Image with front of the plastic badge, loop and logo
+`image_urls.rear` | *string* | Image with back of the plastic badge, loop and logo
+`image_urls.avatar` | *string* | Pro image
+`image_urls.qr_code` | *string* | QR code for booking with Pro voucher
 
 
 ## Request update phone
