@@ -7115,11 +7115,8 @@ curl<span class="se">\</span>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"front_background_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.image.url"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"rear_background_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.image.url"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"avatar_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.image.bg"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"main_skill"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOMESTIC CLEANER"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"contractor_unit_type_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOMESTIC CLEANER"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.23</span><span class="p">,</span><span class="w">
     </span><span class="nt">"additional_skills"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -7134,7 +7131,12 @@ curl<span class="se">\</span>
         </span><span class="nt">"count_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"qr_code_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.image.url"</span><span class="w">
+    </span><span class="nt">"image_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"front"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.image.url"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"rear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.image.url"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.image.bg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"qr_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.image.url"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -7153,27 +7155,12 @@ curl<span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">front_background_image_url</code></td>
-<td><em>string</em></td>
-<td>Image with front of the plastic badge, loop and logo</td>
-</tr>
-<tr>
-<td><code class="prettyprint">rear_background_image_url</code></td>
-<td><em>string</em></td>
-<td>Image with back of the plastic badge, loop and logo</td>
-</tr>
-<tr>
-<td><code class="prettyprint">avatar_image_url</code></td>
-<td><em>string</em></td>
-<td>Pro image</td>
-</tr>
-<tr>
-<td><code class="prettyprint">full_name</code></td>
+<td><code class="prettyprint">name</code></td>
 <td><em>string</em></td>
 <td>Pro first name and last name</td>
 </tr>
 <tr>
-<td><code class="prettyprint">main_skill</code></td>
+<td><code class="prettyprint">contractor_unit_type_id</code></td>
 <td><em>string</em></td>
 <td>Pro main profile (Gardener, Handyman, Oven Cleaner etc.)</td>
 </tr>
@@ -7193,7 +7180,22 @@ curl<span class="se">\</span>
 <td>Compliments left from client upon rating a service</td>
 </tr>
 <tr>
-<td><code class="prettyprint">qr_code_image_url</code></td>
+<td><code class="prettyprint">image_urls.front</code></td>
+<td><em>string</em></td>
+<td>Image with front of the plastic badge, loop and logo</td>
+</tr>
+<tr>
+<td><code class="prettyprint">image_urls.rear</code></td>
+<td><em>string</em></td>
+<td>Image with back of the plastic badge, loop and logo</td>
+</tr>
+<tr>
+<td><code class="prettyprint">image_urls.avatar</code></td>
+<td><em>string</em></td>
+<td>Pro image</td>
+</tr>
+<tr>
+<td><code class="prettyprint">image_urls.qr_code</code></td>
 <td><em>string</em></td>
 <td>QR code for booking with Pro voucher</td>
 </tr>
