@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>12 Oct 2020 - Added</br>membership_details_screen and</br>compatibility for it</li>
             <li>8 Sep 2020 - Added</br>credit_on_boarding and</br>my_credits_screen</li>
             <li>3 Sep 2020 - Added</br>Configurations section</li>
             <li>1 Sep 2020 - Added</br>purchase_order_number</li>
@@ -6000,6 +6001,10 @@ curl<span class="se">\</span>
 <li><a href="#booking-process-warnings">Booking process warning</a></li>
 <li><a href="#payment-errors">Payment errors</a></li>
 </ul>
+
+<h2 id="booking-transactions-memberhsip-content">Booking transactions memberhsip content</h2>
+
+<p>Check OpenAPI specification <a href="https://app.swaggerhub.com/apis-docs/apps_1stonlinesolutions/ServiceOS/2.2#/Booking%20Process/bookingTransactionMembershipContent">here</a></p>
 
 <h2 id="leave-booking-process">Leave booking process</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
@@ -12388,6 +12393,40 @@ curl<span class="se">\</span>
 
 <ul>
 <li>all endpoints</li>
+</ul>
+
+<h2 id="booking-process">Booking process</h2>
+
+<p>Booking process business logic modifications</p>
+
+<h3 id="modifications">Modifications</h3>
+
+<table><thead>
+<tr>
+<th>Application</th>
+<th>Operator</th>
+<th>Build</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>GoFantastic iOS</em></td>
+<td>&lt;=</td>
+<td>1449</td>
+<td>Static membership price (not based on service)</td>
+</tr>
+<tr>
+<td><em>GoFantastic Android</em></td>
+<td>&lt;=</td>
+<td>1472</td>
+<td>Static membership price (not based on service)</td>
+</tr>
+</tbody></table>
+
+<p>Applied on endpoints:</p>
+
+<ul>
+<li><a href="#booking-transactions-memberhsip-content">Booking transaction membership content</a></li>
 </ul>
 
           <h1 id="errors">Errors</h1>
