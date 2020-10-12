@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 12 Oct 2020 - Added</br>membership_details_screen and</br>compatibility for it
   - 8 Sep 2020 - Added</br>credit_on_boarding and</br>my_credits_screen
   - 3 Sep 2020 - Added</br>Configurations section
   - 1 Sep 2020 - Added</br>purchase_order_number
@@ -4030,6 +4031,11 @@ This endpoint returns:
 * [Booking process errors](#booking-process-errors)
 * [Booking process warning](#booking-process-warnings)
 * [Payment errors](#payment-errors)
+
+
+## Booking transactions memberhsip content
+
+Check OpenAPI specification [here](https://app.swaggerhub.com/apis-docs/apps_1stonlinesolutions/ServiceOS/2.2#/Booking%20Process/bookingTransactionMembershipContent)
 
 
 ## Leave booking process
@@ -8531,4 +8537,21 @@ Application | Operator | Build | Description
 Applied on endpoints:
 
 * all endpoints
+
+
+## Booking process
+
+Booking process business logic modifications
+
+### Modifications
+
+Application | Operator | Build | Description
+-------- | ----- | ------- | -------
+ *GoFantastic iOS* | <= | 1449 | Static membership price (not based on service)
+ *GoFantastic Android* | <= | 1472 | Static membership price (not based on service)
+ 
+
+Applied on endpoints:
+
+* [Booking transaction membership content](#booking-transactions-memberhsip-content)
 
