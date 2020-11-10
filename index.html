@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>10 Nov 2020 - Added</br>three_d_security_two_on_purchase</li>
             <li>12 Oct 2020 - Added</br>membership_details_screen</li>
             <li>8 Sep 2020 - Added</br>credit_on_boarding and</br>my_credits_screen</li>
             <li>3 Sep 2020 - Added</br>Configurations section</li>
@@ -3354,7 +3355,8 @@ Accepted params:
       </span><span class="nt">"security_requirements"</span><span class="p">:</span><span class="w">
         </span><span class="p">[</span><span class="w">
           </span><span class="s2">"cvc"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"three_d_security_two"</span><span class="w">
+          </span><span class="s2">"three_d_security_two"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"three_d_security_two_on_purchase"</span><span class="w">
         </span><span class="p">],</span><span class="w">
       </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"braintree_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rRnvEsbDVxbwdtw1BhjntKeYyvn6b96U"</span><span class="p">,</span><span class="w">
@@ -3423,7 +3425,7 @@ Accepted params:
 <tr>
 <td><code class="prettyprint">security_requirements</code></td>
 <td><em>array&lt;string&gt;</em></td>
-<td><em><b>three_d_security_two</b> - 3D Security 2.0 required to use this payment method</em></td>
+<td><em><b>three_d_security_two</b> - 3D Security 2.0 required to use this payment method for card creation</em><br/><em><b>three_d_security_two_on_purchase</b> - 3D Security 2.0 required on purchase when using card created with this payment method</em></td>
 </tr>
 <tr>
 <td><code class="prettyprint">data</code><br><em>optional</em></td>
