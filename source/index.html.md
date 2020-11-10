@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 10 Nov 2020 - Added</br>three_d_security_two_on_purchase
   - 12 Oct 2020 - Added</br>membership_details_screen
   - 8 Sep 2020 - Added</br>credit_on_boarding and</br>my_credits_screen
   - 3 Sep 2020 - Added</br>Configurations section
@@ -2252,7 +2253,8 @@ curl\
       "security_requirements":
         [
           "cvc",
-          "three_d_security_two"
+          "three_d_security_two",
+          "three_d_security_two_on_purchase"
         ],
       "data": {
         "braintree_key": "rRnvEsbDVxbwdtw1BhjntKeYyvn6b96U",
@@ -2294,7 +2296,7 @@ Parameter | Type | Description
 `type` | *string* | *<b>None</b> - No processing needed (e.g. Cash payment)*<br>*<b>Stripe</b> - Card payment via Stripe*<br>*<b>Braintree</b> - Card payment via Braintree*<br>*<b>PayPal</b> - PayPal via Braintree*<br>*<b>Checkoutcom</b> - Card payment via Checkout*
 `payment_provider_id (deprecated)` | *integer* | Identifier for the the account used for the payment method (e.g. Stripe UK, Stripe AUS etc.)
 `vendor` | *string* | Vendor for providing payment details:<br/>*<b>apple_pay</b> - Apple Pay*
-`security_requirements` | *array\<string\>* | *<b>three_d_security_two</b> - 3D Security 2.0 required to use this payment method*
+`security_requirements` | *array\<string\>* | *<b>three_d_security_two</b> - 3D Security 2.0 required to use this payment method for card creation*<br/>*<b>three_d_security_two_on_purchase</b> - 3D Security 2.0 required on purchase when using card created with this payment method*
 `data`<br>*optional* | *object* | Based on the payment provider different data may be provided (such as keys, tokens etc.)
 `data.stripe_key`<br>*optional* | *string* | Stripe API authorization key
 `data.paypal_key`<br>*optional* | *string* | PayPal Braintree authorization key
