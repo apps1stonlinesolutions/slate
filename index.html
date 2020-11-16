@@ -9633,6 +9633,24 @@ curl<span class="se">\</span>
  <span class="s2">"https://{{BASE_URL}}/v2/unit/jobs/123/call_client"</span>
 </code></pre>
 
+<blockquote>
+<p>The above request success response is:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+4407123456789"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"debug_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
 <p>Units can call clients using <a href="#jobs">client contacts</a> from job</p>
 
 <p><code class="prettyprint">&quot;path&quot;: &quot;call_client&quot;</code>
@@ -9670,11 +9688,24 @@ curl<span class="se">\</span>
 </tr>
 </tbody></table>
 
-<p>This endpoint returns:</p>
+<h3 id="response-parameters">Response parameters</h3>
 
-<ul>
-<li><a href="#common-errors">Common errors</a></li>
-</ul>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">phone</code></td>
+<td><em>string</em></td>
+<td>Client phone number to dial directly</td>
+</tr>
+</tbody></table>
+
+<p>This endpoint returns:
+* <a href="#common-errors">Common errors</a></p>
 
 <h2 id="video-call-client">Video call client</h2>
 <pre class="highlight shell"><code>curl<span class="se">\</span>
