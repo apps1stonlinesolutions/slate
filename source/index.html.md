@@ -6533,6 +6533,24 @@ curl\
  "https://{{BASE_URL}}/v2/unit/jobs/123/call_client"
 ```
 
+> The above request success response is:
+
+```json
+{
+  "data": {
+    "phone": "+4407123456789"
+  },
+  "success": [
+    {
+      "code": 2000,
+      "message": "Success",
+      "debug_message": null,
+      "debug_id": null
+    }
+  ]
+}
+```
+
 Units can call clients using [client contacts](#jobs) from job
 
 `"path": "call_client"`
@@ -6548,8 +6566,13 @@ Parameter | Type | Description
 `client_contact_type`<br>*required* | *integer* | Identifier for client [contact](#jobs) type from job
 `booking_id`<br>*optional* | *integer* | Identifier for job unit wants to call client of. If endpoint called directly (not trough job) booking id is required.
 
-This endpoint returns:
+### Response parameters
 
+Parameter | Type | Description
+-------- | ----- | -------
+`phone` | *string* | Client phone number to dial directly
+
+This endpoint returns:
 * [Common errors](#common-errors)
 
 
