@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 14 Jan 2021 - Added</br>job/123/actions</br>added checklist id
   - 10 Nov 2020 - Added</br>three_d_security_two_on_purchase
   - 12 Oct 2020 - Added</br>membership_details_screen
   - 8 Sep 2020 - Added</br>credit_on_boarding and</br>my_credits_screen
@@ -5775,7 +5776,10 @@ curl\
 {
   "data": [
     {
-      "type": 1,
+      "id": 1,
+      "type": 20,
+      "title": "Boiler installation check",
+      "logic_js": "func execute() { }",
       "choices": [
         1,
         2
@@ -5793,13 +5797,15 @@ Checklists for performing a job
 
 Parameter | Type | Description
 -------- | ----- | -------
-`type` | *integer* | *<b>10</b> - After checkin*<br>*<b>20</b> - Before checkout*<br>*<b>30</b> - Daily quality check*
+`id` | *integer* | Unique identifier
+`type` | *integer* | *<b>10</b> - After checkin*<br>*<b>20</b> - Before checkout*<br>*<b>30</b> - Daily quality check*<br>*<b>40</b> - After job start*
+`title` | *string* | Checklist title
+`logic_js` | *string* | JavaScript that holds a function to alter the content of the checklist when filling
 `choices` | *array*\<[choices](#choices)\> | Checklist questions
 `choices.required` | *boolean* | Should question be answered to send the checklist
 `choices.title` | *string* | Checklist question
 `choices.choice_items` | *array\<[choice_items](#choice-items)\>* | Question answers
 `choices.choice_items.title` | *string* | Checklist question answer
-
 
 
 ## Checklist reports
@@ -5820,7 +5826,8 @@ curl\
 {
   "data": [
     {
-      "type": 1,
+      "type": 20,
+      "checklist_id": 1,
       "event_time": 1495702059,
       "choice_items": [
         {
@@ -5848,10 +5855,79 @@ Checklist answers after filling checklist.
 Parameter | Type | Description
 -------- | ----- | -------
 `type` | *integer* | Checklist type (see [checklists](#checklists))
+`checklist_id` | *integer* | Checklist identifier
 `event_time` | *integer* | Timestamp when the event ocurred and was saved.
 `choice_items` | *array* | Checklist answers
 `choice_items.id` | *integer* | Unique identifier
 `choice_items.value` | *string/array* | Answer user entered
+
+
+## Actions
+
+```shell
+curl\
+ -X GET\
+ -H "Content-Type: application/json"\
+ -H "X-Application: {{APPLICATION_TOKEN}}"\
+ -H "Authorization: {{AUTHORIZATION_TOKEN}}"\
+"https://{{BASE_URL}}/v2/jobs/123/actions"
+```
+
+> The above request success response is:
+
+```json
+{
+  "data": [
+    {
+      "positions": [
+        "below_checkin"
+      ],
+      "available": [
+        "after_checkin"
+      ],
+      "title": "Fill this checklist",
+      "icon_url": "www.image.com/tick.png",
+      "link": {
+        "type": "native",
+        "url": "checklists/123"
+      }
+    },
+    {
+      "positions": [
+        "below_checkin"
+      ],
+      "available": [
+        "after_checkin"
+      ],
+      "title": "Fill this checklist",
+      "icon_url": "www.image.com/tick.png",
+      "link": {
+        "type": "webview",
+        "url": "www.action.com"
+      }
+    }
+  ]
+}
+```
+
+Client ratings for the unit.
+
+`"path": "ratings"`
+
+### Response parameters
+
+Parameter | Type | Description
+-------- | ----- | -------
+`positions` | *array\<string\>* | List of positions to show the action:<br>*<b>below_checkin</b> - Bellow the checkin button*
+`available` | *array\<string\>* | List of actions to determine wether to show the action:<br>*<b>after_checkin</b> - After the job is checked in*
+`title` | *string* | Title of the action
+`icon_url` | *string* | Image url
+`link.type` | *string* | Where to open the link::<br>*<b>native</b> - Open as deep link in the app*<br>*<b>webview</b> - Open as http link in webview*<br>*<b>browser</b> - Open as http link in a browser*
+`link.url` | *string* | Deep link or web link to
+
+This endpoint returns:
+
+* [Common errors](#common-errors)
 
 
 ## Ratings
