@@ -5880,7 +5880,7 @@ curl\
   "data": [
     {
       "positions": [
-        "below_checkin"
+        "job_actions"
       ],
       "available": [
         "after_checkin"
@@ -5889,12 +5889,12 @@ curl\
       "icon_url": "www.image.com/tick.png",
       "link": {
         "type": "native",
-        "url": "checklists/123"
+        "url": "jobs/123/checklists/123"
       }
     },
     {
       "positions": [
-        "below_checkin"
+        "job_actions"
       ],
       "available": [
         "after_checkin"
@@ -5918,7 +5918,7 @@ Client ratings for the unit.
 
 Parameter | Type | Description
 -------- | ----- | -------
-`positions` | *array\<string\>* | List of positions to show the action:<br>*<b>below_checkin</b> - Bellow the checkin button*
+`positions` | *array\<string\>* | List of positions to show the action:<br>*<b>job_actions</b> - Bellow the checkin button*
 `available` | *array\<string\>* | List of actions to determine wether to show the action:<br>*<b>after_checkin</b> - After the job is checked in*
 `title` | *string* | Title of the action
 `icon_url` | *string* | Image url
