@@ -3046,7 +3046,7 @@ curl\
     "description": "Oven Cleaning, #1948028SYS",
     "amount_formatted": "+ £15.00",
     "created_at_formatted": "27 Aug 2020",
-    "expires_at_formatted": "Expires: 27 Aug 2020",
+    "expires_at_formatted": "Expiry: 27 Aug 2020",
     "type": "earned",
     "sort": 100
   },
@@ -3055,7 +3055,7 @@ curl\
     "description": "Referral bonus received",
     "amount_formatted": "+ £15.00",
     "created_at_formatted": "27 Aug 2020",
-    "expires_at_formatted": "Expires: 27 Aug 2020",
+    "expires_at_formatted": "Expiry: 27 Aug 2020",
     "type": "pending",
     "sort": 200
   },
@@ -3064,7 +3064,7 @@ curl\
     "description": "One-Off Cleaning, Oven Cleaning, #1948028SYS",
     "amount_formatted": "- £20.00",
     "created_at_formatted": "27 Aug 2020",
-    "expires_at_formatted": "Expires: 27 Aug 2020",
+    "expires_at_formatted": "Expiry: 27 Aug 2020",
     "type": "spent",
     "sort": 300
   },
@@ -3073,7 +3073,7 @@ curl\
     "description": null,
     "amount_formatted": "£20.00",
     "created_at_formatted": "27 Aug 2020",
-    "expires_at_formatted": "Expires: 27 Aug 2020",
+    "expires_at_formatted": "Expiry: 27 Aug 2020",
     "type": "earned",
     "sort": 400
   }
@@ -3082,7 +3082,7 @@ curl\
     "description": null,
     "amount_formatted": "£20.00",
     "created_at_formatted": "27 Aug 2020",
-    "expires_at_formatted": "Expires: 27 Aug 2020",
+    "expires_at_formatted": "Expiry: 27 Aug 2020",
     "type": "expired",
     "sort": 400
   }
