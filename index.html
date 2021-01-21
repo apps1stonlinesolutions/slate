@@ -111,6 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li>Change log</li>
+            <li>21 Jan 2021 - Added</br>credit_activity expired</li>
             <li>14 Jan 2021 - Added</br>job/123/actions</br>added checklist id</li>
             <li>10 Nov 2020 - Added</br>three_d_security_two_on_purchase</li>
             <li>12 Oct 2020 - Added</br>membership_details_screen</li>
@@ -4625,6 +4626,7 @@ Accepted params:
     </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oven Cleaning, #1948028SYS"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"amount_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+ £15.00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"created_at_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27 Aug 2020"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expires_at_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Expires: 27 Aug 2020"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"earned"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -4633,6 +4635,7 @@ Accepted params:
     </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Referral bonus received"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"amount_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+ £15.00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"created_at_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27 Aug 2020"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expires_at_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Expires: 27 Aug 2020"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -4641,6 +4644,7 @@ Accepted params:
     </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One-Off Cleaning, Oven Cleaning, #1948028SYS"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"amount_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"- £20.00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"created_at_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27 Aug 2020"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expires_at_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Expires: 27 Aug 2020"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spent"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -4649,7 +4653,17 @@ Accepted params:
     </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nt">"amount_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£20.00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"created_at_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27 Aug 2020"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expires_at_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Expires: 27 Aug 2020"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"earned"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer Service Credit"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"amount_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"£20.00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27 Aug 2020"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expires_at_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Expires: 27 Aug 2020"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"expired"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="w">
   </span><span class="p">}</span><span class="w">
  </span><span class="p">],</span><span class="w">
@@ -4693,6 +4707,11 @@ Accepted params:
 <td><code class="prettyprint">created_at_formatted</code></td>
 <td><em>string</em></td>
 <td>When the activity occured</td>
+</tr>
+<tr>
+<td><code class="prettyprint">expires_at_formatted</code></td>
+<td><em>string</em></td>
+<td>When the credit expires</td>
 </tr>
 <tr>
 <td><code class="prettyprint">type</code></td>
