@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 21 Jan 2021 - Added</br>credit_activity expired
   - 14 Jan 2021 - Added</br>job/123/actions</br>added checklist id
   - 10 Nov 2020 - Added</br>three_d_security_two_on_purchase
   - 12 Oct 2020 - Added</br>membership_details_screen
@@ -3045,6 +3046,7 @@ curl\
     "description": "Oven Cleaning, #1948028SYS",
     "amount_formatted": "+ £15.00",
     "created_at_formatted": "27 Aug 2020",
+    "expires_at_formatted": "Expires: 27 Aug 2020",
     "type": "earned",
     "sort": 100
   },
@@ -3053,6 +3055,7 @@ curl\
     "description": "Referral bonus received",
     "amount_formatted": "+ £15.00",
     "created_at_formatted": "27 Aug 2020",
+    "expires_at_formatted": "Expires: 27 Aug 2020",
     "type": "pending",
     "sort": 200
   },
@@ -3061,6 +3064,7 @@ curl\
     "description": "One-Off Cleaning, Oven Cleaning, #1948028SYS",
     "amount_formatted": "- £20.00",
     "created_at_formatted": "27 Aug 2020",
+    "expires_at_formatted": "Expires: 27 Aug 2020",
     "type": "spent",
     "sort": 300
   },
@@ -3069,7 +3073,17 @@ curl\
     "description": null,
     "amount_formatted": "£20.00",
     "created_at_formatted": "27 Aug 2020",
+    "expires_at_formatted": "Expires: 27 Aug 2020",
     "type": "earned",
+    "sort": 400
+  }
+  {
+    "title": "Customer Service Credit",
+    "description": null,
+    "amount_formatted": "£20.00",
+    "created_at_formatted": "27 Aug 2020",
+    "expires_at_formatted": "Expires: 27 Aug 2020",
+    "type": "expired",
     "sort": 400
   }
  ],
@@ -3093,6 +3107,7 @@ Parameter | Type | Description
 `description` | *string* | Details on the activity (e.g. booking details)
 `amount_formatted` | *string* | Credit amount
 `created_at_formatted` | *string* | When the activity occured
+`expires_at_formatted` | *string* | When the credit expires
 `type` | *string* | *<b>earned</b> - earned credit*<br>*<b>spent</b> - used credit*<br>*<b>pending</b> - credit to be earned*
 
 
