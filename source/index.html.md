@@ -3108,7 +3108,7 @@ Parameter | Type | Description
 `amount_formatted` | *string* | Credit amount
 `created_at_formatted` | *string* | When the activity occured
 `expires_at_formatted` | *string* | When the credit expires
-`type` | *string* | *<b>earned</b> - earned credit*<br>*<b>spent</b> - used credit*<br>*<b>pending</b> - credit to be earned*
+`type` | *string* | *<b>earned</b> - earned credit*<br>*<b>spent</b> - used credit*<br>*<b>pending</b> - credit to be earned*<br>*<b>expired</b> - credit is expired*
 
 
 This endpoint returns:
