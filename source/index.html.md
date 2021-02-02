@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 2 Feb 2021 - Added</br>membership_service_id in configuration
   - 21 Jan 2021 - Added</br>credit_activity expired
   - 14 Jan 2021 - Added</br>job/123/actions</br>added checklist id
   - 10 Nov 2020 - Added</br>three_d_security_two_on_purchase
@@ -707,7 +708,8 @@ curl\
     ],
     "show_phone": true,
     "cta_color": "#6c391c",
-    "logo_url": "http://domainname.com/images/logo.jpg"
+    "logo_url": "http://domainname.com/images/logo.jpg",
+    "membership_service_id": 20
   }
 }
 ```
@@ -733,6 +735,7 @@ Parameter | Type | Description
 `show_manage_membership_section` | *boolean* | Configuration for hiding or showing managing membership section in account
 `referral_bonus_formatted` | *string* | Formatted amount of bonus client receives when another client registers with their referral code and book a service.
 `payment_methods` | *array\<[payment_method](#payment-methods)\>* | Payment methods for profile
+`membership_service_id` | *integer* | Configured service to book to purchase membership
 
 ### App profiles additional response parameters
 
@@ -3071,7 +3074,7 @@ curl\
   {
     "title": "Customer Service Credit",
     "description": null,
-    "amount_formatted": "£20.00",
+    "amount_formatted": "+ £20.00",
     "created_at_formatted": "27 Aug 2020",
     "expires_at_formatted": "Expiry: 27 Aug 2020",
     "type": "earned",
