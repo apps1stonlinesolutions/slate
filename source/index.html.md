@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - Change log
+  - 22 Feb 2021 - Added</br>jobs.phones
   - 2 Feb 2021 - Added</br>membership_service_id in configuration
   - 21 Jan 2021 - Added</br>credit_activity expired
   - 14 Jan 2021 - Added</br>job/123/actions</br>added checklist id
@@ -5198,6 +5199,9 @@ curl\
           }
         ]
       },
+      "phones": [
+        "077123456789"
+      ],
       "client_confirmed_job": true,
       "status": "Booked",
       "paid": false,
