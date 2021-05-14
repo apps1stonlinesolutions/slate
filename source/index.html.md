@@ -8512,9 +8512,11 @@ On-boarding screens content in "My Credits" section in "Account" tab.
     "new_version": {
       "build": 100,
       "version": "1.2.10",
-      "force_update": true,
+      "description": "Get the latest version to be able to manage your regular bookings!",
       "download_url": "itunes://gofantastic",
-      "description": "Get the latest version to be able to manage your regular bookings!"
+      "force_update": true,
+      "react_bundle_build_number": 200,
+      "react_bundle_download_url": "www.bundle.url"
     }
   }
 }
@@ -8528,9 +8530,11 @@ Parameter | Type | Description
 -------- | ----- | -------
 `build` | *integer* | Build number of the version
 `version` | *string* | Version number
-`force_update` | *boolean* | Determines whether update to this version is optional or required
-`download_url` | *string* | URL to get the latest version (AppStore, PlayStore, Enterprise installation file etc.)
 `description` | *string* | Message containing details for the update
+`download_url` | *string* | URL to get the latest version (AppStore, PlayStore, Enterprise installation file etc.)
+`force_update` | *boolean* | Determines whether update to this version is optional or required
+`react_bundle_build` | *integer* | React bundle build number of the version
+`react_bundle_download_url` | *string* | React bundle download URL
 
 ## Changes
 
